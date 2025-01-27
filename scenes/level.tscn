@@ -29,6 +29,8 @@ progress = 990.99
 
 [node name="Line2D" type="Line2D" parent="player/Path2D"]
 points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -66)
+width = 2.0
+default_color = Color(0, 1, 0.333333, 1)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

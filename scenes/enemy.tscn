@@ -8,9 +8,11 @@
 shader = ExtResource("2_re3ou")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmke4"]
-radius = 31.5753
+radius = 18.4391
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_nj4eo")
 
