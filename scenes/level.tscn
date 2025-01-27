@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkvosfvk83xh5"]
+
+[ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_qwb4s"]
+[ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
+
+[sub_resource type="Curve2D" id="Curve2D_3kcsj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -95, -70, 0, 0, 0, 0, 1204, -67, 0, 0, 0, 0, 1204, 722, 0, 0, 0, 0, -102, 715, 0, 0, 0, 0, -95, -70)
+}
+point_count = 5
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_qwb4s")
+
+[node name="player" parent="." instance=ExtResource("1_ajxwd")]
+position = Vector2(209, 126)
+speed = 300.0
+
+[node name="Path2D" type="Path2D" parent="player"]
+position = Vector2(-532, -322)
+curve = SubResource("Curve2D_3kcsj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(895.989, -67.7113)
+rotation = 0.00230946
+progress = 990.99
+
+[node name="Line2D" type="Line2D" parent="player/Path2D"]
+points = PackedVector2Array(-96, -66, 1200, -68, 1203, 719, -96, 726, -98, -68)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="rock" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(17, 42)
+
+[node name="rock2" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(1121, 37)
+
+[node name="rock3" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(31, 621)
+
+[node name="rock4" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(1124, 621)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

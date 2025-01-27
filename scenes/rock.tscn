@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8lbnwk4jlkb"]
+
+[ext_resource type="Shader" path="res://shaders/circle.gdshader" id="1_02un2"]
+[ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="2_tn5ev"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt3hw"]
+shader = ExtResource("1_02un2")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mai47"]
+radius = 28.0179
+
+[node name="rock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jt3hw")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tn5ev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mai47")
