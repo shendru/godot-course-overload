@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=7 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_24rjr"]
-radius = 32.0156
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5sbg"]
+radius = 15.0
+height = 72.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sa5an"]
+radius = 23.0
+height = 76.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e63ir"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpiov"]
+bg_color = Color(0.32593, 0.699831, 0.25345, 1)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -15,10 +26,19 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h012a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_24rjr")
+shape = SubResource("CapsuleShape2D_y5sbg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_sa5an")
+debug_color = Color(0.874064, 0.271494, 0.550553, 0.42)
 
 [node name="aim" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -32,10 +52,23 @@ points = PackedVector2Array(0, -8.025, 0, -61.025)
 width = 2.0
 default_color = Color(0.116667, 1, 0, 1)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="attack_timer" type="Timer" parent="."]
 autostart = true
 
 [node name="attacks" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -106.0
+offset_top = -96.0
+offset_right = 109.0
+offset_bottom = -69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e63ir")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jpiov")
+value = 100.0
+show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_timer_timeout"]

@@ -16,7 +16,6 @@ func _physics_process(_delta):
 		rotation = direction.angle() + PI / 2
 		
 func take_damage():
-	
 	health -= 1
 	take_damage_shader()
 	if health == 0:

@@ -48,18 +48,6 @@ points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -6
 width = 2.0
 default_color = Color(0, 1, 0.333333, 1)
 
-[node name="UI" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="enemiesCount" type="Label" parent="UI"]
-offset_left = 1023.0
-offset_top = 13.0
-offset_right = 1097.0
-offset_bottom = 36.0
-text = "enemies: "
-
 [node name="enemies" type="Node" parent="."]
 
 [connection signal="timeout" from="spawner" to="." method="_on_timer_timeout"]
-[connection signal="child_entered_tree" from="enemies" to="UI" method="_on_enemies_child_entered_tree"]
-[connection signal="child_exiting_tree" from="enemies" to="UI" method="_on_enemies_child_exiting_tree"]
