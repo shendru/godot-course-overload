@@ -13,8 +13,24 @@ point_count = 5
 [node name="Level" type="Node2D"]
 script = ExtResource("1_qwb4s")
 
+[node name="spawner" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="rock" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(17, 42)
+
+[node name="rock2" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(1121, 37)
+
+[node name="rock3" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(31, 621)
+
+[node name="rock4" parent="." instance=ExtResource("3_2an5l")]
+position = Vector2(1124, 621)
+
 [node name="player" parent="." instance=ExtResource("1_ajxwd")]
-position = Vector2(209, 126)
+position = Vector2(575, 314)
 speed = 300.0
 
 [node name="Path2D" type="Path2D" parent="player"]
@@ -32,20 +48,18 @@ points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -6
 width = 2.0
 default_color = Color(0, 1, 0.333333, 1)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="rock" parent="." instance=ExtResource("3_2an5l")]
-position = Vector2(17, 42)
+[node name="enemiesCount" type="Label" parent="UI"]
+offset_left = 1023.0
+offset_top = 13.0
+offset_right = 1097.0
+offset_bottom = 36.0
+text = "enemies: "
 
-[node name="rock2" parent="." instance=ExtResource("3_2an5l")]
-position = Vector2(1121, 37)
+[node name="enemies" type="Node" parent="."]
 
-[node name="rock3" parent="." instance=ExtResource("3_2an5l")]
-position = Vector2(31, 621)
-
-[node name="rock4" parent="." instance=ExtResource("3_2an5l")]
-position = Vector2(1124, 621)
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="spawner" to="." method="_on_timer_timeout"]
+[connection signal="child_entered_tree" from="enemies" to="UI" method="_on_enemies_child_entered_tree"]
+[connection signal="child_exiting_tree" from="enemies" to="UI" method="_on_enemies_child_exiting_tree"]
