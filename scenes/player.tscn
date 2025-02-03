@@ -29,7 +29,6 @@ texture = ExtResource("2_h012a")
 shape = SubResource("CapsuleShape2D_y5sbg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -68,6 +67,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_e63ir")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jpiov")
 value = 100.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
