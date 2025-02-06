@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=8 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
+[ext_resource type="PackedScene" uid="uid://dek6168e3owjr" path="res://scenes/whip.tscn" id="3_ulxtf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5sbg"]
 radius = 15.0
@@ -71,5 +72,7 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Whip" parent="." instance=ExtResource("3_ulxtf")]
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_timer_timeout"]

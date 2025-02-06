@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var shader_material = sprite.material
 
-var health = 3 # could use a better healthbar formula
+var health = 8 # could use a better healthbar formula
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -15,8 +15,8 @@ func _physics_process(_delta):
 	#if velocity.length() > 0:
 		#rotation = direction.angle() + PI / 2
 		
-func take_damage():
-	health -= 1
+func take_damage(dmg):
+	health -= dmg
 	take_damage_shader()
 	if health == 0:
 		queue_free()

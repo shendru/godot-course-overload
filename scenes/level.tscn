@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=7 format=3 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_qwb4s"]
 [ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
 [ext_resource type="Script" path="res://scenes/spawner.gd" id="4_3gdor"]
+[ext_resource type="PackedScene" uid="uid://dek6168e3owjr" path="res://scenes/whip.tscn" id="5_hds2u"]
 
 [sub_resource type="Curve2D" id="Curve2D_3kcsj"]
 _data = {
@@ -49,6 +50,8 @@ unique_name_in_owner = true
 points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -66)
 width = 2.0
 default_color = Color(0, 1, 0.333333, 1)
+
+[node name="Whip2" parent="player" instance=ExtResource("5_hds2u")]
 
 [node name="enemies" type="Node" parent="."]
 

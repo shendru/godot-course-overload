@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dek6168e3owjr"]
+
+[ext_resource type="Script" path="res://scenes/whip.gd" id="1_5qujr"]
+
+[node name="Whip" type="Marker2D"]
+script = ExtResource("1_5qujr")
+
+[node name="whipTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="whipTimer" to="." method="whip_timer"]
