@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://damage.gd" id="1_psq6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7caf7"]
-size = Vector2(81, 20)
+size = Vector2(117.5, 31)
 
 [node name="WhipCollision" type="Area2D"]
 collision_layer = 4
@@ -11,13 +11,19 @@ collision_mask = 2
 script = ExtResource("1_psq6a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(49, 0)
+position = Vector2(67.25, 0)
 shape = SubResource("RectangleShape2D_7caf7")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
-one_shot = true
 autostart = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 126.0
+offset_bottom = 15.0
+color = Color(0.694118, 1, 1, 1)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="whip_damage_timer"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

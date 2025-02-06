@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var shader_material = sprite.material
 
-var health = 8 # could use a better healthbar formula
+var health = 2 # could use a better healthbar formula
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
