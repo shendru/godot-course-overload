@@ -31,13 +31,13 @@ func update_marker_rotation():
 		# marker.rotation = lerp_angle(marker.rotation, target_angle_radians, 0.2)
 		marker.rotation = target_angle_radians
 		
-func attack():
-	const WEAP = preload("res://scenes/weapon.tscn")
-	var new_attack = WEAP.instantiate()
-	new_attack.rotation = marker.rotation
-	#new_attack.position = marker_pos.position
-	%attacks.add_child(new_attack)
-
-
-func _on_timer_timeout() -> void:
-	attack()
+#func attack():
+	#const WEAP = preload("res://scenes/weapon.tscn")
+	#var new_attack = WEAP.instantiate()
+	#new_attack.rotation = marker.rotation
+	##new_attack.position = marker_pos.position
+	#%attacks.add_child(new_attack)
+#
+#
+#func _on_timer_timeout() -> void:
+	#attack()
