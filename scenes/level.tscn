@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=6 format=3 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_qwb4s"]
 [ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="4_3gdor"]
 
 [sub_resource type="Curve2D" id="Curve2D_3kcsj"]
 _data = {
@@ -33,17 +34,18 @@ position = Vector2(1124, 621)
 position = Vector2(575, 314)
 speed = 300.0
 
-[node name="Path2D" type="Path2D" parent="player"]
-position = Vector2(-532, -322)
+[node name="Spawner" type="Path2D" parent="player"]
 curve = SubResource("Curve2D_3kcsj")
+script = ExtResource("4_3gdor")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="player/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="player/Spawner"]
 unique_name_in_owner = true
 position = Vector2(895.989, -67.7113)
 rotation = 0.00230946
 progress = 990.99
 
-[node name="Line2D" type="Line2D" parent="player/Path2D"]
+[node name="spawnLine" type="Line2D" parent="player/Spawner"]
+unique_name_in_owner = true
 points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -66)
 width = 2.0
 default_color = Color(0, 1, 0.333333, 1)
