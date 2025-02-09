@@ -19,6 +19,20 @@ func take_damage(dmg):
 	health -= dmg
 	take_damage_shader()
 	if health == 0:
+		var chance = randi_range(1,2)
+		#print(chance)
+		if chance == 2:
+			var new_exp = preload("res://components/exp_model.tscn").instantiate()
+			#print("New EXP instance:", new_exp)
+			var exp_holder = get_tree().get_root().find_child("exp_holder", true, false)
+			if exp_holder:
+				#print("exp holder found")
+				#print("exp old loc: ", new_exp.global_position)
+				new_exp.global_position = global_position
+				#print("exp new loc: ", new_exp.global_position)
+				exp_holder.add_child(new_exp)
+			else:
+				print("no exp holder")
 		queue_free()
 		
 func take_damage_shader():

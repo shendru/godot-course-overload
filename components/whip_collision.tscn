@@ -1,9 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://qiounm6xox4q"]
+[gd_scene load_steps=7 format=3 uid="uid://qiounm6xox4q"]
 
 [ext_resource type="Script" path="res://damage.gd" id="1_psq6a"]
+[ext_resource type="Texture2D" uid="uid://lo3u7awetao1" path="res://assets/whip.png" id="2_mdk1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7caf7"]
 size = Vector2(117.5, 31)
+
+[sub_resource type="Animation" id="Animation_tqyln"]
+resource_name = "attack"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1bcvr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7dsc"]
+_data = {
+"RESET": SubResource("Animation_1bcvr"),
+"attack": SubResource("Animation_tqyln")
+}
 
 [node name="WhipCollision" type="Area2D"]
 collision_layer = 4
@@ -24,6 +63,19 @@ offset_top = -16.0
 offset_right = 126.0
 offset_bottom = 15.0
 color = Color(0.694118, 1, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(57, 26)
+rotation = 1.57079
+texture = ExtResource("2_mdk1q")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_g7dsc")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

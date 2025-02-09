@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcs2ioydbqvle"]
+
+[ext_resource type="Script" path="res://components/exp_model.gd" id="1_tytu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ni5hv"]
+size = Vector2(15, 15)
+
+[node name="Exp" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_tytu8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172061, 0.396652, 0.99994, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ni5hv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

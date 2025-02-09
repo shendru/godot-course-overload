@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ge7x23pb4ykl"]
+
+[ext_resource type="Script" path="res://components/ui/exp_ui.gd" id="1_ubyae"]
+
+[node name="expUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 27.0
+script = ExtResource("1_ubyae")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
