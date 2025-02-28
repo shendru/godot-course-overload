@@ -15,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("upgrade1:rotation")
+tracks/0/path = NodePath("NodeAim/upgrade1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("upgrade2:rotation")
+tracks/1/path = NodePath("NodeAim/upgrade2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +43,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("upgrade1:rotation")
+tracks/0/path = NodePath("NodeAim/upgrade1:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +73,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("upgrade1:rotation")
+tracks/0/path = NodePath("NodeAim/upgrade1:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,7 +99,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("upgrade2:rotation")
+tracks/2/path = NodePath("NodeAim/upgrade2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -119,25 +119,29 @@ _data = {
 [node name="sword" type="Marker2D"]
 script = ExtResource("1_hxti8")
 
-[node name="upgrade1" type="Area2D" parent="."]
+[node name="NodeAim" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="upgrade1" type="Area2D" parent="NodeAim"]
 unique_name_in_owner = true
 position = Vector2(0, -15.055)
 rotation = -1.06116
+scale = Vector2(1, 1)
 collision_layer = 4
 collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="upgrade1"]
+[node name="Sprite2D" type="Sprite2D" parent="NodeAim/upgrade1"]
 material = SubResource("ShaderMaterial_5aucd")
 position = Vector2(0, -84.0983)
 scale = Vector2(0.1, 1.18904)
 texture = ExtResource("3_sdxpw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="upgrade1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NodeAim/upgrade1"]
 position = Vector2(-7.62939e-06, -84.1355)
 scale = Vector2(1.01607, 1.01922)
 shape = SubResource("RectangleShape2D_yu5g8")
 
-[node name="upgrade2" type="Area2D" parent="."]
+[node name="upgrade2" type="Area2D" parent="NodeAim"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, 40)
@@ -145,13 +149,13 @@ rotation = -4.2045
 collision_layer = 4
 collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="upgrade2"]
+[node name="Sprite2D" type="Sprite2D" parent="NodeAim/upgrade2"]
 material = SubResource("ShaderMaterial_5aucd")
 position = Vector2(0, -84.0983)
 scale = Vector2(0.1, 1.18904)
 texture = ExtResource("3_sdxpw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="upgrade2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NodeAim/upgrade2"]
 position = Vector2(-1.52588e-05, -84.1355)
 scale = Vector2(1.01607, 1.01922)
 shape = SubResource("RectangleShape2D_yu5g8")
@@ -162,5 +166,5 @@ libraries = {
 "": SubResource("AnimationLibrary_34nsk")
 }
 
-[connection signal="body_entered" from="upgrade1" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="upgrade2" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="NodeAim/upgrade1" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="NodeAim/upgrade2" to="." method="_on_area_2d_body_entered"]

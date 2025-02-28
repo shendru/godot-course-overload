@@ -10,7 +10,10 @@ func _ready() -> void:
 	aim = %aim
 	aim_pos = %aim_pos
 	timer = %Timer
+	
+	timer.connect("timeout", self._on_timer_timeout)
 	timer.set_wait_time(attack_speed)
+	timer.start()
 
 func attack_lvl1():
 	var new_attack = WEAP.instantiate()

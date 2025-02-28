@@ -4,11 +4,14 @@ extends CharacterBody2D
 @onready var aim_pos = %aim_pos
 
 @export var speed: float = 200.0
-@export var aim_offset_angle_degrees = 90.0
+@export var aim_offset_angle_degrees = 0
 
 @export var exp: int = 0
 @export var base_max_exp: int = 100
 @export var level: int = 1
+
+var mouseMode: bool = false
+
 signal exp_changed
 
 var health = 100.0
@@ -24,6 +27,7 @@ func _physics_process(delta):
 	velocity = input_dir * speed
 	move_and_slide()
 	update_aim_rotation()
+	#aim.look_at(get_global_mouse_position())
 	
 	const DAMAGE_RATE = 5.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
@@ -33,14 +37,26 @@ func _physics_process(delta):
 		if health <= 0.0:
 			health_depleted.emit()
 
-func update_aim_rotation():
-	if velocity.length() > 0:
-		var target_angle_radians = velocity.angle()
-		var aim_offset_angle_radians = deg_to_rad(aim_offset_angle_degrees)
-		target_angle_radians += aim_offset_angle_radians
-		# aim.rotation = lerp_angle(aim.rotation, target_angle_radians, 0.2)
-		aim.rotation = target_angle_radians
-		
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("left_click"):
+		mouseMode = true
+		#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	if event.is_action_pressed("ui_cancel"):
+		mouseMode = false
+		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func update_aim_rotation() -> void:
+	if mouseMode:
+		aim.look_at(get_global_mouse_position())
+	else:
+		if velocity.length() > 0:
+			var target_angle_radians = velocity.angle()
+			var aim_offset_angle_radians = deg_to_rad(aim_offset_angle_degrees)
+			target_angle_radians += aim_offset_angle_radians
+			# aim.rotation = lerp_angle(aim.rotation, target_angle_radians, 0.2)
+			aim.rotation = target_angle_radians
+			
 
 
 func exp_gain() -> void:

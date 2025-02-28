@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://components/ui/exp_ui.tscn" id="3_kvy37"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
-[ext_resource type="PackedScene" uid="uid://bxr4rgkaiu85c" path="res://weapons_item/bible.tscn" id="6_chnmo"]
+[ext_resource type="PackedScene" uid="uid://cjexllovdp6ke" path="res://weapons_item/sword.tscn" id="6_dpdrg"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="7_lvutg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5sbg"]
@@ -53,9 +53,10 @@ unique_name_in_owner = true
 
 [node name="aim_pos" type="Marker2D" parent="aim"]
 unique_name_in_owner = true
-position = Vector2(0, -36.975)
+position = Vector2(28, 0)
 
 [node name="Line2D" type="Line2D" parent="aim/aim_pos"]
+rotation = 1.5708
 points = PackedVector2Array(0, -8.025, 0, -61.025)
 width = 2.0
 default_color = Color(0.116667, 1, 0, 1)
@@ -75,12 +76,12 @@ clip_contents = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 41.0
-offset_top = -177.0
-offset_right = 552.0
-offset_bottom = 334.0
+offset_left = 64.0
+offset_top = -154.0
+offset_right = 575.0
+offset_bottom = 357.0
 grow_vertical = 0
-scale = Vector2(0.26, 0.26)
+scale = Vector2(0.18, 0.18)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer"]
 layout_mode = 1
@@ -135,7 +136,7 @@ debug_color = Color(1.44392e-06, 0.627748, 0.498958, 0.42)
 [node name="items" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="bible" parent="items" instance=ExtResource("6_chnmo")]
+[node name="sword" parent="items" instance=ExtResource("6_dpdrg")]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0.151, 0.151, 0.151, 0.692)

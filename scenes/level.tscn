@@ -46,11 +46,13 @@ progress = 990.99
 
 [node name="spawnLine" type="Line2D" parent="player/Spawner"]
 unique_name_in_owner = true
+visible = false
 points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -66)
 width = 2.0
 default_color = Color(0, 1, 0.333333, 1)
 
-[node name="enemies" type="Node" parent="."]
+[node name="enemies" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="exp_holder" type="Node" parent="."]
 
