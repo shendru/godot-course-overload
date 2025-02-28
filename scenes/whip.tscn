@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dek6168e3owjr"]
+[gd_scene load_steps=2 format=3 uid="uid://dbgdwgpe6p2p1"]
 
 [ext_resource type="Script" path="res://scripts/whip.gd" id="1_5qujr"]
 
 [node name="Whip" type="Marker2D"]
 script = ExtResource("1_5qujr")
 
-[node name="whipTimer" type="Timer" parent="."]
-unique_name_in_owner = true
+[node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="whipTimer" to="." method="whip_timer"]
+[connection signal="timeout" from="Timer" to="." method="whip_timer"]

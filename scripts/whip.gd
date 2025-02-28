@@ -2,6 +2,7 @@ extends Marker2D
 
 @export var level = 2
 
+
 func whip_timer() -> void:
 	spawnWhip()
 

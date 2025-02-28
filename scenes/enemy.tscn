@@ -1,13 +1,81 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy2y4ioee72mg"]
+[gd_scene load_steps=19 format=3 uid="uid://dy2y4ioee72mg"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nj4eo"]
-[ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="2_ixevy"]
-[ext_resource type="Shader" path="res://shaders/triangle.gdshader" id="2_re3ou"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_b1lmh"]
+[ext_resource type="Texture2D" uid="uid://b7ynujk2kfckq" path="res://assets/enemies/slime/frame0000.png" id="2_v6saa"]
+[ext_resource type="Texture2D" uid="uid://bk0m82q76f33e" path="res://assets/enemies/slime/frame0001.png" id="3_cp7ym"]
+[ext_resource type="Texture2D" uid="uid://cn47ighs2x6mr" path="res://assets/enemies/slime/frame0002.png" id="4_jx2t0"]
+[ext_resource type="Texture2D" uid="uid://bqku8d4p4avn8" path="res://assets/enemies/slime/frame0003.png" id="5_842iq"]
+[ext_resource type="Texture2D" uid="uid://dgbdkvpfx7k8i" path="res://assets/enemies/slime/frame0004.png" id="6_0tfdy"]
+[ext_resource type="Texture2D" uid="uid://53mx37sldhne" path="res://assets/enemies/slime/frame0005.png" id="7_5hki0"]
+[ext_resource type="Texture2D" uid="uid://cshaystjo1ijk" path="res://assets/enemies/slime/frame0006.png" id="8_7unvt"]
+[ext_resource type="Texture2D" uid="uid://cwhhxbq07ilai" path="res://assets/enemies/slime/frame0007.png" id="9_epqpn"]
+[ext_resource type="Texture2D" uid="uid://b524btjeo1ftb" path="res://assets/enemies/slime/frame0008.png" id="10_3fmi0"]
+[ext_resource type="Texture2D" uid="uid://c7syw01ki4cw" path="res://assets/enemies/slime/frame0009.png" id="11_u7ski"]
+[ext_resource type="Texture2D" uid="uid://dos4jdrvbhbv6" path="res://assets/enemies/slime/frame0010.png" id="12_5n8jc"]
+[ext_resource type="Texture2D" uid="uid://vquog4kuanci" path="res://assets/enemies/slime/frame0011.png" id="13_sgba2"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="14_kv707"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3btu3"]
+[sub_resource type="Shader" id="Shader_bjid3"]
+code = "shader_type canvas_item;
+
+uniform float flash_amount : hint_range(0.0, 1.0) = 0.0;
+uniform vec4 flash_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // White by default
+
+void fragment() {
+    vec4 base_color = texture(TEXTURE, UV);
+    vec3 final_color = mix(base_color.rgb, flash_color.rgb, flash_amount);
+    COLOR = vec4(final_color, base_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf7er"]
 resource_local_to_scene = true
-shader = ExtResource("2_re3ou")
-shader_parameter/damage_effect = 0.0
+shader = SubResource("Shader_bjid3")
+shader_parameter/flash_amount = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft0tt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v6saa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cp7ym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jx2t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_842iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0tfdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5hki0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7unvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_epqpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3fmi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u7ski")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5n8jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sgba2")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 11.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmke4"]
 radius = 12.0416
@@ -16,13 +84,31 @@ radius = 12.0416
 collision_layer = 2
 collision_mask = 6
 motion_mode = 1
-script = ExtResource("1_nj4eo")
+script = ExtResource("1_b1lmh")
+speed = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_3btu3")
-position = Vector2(0, -8)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_ixevy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_cf7er")
+position = Vector2(0, -22.96)
+scale = Vector2(0.0919355, 0.0919355)
+sprite_frames = SubResource("SpriteFrames_ft0tt")
+animation = &"moving"
+autoplay = "moving"
+frame = 2
+frame_progress = 0.155888
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gmke4")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.151, 0.151, 0.151, 0.692)
+z_index = -1
+position = Vector2(-1, 8)
+scale = Vector2(0.132812, 0.0507812)
+texture = ExtResource("14_kv707")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
