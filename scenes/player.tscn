@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://components/ui/exp_ui.tscn" id="3_kvy37"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
-[ext_resource type="PackedScene" uid="uid://cjexllovdp6ke" path="res://weapons_item/sword.tscn" id="6_dpdrg"]
+[ext_resource type="Script" path="res://scripts/weapon_panel.gd" id="6_j8nuh"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="7_lvutg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5sbg"]
@@ -111,6 +111,40 @@ fill_mode = 5
 radial_initial_angle = 315.0
 texture_progress = ExtResource("4_ln11m")
 
+[node name="Panel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 156.0
+offset_top = -154.0
+offset_right = 293.0
+offset_bottom = -18.0
+grow_vertical = 0
+script = ExtResource("6_j8nuh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "sword"
+
+[node name="Button4" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "whip"
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "bible"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "garlic"
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -136,8 +170,6 @@ debug_color = Color(1.44392e-06, 0.627748, 0.498958, 0.42)
 [node name="items" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="sword" parent="items" instance=ExtResource("6_dpdrg")]
-
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0.151, 0.151, 0.151, 0.692)
 z_index = -1
@@ -146,4 +178,8 @@ scale = Vector2(0.0820312, 0.046875)
 texture = ExtResource("7_lvutg")
 
 [connection signal="exp_changed" from="." to="CanvasLayer/expUI" method="_on_player_exp_changed"]
+[connection signal="toggled" from="CanvasLayer/Panel/VBoxContainer/Button3" to="CanvasLayer/Panel" method="_on_button_3_toggled"]
+[connection signal="toggled" from="CanvasLayer/Panel/VBoxContainer/Button4" to="CanvasLayer/Panel" method="_on_button_4_toggled"]
+[connection signal="toggled" from="CanvasLayer/Panel/VBoxContainer/Button" to="CanvasLayer/Panel" method="_on_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/Panel/VBoxContainer/Button2" to="CanvasLayer/Panel" method="_on_button_2_toggled"]
 [connection signal="area_entered" from="Looter" to="." method="_on_looter_area_entered"]

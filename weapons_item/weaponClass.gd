@@ -17,5 +17,5 @@ func attack_lvl1():
 	add_child(new_attack)
 	
 func _on_timer_timeout() -> void:
-	print("timer inside Weapon class")
+	#print("timer inside Weapon class")
 	attack_lvl1()

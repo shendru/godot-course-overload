@@ -3,14 +3,18 @@ extends CharacterBody2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @export var speed = 100.0
 @onready var sprite = $AnimatedSprite2D
-@onready var parent_node = $Node2D
+@onready var animation_player = $AnimationPlayer
+#@onready var parent_node = $Node2D
 var shader_material: ShaderMaterial
 
 
+signal died
+
 var health = 2
 
-func _ready():
+func _ready() -> void:
 	shader_material = sprite.material as ShaderMaterial
+	
 	
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -19,10 +23,10 @@ func _physics_process(_delta):
 
 	if velocity.x < 0:
 		sprite.flip_h = true
-		parent_node.scale.x = -1 #flip the parent node
+		#parent_node.scale.x = -1
 	elif velocity.x > 0:
 		sprite.flip_h = false
-		parent_node.scale.x = 1 #unflip the parent node
+		#parent_node.scale.x = 1
 		
 func take_damage(dmg):
 	health -= dmg
@@ -42,8 +46,15 @@ func take_damage(dmg):
 				exp_holder.add_child(new_exp)
 			else:
 				print("no exp holder")
-		queue_free()
-		
+		die()
+
+func die():
+	died.emit()
+	sprite.stop()
+	if sprite.flip_h:
+		animation_player.play("slime_die_right")
+	else:
+		animation_player.play("slime_die_left")
 func take_damage_shader():
 	if shader_material == null:
 		return # Ensure material exists

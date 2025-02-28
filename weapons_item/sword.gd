@@ -1,14 +1,16 @@
 extends weaponClass
 
 # For aiming
-var aim: Marker2D
-var aim_pos: Marker2D
+@onready var aim: Marker2D = get_parent().get_parent().get_node("aim")
+@onready var aim_pos: Marker2D = get_parent().get_parent().get_node("aim_pos")
 
 
 func _ready() -> void:
+	if aim:
+		print("aim ready")
+	else:
+		print("aim not ready")
 	WEAP = preload("res://weapons_item/sword_comp.tscn")
-	aim = %aim
-	aim_pos = %aim_pos
 	timer = %Timer
 	
 	timer.connect("timeout", self._on_timer_timeout)
@@ -40,7 +42,7 @@ func attack_lvl2():
 
 func _on_timer_timeout() -> void:
 	if level == 1:
-		attack_lvl1()	
+		call_deferred("attack_lvl1")
 	if level == 2:
 		attack_lvl2()
 

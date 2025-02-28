@@ -45,7 +45,7 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.729412, 0.85098, 0.8, 0.12549)
+self_modulate = Color(0.2912, 0.56, 0.40768, 0.737255)
 z_index = -2
 material = SubResource("ShaderMaterial_lb2yx")
 scale = Vector2(0.295, 0.295)
