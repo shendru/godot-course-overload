@@ -7,7 +7,9 @@ extends CharacterBody2D
 @export var aim_offset_angle_degrees = 0
 
 @export var exp: int = 0
-@export var base_max_exp: int = 100
+var base_exp: int = 100
+@export var max_exp: int = base_exp
+var growth_factor: float = 1.5
 @export var level: int = 1
 
 var mouseMode: bool = false
@@ -61,7 +63,17 @@ func update_aim_rotation() -> void:
 
 func exp_gain() -> void:
 	exp += 15
-	exp_changed.emit(exp)
+	exp_changed.emit(exp, max_exp)
+	
+	if exp >= max_exp:
+		level_up()
+
+func level_up() -> void:
+	exp = exp - max_exp
+	level += 1
+	max_exp = base_exp * pow(level, growth_factor)
+	exp_changed.emit(exp, max_exp)
+	pass
 
 func calculate_exp() -> void:
 	pass

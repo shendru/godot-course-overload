@@ -10,5 +10,6 @@ func _ready() -> void:
 	
 
 
-func _on_player_exp_changed(val) -> void:
+func _on_player_exp_changed(val, maxval) -> void:
 	$ProgressBar.value = val
+	$ProgressBar.max_value = maxval
