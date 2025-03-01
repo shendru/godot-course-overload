@@ -166,6 +166,7 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="UpgradeGUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="UpgradeGUI"]
 anchors_preset = 8
