@@ -2,7 +2,7 @@ extends weaponClass
 
 # For aiming
 @onready var aim: Marker2D = get_parent().get_parent().get_node("aim")
-@onready var aim_pos: Marker2D = get_parent().get_parent().get_node("aim_pos")
+#@onready var aim_pos: Marker2D = get_parent().get_parent().get_node("aim_pos")
 
 
 func _ready() -> void:
