@@ -1,0 +1,20 @@
+C:/Program Files/Krita (x64)/bin/ffmpeg.exe -hide_banner -y -y -r 7 -start_number 0 -start_number_range 1 -i C:/Users/bbybe/Desktop/anim/it/frame%04d.png -vf scale=w=1262:h=1500:flags=bicubic -c:v libopenh264 -b:v 5000k C:/Users/bbybe/Desktop/anim/it/it.mkv
+=====================================================
+Input #0, image2, from 'C:/Users/bbybe/Desktop/anim/it/frame%04d.png':
+  Duration: 00:00:00.40, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc), 1261x1500 [SAR 11811:11811 DAR 1261:1500], 25 fps, 25 tbr, 25 tbn, 25 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libopenh264))
+Press [q] to stop, [?] for help
+[libopenh264 @ 0000026ebc5e32c0] Slice count will be set automatically
+[libopenh264 @ 0000026ebc5e32c0] [OpenH264] this = 0x0000026EBC5C9210, Warning:bEnableFrameSkip = 0,bitrate can't be controlled for RC_QUALITY_MODE,RC_BITRATE_MODE and RC_TIMESTAMP_MODE without enabling skip frame.
+Output #0, matroska, to 'C:/Users/bbybe/Desktop/anim/it/it.mkv':
+  Metadata:
+    encoder         : Lavf58.76.100
+  Stream #0:0: Video: h264 (H264 / 0x34363248), yuv420p(tv, progressive), 1262x1500 [SAR 1261:1262 DAR 1261:1500], q=2-31, 5000 kb/s, 7 fps, 1k tbn
+    Metadata:
+      encoder         : Lavc58.134.100 libopenh264
+    Side data:
+      cpb: bitrate max/min/avg: 5000000/0/5000000 buffer size: 0 vbv_delay: N/A
+frame=    1 fps=0.0 q=-0.0 size=       1kB time=00:00:00.00 bitrate=4936.0kbits/s speed=0.0777x    frame=   10 fps=0.0 q=-0.0 Lsize=     558kB time=00:00:01.28 bitrate=3550.2kbits/s speed=4.33x    
+video:557kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.129911%

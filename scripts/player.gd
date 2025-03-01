@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 @onready var aim = %aim
 @onready var aim_pos = %aim_pos
+@onready var sprite = $AnimatedSprite2D
 
-@export var speed: float = 200.0
+@export var speed: float = 200
+
 @export var aim_offset_angle_degrees = 0
 
 @export var exp: int = 0
@@ -30,7 +32,13 @@ func _physics_process(delta):
 	move_and_slide()
 	update_aim_rotation()
 	#aim.look_at(get_global_mouse_position())
-	
+	if velocity.x < 0:
+		sprite.flip_h = true
+		#parent_node.scale.x = -1
+	elif velocity.x > 0:
+		sprite.flip_h = false
+		#parent_node.scale.x = 1
+		
 	const DAMAGE_RATE = 5.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:

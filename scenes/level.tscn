@@ -623,6 +623,7 @@ terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/3 = SubResource("TileSetAtlasSource_c8fg4")
 
 [node name="Level" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_qwb4s")
 
 [node name="spawner" type="Timer" parent="."]
@@ -643,7 +644,6 @@ position = Vector2(1124, 621)
 
 [node name="player" parent="." instance=ExtResource("1_ajxwd")]
 position = Vector2(575, 325)
-speed = 300.0
 
 [node name="Spawner" type="Path2D" parent="player"]
 curve = SubResource("Curve2D_2lc7b")
