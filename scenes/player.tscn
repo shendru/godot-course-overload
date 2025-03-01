@@ -30,6 +30,7 @@ bg_color = Color(0.32593, 0.699831, 0.25345, 1)
 radius = 53.1507
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(1, 1.01983)
 motion_mode = 1
 script = ExtResource("1_g2l03")
 
@@ -66,6 +67,7 @@ width = 2.0
 default_color = Color(0.116667, 1, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="expUI" parent="CanvasLayer" instance=ExtResource("3_kvy37")]
 anchors_preset = 10
