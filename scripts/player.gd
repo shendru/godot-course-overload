@@ -69,10 +69,16 @@ func exp_gain() -> void:
 		level_up()
 
 func level_up() -> void:
+	
 	exp = exp - max_exp
 	level += 1
 	max_exp = base_exp * pow(level, growth_factor)
 	exp_changed.emit(exp, max_exp)
+	
+	var upgrade_ui = preload("res://components/ui/upgrade_gui.tscn").instantiate()
+	add_child(upgrade_ui)
+	
+	get_tree().paused = true
 	pass
 
 func calculate_exp() -> void:

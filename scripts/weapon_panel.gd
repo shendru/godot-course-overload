@@ -37,7 +37,6 @@ func _on_button_4_toggled(toggled_on: bool) -> void:
 
 
 func _on_button_toggled(toggled_on: bool) -> void:
-	get_tree().paused = false
 	if toggled_on:
 		if bible_weap == null:
 			bible_weap = bible.instantiate()
