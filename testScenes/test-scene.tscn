@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dv273vngywkb0"]
 
-[ext_resource type="Script" path="res://testScenes/test_scene.gd" id="1_bbm7p"]
+[ext_resource type="Script" uid="uid://djm1poq68bins" path="res://testScenes/test_scene.gd" id="1_bbm7p"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="1_t3pfr"]
 [ext_resource type="Texture2D" uid="uid://b7ynujk2kfckq" path="res://assets/enemies/slime/frame0000.png" id="3_3qisc"]
 

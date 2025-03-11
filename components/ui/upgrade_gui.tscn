@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0s52eg71p6o6"]
 
-[ext_resource type="Script" path="res://components/ui/upgrade_gui.gd" id="1_m66yx"]
+[ext_resource type="Script" uid="uid://dnxlsywfasxxg" path="res://components/ui/upgrade_gui.gd" id="1_m66yx"]
 [ext_resource type="Texture2D" uid="uid://dnaw5gmguv3uc" path="res://assets/temp icons/sword.jpg" id="1_px63o"]
 [ext_resource type="Texture2D" uid="uid://cnm7363ppsiqq" path="res://assets/temp icons/garlic.jpg" id="2_q5bnq"]
 [ext_resource type="Texture2D" uid="uid://bunworg1uorpu" path="res://assets/temp icons/bible.png" id="3_1wsy3"]

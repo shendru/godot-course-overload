@@ -33,7 +33,7 @@ func take_damage(dmg):
 	take_damage_shader()
 	if health <= 0:
 		#var chance = randi_range(1,2)
-		#print(chance)
+		#print(chawaance)
 		#if chance == 2:
 		var new_exp = preload("res://components/exp_model.tscn").instantiate()
 		#print("New EXP instance:", new_exp)

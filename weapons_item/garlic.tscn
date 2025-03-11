@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bnpmsoge4efc7"]
 
-[ext_resource type="Script" path="res://weapons_item/garlic.gd" id="1_gy5n7"]
+[ext_resource type="Script" uid="uid://ddbcmds15b48o" path="res://weapons_item/garlic.gd" id="1_gy5n7"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="2_bl8g6"]
-[ext_resource type="Shader" path="res://shaders/garlic.gdshader" id="2_powut"]
+[ext_resource type="Shader" uid="uid://bafr0sptu140f" path="res://shaders/garlic.gdshader" id="2_powut"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lb2yx"]
 shader = ExtResource("2_powut")
@@ -25,6 +25,7 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 0.0
 emission_ring_radius = 64.745
 emission_ring_inner_radius = 36.795
+emission_ring_cone_angle = 90.0
 direction = Vector3(1, 1, 0)
 spread = 180.0
 initial_velocity_min = 2.0
@@ -53,9 +54,9 @@ texture = ExtResource("2_bl8g6")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_lfrhp")
 texture = ExtResource("2_bl8g6")
 lifetime = 2.0
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_lfrhp")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

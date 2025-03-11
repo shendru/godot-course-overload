@@ -3,22 +3,22 @@ extends CharacterBody2D
 @onready var aim = %aim
 @onready var aim_pos = %aim_pos
 @onready var sprite = $AnimatedSprite2D
+@export var aim_offset_angle_degrees = 0
 
 @export var speed: float = 200
 
-@export var aim_offset_angle_degrees = 0
 
-@export var exp: int = 0
-var base_exp: int = 100
-@export var max_exp: int = base_exp
+@export var curr_exp: float = 0
+var base_exp: float = 100.0
+@export var max_exp: float = base_exp
 var growth_factor: float = 1.5
 @export var level: int = 1
 
-var mouseMode: bool = false
+var mouse_mode: bool = false
 
 signal exp_changed
 
-var health = 100.0
+var health: float = 100.0
 signal health_depleted
 
 #func _ready() -> void:
@@ -49,15 +49,15 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
-		mouseMode = true
+		mouse_mode = true
 		#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if event.is_action_pressed("ui_cancel"):
-		mouseMode = false
+		mouse_mode = false
 		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func update_aim_rotation() -> void:
-	if mouseMode:
+	if mouse_mode:
 		aim.look_at(get_global_mouse_position())
 	else:
 		if velocity.length() > 0:
@@ -70,18 +70,18 @@ func update_aim_rotation() -> void:
 
 
 func exp_gain() -> void:
-	exp += 15
-	exp_changed.emit(exp, max_exp)
+	curr_exp += 15
+	exp_changed.emit(curr_exp, max_exp)
 	
-	if exp >= max_exp:
+	if curr_exp >= max_exp:
 		level_up()
 
 func level_up() -> void:
 	
-	exp = exp - max_exp
+	curr_exp = curr_exp - max_exp
 	level += 1
 	max_exp = base_exp * pow(level, growth_factor)
-	exp_changed.emit(exp, max_exp)
+	exp_changed.emit(curr_exp, max_exp)
 	
 	var upgrade_ui = preload("res://components/ui/upgrade_gui.tscn").instantiate()
 	add_child(upgrade_ui)

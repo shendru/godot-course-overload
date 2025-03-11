@@ -1,59 +1,65 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=30 format=3 uid="uid://b2mpoyrqvhadb"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_g2l03"]
+[ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
+[ext_resource type="Shader" uid="uid://dc0c4l4sbvg13" path="res://shaders/outline.gdshader" id="3_4ni07"]
 [ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://components/ui/exp_ui.tscn" id="3_kvy37"]
-[ext_resource type="Texture2D" uid="uid://bdtjg0u7tocbj" path="res://assets/charas/it/frame0000.png" id="3_t75r6"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
-[ext_resource type="Texture2D" uid="uid://d1umviahjvw8" path="res://assets/charas/it/frame0001.png" id="4_skoop"]
-[ext_resource type="Texture2D" uid="uid://cb8o7otg5h1mh" path="res://assets/charas/it/frame0002.png" id="5_btskk"]
-[ext_resource type="Script" path="res://scripts/weapon_panel.gd" id="6_j8nuh"]
-[ext_resource type="Texture2D" uid="uid://c12044eascuop" path="res://assets/charas/it/frame0003.png" id="6_uky8i"]
-[ext_resource type="Texture2D" uid="uid://dnxai5pow6krr" path="res://assets/charas/it/frame0004.png" id="7_0ft7e"]
+[ext_resource type="Script" uid="uid://c8y2f8yyydwdy" path="res://scripts/weapon_panel.gd" id="6_j8nuh"]
 [ext_resource type="Texture2D" uid="uid://dnaw5gmguv3uc" path="res://assets/temp icons/sword.jpg" id="7_c522f"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="7_lvutg"]
 [ext_resource type="Texture2D" uid="uid://cnm7363ppsiqq" path="res://assets/temp icons/garlic.jpg" id="8_he1ap"]
-[ext_resource type="Texture2D" uid="uid://dbdf5htkbmf1o" path="res://assets/charas/it/frame0005.png" id="8_w767g"]
-[ext_resource type="Texture2D" uid="uid://f766i3e35isl" path="res://assets/charas/it/frame0006.png" id="9_1pst4"]
 [ext_resource type="Texture2D" uid="uid://bunworg1uorpu" path="res://assets/temp icons/bible.png" id="9_3561d"]
 [ext_resource type="Texture2D" uid="uid://b3bhqx7hqs1k2" path="res://assets/temp icons/whip.png" id="10_7r4te"]
-[ext_resource type="Texture2D" uid="uid://jofcvpd1ykk6" path="res://assets/charas/it/frame0007.png" id="10_ye2hh"]
-[ext_resource type="Texture2D" uid="uid://b2ved0cpq51cd" path="res://assets/charas/it/frame0008.png" id="11_1t54j"]
-[ext_resource type="Texture2D" uid="uid://dn6q7raqyqolx" path="res://assets/charas/it/frame0009.png" id="12_ngran"]
+[ext_resource type="Texture2D" uid="uid://cslqycsqum0bj" path="res://assets/charas/it ver2/frame0000.png" id="13_wnwbv"]
+[ext_resource type="Texture2D" uid="uid://cchu3nnuv04nx" path="res://assets/charas/it ver2/frame0001.png" id="14_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://h6tcafg0ty4i" path="res://assets/charas/it ver2/frame0002.png" id="15_487ah"]
+[ext_resource type="Texture2D" uid="uid://bgvwy0g8qa5ka" path="res://assets/charas/it ver2/frame0003.png" id="16_md1ol"]
+[ext_resource type="Texture2D" uid="uid://dexu733qctcgc" path="res://assets/charas/it ver2/frame0004.png" id="17_bj30b"]
+[ext_resource type="Texture2D" uid="uid://bk0gbg18quw3m" path="res://assets/charas/it ver2/frame0005.png" id="18_jc3p3"]
+[ext_resource type="Texture2D" uid="uid://j6outiw8sojd" path="res://assets/charas/it ver2/frame0006.png" id="19_hax0n"]
+[ext_resource type="Texture2D" uid="uid://dou421qyk6okn" path="res://assets/charas/it ver2/frame0007.png" id="20_t4otl"]
+[ext_resource type="Texture2D" uid="uid://5o3xeebt664d" path="res://assets/charas/it ver2/frame0008.png" id="21_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://d3e5ubroo38x2" path="res://assets/charas/it ver2/frame0009.png" id="22_cs1tg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ni07"]
+shader = ExtResource("3_4ni07")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.484
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tagrr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_t75r6")
+"texture": ExtResource("13_wnwbv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_skoop")
+"texture": ExtResource("14_gl8cc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btskk")
+"texture": ExtResource("15_487ah")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_uky8i")
+"texture": ExtResource("16_md1ol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_0ft7e")
+"texture": ExtResource("17_bj30b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_w767g")
+"texture": ExtResource("18_jc3p3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_1pst4")
+"texture": ExtResource("19_hax0n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_ye2hh")
+"texture": ExtResource("20_t4otl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_1t54j")
+"texture": ExtResource("21_j2b1d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ngran")
+"texture": ExtResource("22_cs1tg")
 }],
 "loop": true,
 "name": &"move",
@@ -78,12 +84,12 @@ bg_color = Color(0.32593, 0.699831, 0.25345, 1)
 radius = 53.1507
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(1, 1.01983)
 motion_mode = 1
 script = ExtResource("1_g2l03")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_4ni07")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h012a")
 
@@ -93,8 +99,7 @@ scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = SubResource("SpriteFrames_tagrr")
 animation = &"move"
 autoplay = "move"
-frame = 2
-frame_progress = 0.50235
+frame_progress = 0.180929
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
@@ -123,7 +128,7 @@ position = Vector2(28, 0)
 rotation = 1.5708
 points = PackedVector2Array(0, -8.025, 0, -61.025)
 width = 2.0
-default_color = Color(0.116667, 1, 0, 1)
+default_color = Color(4.57242e-07, 0.262341, 0.202909, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

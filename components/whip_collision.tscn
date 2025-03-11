@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://qiounm6xox4q"]
 
-[ext_resource type="Script" path="res://scripts/damage.gd" id="1_psq6a"]
+[ext_resource type="Script" uid="uid://d3q6r0agbf763" path="res://scripts/damage.gd" id="1_psq6a"]
 [ext_resource type="Texture2D" uid="uid://lo3u7awetao1" path="res://assets/whip.png" id="2_mdk1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7caf7"]
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7dsc"]
 _data = {
-"RESET": SubResource("Animation_1bcvr"),
-"attack": SubResource("Animation_tqyln")
+&"RESET": SubResource("Animation_1bcvr"),
+&"attack": SubResource("Animation_tqyln")
 }
 
 [node name="WhipCollision" type="Area2D"]

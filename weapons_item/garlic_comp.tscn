@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7o7weydves6x"]
 
-[ext_resource type="Script" path="res://weapons_item/garlic_comp.gd" id="1_jjnjr"]
+[ext_resource type="Script" uid="uid://bgxd0n7ei63f1" path="res://weapons_item/garlic_comp.gd" id="1_jjnjr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7skjg"]
 radius = 67.4759
@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg868"]
 _data = {
-"garlic_dot": SubResource("Animation_sg3jk")
+&"garlic_dot": SubResource("Animation_sg3jk")
 }
 
 [node name="Garlic" type="Node2D"]

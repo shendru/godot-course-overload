@@ -1,18 +1,18 @@
 [gd_scene load_steps=23 format=3 uid="uid://dy2y4ioee72mg"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_b1lmh"]
-[ext_resource type="Texture2D" uid="uid://b7ynujk2kfckq" path="res://assets/enemies/slime/frame0000.png" id="2_v6saa"]
-[ext_resource type="Texture2D" uid="uid://bk0m82q76f33e" path="res://assets/enemies/slime/frame0001.png" id="3_cp7ym"]
-[ext_resource type="Texture2D" uid="uid://cn47ighs2x6mr" path="res://assets/enemies/slime/frame0002.png" id="4_jx2t0"]
-[ext_resource type="Texture2D" uid="uid://bqku8d4p4avn8" path="res://assets/enemies/slime/frame0003.png" id="5_842iq"]
-[ext_resource type="Texture2D" uid="uid://dgbdkvpfx7k8i" path="res://assets/enemies/slime/frame0004.png" id="6_0tfdy"]
-[ext_resource type="Texture2D" uid="uid://53mx37sldhne" path="res://assets/enemies/slime/frame0005.png" id="7_5hki0"]
-[ext_resource type="Texture2D" uid="uid://cshaystjo1ijk" path="res://assets/enemies/slime/frame0006.png" id="8_7unvt"]
-[ext_resource type="Texture2D" uid="uid://cwhhxbq07ilai" path="res://assets/enemies/slime/frame0007.png" id="9_epqpn"]
-[ext_resource type="Texture2D" uid="uid://b524btjeo1ftb" path="res://assets/enemies/slime/frame0008.png" id="10_3fmi0"]
-[ext_resource type="Texture2D" uid="uid://c7syw01ki4cw" path="res://assets/enemies/slime/frame0009.png" id="11_u7ski"]
-[ext_resource type="Texture2D" uid="uid://dos4jdrvbhbv6" path="res://assets/enemies/slime/frame0010.png" id="12_5n8jc"]
-[ext_resource type="Texture2D" uid="uid://vquog4kuanci" path="res://assets/enemies/slime/frame0011.png" id="13_sgba2"]
+[ext_resource type="Script" uid="uid://br1clnupvyco" path="res://scripts/enemy.gd" id="1_b1lmh"]
+[ext_resource type="Texture2D" uid="uid://dkbfg0pj58nf2" path="res://assets/enemies/slime ver3/frame0000.png" id="2_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://fs8q7liwbmg2" path="res://assets/enemies/slime ver3/frame0001.png" id="3_g0wcc"]
+[ext_resource type="Texture2D" uid="uid://bfhqv3ld10sub" path="res://assets/enemies/slime ver3/frame0002.png" id="4_s1ycm"]
+[ext_resource type="Texture2D" uid="uid://1rgn4jrh54w2" path="res://assets/enemies/slime ver3/frame0003.png" id="5_shcg2"]
+[ext_resource type="Texture2D" uid="uid://c3jpllvm6gkvy" path="res://assets/enemies/slime ver3/frame0004.png" id="6_ile5s"]
+[ext_resource type="Texture2D" uid="uid://jn7dpac6200y" path="res://assets/enemies/slime ver3/frame0005.png" id="7_1x4g4"]
+[ext_resource type="Texture2D" uid="uid://dw1np3jv1bn0i" path="res://assets/enemies/slime ver3/frame0006.png" id="8_2pwtc"]
+[ext_resource type="Texture2D" uid="uid://c5171ksgii0ab" path="res://assets/enemies/slime ver3/frame0007.png" id="9_rogs8"]
+[ext_resource type="Texture2D" uid="uid://d2tt3fv5mxi6k" path="res://assets/enemies/slime ver3/frame0008.png" id="10_wrm80"]
+[ext_resource type="Texture2D" uid="uid://menntqpcnbg2" path="res://assets/enemies/slime ver3/frame0009.png" id="11_6awcb"]
+[ext_resource type="Texture2D" uid="uid://dnfqrf5d6prel" path="res://assets/enemies/slime ver3/frame0010.png" id="12_wjec0"]
+[ext_resource type="Texture2D" uid="uid://cvj8y2k6i2hje" path="res://assets/enemies/slime ver3/frame0011.png" id="13_i4rgx"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="14_kv707"]
 
 [sub_resource type="Shader" id="Shader_bjid3"]
@@ -37,40 +37,40 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v6saa")
+"texture": ExtResource("2_j0cyh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_cp7ym")
+"texture": ExtResource("3_g0wcc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_jx2t0")
+"texture": ExtResource("4_s1ycm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_842iq")
+"texture": ExtResource("5_shcg2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_0tfdy")
+"texture": ExtResource("6_ile5s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_5hki0")
+"texture": ExtResource("7_1x4g4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_7unvt")
+"texture": ExtResource("8_2pwtc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_epqpn")
+"texture": ExtResource("9_rogs8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_3fmi0")
+"texture": ExtResource("10_wrm80")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_u7ski")
+"texture": ExtResource("11_6awcb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_5n8jc")
+"texture": ExtResource("12_wjec0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_sgba2")
+"texture": ExtResource("13_i4rgx")
 }],
 "loop": true,
 "name": &"moving",
@@ -193,9 +193,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khjxk"]
 _data = {
-"RESET": SubResource("Animation_5ft6h"),
-"slime_die_left": SubResource("Animation_s72vd"),
-"slime_die_right": SubResource("Animation_5byg2")
+&"RESET": SubResource("Animation_5ft6h"),
+&"slime_die_left": SubResource("Animation_s72vd"),
+&"slime_die_right": SubResource("Animation_5byg2")
 }
 
 [node name="enemy" type="CharacterBody2D"]
@@ -210,11 +210,10 @@ speed = 40.0
 texture_filter = 1
 material = SubResource("ShaderMaterial_cf7er")
 position = Vector2(0, -22.96)
-scale = Vector2(0.0660645, 0.0660645)
+scale = Vector2(0.09, 0.09)
 sprite_frames = SubResource("SpriteFrames_ft0tt")
 animation = &"moving"
 autoplay = "moving"
-frame = 1
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
 modulate = Color(0.151, 0.151, 0.151, 0.692)
@@ -228,8 +227,5 @@ shape = SubResource("CircleShape2D_gmke4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_khjxk")
+&"": SubResource("AnimationLibrary_khjxk")
 }
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-scale = Vector2(7.2, 5.4)

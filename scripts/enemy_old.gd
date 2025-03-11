@@ -12,8 +12,8 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	# Rotate the CharacterBody2D node to face the direction of movement
-	#if velocity.length() > 0:
-		#rotation = direction.angle() + PI / 2
+	if velocity.length() > 0:
+		rotation = direction.angle() + PI / 2
 		
 func take_damage(dmg):
 	health -= dmg
