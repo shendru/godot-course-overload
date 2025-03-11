@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://dvsm78yeokyux"]
+
+[ext_resource type="Texture2D" uid="uid://dkbfg0pj58nf2" path="res://assets/enemies/slime ver3/frame0000.png" id="1_xgg6v"]
+[ext_resource type="Texture2D" uid="uid://fs8q7liwbmg2" path="res://assets/enemies/slime ver3/frame0001.png" id="2_uah0j"]
+[ext_resource type="Texture2D" uid="uid://bfhqv3ld10sub" path="res://assets/enemies/slime ver3/frame0002.png" id="3_833ta"]
+[ext_resource type="Texture2D" uid="uid://1rgn4jrh54w2" path="res://assets/enemies/slime ver3/frame0003.png" id="4_fpfpe"]
+[ext_resource type="Texture2D" uid="uid://c3jpllvm6gkvy" path="res://assets/enemies/slime ver3/frame0004.png" id="5_nnbqn"]
+[ext_resource type="Texture2D" uid="uid://jn7dpac6200y" path="res://assets/enemies/slime ver3/frame0005.png" id="6_ixwx2"]
+[ext_resource type="Texture2D" uid="uid://dw1np3jv1bn0i" path="res://assets/enemies/slime ver3/frame0006.png" id="7_mjulv"]
+[ext_resource type="Texture2D" uid="uid://c5171ksgii0ab" path="res://assets/enemies/slime ver3/frame0007.png" id="8_k8obh"]
+[ext_resource type="Texture2D" uid="uid://d2tt3fv5mxi6k" path="res://assets/enemies/slime ver3/frame0008.png" id="9_yqpmj"]
+[ext_resource type="Texture2D" uid="uid://menntqpcnbg2" path="res://assets/enemies/slime ver3/frame0009.png" id="10_2d4m3"]
+[ext_resource type="Texture2D" uid="uid://dnfqrf5d6prel" path="res://assets/enemies/slime ver3/frame0010.png" id="11_cgx45"]
+[ext_resource type="Texture2D" uid="uid://cvj8y2k6i2hje" path="res://assets/enemies/slime ver3/frame0011.png" id="12_sen7n"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xgg6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uah0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_833ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fpfpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nnbqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ixwx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mjulv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k8obh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yqpmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2d4m3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cgx45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sen7n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

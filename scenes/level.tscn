@@ -1,17 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=7 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
-[ext_resource type="Script" uid="uid://dnaj6yelra0ac" path="res://scripts/level.gd" id="1_qwb4s"]
 [ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
-[ext_resource type="Script" uid="uid://dawu0i8fkxecb" path="res://scripts/spawner.gd" id="4_3gdor"]
-[ext_resource type="Script" uid="uid://w7270li55klu" path="res://scripts/profiler.gd" id="5_e5qls"]
+[ext_resource type="PackedScene" uid="uid://c7k8i5yeqluox" path="res://scenes/spawner.tscn" id="4_ppgk2"]
 [ext_resource type="Texture2D" uid="uid://ck6ngdfe0m1mv" path="res://assets/tiles/EPIC RPG World Pack-[FREE Demo]Grass Land 2.0/Tilesets and props/Tilesets and props Demo.png" id="6_xucc8"]
-
-[sub_resource type="Curve2D" id="Curve2D_2lc7b"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -95, -70, 0, 0, 0, 0, 1204, -67, 0, 0, 0, 0, 1204, 722, 0, 0, 0, 0, -102, 715, 0, 0, 0, 0, -95, -70)
-}
-point_count = 5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8fg4"]
 texture = ExtResource("6_xucc8")
@@ -624,11 +616,6 @@ sources/3 = SubResource("TileSetAtlasSource_c8fg4")
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_qwb4s")
-
-[node name="spawner" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
 
 [node name="GodotRocks" type="Node2D" parent="."]
 
@@ -647,66 +634,10 @@ position = Vector2(1124, 621)
 [node name="player" parent="." instance=ExtResource("1_ajxwd")]
 position = Vector2(575, 325)
 
-[node name="Spawner" type="Path2D" parent="player"]
-curve = SubResource("Curve2D_2lc7b")
-script = ExtResource("4_3gdor")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="player/Spawner"]
-unique_name_in_owner = true
-position = Vector2(895.989, -67.7113)
-rotation = 0.00230946
-progress = 990.99
-
-[node name="spawnLine" type="Line2D" parent="player/Spawner"]
-unique_name_in_owner = true
-visible = false
-points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -66)
-width = 2.0
-default_color = Color(0, 1, 0.333333, 1)
-
 [node name="enemies" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="exp_holder" type="Node" parent="."]
-
-[node name="Profiler" type="CanvasLayer" parent="."]
-script = ExtResource("5_e5qls")
-
-[node name="PanelContainer" type="PanelContainer" parent="Profiler"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -203.0
-offset_top = -98.0
-offset_right = -75.0
-offset_bottom = -58.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Profiler/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Profiler/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="EnemyCounter" type="Label" parent="Profiler/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Enemy Counter: "
-
-[node name="FPSLabel" type="Label" parent="Profiler/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="MemoryLabel" type="Label" parent="Profiler/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="Map" type="Node2D" parent="."]
 visible = false
@@ -917,6 +848,7 @@ tile_set = SubResource("TileSet_7iiyt")
 position = Vector2(571, 327.5)
 scale = Vector2(77, 44.85)
 
-[connection signal="update_enemy_counter" from="." to="Profiler" method="_on_level_update_enemy_counter"]
-[connection signal="timeout" from="spawner" to="." method="_on_timer_timeout"]
+[node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
+player = NodePath("../player")
+
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]

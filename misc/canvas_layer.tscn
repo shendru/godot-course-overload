@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgpbdr3kmibar"]
+
+[ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://components/ui/exp_ui.tscn" id="1_jesul"]
+[ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="2_rpa2l"]
+[ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="3_fy1cj"]
+[ext_resource type="Script" uid="uid://c8y2f8yyydwdy" path="res://scripts/weapon_panel.gd" id="4_ym4at"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+
+[node name="expUI" parent="." instance=ExtResource("1_jesul")]
+anchors_preset = 10
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="PanelContainer" type="Panel" parent="."]
+clip_contents = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -154.0
+offset_right = 575.0
+offset_bottom = 357.0
+grow_vertical = 0
+scale = Vector2(0.18, 0.18)
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1990.12
+offset_top = -1047.81
+offset_right = 2855.88
+offset_bottom = 2316.19
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rpa2l")
+
+[node name="HealthBarSquare" type="TextureProgressBar" parent="PanelContainer"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.286275, 0.756863, 1)
+layout_mode = 2
+offset_right = 512.0
+offset_bottom = 512.0
+grow_vertical = 0
+step = 0.01
+value = 100.0
+fill_mode = 5
+radial_initial_angle = 315.0
+texture_progress = ExtResource("3_fy1cj")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 156.0
+offset_top = -154.0
+offset_right = 293.0
+offset_bottom = -18.0
+grow_vertical = 0
+script = ExtResource("4_ym4at")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "sword"
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "whip"
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "bible"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "garlic"
+
+[connection signal="toggled" from="Panel/VBoxContainer/Button3" to="Panel" method="_on_button_3_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/Button4" to="Panel" method="_on_button_4_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/Button" to="Panel" method="_on_button_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/Button2" to="Panel" method="_on_button_2_toggled"]

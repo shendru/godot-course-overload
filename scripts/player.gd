@@ -18,7 +18,11 @@ var mouse_mode: bool = false
 
 signal exp_changed
 
-var health: float = 100.0
+var health: float = 100.0:
+	set(value):
+		health = value
+		%HealthBarSquare.value = value
+	
 signal health_depleted
 
 #func _ready() -> void:
@@ -39,13 +43,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 		#parent_node.scale.x = 1
 		
-	const DAMAGE_RATE = 5.0
-	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
-	if overlapping_mobs.size() > 0:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%HealthBarSquare.value = health
-		if health <= 0.0:
-			health_depleted.emit()
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -97,3 +95,14 @@ func _on_looter_area_entered(area: Area2D) -> void:
 		if area.has_method("get_looted"):
 			area.get_looted()
 		print("found exp")
+
+func take_damage(amount):
+	health -= amount
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	take_damage(body.damage)
+
+
+func _on_timer_timeout() -> void:
+	%HurtBoxCollision.set_deferred("disabled", true)
+	%HurtBoxCollision.set_deferred("disabled", false)

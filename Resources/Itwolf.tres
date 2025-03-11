@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://bim25nhb73vg1"]
+
+[ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="1_1kg2j"]
+[ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="2_adlwo"]
+
+[resource]
+script = ExtResource("1_1kg2j")
+title = "ItWolf"
+sprite = ExtResource("2_adlwo")
+health = 5.0
+damage = 2.0
+resize = Vector2(0.057, 0.057)
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

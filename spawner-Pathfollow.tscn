@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://lhk1oak8t8uh"]
+
+[ext_resource type="Script" uid="uid://dawu0i8fkxecb" path="res://scripts/spawner.gd" id="1_jcph0"]
+
+[sub_resource type="Curve2D" id="Curve2D_2lc7b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -95, -70, 0, 0, 0, 0, 1204, -67, 0, 0, 0, 0, 1204, 722, 0, 0, 0, 0, -102, 715, 0, 0, 0, 0, -95, -70)
+}
+point_count = 5
+
+[node name="Spawner" type="Path2D"]
+curve = SubResource("Curve2D_2lc7b")
+script = ExtResource("1_jcph0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(895.989, -67.7113)
+rotation = 0.00230946
+progress = 990.99
+
+[node name="spawnLine" type="Line2D" parent="."]
+unique_name_in_owner = true
+visible = false
+points = PackedVector2Array(-101, -66, 1193, -66, 1193, 729, -101, 729, -101, -66)
+width = 2.0
+default_color = Color(0, 1, 0.333333, 1)

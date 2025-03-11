@@ -1,18 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dy2y4ioee72mg"]
+[gd_scene load_steps=11 format=3 uid="uid://dy2y4ioee72mg"]
 
-[ext_resource type="Script" uid="uid://br1clnupvyco" path="res://scripts/enemy.gd" id="1_b1lmh"]
-[ext_resource type="Texture2D" uid="uid://dkbfg0pj58nf2" path="res://assets/enemies/slime ver3/frame0000.png" id="2_j0cyh"]
-[ext_resource type="Texture2D" uid="uid://fs8q7liwbmg2" path="res://assets/enemies/slime ver3/frame0001.png" id="3_g0wcc"]
-[ext_resource type="Texture2D" uid="uid://bfhqv3ld10sub" path="res://assets/enemies/slime ver3/frame0002.png" id="4_s1ycm"]
-[ext_resource type="Texture2D" uid="uid://1rgn4jrh54w2" path="res://assets/enemies/slime ver3/frame0003.png" id="5_shcg2"]
-[ext_resource type="Texture2D" uid="uid://c3jpllvm6gkvy" path="res://assets/enemies/slime ver3/frame0004.png" id="6_ile5s"]
-[ext_resource type="Texture2D" uid="uid://jn7dpac6200y" path="res://assets/enemies/slime ver3/frame0005.png" id="7_1x4g4"]
-[ext_resource type="Texture2D" uid="uid://dw1np3jv1bn0i" path="res://assets/enemies/slime ver3/frame0006.png" id="8_2pwtc"]
-[ext_resource type="Texture2D" uid="uid://c5171ksgii0ab" path="res://assets/enemies/slime ver3/frame0007.png" id="9_rogs8"]
-[ext_resource type="Texture2D" uid="uid://d2tt3fv5mxi6k" path="res://assets/enemies/slime ver3/frame0008.png" id="10_wrm80"]
-[ext_resource type="Texture2D" uid="uid://menntqpcnbg2" path="res://assets/enemies/slime ver3/frame0009.png" id="11_6awcb"]
-[ext_resource type="Texture2D" uid="uid://dnfqrf5d6prel" path="res://assets/enemies/slime ver3/frame0010.png" id="12_wjec0"]
-[ext_resource type="Texture2D" uid="uid://cvj8y2k6i2hje" path="res://assets/enemies/slime ver3/frame0011.png" id="13_i4rgx"]
+[ext_resource type="Script" uid="uid://6acgt1oyev0h" path="res://scripts/enemy.gd" id="1_b1lmh"]
+[ext_resource type="SpriteFrames" uid="uid://dvsm78yeokyux" path="res://animations/SlimeFrames.tres" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="14_kv707"]
 
 [sub_resource type="Shader" id="Shader_bjid3"]
@@ -32,50 +21,6 @@ resource_local_to_scene = true
 shader = SubResource("Shader_bjid3")
 shader_parameter/flash_amount = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ft0tt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_j0cyh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_g0wcc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_s1ycm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_shcg2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ile5s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_1x4g4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2pwtc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_rogs8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_wrm80")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_6awcb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_wjec0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_i4rgx")
-}],
-"loop": true,
-"name": &"moving",
-"speed": 8.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmke4"]
 radius = 12.0416
@@ -201,19 +146,17 @@ _data = {
 [node name="enemy" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_b1lmh")
-speed = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cf7er")
 position = Vector2(0, -22.96)
 scale = Vector2(0.09, 0.09)
-sprite_frames = SubResource("SpriteFrames_ft0tt")
-animation = &"moving"
-autoplay = "moving"
+sprite_frames = ExtResource("2_4ra3w")
+autoplay = "default"
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
 modulate = Color(0.151, 0.151, 0.151, 0.692)
