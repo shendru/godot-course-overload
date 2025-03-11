@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dg7xhkrhk10er" path="res://spawner.gd" id="1_2vbf6"]
 [ext_resource type="PackedScene" uid="uid://dy2y4ioee72mg" path="res://scenes/enemy.tscn" id="2_ik2nu"]
 [ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="3_cmhla"]
-[ext_resource type="Resource" uid="uid://b85py2udnw15c" path="res://Resources/slime.tres" id="4_4wbs5"]
-[ext_resource type="Resource" uid="uid://bim25nhb73vg1" path="res://Resources/Itwolf.tres" id="5_30a77"]
+[ext_resource type="Resource" uid="uid://b85py2udnw15c" path="res://Resources/enemies/slime.tres" id="4_4wbs5"]
+[ext_resource type="Resource" uid="uid://bim25nhb73vg1" path="res://Resources/enemies/Itwolf.tres" id="5_30a77"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_2vbf6")

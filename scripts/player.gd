@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var aim_offset_angle_degrees = 0
 
 @export var speed: float = 200
-
+var direction: Vector2 = Vector2.RIGHT
 
 @export var curr_exp: float = 0
 var base_exp: float = 100.0
@@ -36,12 +36,19 @@ func _physics_process(delta):
 	move_and_slide()
 	update_aim_rotation()
 	#aim.look_at(get_global_mouse_position())
-	if velocity.x < 0:
-		sprite.flip_h = true
-		#parent_node.scale.x = -1
-	elif velocity.x > 0:
-		sprite.flip_h = false
-		#parent_node.scale.x = 1
+	if mouse_mode:
+		var mouse_position = get_global_mouse_position()
+		var sprite_position = sprite.global_position
+
+		if mouse_position.x < sprite_position.x:
+			sprite.flip_h = true
+		elif mouse_position.x > sprite_position.x:
+			sprite.flip_h = false
+	else:
+		if velocity.x < 0:
+			sprite.flip_h = true
+		elif velocity.x > 0:
+			sprite.flip_h = false
 		
 	
 
@@ -56,9 +63,12 @@ func _input(event: InputEvent) -> void:
 
 func update_aim_rotation() -> void:
 	if mouse_mode:
+		var aim_position = aim.global_position
+		direction = (get_global_mouse_position() - aim_position).normalized()
 		aim.look_at(get_global_mouse_position())
 	else:
 		if velocity.length() > 0:
+			direction = velocity.normalized()
 			var target_angle_radians = velocity.angle()
 			var aim_offset_angle_radians = deg_to_rad(aim_offset_angle_degrees)
 			target_angle_radians += aim_offset_angle_radians

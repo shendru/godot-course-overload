@@ -29,6 +29,8 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
+"res://Resources/enemies/": "red",
+"res://Resources/weapons/": "teal",
 "res://weapons_item/": "orange"
 }
 

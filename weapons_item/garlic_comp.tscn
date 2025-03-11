@@ -40,7 +40,7 @@ shape = SubResource("CircleShape2D_7skjg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bg868")
+&"": SubResource("AnimationLibrary_bg868")
 }
 autoplay = "garlic_dot"
 

@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 var player_reference : CharacterBody2D
-
-var direction: Vector2
+var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 
 
 @onready var sprite = $AnimatedSprite2D
@@ -34,12 +33,6 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta):
-	velocity = (player_reference.position - position).normalized() * speed
-	knockback = knockback.move_toward(Vector2.ZERO, 1)
-	velocity += knockback
-	var collider = move_and_collide(velocity * delta)
-	if collider:
-		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
  
 	if velocity.x < 0:
 		sprite.flip_h = true
@@ -47,8 +40,24 @@ func _physics_process(delta):
 	elif velocity.x > 0:
 		sprite.flip_h = false
 		#parent_node.scale.x = 1
+	knockback_update(delta)
 		
+func knockback_update(delta):
+	velocity = (player_reference.position - position).normalized() * speed
+	knockback = knockback.move_toward(Vector2.ZERO, 1)
+	velocity += knockback
+	var collider = move_and_collide(velocity * delta)
+	if collider:
+		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
+
+func damage_popup(amount):
+	var popup = damage_popup_node.instantiate()
+	popup.text = str(amount)
+	popup.position = position + Vector2(-50,-50)
+	get_tree().current_scene.add_child(popup)
+	
 func take_damage(dmg):
+	damage_popup(int(dmg))
 	health -= dmg
 	take_damage_shader()
 	if health <= 0:
