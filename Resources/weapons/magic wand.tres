@@ -1,15 +1,58 @@
-[gd_resource type="Resource" script_class="SingleShot" load_steps=4 format=3 uid="uid://d11xaqbudrdj3"]
+[gd_resource type="Resource" script_class="SingleShot" load_steps=11 format=3 uid="uid://d11xaqbudrdj3"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_tc8l4"]
 [ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/SingleShot.gd" id="2_tc8l4"]
 [ext_resource type="Texture2D" uid="uid://c554vptdfqnb" path="res://assets/items/Magic-wand-icon.png" id="3_tc8l4"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="4_w3cwr"]
+[ext_resource type="Script" uid="uid://boxo1ndwtcu52" path="res://ProjectileUpgrade.gd" id="5_yosml"]
+
+[sub_resource type="Resource" id="Resource_apdim"]
+script = ExtResource("5_yosml")
+speed = 50.0
+damage = 0.0
+cooldown = 0.0
+description = "speed + 50"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_r3yqg"]
+script = ExtResource("5_yosml")
+speed = 0.0
+damage = 1.0
+cooldown = 0.0
+description = "damage +1"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_4cvo8"]
+script = ExtResource("5_yosml")
+speed = 0.0
+damage = 0.0
+cooldown = -0.2
+description = "Cooldown -0.2"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_ajvlc"]
+script = ExtResource("5_yosml")
+speed = 0.0
+damage = 1.0
+cooldown = 0.0
+description = "Damage +1"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_g6lrv"]
+script = ExtResource("5_yosml")
+speed = 50.0
+damage = 0.0
+cooldown = 0.0
+description = "Speed +50"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
 
 [resource]
 script = ExtResource("2_tc8l4")
 title = "Magic wand"
 texture = ExtResource("3_tc8l4")
 damage = 1.0
-cooldown = 0.25
+cooldown = 0.75
 speed = 600.0
 projectile_node = ExtResource("1_tc8l4")
+upgrades = Array[ExtResource("4_w3cwr")]([SubResource("Resource_apdim"), SubResource("Resource_r3yqg"), SubResource("Resource_4cvo8"), SubResource("Resource_ajvlc"), SubResource("Resource_g6lrv")])
 metadata/_custom_type_script = "uid://dltx2s48k2y6d"

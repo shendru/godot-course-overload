@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://b85py2udnw15c"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://b85py2udnw15c"]
 
+[ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="1_772x5"]
 [ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="1_y66mw"]
+[ext_resource type="Resource" uid="uid://b4kh22en4lkwx" path="res://Resources/pickups/simpleXP.tres" id="2_v8pyd"]
 [ext_resource type="SpriteFrames" uid="uid://dvsm78yeokyux" path="res://animations/SlimeFrames.tres" id="2_y66mw"]
 
 [resource]
@@ -10,4 +12,5 @@ sprite = ExtResource("2_y66mw")
 health = 4.0
 damage = 1.0
 resize = Vector2(0.09, 0.09)
+drops = Array[ExtResource("1_772x5")]([ExtResource("2_v8pyd")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

@@ -1,38 +1,55 @@
-extends Path2D
+extends Node2D
+ 
+@export var player : CharacterBody2D
+@export var enemy : PackedScene
+ 
+@export var enemy_types : Array[Enemy]
 
-@onready var line_2d = %spawnLine  # Ensure Line2D is inside Path2D
+var distance : float = 800
+ 
+var minute : int:
+	set(value):
+		minute = value
+		%Minute.text = str(value)
+ 
+var second : int:
+	set(value):
+		second = value
+		if second >= 10:
+			second -= 10
+			minute += 1
+		%Second.text = str(second).lpad(2,'0')
 
-func _ready():
-	adjust_path_to_screen()
-	update_line2d()
-
-func adjust_path_to_screen():
-	var screen_size = get_viewport_rect().size  # Get screen dimensions
-	position.x = -(screen_size.x / 2)
-	position.y = -(screen_size.y / 2)
-	curve.clear_points()  # Clear existing curve points
-
-	# Define new points for a rectangle covering the screen
-	curve.add_point(Vector2(0, 0))  # Top-left
-	curve.add_point(Vector2(screen_size.x, 0))  # Top-right
-	curve.add_point(Vector2(screen_size.x, screen_size.y))  # Bottom-right
-	curve.add_point(Vector2(0, screen_size.y))  # Bottom-left
-	curve.add_point(Vector2(0, 0))  # Close the shape
-
-	print("Path2D resized to screen:", screen_size)
-
-func update_line2d():
-	if not curve:
-		print("No curve found!")
-		return
+func spawn(pos : Vector2, elite : bool = false):
 	
-	var points = []
-	for i in range(curve.get_point_count()):
-		points.append(curve.get_point_position(i))
-	
-	if line_2d:
-		line_2d.points = points  # Apply points to Line2D
-		line_2d.queue_redraw()  # Force visual update
-		print("Updated Line2D with", len(points), "points")
-	else:
-		print("Line2D node not found!")
+ 
+	var enemy_instance = enemy.instantiate()
+	enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
+	#enemy_instance.position = get_random_position()
+	enemy_instance.position = pos
+	enemy_instance.player_reference = player
+	enemy_instance.elite = elite
+	get_tree().current_scene.add_child(enemy_instance)
+ 
+func _on_timer_timeout():
+	second += 1
+	amount(second % 10)
+ 
+ 
+func get_random_position() -> Vector2:
+	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+ 
+ 
+func amount(number : int = 1):
+	for i in range(number):
+		spawn(get_random_position())
+ 
+ 
+func _on_pattern_timeout():
+	for i in range(10):
+		spawn(get_random_position())
+ 
+ 
+func _on_elite_timeout():
+	spawn(get_random_position(), true)
+ 

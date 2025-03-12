@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://bim25nhb73vg1"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://bim25nhb73vg1"]
 
 [ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="1_1kg2j"]
+[ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="1_l4imq"]
 [ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="2_adlwo"]
+[ext_resource type="Resource" uid="uid://b4kh22en4lkwx" path="res://Resources/pickups/simpleXP.tres" id="2_apq4g"]
 
 [resource]
 script = ExtResource("1_1kg2j")
@@ -10,4 +12,5 @@ sprite = ExtResource("2_adlwo")
 health = 5.0
 damage = 2.0
 resize = Vector2(0.057, 0.057)
+drops = Array[ExtResource("1_l4imq")]([ExtResource("2_apq4g")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

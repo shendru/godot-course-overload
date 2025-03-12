@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=21 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
 [ext_resource type="Shader" uid="uid://dc0c4l4sbvg13" path="res://shaders/outline.gdshader" id="3_4ni07"]
-[ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://components/ui/exp_ui.tscn" id="3_kvy37"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
 [ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="4_jej6c"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="7_lvutg"]
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
 [ext_resource type="Resource" uid="uid://d11xaqbudrdj3" path="res://Resources/weapons/magic wand.tres" id="9_d2wvv"]
+[ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ni07"]
 shader = ExtResource("3_4ni07")
@@ -24,8 +25,31 @@ height = 72.0
 radius = 23.0
 height = 76.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_okq8o"]
-radius = 53.1507
+[sub_resource type="Curve" id="Curve_3v2ag"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502242, 1), -3.88626, -3.88626, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jej6c"]
+curve = SubResource("Curve_3v2ag")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ej7"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(683, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 0.02
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_jej6c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur7pv"]
+bg_color = Color(0.592902, 0.611985, 0.529169, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4r1p"]
+bg_color = Color(4.52429e-06, 0.673592, 0.77053, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
+radius = 284.8
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -76,13 +100,61 @@ default_color = Color(4.57242e-07, 0.262341, 0.202909, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="expUI" parent="CanvasLayer" instance=ExtResource("3_kvy37")]
+[node name="lvlUpVfx" type="GPUParticles2D" parent="CanvasLayer"]
+process_mode = 3
+position = Vector2(673, 766)
+amount = 100
+texture = ExtResource("5_d2wvv")
+lifetime = 5.0
+speed_scale = 4.15
+process_material = SubResource("ParticleProcessMaterial_f1ej7")
+
+[node name="Panel" type="NinePatchRect" parent="CanvasLayer"]
+process_mode = 3
+self_modulate = Color(0.52537, 0.541354, 0.616278, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -182.0
+offset_right = 283.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_d2wvv")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "LEVEL UP"
+
+[node name="XP" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 10
-anchor_left = 0.0
 anchor_right = 1.0
-offset_left = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ur7pv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y4r1p")
+max_value = 10.0
+
+[node name="Level" type="Label" parent="CanvasLayer/XP"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1213.0
+offset_top = 38.0
+offset_right = 1323.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 50
+text = "Lvl 1"
 
 [node name="PanelContainer" type="Panel" parent="CanvasLayer"]
 clip_contents = true
@@ -144,13 +216,22 @@ layout_mode = 2
 [node name="Slot3" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
 
-[node name="Looter" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Looter"]
-shape = SubResource("CircleShape2D_okq8o")
-debug_color = Color(1.44392e-06, 0.627748, 0.498958, 0.42)
+[node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons")]
+unique_name_in_owner = true
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_y4r1p")
+weapons = NodePath("../Weapons")
 
 [node name="items" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -164,7 +245,13 @@ texture = ExtResource("7_lvutg")
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="exp_changed" from="." to="CanvasLayer/expUI" method="_on_player_exp_changed"]
+[node name="Magnet" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
+shape = SubResource("CircleShape2D_ur7pv")
+
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
-[connection signal="area_entered" from="Looter" to="." method="_on_looter_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]

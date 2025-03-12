@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dsm4xt1dhlf8c"]
 
-[ext_resource type="Script" uid="uid://lrpn4uskaman" path="res://damageLabel.gd" id="1_4ukty"]
+[ext_resource type="Script" uid="uid://lrpn4uskaman" path="res://scripts/damageLabel.gd" id="1_4ukty"]
 
 [node name="Damage" type="Label"]
 z_index = 1

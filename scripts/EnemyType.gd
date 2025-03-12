@@ -6,3 +6,4 @@ class_name Enemy
 @export var health : float
 @export var damage : float
 @export var resize : Vector2
+@export var drops : Array[Pickups]

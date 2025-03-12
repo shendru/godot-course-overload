@@ -11,7 +11,15 @@ var shader_material: ShaderMaterial
 var knockback: Vector2
 @export var speed: float = 100.0
 var damage: float
-var health: float
+
+var drop = preload("res://scenes/pickups.tscn")
+
+var health: float:
+	set(value):
+		health = value
+		if health <= 0:
+			drop_item()
+			die()
 var elite : bool = false:
 	set(value):
 		elite = value
@@ -60,22 +68,17 @@ func take_damage(dmg):
 	damage_popup(int(dmg))
 	health -= dmg
 	take_damage_shader()
-	if health <= 0:
-		#var chance = randi_range(1,2)
-		#print(chawaance)
-		#if chance == 2:
-		var new_exp = preload("res://components/exp_model.tscn").instantiate()
-		#print("New EXP instance:", new_exp)
-		var exp_holder = get_tree().get_root().find_child("exp_holder", true, false)
-		if exp_holder:
-			#print("exp holder found")
-			#print("exp old loc: ", new_exp.global_position)
-			new_exp.global_position = global_position
-			#print("exp new loc: ", new_exp.global_position)
-			exp_holder.add_child(new_exp)
-		else:
-			print("no exp holder")
-		die()
+
+func drop_item():
+	if type.drops.size() == 0:
+		return
+	var item = type.drops.pick_random()
+	var item_to_drop = drop.instantiate()
+	
+	item_to_drop.type = item
+	item_to_drop.position = position
+	item_to_drop.player_reference = player_reference
+	get_tree().current_scene.call_deferred("add_child", item_to_drop)
 
 func die():
 	died.emit()

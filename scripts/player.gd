@@ -8,11 +8,20 @@ extends CharacterBody2D
 @export var speed: float = 200
 var direction: Vector2 = Vector2.RIGHT
 
-@export var curr_exp: float = 0
-var base_exp: float = 100.0
-@export var max_exp: float = base_exp
-var growth_factor: float = 1.5
-@export var level: int = 1
+var XP : int = 0:
+	set(value):
+		XP = value
+		%XP.value = value
+var total_XP : int = 0
+var level: int = 1:
+	set(value):
+		level = value
+		%Level.text = "Lvl " + str(value)
+		%Options.show_option()
+		if level >= 2:
+			%XP.max_value = 20
+		elif level >= 7:
+			%XP.max_value = 40
 
 var mouse_mode: bool = false
 
@@ -49,7 +58,7 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		elif velocity.x > 0:
 			sprite.flip_h = false
-		
+	check_XP()	
 	
 
 func _input(event: InputEvent) -> void:
@@ -76,36 +85,6 @@ func update_aim_rotation() -> void:
 			aim.rotation = target_angle_radians
 			
 
-
-func exp_gain() -> void:
-	curr_exp += 15
-	exp_changed.emit(curr_exp, max_exp)
-	
-	if curr_exp >= max_exp:
-		level_up()
-
-func level_up() -> void:
-	
-	curr_exp = curr_exp - max_exp
-	level += 1
-	max_exp = base_exp * pow(level, growth_factor)
-	exp_changed.emit(curr_exp, max_exp)
-	
-	var upgrade_ui = preload("res://components/ui/upgrade_gui.tscn").instantiate()
-	add_child(upgrade_ui)
-	
-	get_tree().paused = true
-	pass
-
-func calculate_exp() -> void:
-	pass
-
-func _on_looter_area_entered(area: Area2D) -> void:
-	if area.name == "Exp":
-		if area.has_method("get_looted"):
-			area.get_looted()
-		print("found exp")
-
 func take_damage(amount):
 	health -= amount
 
@@ -116,3 +95,17 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	%HurtBoxCollision.set_deferred("disabled", true)
 	%HurtBoxCollision.set_deferred("disabled", false)
+
+func gain_XP(amount):
+	XP += amount
+	total_XP += amount
+ 
+func check_XP():
+	if XP > %XP.max_value:
+		XP -= %XP.max_value
+		level += 1
+
+
+func _on_magnet_area_entered(area: Area2D) -> void:
+	if area.has_method("follow"):
+		area.follow(self)
