@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ExpItem" load_steps=3 format=3 uid="uid://b4kh22en4lkwx"]
+
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="1_pvwa5"]
+[ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/ExpItem.gd" id="2_xrumg"]
+
+[resource]
+script = ExtResource("2_xrumg")
+XP = 1.0
+title = "simple xp"
+icon = ExtResource("1_pvwa5")
+scale = Vector2(0.03, 0.03)
+modulate = Color(0.226951, 0.660411, 0.999998, 1)
+description = "aw"
+metadata/_custom_type_script = "uid://ce48g8idjyswm"

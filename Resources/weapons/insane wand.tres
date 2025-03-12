@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SingleShot" load_steps=5 format=3 uid="uid://cq0awnt4n5qxy"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_m3cdq"]
+[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/SingleShot.gd" id="2_pu7uk"]
+[ext_resource type="Texture2D" uid="uid://cwnd2f5eqgdjs" path="res://assets/items/magic wand.jpg" id="3_qmrrg"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="4_5swwy"]
+
+[resource]
+script = ExtResource("2_pu7uk")
+damage = 5.0
+cooldown = 0.1
+speed = 600.0
+projectile_node = ExtResource("1_m3cdq")
+upgrades = Array[ExtResource("4_5swwy")]([])
+title = "Insane wand"
+texture = ExtResource("3_qmrrg")
+metadata/_custom_type_script = "uid://dltx2s48k2y6d"

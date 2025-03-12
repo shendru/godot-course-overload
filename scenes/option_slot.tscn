@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5d5f1ldpdql"]
+
+[ext_resource type="Texture2D" uid="uid://c554vptdfqnb" path="res://assets/items/Magic-wand-icon.png" id="1_je35h"]
+[ext_resource type="Script" uid="uid://bm0e45g7p6fel" path="res://scripts/option_slot.gd" id="2_bux6k"]
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="3_11gh2"]
+
+[node name="OptionSlot" type="TextureButton"]
+custom_minimum_size = Vector2(400, 40)
+offset_right = 703.0
+offset_bottom = 89.0
+size_flags_horizontal = 0
+mouse_filter = 1
+texture_normal = ExtResource("1_je35h")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_bux6k")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 14.0
+offset_right = 203.0
+offset_bottom = 47.0
+mouse_filter = 1
+text = "name"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 14.0
+offset_right = 333.0
+offset_bottom = 47.0
+mouse_filter = 1
+text = "description"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(0.0912698, 0.145515, 0.0976463, 1)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 7.0
+offset_bottom = 42.0
+grow_horizontal = 2
+texture = ExtResource("3_11gh2")
+region_rect = Rect2(47.7476, 46.6242, 425.374, 425.374)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

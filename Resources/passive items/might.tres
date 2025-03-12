@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=7 format=3 uid="uid://buka5fsjnn73m"]
+
+[ext_resource type="Script" uid="uid://c0b48kjhv1fwv" path="res://scripts/passiveItem.gd" id="1_6snhs"]
+[ext_resource type="Texture2D" uid="uid://c4d88fp8ousc4" path="res://assets/items/dumbbell.png" id="2_mxhrh"]
+[ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="3_aksx7"]
+
+[sub_resource type="Resource" id="Resource_t34xu"]
+script = ExtResource("3_aksx7")
+description = "+10% increased damage"
+max_health = 0.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 0.0
+might = 0.1
+area = 0.0
+magnet = 0.0
+growth = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_bgmyb"]
+script = ExtResource("3_aksx7")
+description = "+10% increased damage"
+max_health = 0.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 0.0
+might = 0.1
+area = 0.0
+magnet = 0.0
+growth = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_7amrg"]
+script = ExtResource("3_aksx7")
+description = "+10% increased damage"
+max_health = 0.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 0.0
+might = 0.1
+area = 0.0
+magnet = 0.0
+growth = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[resource]
+script = ExtResource("1_6snhs")
+upgrades = Array[ExtResource("3_aksx7")]([SubResource("Resource_t34xu"), SubResource("Resource_bgmyb"), SubResource("Resource_7amrg")])
+title = "Might"
+texture = ExtResource("2_mxhrh")
+metadata/_custom_type_script = "uid://c0b48kjhv1fwv"
