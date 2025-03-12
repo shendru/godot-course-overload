@@ -4,9 +4,23 @@ extends CharacterBody2D
 @onready var aim_pos = %aim_pos
 @onready var sprite = $AnimatedSprite2D
 @export var aim_offset_angle_degrees = 0
-
-@export var speed: float = 200
 var direction: Vector2 = Vector2.RIGHT
+
+@export var movement_speed: float = 200
+var max_health : float = 100 :
+	set(value):
+		max_health = value
+		%Health.max_value = value
+		
+var recovery : float = 0
+var armor : float = 0		
+var might : float = 1.5
+var area : float = 0.0
+var magnet : float = 0.0:
+	set(value):
+		magnet = value
+		%Magnet.shape.radius = 150 + value
+var growth : float = 1
 
 var XP : int = 0:
 	set(value):
@@ -29,8 +43,8 @@ signal exp_changed
 
 var health: float = 100.0:
 	set(value):
-		health = value
-		%HealthBarSquare.value = value
+		health = max(value, 0)
+		%Health.value = value
 	
 signal health_depleted
 
@@ -41,7 +55,7 @@ signal health_depleted
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = input_dir * speed
+	velocity = input_dir * movement_speed
 	move_and_slide()
 	update_aim_rotation()
 	#aim.look_at(get_global_mouse_position())
@@ -58,9 +72,18 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		elif velocity.x > 0:
 			sprite.flip_h = false
-	check_XP()	
+	update_animation()
+	check_XP()
+	health += recovery * delta
 	
-
+func update_animation():
+	if velocity.length() > 0:
+		if sprite.animation != "movement":
+			sprite.play("movement")
+	else:
+		if sprite.animation != "idle":
+			sprite.play("idle")
+			
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		mouse_mode = true
@@ -68,6 +91,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		mouse_mode = false
 		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("ui_accept"):
+		gain_XP(11)
 
 
 func update_aim_rotation() -> void:
@@ -86,7 +111,7 @@ func update_aim_rotation() -> void:
 			
 
 func take_damage(amount):
-	health -= amount
+	health -= max(amount - armor, 0)
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	take_damage(body.damage)
@@ -97,9 +122,10 @@ func _on_timer_timeout() -> void:
 	%HurtBoxCollision.set_deferred("disabled", false)
 
 func gain_XP(amount):
-	XP += amount
-	total_XP += amount
- 
+	XP += amount * growth
+	total_XP += amount * growth
+
+
 func check_XP():
 	if XP > %XP.max_value:
 		XP -= %XP.max_value

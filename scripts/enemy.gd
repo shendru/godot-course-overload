@@ -65,7 +65,7 @@ func damage_popup(amount):
 	get_tree().current_scene.add_child(popup)
 	
 func take_damage(dmg):
-	damage_popup(int(dmg))
+	damage_popup(dmg)
 	health -= dmg
 	take_damage_shader()
 

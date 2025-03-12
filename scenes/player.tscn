@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=23 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
 [ext_resource type="Resource" uid="uid://d11xaqbudrdj3" path="res://Resources/weapons/magic wand.tres" id="9_d2wvv"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
+[ext_resource type="Resource" uid="uid://desm6qyo5ioo5" path="res://Resources/passive items/magnet.tres" id="11_jej6c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ni07"]
 shader = ExtResource("3_4ni07")
@@ -49,7 +51,7 @@ bg_color = Color(0.592902, 0.611985, 0.529169, 1)
 bg_color = Color(4.52429e-06, 0.673592, 0.77053, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
-radius = 284.8
+radius = 150.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -65,7 +67,8 @@ texture = ExtResource("2_h012a")
 texture_filter = 1
 scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = ExtResource("4_jej6c")
-autoplay = "default"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
@@ -102,15 +105,18 @@ process_mode = 3
 
 [node name="lvlUpVfx" type="GPUParticles2D" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 position = Vector2(673, 766)
 amount = 100
 texture = ExtResource("5_d2wvv")
 lifetime = 5.0
+preprocess = 1.0
 speed_scale = 4.15
 process_material = SubResource("ParticleProcessMaterial_f1ej7")
 
 [node name="Panel" type="NinePatchRect" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 self_modulate = Color(0.52537, 0.541354, 0.616278, 1)
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,7 +189,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fps5v")
 
-[node name="HealthBarSquare" type="TextureProgressBar" parent="CanvasLayer/PanelContainer"]
+[node name="Health" type="TextureProgressBar" parent="CanvasLayer/PanelContainer"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.286275, 0.756863, 1)
 layout_mode = 2
@@ -208,7 +214,7 @@ grow_vertical = 0
 
 [node name="Slot" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-weapon = ExtResource("9_d2wvv")
+item = ExtResource("9_d2wvv")
 
 [node name="Slot2" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
@@ -216,7 +222,27 @@ layout_mode = 2
 [node name="Slot3" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
 
-[node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons")]
+[node name="PassiveItems" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 159.0
+offset_top = -108.0
+offset_right = 287.0
+offset_bottom = -68.0
+grow_vertical = 0
+
+[node name="PassiveSlot" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
+layout_mode = 2
+item = ExtResource("11_jej6c")
+
+[node name="PassiveSlot2" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
+layout_mode = 2
+
+[node name="PassiveSlot3" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
+layout_mode = 2
+
+[node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons", "passive_items", "particles", "panel")]
 unique_name_in_owner = true
 process_mode = 3
 anchors_preset = 8
@@ -232,6 +258,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_y4r1p")
 weapons = NodePath("../Weapons")
+passive_items = NodePath("../PassiveItems")
+particles = NodePath("../lvlUpVfx")
+panel = NodePath("../Panel")
 
 [node name="items" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -249,7 +278,8 @@ texture = ExtResource("7_lvutg")
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
+[node name="Magnet" type="CollisionShape2D" parent="Magnet"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_ur7pv")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
