@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=26 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
 [ext_resource type="Resource" uid="uid://desm6qyo5ioo5" path="res://Resources/passive items/magnet.tres" id="11_jej6c"]
+[ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
+[ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ni07"]
 shader = ExtResource("3_4ni07")
@@ -49,6 +51,28 @@ bg_color = Color(0.592902, 0.611985, 0.529169, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4r1p"]
 bg_color = Color(4.52429e-06, 0.673592, 0.77053, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oprun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f1ej7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f1ej7")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
 radius = 150.0
@@ -154,13 +178,33 @@ max_value = 10.0
 
 [node name="Level" type="Label" parent="CanvasLayer/XP"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1213.0
-offset_top = 38.0
-offset_right = 1323.0
-offset_bottom = 114.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_top = 42.0
+offset_right = -48.0
+offset_bottom = 118.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 text = "Lvl 1"
+horizontal_alignment = 2
+
+[node name="Gold" type="Label" parent="CanvasLayer/XP"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -314.0
+offset_top = 117.0
+offset_right = -53.0
+offset_bottom = 172.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Gold: 0"
+horizontal_alignment = 2
 
 [node name="PanelContainer" type="Panel" parent="CanvasLayer"]
 clip_contents = true
@@ -262,6 +306,141 @@ passive_items = NodePath("../PassiveItems")
 particles = NodePath("../lvlUpVfx")
 panel = NodePath("../Panel")
 
+[node name="Chest" type="NinePatchRect" parent="CanvasLayer"]
+process_mode = 3
+self_modulate = Color(0.118883, 0.200757, 0.202045, 1)
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_d2wvv")
+script = ExtResource("13_oprun")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Chest"]
+position = Vector2(200, 184)
+sprite_frames = SubResource("SpriteFrames_oprun")
+animation = &"open"
+autoplay = "idle"
+
+[node name="Open" type="Button" parent="CanvasLayer/Chest"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -130.0
+offset_right = 25.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Open"
+
+[node name="Close" type="Button" parent="CanvasLayer/Chest"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -130.0
+offset_right = 25.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close
+"
+
+[node name="Rewards" type="Control" parent="CanvasLayer/Chest"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Chest/Rewards"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = -29.0
+offset_right = -126.0
+offset_bottom = 11.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Chest/Rewards"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.0
+offset_top = -112.0
+offset_right = -89.0
+offset_bottom = -72.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Chest/Rewards"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = -151.0
+offset_right = 19.0
+offset_bottom = -111.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Chest/Rewards"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 87.0
+offset_top = -131.0
+offset_right = 127.0
+offset_bottom = -91.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Chest/Rewards"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 124.0
+offset_top = -41.0
+offset_right = 164.0
+offset_bottom = -1.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 4
+
 [node name="items" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -283,5 +462,7 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_ur7pv")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Chest/Open" to="CanvasLayer/Chest" method="_on_open_pressed"]
+[connection signal="pressed" from="CanvasLayer/Chest/Close" to="CanvasLayer/Chest" method="_on_close_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]

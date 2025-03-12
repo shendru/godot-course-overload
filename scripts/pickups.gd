@@ -35,4 +35,6 @@ func _physics_process(delta):
 		follow_tween.tween_property(self, "position", target_position, tween_duration).set_ease(Tween.EASE_OUT)
 
 func follow(_target : CharacterBody2D):
+	if type is Chest:
+		return
 	can_follow = true

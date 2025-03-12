@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Chest" load_steps=3 format=3 uid="uid://dh2jkwbtq42i8"]
+
+[ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="1_y6yb5"]
+[ext_resource type="Script" uid="uid://ck3fv8w0ijg8n" path="res://scripts/ChestResource.gd" id="2_705in"]
+
+[resource]
+script = ExtResource("2_705in")
+title = "Chest"
+icon = ExtResource("1_y6yb5")
+scale = Vector2(0.5, 0.5)
+modulate = Color(0.670158, 0.475505, 0.123326, 1)
+description = ""
+metadata/_custom_type_script = "uid://ck3fv8w0ijg8n"
