@@ -99,9 +99,10 @@ scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = SubResource("SpriteFrames_tagrr")
 animation = &"move"
 autoplay = "move"
-frame_progress = 0.180929
+frame_progress = 0.417009
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 light_mask = 0
 shape = SubResource("CapsuleShape2D_y5sbg")
 
@@ -114,6 +115,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 shape = SubResource("CapsuleShape2D_sa5an")
 debug_color = Color(0.874064, 0.271494, 0.550553, 0.42)
 
@@ -289,6 +291,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Looter"]
+visible = false
 shape = SubResource("CircleShape2D_okq8o")
 debug_color = Color(1.44392e-06, 0.627748, 0.498958, 0.42)
 
