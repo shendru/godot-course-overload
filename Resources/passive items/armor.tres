@@ -47,5 +47,5 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 script = ExtResource("1_rkg75")
 upgrades = Array[ExtResource("3_jgn6w")]([SubResource("Resource_pejsu"), SubResource("Resource_putp4"), SubResource("Resource_soh8r")])
 title = "Armor"
-texture = ExtResource("2_egy7a")
+icon = ExtResource("2_egy7a")
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

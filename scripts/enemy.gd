@@ -58,16 +58,21 @@ func knockback_update(delta):
 	if collider:
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 
-func damage_popup(amount):
+func damage_popup(amount, modifier = 1.0):
 	var popup = damage_popup_node.instantiate()
-	popup.text = str(amount)
+	popup.text = str(amount * modifier)
 	popup.position = position + Vector2(-50,-50)
+	if modifier > 1.0:
+		popup.set("theme_override_colors/font_color", Color.RED)
 	get_tree().current_scene.add_child(popup)
 	
 func take_damage(dmg):
-	damage_popup(dmg)
-	health -= dmg
+	
 	take_damage_shader()
+	var chance = randf()
+	var modifier : float = 2.0 if (chance< (1.0 - (1.0/player_reference.luck))) else 1.0
+	damage_popup(dmg, modifier)
+	health -= dmg * modifier
 
 func drop_item():
 	if type.drops.size() == 0:

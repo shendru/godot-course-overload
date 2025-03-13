@@ -47,5 +47,5 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 script = ExtResource("1_11h2m")
 upgrades = Array[ExtResource("3_hudqn")]([SubResource("Resource_0jh2f"), SubResource("Resource_y2ate"), SubResource("Resource_wjlb6")])
 title = "Study glasses"
-texture = ExtResource("2_xghmh")
+icon = ExtResource("2_xghmh")
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

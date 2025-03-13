@@ -47,5 +47,5 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 script = ExtResource("1_g4bjs")
 upgrades = Array[ExtResource("3_v0dg0")]([SubResource("Resource_7od4g"), SubResource("Resource_fflkx"), SubResource("Resource_5awjh")])
 title = "Beating heart"
-texture = ExtResource("2_cjq2n")
+icon = ExtResource("2_cjq2n")
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

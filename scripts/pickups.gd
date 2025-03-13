@@ -18,6 +18,8 @@ func _ready():
 	$Sprite2D.texture = type.icon
 	$Sprite2D.scale = type.scale
 	$Sprite2D.self_modulate = type.modulate
+	if type is Vacuum:
+		$Sprite2D.material = load("res://shaders/rainbowOutlineMaterial.tres")
 
 func _on_body_entered(_body):
 	type.activate()
@@ -34,7 +36,10 @@ func _physics_process(delta):
 
 		follow_tween.tween_property(self, "position", target_position, tween_duration).set_ease(Tween.EASE_OUT)
 
-func follow(_target : CharacterBody2D):
+func follow(_target : CharacterBody2D, gem_flag: bool = false):
 	if type is Chest:
 		return
+	if gem_flag:
+		if type is Gem:
+			can_follow = true
 	can_follow = true

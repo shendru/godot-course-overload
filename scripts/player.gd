@@ -7,21 +7,21 @@ extends CharacterBody2D
 var direction: Vector2 = Vector2.RIGHT
 
 @export var movement_speed: float = 200
-var max_health : float = 100 :
+var max_health : float = 10 :
 	set(value):
 		max_health = value
 		%Health.max_value = value
 		
 var recovery : float = 0
 var armor : float = 0		
-var might : float = 1.5
+var might : float = 1.0
 var area : float = 0.0
 var magnet : float = 0.0:
 	set(value):
 		magnet = value
 		%Magnet.shape.radius = 150 + value
-var growth : float = 1
-
+var growth : float = 1.0
+var luck : float = 1.0
 var gold : int = 0:
 	set(value):
 		gold = value
@@ -45,17 +45,15 @@ var mouse_mode: bool = false
 
 signal exp_changed
 
-var health: float = 100.0:
+var health: float = 10.0:
 	set(value):
 		health = max(value, 0)
 		%Health.value = value
+		if health <= 0:
+			print("you dieded")
+			health_depleted.emit() #does not do aynthing
 	
 signal health_depleted
-
-#func _ready() -> void:
-##	FORMULA FOR THE EXP
-	#pass
-
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -78,7 +76,6 @@ func _physics_process(delta):
 			sprite.flip_h = false
 	update_animation()
 	check_XP()
-	health += recovery * delta
 	
 func update_animation():
 	if velocity.length() > 0:
@@ -144,3 +141,8 @@ func gain_gold(amount):
 
 func open_chest():
 	$CanvasLayer/Chest.open()
+
+
+func _on_heartbeat_timeout() -> void:
+	health += recovery
+	print("recovering")

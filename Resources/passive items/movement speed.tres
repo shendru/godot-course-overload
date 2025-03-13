@@ -19,11 +19,11 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_gqrr4"]
 script = ExtResource("3_1bj1w")
-description = "+15 movement speed"
+description = "+100 movement speed"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
-movement_speed = 15.0
+movement_speed = 100.0
 might = 0.0
 area = 0.0
 magnet = 0.0
@@ -32,11 +32,11 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_adaf2"]
 script = ExtResource("3_1bj1w")
-description = "+15 movement speed"
+description = "+100 movement speed"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
-movement_speed = 15.0
+movement_speed = 100.0
 might = 0.0
 area = 0.0
 magnet = 0.0
@@ -47,5 +47,5 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 script = ExtResource("1_m5vnv")
 upgrades = Array[ExtResource("3_1bj1w")]([SubResource("Resource_j5on8"), SubResource("Resource_gqrr4"), SubResource("Resource_adaf2")])
 title = "running shoes"
-texture = ExtResource("2_vsbb7")
+icon = ExtResource("2_vsbb7")
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

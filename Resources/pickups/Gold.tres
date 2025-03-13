@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Gold" load_steps=3 format=3 uid="uid://ddd5aqgt3d2yx"]
+
+[ext_resource type="Texture2D" uid="uid://b7bxeuphvd7em" path="res://assets/items/gold.png" id="1_x1118"]
+[ext_resource type="Script" uid="uid://4d25ipn5nhmy" path="res://scripts/Gold.gd" id="2_65psl"]
+
+[resource]
+script = ExtResource("2_65psl")
+gold = 5
+title = "Gold"
+icon = ExtResource("1_x1118")
+scale = Vector2(0.04, 0.04)
+modulate = Color(0, 0, 0, 1)
+description = "Simple gold"
+metadata/_custom_type_script = "uid://4d25ipn5nhmy"

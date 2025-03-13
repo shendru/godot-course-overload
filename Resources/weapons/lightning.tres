@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="Lightning" load_steps=11 format=3 uid="uid://cras3pdwo67eq"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="2_0p3r1"]
+[ext_resource type="Script" uid="uid://q5b4nx2aungh" path="res://Lightning.gd" id="3_rm470"]
+[ext_resource type="Texture2D" uid="uid://tu8ls6n2pjg3" path="res://assets/items/lightning.png" id="4_jl6sw"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="5_jg32d"]
+[ext_resource type="Script" uid="uid://7e8fei3vk6i0" path="res://LightningUpgrades.gd" id="5_jl6sw"]
+
+[sub_resource type="Resource" id="Resource_0p3r1"]
+script = ExtResource("5_jl6sw")
+amount = 0
+damage = 1.0
+cooldown = 0.0
+description = "+1 dmg"
+metadata/_custom_type_script = "uid://7e8fei3vk6i0"
+
+[sub_resource type="Resource" id="Resource_rm470"]
+script = ExtResource("5_jl6sw")
+amount = 0
+damage = 0.0
+cooldown = 0.0
+description = "no upgrades, too op"
+metadata/_custom_type_script = "uid://7e8fei3vk6i0"
+
+[sub_resource type="Resource" id="Resource_x5py5"]
+script = ExtResource("5_jl6sw")
+amount = 0
+damage = 0.0
+cooldown = 0.0
+description = "no upgrades, too op"
+metadata/_custom_type_script = "uid://7e8fei3vk6i0"
+
+[sub_resource type="Resource" id="Resource_jg32d"]
+script = ExtResource("5_jl6sw")
+amount = 0
+damage = 0.0
+cooldown = 0.0
+description = "no upgrades, too op"
+metadata/_custom_type_script = "uid://7e8fei3vk6i0"
+
+[sub_resource type="Resource" id="Resource_be3o0"]
+script = ExtResource("5_jl6sw")
+amount = 0
+damage = 0.0
+cooldown = 0.0
+description = "no upgrades, too op"
+metadata/_custom_type_script = "uid://7e8fei3vk6i0"
+
+[resource]
+script = ExtResource("3_rm470")
+amount = 5
+damage = 2.0
+cooldown = 0.5
+speed = 0.0
+projectile_node = ExtResource("2_0p3r1")
+upgrades = Array[ExtResource("5_jg32d")]([SubResource("Resource_0p3r1"), SubResource("Resource_rm470"), SubResource("Resource_x5py5"), SubResource("Resource_jg32d"), SubResource("Resource_be3o0")])
+title = "Lightning"
+icon = ExtResource("4_jl6sw")
+metadata/_custom_type_script = "uid://q5b4nx2aungh"

@@ -5,12 +5,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lekrw"]
 radius = 21.0238
 
-[node name="Pickups" type="Area2D"]
+[node name="Pickups" type="Area2D" groups=["Pickups"]]
 z_index = -5
 collision_layer = 4
 script = ExtResource("1_xnt6b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lekrw")

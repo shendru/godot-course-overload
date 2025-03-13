@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Vacuum" load_steps=3 format=3 uid="uid://be3nqqg2v7jyl"]
+
+[ext_resource type="Texture2D" uid="uid://bofngs817crao" path="res://assets/simple shapes/square-not full.png" id="1_bbftk"]
+[ext_resource type="Script" uid="uid://cwxfbrl3wfujt" path="res://scripts/Vacuum.gd" id="2_q8tmm"]
+
+[resource]
+script = ExtResource("2_q8tmm")
+title = "Vacuum"
+icon = ExtResource("1_bbftk")
+scale = Vector2(0.05, 0.05)
+modulate = Color(5.29438e-07, 0.437543, 0.542817, 1)
+description = "Suck all gems in"
+metadata/_custom_type_script = "uid://cwxfbrl3wfujt"

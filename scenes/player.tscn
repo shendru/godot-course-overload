@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=25 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://d11xaqbudrdj3" path="res://Resources/weapons/magic wand.tres" id="9_d2wvv"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
-[ext_resource type="Resource" uid="uid://desm6qyo5ioo5" path="res://Resources/passive items/magnet.tres" id="11_jej6c"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
 
@@ -240,8 +239,9 @@ layout_mode = 2
 offset_right = 512.0
 offset_bottom = 512.0
 grow_vertical = 0
+max_value = 10.0
 step = 0.01
-value = 100.0
+value = 10.0
 fill_mode = 5
 radial_initial_angle = 315.0
 texture_progress = ExtResource("4_ln11m")
@@ -278,7 +278,6 @@ grow_vertical = 0
 
 [node name="PassiveSlot" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
 layout_mode = 2
-item = ExtResource("11_jej6c")
 
 [node name="PassiveSlot2" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
 layout_mode = 2
@@ -286,7 +285,7 @@ layout_mode = 2
 [node name="PassiveSlot3" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
 layout_mode = 2
 
-[node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons", "passive_items", "particles", "panel")]
+[node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons", "passive_items", "player_reference", "particles", "panel")]
 unique_name_in_owner = true
 process_mode = 3
 anchors_preset = 8
@@ -303,6 +302,7 @@ grow_vertical = 2
 script = ExtResource("9_y4r1p")
 weapons = NodePath("../Weapons")
 passive_items = NodePath("../PassiveItems")
+player_reference = NodePath("../..")
 particles = NodePath("../lvlUpVfx")
 panel = NodePath("../Panel")
 
@@ -452,6 +452,7 @@ scale = Vector2(0.0820312, 0.046875)
 texture = ExtResource("7_lvutg")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 
 [node name="Magnet" type="Area2D" parent="."]
 collision_layer = 0
@@ -461,8 +462,12 @@ collision_mask = 4
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_ur7pv")
 
+[node name="Heartbeat" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Chest/Open" to="CanvasLayer/Chest" method="_on_open_pressed"]
 [connection signal="pressed" from="CanvasLayer/Chest/Close" to="CanvasLayer/Chest" method="_on_close_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
+[connection signal="timeout" from="Heartbeat" to="." method="_on_heartbeat_timeout"]
