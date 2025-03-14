@@ -15,21 +15,29 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("2_bux6k")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 129.0
-offset_top = 14.0
-offset_right = 203.0
-offset_bottom = 47.0
-mouse_filter = 1
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_left = 97.0
+offset_top = 12.0
+offset_right = 141.0
+offset_bottom = 35.0
 text = "name"
+
+[node name="Lv" type="Label" parent="."]
+layout_mode = 1
+offset_left = 51.0
+offset_top = 13.0
+offset_right = 95.0
+offset_bottom = 36.0
+mouse_filter = 1
+text = "lv"
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
-offset_left = 246.0
-offset_top = 14.0
-offset_right = 333.0
-offset_bottom = 47.0
+offset_left = 238.0
+offset_top = 12.0
+offset_right = 325.0
+offset_bottom = 45.0
 mouse_filter = 1
 text = "description"
 

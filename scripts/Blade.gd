@@ -29,12 +29,12 @@ func add_to_player(source, index):
 	
 	if texture != null:
 		projectile.find_child("Sprite2D").texture = texture
-		projectile.find_child("Sprite2D").scale = Vector2(0.05,0.05) #personal implementation
+		projectile.find_child("Sprite2D").scale = Vector2(0.07,0.07) #personal implementation
 		projectile.find_child("Sprite2D").rotation = source.aim.rotation + 44.84 #personal implementation
 		projectile.find_child("Sprite2D").self_modulate = Color(1,1,1,1) #personal implementation
 	if index % 2 == 1 and reversible:
 		projectile.direction *= -1
-		projectile.find_child("Sprite2D").scale = Vector2(-0.05,-0.05) #personal implementation
+		projectile.find_child("Sprite2D").scale = Vector2(-0.07,-0.07) #personal implementation
 			
 	if projectile_reference != null:
 		projectile_reference.queue_free()

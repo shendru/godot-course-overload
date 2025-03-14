@@ -1,6 +1,7 @@
 extends Weapon
 class_name SingleShot
- 
+
+
 func shoot(source, target, scene_tree):
 	if target == null:
 		return

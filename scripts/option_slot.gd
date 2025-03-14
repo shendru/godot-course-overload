@@ -6,11 +6,12 @@ extends TextureButton
 		item = value
 		if value.upgrades.size() > 0 and value.upgrades.size() +1 != value.level:
 			texture_normal = value.icon
-			$Label.text = "Lvl " + str(item.level + 1)
+			$Title.text = item.title
+			$Lv.text = "Lvl " + str(item.level + 1)
 			$Description.text = value.upgrades[value.level - 1].description
 		else:
 			texture_normal = value.evolution.icon
-			$Label.text = ""
+			$Lv.text = ""
 			$Description.text = "EVOLUTION"
  
  

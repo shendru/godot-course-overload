@@ -267,6 +267,9 @@ layout_mode = 2
 [node name="Slot3" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
 
+[node name="Slot4" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
+layout_mode = 2
+
 [node name="PassiveItems" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
@@ -284,6 +287,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PassiveSlot3" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
+layout_mode = 2
+
+[node name="PassiveSlot4" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
 layout_mode = 2
 
 [node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons", "passive_items", "player_reference", "particles", "panel")]

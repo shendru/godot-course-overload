@@ -157,12 +157,13 @@ position = Vector2(0, -22.96)
 scale = Vector2(0.09, 0.09)
 sprite_frames = ExtResource("2_4ra3w")
 autoplay = "default"
+frame_progress = 0.516804
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
 modulate = Color(0.151, 0.151, 0.151, 0.692)
 z_index = -1
-position = Vector2(-10.8772, 336.758)
-scale = Vector2(1.44462, 0.552357)
+position = Vector2(-111.111, 355.111)
+scale = Vector2(1.74273, 0.282118)
 texture = ExtResource("14_kv707")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

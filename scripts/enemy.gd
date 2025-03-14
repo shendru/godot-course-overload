@@ -43,11 +43,11 @@ func _ready() -> void:
 func _physics_process(delta):
  
 	if velocity.x < 0:
-		sprite.flip_h = true
-		#parent_node.scale.x = -1
+		#sprite.flip_h = true
+		sprite.scale.x = -0.09
 	elif velocity.x > 0:
-		sprite.flip_h = false
-		#parent_node.scale.x = 1
+		#sprite.flip_h = false
+		sprite.scale.x = 0.09
 	knockback_update(delta)
 		
 func knockback_update(delta):
