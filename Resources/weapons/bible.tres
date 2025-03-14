@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cnhouu2pc8i6q" path="res://scripts/CircularWeapon.gd" id="2_7jhld"]
 [ext_resource type="Texture2D" uid="uid://c12tgsc6tubvl" path="res://assets/items/bible.png" id="3_bu48f"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="4_mvt1b"]
-[ext_resource type="Script" uid="uid://cs5eybt0dao03" path="res://CircularUpgrade.gd" id="5_7jhld"]
+[ext_resource type="Script" uid="uid://cs5eybt0dao03" path="res://scripts/CircularUpgrade.gd" id="5_7jhld"]
 
 [sub_resource type="Resource" id="Resource_bu48f"]
 script = ExtResource("5_7jhld")

@@ -25,6 +25,7 @@ func shoot(source : CharacterBody2D, scene_tree : SceneTree):
 		projectile.source = source
 		if texture != null:
 			projectile.find_child("Sprite2D").texture = texture	
+			projectile.find_child("Sprite2D").offset = Vector2(0.0, -141.0) #personal implementation
 		projectile.position = enemy.position
 		projectiles.append(projectile)
  

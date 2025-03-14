@@ -32,3 +32,8 @@ func max_level_reached():
 	if upgrades.size() + 1 == level and upgrades.size() !=0:
 		return true
 	return false
+
+func update(_delta):
+	pass
+func reset():
+	pass

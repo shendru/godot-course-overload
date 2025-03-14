@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MultiDamagingArea" load_steps=12 format=3 uid="uid://cb7ekwvqm72b"]
+
+[ext_resource type="Texture2D" uid="uid://18oxp4uci7gp" path="res://assets/items/Elite_Lava_Bucket_Icon.webp" id="1_4upve"]
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="2_8ung2"]
+[ext_resource type="Script" uid="uid://bj1m6imqp12hc" path="res://scripts/MultiDamagingArea.gd" id="3_vhvog"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="4_6gr13"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="5_5fbu0"]
+[ext_resource type="Script" uid="uid://bvu3hrdsnnuxe" path="res://scripts/MultiDamagingAreaUpgrade.gd" id="6_8ung2"]
+
+[sub_resource type="Resource" id="Resource_vhvog"]
+script = ExtResource("6_8ung2")
+amount = 0
+area = 0.0
+damage = 1.0
+cooldown = 0.0
+description = "+1 damage"
+metadata/_custom_type_script = "uid://bvu3hrdsnnuxe"
+
+[sub_resource type="Resource" id="Resource_6gr13"]
+script = ExtResource("6_8ung2")
+amount = 0
+area = 0.5
+damage = 0.0
+cooldown = 0.0
+description = "+50% area"
+metadata/_custom_type_script = "uid://bvu3hrdsnnuxe"
+
+[sub_resource type="Resource" id="Resource_5fbu0"]
+script = ExtResource("6_8ung2")
+amount = 1
+area = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "+1 amount"
+metadata/_custom_type_script = "uid://bvu3hrdsnnuxe"
+
+[sub_resource type="Resource" id="Resource_u1ho1"]
+script = ExtResource("6_8ung2")
+amount = 1
+area = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "+1 amount"
+metadata/_custom_type_script = "uid://bvu3hrdsnnuxe"
+
+[sub_resource type="Resource" id="Resource_87d0v"]
+script = ExtResource("6_8ung2")
+amount = 0
+area = 0.0
+damage = 0.0
+cooldown = -1.0
+description = "-1s cooldown"
+metadata/_custom_type_script = "uid://bvu3hrdsnnuxe"
+
+[resource]
+script = ExtResource("3_vhvog")
+amount = 1
+area = 3.0
+delay = 0.2
+damage = 1.0
+cooldown = 4.0
+speed = 0.0
+projectile_node = ExtResource("2_8ung2")
+upgrades = Array[ExtResource("5_5fbu0")]([SubResource("Resource_vhvog"), SubResource("Resource_6gr13"), SubResource("Resource_5fbu0"), SubResource("Resource_u1ho1"), SubResource("Resource_87d0v")])
+title = "Lava"
+icon = ExtResource("1_4upve")
+texture = ExtResource("4_6gr13")
+metadata/_custom_type_script = "uid://bj1m6imqp12hc"

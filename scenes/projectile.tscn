@@ -1,11 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg5ocn013f364"]
+[gd_scene load_steps=9 format=3 uid="uid://cg5ocn013f364"]
 
 [ext_resource type="Script" uid="uid://hdm8jpgv014j" path="res://scripts/projectile.gd" id="1_c8fcr"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q3m7n"]
-size = Vector2(10, 10)
+size = Vector2(20, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8fcr"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8fcr"]
+resource_local_to_scene = true
+
+[sub_resource type="Gradient" id="Gradient_c8fcr"]
+colors = PackedColorArray(0, 0.4, 0.992157, 1, 0.456204, 0.000208069, 0.479034, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q3m7n"]
+gradient = SubResource("Gradient_c8fcr")
+
+[sub_resource type="Curve" id="Curve_softn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0947867, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6q2a6"]
+curve = SubResource("Curve_softn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byeak"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_6q2a6")
+color_ramp = SubResource("GradientTexture1D_q3m7n")
+turbulence_enabled = true
+turbulence_influence_max = 0.196
 
 [node name="Projectile" type="Area2D"]
 collision_layer = 4
@@ -13,13 +42,17 @@ collision_mask = 2
 script = ExtResource("1_c8fcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+self_modulate = Color(0.108738, 0.507562, 0.583257, 1)
 texture = SubResource("PlaceholderTexture2D_q3m7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_c8fcr")
+shape = SubResource("CircleShape2D_c8fcr")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 160
+process_material = SubResource("ParticleProcessMaterial_byeak")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]
