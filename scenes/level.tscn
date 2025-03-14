@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=7 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
 [ext_resource type="PackedScene" uid="uid://c7k8i5yeqluox" path="res://scenes/spawner.tscn" id="4_ppgk2"]
-[ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="5_2r41h"]
-[ext_resource type="Resource" uid="uid://b85py2udnw15c" path="res://Resources/enemies/slime.tres" id="6_klq6b"]
 [ext_resource type="Texture2D" uid="uid://ck6ngdfe0m1mv" path="res://assets/tiles/EPIC RPG World Pack-[FREE Demo]Grass Land 2.0/Tilesets and props/Tilesets and props Demo.png" id="6_xucc8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8fg4"]
@@ -852,6 +850,5 @@ scale = Vector2(77, 44.85)
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
 player = NodePath("../player")
-enemy_types = Array[ExtResource("5_2r41h")]([ExtResource("6_klq6b"), ExtResource("6_klq6b")])
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]

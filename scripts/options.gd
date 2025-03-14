@@ -81,6 +81,7 @@ func show_option():
 	show()
 	particles.show()
 	panel.show()
+	
 	get_tree().paused = true
 
 func slot_available(items):

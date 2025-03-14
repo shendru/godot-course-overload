@@ -43,8 +43,6 @@ var level: int = 1:
 
 var mouse_mode: bool = false
 
-signal exp_changed
-
 var health: float = 10.0:
 	set(value):
 		health = max(value, 0)
@@ -133,9 +131,9 @@ func check_XP():
 		level += 1
 
 
-func _on_magnet_area_entered(area: Area2D) -> void:
-	if area.has_method("follow"):
-		area.follow(self)
+func _on_magnet_area_entered(this_area: Area2D) -> void:
+	if this_area.has_method("follow"):
+		this_area.follow(self)
 func gain_gold(amount):
 	gold += amount
 

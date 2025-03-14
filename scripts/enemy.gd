@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal died(enemy_type, enemy_position)
+
 var player_reference : CharacterBody2D
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 
@@ -11,13 +13,15 @@ var shader_material: ShaderMaterial
 var knockback: Vector2
 @export var speed: float = 100.0
 var damage: float
+var is_dead = false
 
 var drop = preload("res://scenes/pickups.tscn")
 
 var health: float:
 	set(value):
 		health = value
-		if health <= 0:
+		if health <= 0 and not is_dead: # Added check
+			is_dead = true # Set the flag
 			drop_item()
 			die()
 var elite : bool = false:
@@ -34,7 +38,7 @@ var type : Enemy:
 		damage = value.damage
 		health = value.health
 
-signal died
+
 
 func _ready() -> void:
 	shader_material = sprite.material as ShaderMaterial
@@ -75,7 +79,9 @@ func take_damage(dmg):
 	health -= dmg * modifier
 
 func drop_item():
+	print("dropping gem")
 	if type.drops.size() == 0:
+		print("no enemy drops")
 		return
 	var item = type.drops.pick_random()
 	if elite:
@@ -88,12 +94,14 @@ func drop_item():
 	get_tree().current_scene.call_deferred("add_child", item_to_drop)
 
 func die():
-	died.emit()
-	sprite.stop()
-	if sprite.flip_h:
-		animation_player.play("slime_die_right")
-	else:
-		animation_player.play("slime_die_left")
+	print("enemy dying")
+	#died.emit(type, position)
+	queue_free()
+	#sprite.stop()
+	#if sprite.flip_h:
+		#animation_player.play("slime_die_right")
+	#else:
+		#animation_player.play("slime_die_left")
 func take_damage_shader():
 	if shader_material == null:
 		return # Ensure material exists

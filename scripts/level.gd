@@ -14,14 +14,15 @@ func spawn_enemy():
 	update_enemy_counter.emit(enemy_counter)
 	new_enemy.connect("died", _on_enemy_died)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		spawn_enemy()
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept"):
+		#spawn_enemy()
 
 func _on_enemy_died():
 	enemy_counter -= 1
+	print("enemy_counter")
 	update_enemy_counter.emit(enemy_counter)
 
 
-func _on_timer_timeout() -> void:
-	spawn_enemy()
+#func _on_timer_timeout() -> void:
+	#spawn_enemy()
