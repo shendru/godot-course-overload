@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=27 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -19,6 +19,23 @@
 shader = ExtResource("3_4ni07")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.484
+
+[sub_resource type="Shader" id="Shader_f1ej7"]
+code = "shader_type canvas_item;
+
+uniform float flash_amount : hint_range(0.0, 1.0) = 0.0;
+uniform vec4 flash_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // White by default
+
+void fragment() {
+    vec4 base_color = texture(TEXTURE, UV);
+    vec3 final_color = mix(base_color.rgb, flash_color.rgb, flash_amount);
+    COLOR = vec4(final_color, base_color.a); // Keep original alpha
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oprun"]
+shader = SubResource("Shader_f1ej7")
+shader_parameter/flash_amount = 0.0
+shader_parameter/flash_color = Color(0.692599, 0.070869, 0.0702628, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5sbg"]
 radius = 15.0
@@ -88,6 +105,7 @@ texture = ExtResource("2_h012a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_oprun")
 scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = ExtResource("4_jej6c")
 animation = &"movement"
@@ -248,6 +266,7 @@ radial_initial_angle = 315.0
 texture_progress = ExtResource("4_ln11m")
 
 [node name="Weapons" type="HBoxContainer" parent="CanvasLayer"]
+process_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ShootingStar" load_steps=5 format=3 uid="uid://c7t2ylf6jkiyu"]
+
+[ext_resource type="Texture2D" uid="uid://r4mg1g08v6jr" path="res://assets/items/comet.png" id="1_dc3ux"]
+[ext_resource type="PackedScene" uid="uid://c34fejawcd6hj" path="res://scenes/projectile2.tscn" id="2_dc3ux"]
+[ext_resource type="Script" uid="uid://bs72x3hsbo32y" path="res://scripts/ShootingStar.gd" id="3_8s54y"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="4_4g5if"]
+
+[resource]
+script = ExtResource("3_8s54y")
+spawn_y_offset = -312.0
+random_x_interval = 500.0
+diagonal_direction = 0.7
+damage = 4.0
+cooldown = 0.5
+speed = 400.0
+projectile_node = ExtResource("2_dc3ux")
+upgrades = Array[ExtResource("4_4g5if")]([])
+title = "Shooting Star"
+icon = ExtResource("1_dc3ux")
+metadata/_custom_type_script = "uid://bs72x3hsbo32y"

@@ -60,7 +60,7 @@ func show_option():
 		available.append_array(get_upgradable(every_passive, get_equipped_item()))
 	available.shuffle()
 	
-	for i in range(3):
+	for i in range(4):
 		if available.size() > 0:
 			option_size += add_option(available.pop_front())
 	

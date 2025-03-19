@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal died(enemy_type, enemy_position)
+signal died
 
 var player_reference : CharacterBody2D
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
@@ -48,10 +48,10 @@ func _physics_process(delta):
  
 	if velocity.x < 0:
 		#sprite.flip_h = true
-		sprite.scale.x = -0.09
+		sprite.scale.x = -type.resize.x
 	elif velocity.x > 0:
 		#sprite.flip_h = false
-		sprite.scale.x = 0.09
+		sprite.scale.x = type.resize.x
 	knockback_update(delta)
 		
 func knockback_update(delta):
@@ -67,7 +67,7 @@ func damage_popup(amount, modifier = 1.0):
 	popup.text = str(amount * modifier)
 	popup.position = position + Vector2(-50,-50)
 	if modifier > 1.0:
-		popup.set("theme_override_colors/font_color", Color.RED)
+		popup.set("theme_override_colors/font_color", Color.ORANGE_RED)
 	get_tree().current_scene.add_child(popup)
 	
 func take_damage(dmg):
@@ -94,14 +94,13 @@ func drop_item():
 	get_tree().current_scene.call_deferred("add_child", item_to_drop)
 
 func die():
-	print("enemy dying")
-	#died.emit(type, position)
-	queue_free()
-	#sprite.stop()
-	#if sprite.flip_h:
-		#animation_player.play("slime_die_right")
-	#else:
-		#animation_player.play("slime_die_left")
+	died.emit()
+	sprite.stop()
+	if sprite.scale.x < 0:
+		animation_player.play("slime_die_right")
+	else:
+		animation_player.play("slime_die_left")
+	
 func take_damage_shader():
 	if shader_material == null:
 		return # Ensure material exists

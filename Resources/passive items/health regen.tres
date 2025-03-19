@@ -6,9 +6,9 @@
 
 [sub_resource type="Resource" id="Resource_7od4g"]
 script = ExtResource("3_v0dg0")
-description = "+1 health/s"
+description = "+0.1 health/s"
 max_health = 0.0
-recovery = 1.0
+recovery = 0.1
 armor = 0.0
 movement_speed = 0.0
 might = 0.0
@@ -20,9 +20,9 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_fflkx"]
 script = ExtResource("3_v0dg0")
-description = "+1 health/s"
+description = "+0.2 health/s"
 max_health = 0.0
-recovery = 1.0
+recovery = 0.2
 armor = 0.0
 movement_speed = 0.0
 might = 0.0
@@ -34,9 +34,9 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_5awjh"]
 script = ExtResource("3_v0dg0")
-description = "+1 health/s"
+description = "+0.2 health/s"
 max_health = 0.0
-recovery = 1.0
+recovery = 0.2
 armor = 0.0
 movement_speed = 0.0
 might = 0.0
