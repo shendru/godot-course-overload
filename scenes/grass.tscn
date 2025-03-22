@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://lmrju63t7vib"]
+
+[ext_resource type="Script" uid="uid://buwh44hv3vdiy" path="res://scripts/grass.gd" id="1_3kunl"]
+[ext_resource type="Shader" uid="uid://brpxj60gtwuxe" path="res://shaders/grassSway.gdshader" id="1_yarb5"]
+[ext_resource type="Texture2D" uid="uid://dwl8dt1b5qhx4" path="res://assets/grass/tall grass1.png" id="2_3kunl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u68v2"]
+resource_local_to_scene = true
+shader = ExtResource("1_yarb5")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.578
+shader_parameter/maxStrength = 1.0
+shader_parameter/strengthScale = 260.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 2.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+shader_parameter/skew = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u68v2"]
+radius = 13.0384
+
+[node name="Grass" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_3kunl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_u68v2")
+scale = Vector2(0.058, 0.058)
+texture = ExtResource("2_3kunl")
+offset = Vector2(0, -403.335)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_u68v2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://r4mg1g08v6jr" path="res://assets/items/comet.png" id="1_dc3ux"]
 [ext_resource type="PackedScene" uid="uid://c34fejawcd6hj" path="res://scenes/projectile2.tscn" id="2_dc3ux"]
-[ext_resource type="Script" uid="uid://bs72x3hsbo32y" path="res://scripts/ShootingStar.gd" id="3_8s54y"]
-[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="4_4g5if"]
+[ext_resource type="Script" uid="uid://bs72x3hsbo32y" path="res://scripts/weapon scripts/ShootingStar.gd" id="3_8s54y"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_4g5if"]
 
 [resource]
 script = ExtResource("3_8s54y")

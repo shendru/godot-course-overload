@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Lightning" load_steps=12 format=3 uid="uid://cras3pdwo67eq"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="2_0p3r1"]
-[ext_resource type="Script" uid="uid://q5b4nx2aungh" path="res://scripts/Lightning.gd" id="3_jl6sw"]
+[ext_resource type="Script" uid="uid://q5b4nx2aungh" path="res://scripts/weapon scripts/Lightning.gd" id="3_jl6sw"]
 [ext_resource type="Texture2D" uid="uid://clx6o2grutv6i" path="res://assets/items/lightningblue.png" id="4_0p3r1"]
 [ext_resource type="Texture2D" uid="uid://tu8ls6n2pjg3" path="res://assets/items/lightning.png" id="4_jl6sw"]
-[ext_resource type="Script" uid="uid://7e8fei3vk6i0" path="res://scripts/LightningUpgrades.gd" id="5_0p3r1"]
-[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="5_jg32d"]
+[ext_resource type="Script" uid="uid://7e8fei3vk6i0" path="res://scripts/weapon scripts/LightningUpgrades.gd" id="5_0p3r1"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_jg32d"]
 
 [sub_resource type="Resource" id="Resource_0p3r1"]
 script = ExtResource("5_0p3r1")

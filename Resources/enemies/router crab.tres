@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=13 format=3 uid="uid://cpm3vl1brjth7"]
+
+[ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="1_p73sk"]
+[ext_resource type="Resource" uid="uid://b4kh22en4lkwx" path="res://Resources/pickups/Gem.tres" id="2_3m0vv"]
+[ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="3_5n7we"]
+[ext_resource type="Texture2D" uid="uid://clbvn01r84bxf" path="res://assets/enemies/router crab/frame0000.png" id="4_bcumx"]
+[ext_resource type="Texture2D" uid="uid://hprga5vvxx81" path="res://assets/enemies/router crab/frame0001.png" id="5_2u5e2"]
+[ext_resource type="Texture2D" uid="uid://cfi8xycibkfs6" path="res://assets/enemies/router crab/frame0002.png" id="6_rcqeh"]
+[ext_resource type="Texture2D" uid="uid://dqkenvvtx7y52" path="res://assets/enemies/router crab/frame0003.png" id="7_ttiud"]
+[ext_resource type="Texture2D" uid="uid://cv8a6w2ub7wj5" path="res://assets/enemies/router crab/frame0004.png" id="8_bq5c4"]
+[ext_resource type="Texture2D" uid="uid://b0hfg4piw34yf" path="res://assets/enemies/router crab/frame0005.png" id="9_rlrls"]
+[ext_resource type="Texture2D" uid="uid://b1xjbhn42xmh1" path="res://assets/enemies/router crab/frame0006.png" id="10_6m7cf"]
+[ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="11_qbe8b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4i2d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bcumx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2u5e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rcqeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ttiud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bq5c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rlrls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6m7cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qbe8b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("3_5n7we")
+title = "router crab"
+sprite = SubResource("SpriteFrames_v4i2d")
+health = 6.0
+damage = 1.0
+movement_speed = 120.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, 8)
+drops = Array[ExtResource("1_p73sk")]([ExtResource("2_3m0vv")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
+@onready var offset : Marker2D = %offset
 @onready var aim : Marker2D = %aim
 @onready var aim_pos : Marker2D = %aim_pos
 @onready var sprite = $AnimatedSprite2D
@@ -183,4 +184,4 @@ func _on_heartbeat_timeout() -> void:
 	health += recovery
 	if recovery >= 1:
 		damage_popup(recovery, true)
-	print("recovering")
+	#print("recovering")

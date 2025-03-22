@@ -2,11 +2,11 @@
 
 [ext_resource type="Resource" uid="uid://babqlbbj4wub5" path="res://Resources/weapons evolved/Evolved wand.tres" id="1_apdim"]
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_tc8l4"]
-[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/SingleShot.gd" id="2_tc8l4"]
+[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="2_tc8l4"]
 [ext_resource type="Resource" uid="uid://desm6qyo5ioo5" path="res://Resources/passive items/magnet.tres" id="3_r3yqg"]
 [ext_resource type="Texture2D" uid="uid://c554vptdfqnb" path="res://assets/items/Magic-wand-icon.png" id="3_tc8l4"]
-[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/upgrade.gd" id="4_w3cwr"]
-[ext_resource type="Script" uid="uid://boxo1ndwtcu52" path="res://scripts/ProjectileUpgrade.gd" id="6_yosml"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_w3cwr"]
+[ext_resource type="Script" uid="uid://boxo1ndwtcu52" path="res://scripts/weapon scripts/ProjectileUpgrade.gd" id="6_yosml"]
 
 [sub_resource type="Resource" id="Resource_r3yqg"]
 script = ExtResource("6_yosml")

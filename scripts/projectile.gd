@@ -12,7 +12,7 @@ func _physics_process(delta):
  
  
 func _on_body_entered(body):
-	print("some body entered")
+	#print("some body entered")
 	if body.has_method("take_damage"):
 		if "might" in source:
 			body.call_deferred("take_damage", damage * source.might)

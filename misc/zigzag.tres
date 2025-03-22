@@ -1,0 +1,9 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://dfy8jo4pw86g5"]
+
+[sub_resource type="Curve" id="Curve_pgl6r"]
+_data = [Vector2(0, 0.404494), 0.0, 1.60377, 0, 0, Vector2(0.132701, 0.606742), 1.52408, -1.43684, 0, 0, Vector2(0.2891, 0.382023), -1.43683, 1.704, 1, 1, Vector2(0.440758, 0.640449), 1.704, -1.9884, 1, 0, Vector2(0.587678, 0.348315), -1.98839, 1.85217, 1, 1, Vector2(0.739337, 0.629214), 1.85217, -2.37079, 1, 1, Vector2(0.853081, 0.359551), -1.86789, 1.6735, 0, 0, Vector2(1, 0.640449), 1.91192, 0.0, 1, 0]
+point_count = 8
+metadata/_snap_count = 2
+
+[resource]
+curve = SubResource("Curve_pgl6r")

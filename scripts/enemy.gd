@@ -4,14 +4,14 @@ signal died
 
 var player_reference : CharacterBody2D
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
-
+@onready var flip_timer : Timer = $flipTimer
 
 @onready var sprite = $AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer
 var shader_material: ShaderMaterial
 
 var knockback: Vector2
-@export var speed: float = 100.0
+@export var movement_speed: float = 100.0
 var damage: float
 var is_dead = false
 
@@ -35,6 +35,10 @@ var type : Enemy:
 		type = value
 		$AnimatedSprite2D.sprite_frames = value.sprite
 		$AnimatedSprite2D.scale = value.resize
+		$AnimatedSprite2D.offset = value.sprite_offset
+		$CollisionShape2D.shape.radius = value.collision_radius
+		$CollisionShape2D.position = value.collision_position
+		movement_speed = value.movement_speed
 		damage = value.damage
 		health = value.health
 
@@ -47,20 +51,23 @@ func _ready() -> void:
 func _physics_process(delta):
  
 	if velocity.x < 0:
-		#sprite.flip_h = true
-		sprite.scale.x = -type.resize.x
+		if flip_timer.is_stopped(): 
+			sprite.scale.x = -type.resize.x
+			flip_timer.start() 
 	elif velocity.x > 0:
-		#sprite.flip_h = false
-		sprite.scale.x = type.resize.x
+		if flip_timer.is_stopped():
+			sprite.scale.x = type.resize.x
+			flip_timer.start()
+
 	knockback_update(delta)
 		
 func knockback_update(delta):
-	velocity = (player_reference.position - position).normalized() * speed
+	velocity = (player_reference.position - position).normalized() * movement_speed
 	knockback = knockback.move_toward(Vector2.ZERO, 1)
 	velocity += knockback
 	var collider = move_and_collide(velocity * delta)
-	if collider:
-		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
+	#if collider:
+		#collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 
 func damage_popup(amount, modifier = 1.0):
 	var popup = damage_popup_node.instantiate()

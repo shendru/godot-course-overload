@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://iwvmwfvxy5q5"]
+
+[ext_resource type="Shader" uid="uid://deleeadywl1nj" path="res://shaders/zigzag.gdshader" id="1_jesbt"]
+[ext_resource type="Texture2D" uid="uid://dfy8jo4pw86g5" path="res://misc/zigzag.tres" id="2_cb12g"]
+
+[sub_resource type="Gradient" id="Gradient_bcrg0"]
+offsets = PackedFloat32Array(0, 0.479263, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jesbt"]
+gradient = SubResource("Gradient_bcrg0")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n16yp"]
+shader = ExtResource("1_jesbt")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 15.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 50.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 5.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/gravity = Vector3(98, 0, 0)
+shader_parameter/curve = ExtResource("2_cb12g")
+shader_parameter/yScale = 100.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1
+texture = SubResource("GradientTexture2D_jesbt")
+lifetime = 3.0
+speed_scale = 3.0
+explosiveness = 0.5
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+trail_sections = 4
+trail_section_subdivisions = 1
+process_material = SubResource("ShaderMaterial_n16yp")

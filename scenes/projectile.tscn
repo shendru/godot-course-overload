@@ -7,6 +7,7 @@ size = Vector2(20, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8fcr"]
 resource_local_to_scene = true
+radius = 22.0227
 
 [sub_resource type="Gradient" id="Gradient_c8fcr"]
 colors = PackedColorArray(0, 0.4, 0.992157, 1, 0.456204, 0.000208069, 0.479034, 1)

@@ -1,8 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dy2y4ioee72mg"]
+[gd_scene load_steps=18 format=3 uid="uid://dy2y4ioee72mg"]
 
 [ext_resource type="Script" uid="uid://6acgt1oyev0h" path="res://scripts/enemy.gd" id="1_b1lmh"]
-[ext_resource type="SpriteFrames" uid="uid://dvsm78yeokyux" path="res://animations/SlimeFrames.tres" id="2_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="14_kv707"]
+[ext_resource type="Texture2D" uid="uid://clbvn01r84bxf" path="res://assets/enemies/router crab/frame0000.png" id="2_ipns3"]
+[ext_resource type="Texture2D" uid="uid://hprga5vvxx81" path="res://assets/enemies/router crab/frame0001.png" id="3_8qclf"]
+[ext_resource type="Texture2D" uid="uid://cfi8xycibkfs6" path="res://assets/enemies/router crab/frame0002.png" id="4_w8i8w"]
+[ext_resource type="Texture2D" uid="uid://dqkenvvtx7y52" path="res://assets/enemies/router crab/frame0003.png" id="5_otmr2"]
+[ext_resource type="Texture2D" uid="uid://cv8a6w2ub7wj5" path="res://assets/enemies/router crab/frame0004.png" id="6_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://b0hfg4piw34yf" path="res://assets/enemies/router crab/frame0005.png" id="7_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://b1xjbhn42xmh1" path="res://assets/enemies/router crab/frame0006.png" id="8_g0wcc"]
+[ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="9_s1ycm"]
 
 [sub_resource type="Shader" id="Shader_bjid3"]
 code = "shader_type canvas_item;
@@ -22,35 +28,43 @@ shader = SubResource("Shader_bjid3")
 shader_parameter/flash_amount = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipns3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ipns3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8qclf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w8i8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_otmr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wtq4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j0cyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g0wcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s1ycm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmke4"]
-radius = 12.0416
+radius = 9.0
 
 [sub_resource type="Animation" id="Animation_5ft6h"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -22.96)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_amount")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_s72vd"]
 resource_name = "slime_die_left"
@@ -144,32 +158,29 @@ _data = {
 }
 
 [node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
-y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_b1lmh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_cf7er")
-position = Vector2(0, -22.96)
-scale = Vector2(0.09, 0.09)
-sprite_frames = ExtResource("2_4ra3w")
+scale = Vector2(0.059, 0.059)
+sprite_frames = SubResource("SpriteFrames_ipns3")
 autoplay = "default"
-frame_progress = 0.516804
-
-[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
-modulate = Color(0.151, 0.151, 0.151, 0.692)
-z_index = -1
-position = Vector2(-111.111, 355.111)
-scale = Vector2(1.74273, 0.282118)
-texture = ExtResource("14_kv707")
+offset = Vector2(0, -503.47)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_gmke4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_khjxk")
 }
+
+[node name="flipTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
