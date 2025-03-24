@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0hyvfy7gso0p"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_cb1un"]
+[ext_resource type="Texture2D" uid="uid://b1awr575ybu5s" path="res://misc/placeholder_texture_2d.tres" id="2_yr7fq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fpril"]
+resource_local_to_scene = true
+radius = 22.0227
+
+[sub_resource type="Gradient" id="Gradient_4bpy0"]
+colors = PackedColorArray(0, 0.4, 0.992157, 1, 0.456204, 0.000208069, 0.479034, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cb1un"]
+gradient = SubResource("Gradient_4bpy0")
+
+[sub_resource type="Curve" id="Curve_hfm1b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0947867, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yr7fq"]
+curve = SubResource("Curve_hfm1b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_73dmd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_yr7fq")
+color_ramp = SubResource("GradientTexture1D_cb1un")
+turbulence_enabled = true
+turbulence_influence_max = 0.196
+
+[node name="ProjectileSimple" instance=ExtResource("1_cb1un")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_yr7fq")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_fpril")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="3"]
+amount = 160
+process_material = SubResource("ParticleProcessMaterial_73dmd")

@@ -25,12 +25,11 @@ func add_to_player(source):
 	projectile.damage = damage
 	projectile.source = source
 	projectile.scale  = Vector2(area,area)
-	projectile.z_index = 0
+	projectile.z_index = -1
 	if texture != null:
 		projectile.find_child("Sprite2D").texture = texture
 		projectile.find_child("Sprite2D").scale = Vector2(0.05,0.05) #personal implementation
 	projectile.find_child("CollisionShape2D").shape.radius = 90
-	projectile.knockback = -40
 	projectile_reference = projectile
  
 	source.offset.call_deferred("add_child",projectile) #offset

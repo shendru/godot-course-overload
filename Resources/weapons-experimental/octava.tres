@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RadialWave" load_steps=6 format=3 uid="uid://bs60xk2jmniwj"]
+
+[ext_resource type="Texture2D" uid="uid://bibwb23aqv4cl" path="res://assets/items/msuiit-Octava-Logo.jpg" id="1_xyd87"]
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="2_us2vl"]
+[ext_resource type="Script" uid="uid://cp1kc3ygha566" path="res://scripts/weapon scripts/RadialWave.gd" id="3_8h4pl"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_2u3ya"]
+[ext_resource type="PackedScene" uid="uid://dwj851mxrwi18" path="res://vfx/radial_echo.tscn" id="5_us2vl"]
+
+[resource]
+script = ExtResource("3_8h4pl")
+lifetime = 5.0
+scaling_speed = 6.0
+add_on_source = true
+damage = 1.0
+cooldown = 1.0
+speed = 0.0
+projectile_node = ExtResource("2_us2vl")
+upgrades = Array[ExtResource("4_2u3ya")]([])
+vfx = ExtResource("5_us2vl")
+title = "Octava"
+icon = ExtResource("1_xyd87")
+metadata/_custom_type_script = "uid://cp1kc3ygha566"

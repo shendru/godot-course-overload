@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=35 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -8,13 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
-[ext_resource type="Resource" uid="uid://bcdmx25t83h2d" path="res://Resources/weapons/bible.tres" id="9_f1ej7"]
+[ext_resource type="Resource" uid="uid://cfky1lcl0tb62" path="res://Resources/weapons-experimental/High AC field.tres" id="9_jej6c"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
-[ext_resource type="Resource" uid="uid://d11xaqbudrdj3" path="res://Resources/weapons/magic wand.tres" id="10_oprun"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
-[ext_resource type="PackedScene" uid="uid://cx5515eshpyix" path="res://scenes/static_field.tscn" id="14_f1ej7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ni07"]
 shader = ExtResource("3_4ni07")
@@ -155,6 +153,7 @@ scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = ExtResource("4_jej6c")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.105787
 offset = Vector2(0, -590.185)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -176,6 +175,10 @@ collision_mask = 2
 unique_name_in_owner = true
 shape = SubResource("CapsuleShape2D_sa5an")
 debug_color = Color(0.874064, 0.271494, 0.550553, 0.42)
+
+[node name="eyeOffset" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, -55)
 
 [node name="offset" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -331,11 +334,10 @@ grow_vertical = 0
 
 [node name="Slot" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-item = ExtResource("9_f1ej7")
+item = ExtResource("9_jej6c")
 
 [node name="Slot2" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-item = ExtResource("10_oprun")
 
 [node name="Slot3" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
@@ -550,9 +552,6 @@ randomness = 0.5
 trail_enabled = true
 trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_qfm1y")
-
-[node name="Static field" parent="." instance=ExtResource("14_f1ej7")]
-visible = false
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Chest/Open" to="CanvasLayer/Chest" method="_on_open_pressed"]

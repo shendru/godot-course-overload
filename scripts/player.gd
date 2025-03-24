@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 @onready var offset : Marker2D = %offset
+@onready var eyeOffset : Marker2D = %eyeOffset
 @onready var aim : Marker2D = %aim
 @onready var aim_pos : Marker2D = %aim_pos
 @onready var sprite = $AnimatedSprite2D
@@ -13,6 +14,7 @@ var deceleration : float = 800.0
 
 var direction: Vector2 = Vector2.RIGHT
 
+#Chara stats
 @export var movement_speed: float = 200
 var max_health : float = 10 :
 	set(value):
@@ -23,6 +25,8 @@ var recovery : float = 0
 var armor : float = 0		
 var might : float = 1.0
 var area : float = 0.0
+var haste : float = 0.0
+var knockback : float = 0.0
 var magnet : float = 0.0:
 	set(value):
 		magnet = value

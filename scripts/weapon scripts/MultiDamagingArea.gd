@@ -17,23 +17,15 @@ func activate(source, _target, scene_tree):
 
 	if spawn_on_source:
 		for projectile in projectile_reference:
-			projectile.position = source.offset.global_position #offset
+			projectile.position = source.global_position
 			projectile.show()
 	else:
 		for i in range(projectile_reference.size()):
 			var offset = i * (360.0/amount)
 			projectile_reference[i].position = source.position + 100 * Vector2(cos(deg_to_rad(offset)), sin(deg_to_rad(offset)))
 			projectile_reference[i].show()
-
+	print("num of projectiles:"+str(projectile_reference.size()))
 	
-	await scene_tree.create_timer(lifetime).timeout
-
-	# Remove the projectiles after the lifetime
-	for projectile in projectile_reference:
-		if is_instance_valid(projectile):
-			projectile.queue_free()
-	projectile_reference.clear() # Clear the reference array after removal
-
 
 func add_to_world(source, tree):
 	var projectile = projectile_node.instantiate()
@@ -45,11 +37,23 @@ func add_to_world(source, tree):
 	if texture != null:
 		if projectile.has_node("Sprite2D"):
 			projectile.get_node("Sprite2D").texture = texture
-	
+
 	projectile.hide()
 	projectile_reference.append(projectile)
-
+	
 	tree.current_scene.call_deferred("add_child",projectile)
+	# Create and attach a Timer to the projectile
+	var timer = Timer.new()
+	timer.autostart = true
+	timer.wait_time = lifetime
+	timer.one_shot = true
+	timer.timeout.connect(Callable(self, "_on_projectile_timeout").bind(projectile))
+	projectile.add_child(timer)
+
+func _on_projectile_timeout(projectile: Node2D):
+	if is_instance_valid(projectile):
+		projectile.queue_free()
+		projectile_reference.erase(projectile)
 
 func upgrade_item():
 	if max_level_reached():
@@ -69,17 +73,16 @@ func upgrade_item():
 	level += 1
 
 func reset_collision(value):
-	print(value)
+	#print(value)
 	for projectile in projectile_reference:
 		if is_instance_valid(projectile):
 			if projectile.has_node("CollisionShape2D"):
 				projectile.get_node("CollisionShape2D").disabled = value
 
 func reset():
-	# We clear the reference here, the actual removal happens after the lifetime in activate
 	for temp in projectile_reference:
 		if is_instance_valid(temp):
-			temp.queue_free() # Ensure any lingering projectiles are removed
+			temp.queue_free()
 	projectile_reference.clear()
 
 func update(delta):

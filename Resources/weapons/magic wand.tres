@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="SingleShot" load_steps=12 format=3 uid="uid://d11xaqbudrdj3"]
+[gd_resource type="Resource" script_class="SingleShot" load_steps=13 format=3 uid="uid://d11xaqbudrdj3"]
 
 [ext_resource type="Resource" uid="uid://babqlbbj4wub5" path="res://Resources/weapons evolved/Evolved wand.tres" id="1_apdim"]
-[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_tc8l4"]
 [ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="2_tc8l4"]
 [ext_resource type="Resource" uid="uid://desm6qyo5ioo5" path="res://Resources/passive items/magnet.tres" id="3_r3yqg"]
 [ext_resource type="Texture2D" uid="uid://c554vptdfqnb" path="res://assets/items/Magic-wand-icon.png" id="3_tc8l4"]
+[ext_resource type="PackedScene" uid="uid://dexs7htlnmpio" path="res://scenes/projectile_q_free_on_hit.tscn" id="4_apdim"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_w3cwr"]
+[ext_resource type="Texture2D" uid="uid://b1awr575ybu5s" path="res://misc/placeholder_texture_2d.tres" id="6_r3yqg"]
 [ext_resource type="Script" uid="uid://boxo1ndwtcu52" path="res://scripts/weapon scripts/ProjectileUpgrade.gd" id="6_yosml"]
 
 [sub_resource type="Resource" id="Resource_r3yqg"]
@@ -43,12 +44,13 @@ metadata/_custom_type_script = "uid://boxo1ndwtcu52"
 [resource]
 script = ExtResource("2_tc8l4")
 damage = 1.0
-cooldown = 0.75
+cooldown = 5.0
 speed = 600.0
-projectile_node = ExtResource("1_tc8l4")
+projectile_node = ExtResource("4_apdim")
 upgrades = Array[ExtResource("4_w3cwr")]([SubResource("Resource_r3yqg"), SubResource("Resource_r3yqg"), SubResource("Resource_4cvo8"), SubResource("Resource_ajvlc"), SubResource("Resource_g6lrv")])
 item_needed = ExtResource("3_r3yqg")
 evolution = ExtResource("1_apdim")
 title = "Magic wand"
 icon = ExtResource("3_tc8l4")
+texture = ExtResource("6_r3yqg")
 metadata/_custom_type_script = "uid://dltx2s48k2y6d"

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://sjmbs6vty7p2"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_6aq50"]
+[ext_resource type="Script" uid="uid://dtuwhjl0j5xe0" path="res://projectile_self_free.gd" id="2_dacta"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32axa"]
+resource_local_to_scene = true
+radius = 22.0227
+
+[node name="ProjectileSelfFree" instance=ExtResource("1_6aq50")]
+script = ExtResource("2_dacta")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(20, 0)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(20, 0)
+shape = SubResource("CircleShape2D_32axa")
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

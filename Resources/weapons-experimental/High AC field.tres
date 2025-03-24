@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MultiDamagingArea" load_steps=5 format=3 uid="uid://cfky1lcl0tb62"]
+
+[ext_resource type="Texture2D" uid="uid://b7k1j8kyu8cxg" path="res://assets/items/Alternate-Current.png" id="1_wkng1"]
+[ext_resource type="PackedScene" uid="uid://3p5fn8s27a7v" path="res://scenes/projectile_static_field.tscn" id="2_vjqlk"]
+[ext_resource type="Script" uid="uid://bj1m6imqp12hc" path="res://scripts/weapon scripts/MultiDamagingArea.gd" id="3_sct8a"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_ewtbk"]
+
+[resource]
+script = ExtResource("3_sct8a")
+amount = 1
+area = 1.0
+lifetime = 2.0
+delay = 0.2
+spawn_on_source = true
+damage = 1.0
+cooldown = 3.0
+speed = 0.0
+projectile_node = ExtResource("2_vjqlk")
+upgrades = Array[ExtResource("4_ewtbk")]([])
+title = "High AC Field"
+icon = ExtResource("1_wkng1")
+metadata/_custom_type_script = "uid://bj1m6imqp12hc"

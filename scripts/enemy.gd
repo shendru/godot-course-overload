@@ -66,8 +66,8 @@ func knockback_update(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, 1)
 	velocity += knockback
 	var collider = move_and_collide(velocity * delta)
-	#if collider:
-		#collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
+	if collider:
+		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 
 func damage_popup(amount, modifier = 1.0):
 	var popup = damage_popup_node.instantiate()
@@ -86,7 +86,7 @@ func take_damage(dmg):
 	health -= dmg * modifier
 
 func drop_item():
-	print("dropping gem")
+	#print("dropping gem")
 	if type.drops.size() == 0:
 		print("no enemy drops")
 		return

@@ -12,3 +12,4 @@ class_name Stats
 @export var magnet : float
 @export var growth : float
 @export var luck : float
+@export var haste : float
