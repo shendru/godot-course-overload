@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs5dm3i4ult17"
+path="res://.godot/imported/CO [field] (composition ver.).mp3-19e02dbf02f2a3ef4fb6d194d36df57d.mp3str"
+
+[deps]
+
+source_file="res://assets/music/CO [field] (composition ver.).mp3"
+dest_files=["res://.godot/imported/CO [field] (composition ver.).mp3-19e02dbf02f2a3ef4fb6d194d36df57d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

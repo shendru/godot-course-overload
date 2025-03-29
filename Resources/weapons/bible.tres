@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Circular" load_steps=11 format=3 uid="uid://bcdmx25t83h2d"]
+[gd_resource type="Resource" script_class="Circular" load_steps=12 format=3 uid="uid://bcdmx25t83h2d"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_3dkgr"]
 [ext_resource type="Script" uid="uid://cnhouu2pc8i6q" path="res://scripts/weapon scripts/CircularWeapon.gd" id="2_7jhld"]
 [ext_resource type="Texture2D" uid="uid://c12tgsc6tubvl" path="res://assets/items/bible.png" id="3_bu48f"]
+[ext_resource type="Texture2D" uid="uid://b1awr575ybu5s" path="res://misc/placeholder_texture_2d.tres" id="4_bu48f"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_mvt1b"]
 [ext_resource type="Script" uid="uid://cs5eybt0dao03" path="res://scripts/weapon scripts/CircularUpgrade.gd" id="5_7jhld"]
 
@@ -63,4 +64,5 @@ projectile_node = ExtResource("1_3dkgr")
 upgrades = Array[ExtResource("4_mvt1b")]([SubResource("Resource_bu48f"), SubResource("Resource_mvt1b"), SubResource("Resource_0derx"), SubResource("Resource_y5t2i"), SubResource("Resource_4uscb")])
 title = "Bible"
 icon = ExtResource("3_bu48f")
+texture = ExtResource("4_bu48f")
 metadata/_custom_type_script = "uid://cnhouu2pc8i6q"

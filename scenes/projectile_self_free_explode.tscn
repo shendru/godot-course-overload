@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2kajnct0oeca"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_e31r1"]
+[ext_resource type="Script" uid="uid://j8pfifflwi1t" path="res://projectile_self_free_explode.gd" id="2_c3emx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83sps"]
+resource_local_to_scene = true
+radius = 50.5964
+
+[node name="ProjectileSelfFreeExplode" instance=ExtResource("1_e31r1")]
+script = ExtResource("2_c3emx")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_83sps")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="2"]
+enable_node_path = NodePath("")
+
+[node name="Lifetime" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="AfterLifetime" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="PreLifetime" type="Timer" parent="." index="5"]
+one_shot = true
+
+[node name="EmergencyExit" type="Timer" parent="." index="6"]
+one_shot = true
+
+[connection signal="timeout" from="AfterLifetime" to="." method="_on_after_lifetime_timeout"]
+[connection signal="timeout" from="PreLifetime" to="." method="_on_pre_lifetime_timeout"]
+[connection signal="timeout" from="EmergencyExit" to="." method="_on_emergency_exit_timeout"]

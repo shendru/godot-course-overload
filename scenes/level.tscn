@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=17 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ck6ngdfe0m1mv" path="res://assets/tiles/EPIC RPG World Pack-[FREE Demo]Grass Land 2.0/Tilesets and props/Tilesets and props Demo.png" id="6_xucc8"]
 [ext_resource type="Resource" uid="uid://cpm3vl1brjth7" path="res://Resources/enemies/router crab.tres" id="7_8iemx"]
 [ext_resource type="Texture2D" uid="uid://cvj8y2k6i2hje" path="res://assets/enemies/slime ver3/frame0011.png" id="7_b121j"]
-[ext_resource type="Shader" uid="uid://bepmoe6me12e5" path="res://shaders/shockwave2.gdshader" id="11_8iemx"]
-[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="12_8iemx"]
+[ext_resource type="AudioStream" uid="uid://bs5dm3i4ult17" path="res://assets/music/CO [field] (composition ver.).mp3" id="11_t1rx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8fg4"]
 texture = ExtResource("6_xucc8")
@@ -622,12 +621,67 @@ terrain_set_0/terrain_2/name = "grass2"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/3 = SubResource("TileSetAtlasSource_c8fg4")
 
+[sub_resource type="GDScript" id="GDScript_olg7q"]
+
+[sub_resource type="Shader" id="Shader_8iemx"]
+code = "shader_type canvas_item;
+
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+
+uniform float wave_progress : hint_range(0.0, 5.0) = 0.0; // Controlled by AnimationPlayer
+uniform float wave_speed = 1.0;
+uniform vec3 wave_params = vec3(10.0, 0.8, 0.1); // (Frequency, Intensity, Thickness)
+uniform vec2 wave_center = vec2(0.5, 0.5); // Normalized center of ripple
+
+void fragment() {
+    vec2 resolution = vec2(textureSize(SCREEN_TEXTURE, 0));
+    float ratio = resolution.x / resolution.y; // Aspect ratio correction
+    vec2 uv = SCREEN_UV;
+
+    // Normalize coordinates
+    vec2 center = wave_center;
+    vec2 dir = uv - center;
+
+    // Apply aspect ratio correction **only to direction vector**
+    dir.x *= ratio;
+
+    float dist = length(dir);
+
+    // Get original screen color
+    vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+
+    // Apply ripple only within the donut-shaped range
+    if ((dist <= (wave_progress + wave_params.z)) && (dist >= (wave_progress - wave_params.z))) {
+        float diff = (dist - wave_progress);
+        float scale_diff = 1.0 - pow(abs(diff * wave_params.x), wave_params.y);
+        float diff_time = diff * scale_diff;
+
+        // Normalize direction vector **after correction**
+        vec2 diff_tex_coord = normalize(dir);
+        diff_tex_coord.x /= ratio; // Undo aspect correction after normalization
+
+        // Apply distortion ONLY inside the ripple
+        uv += ((diff_tex_coord * diff_time) / (wave_progress * dist * 40.0));
+
+        // Blend new color with original screen color
+        color = texture(SCREEN_TEXTURE, uv);
+
+        // Enhance ripple effect by amplifying the color
+        color += (color * scale_diff) / (wave_progress * dist * 40.0);
+    }
+
+    // Output final color
+    COLOR = color;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_64w2a"]
-shader = ExtResource("11_8iemx")
-shader_parameter/wave_progress = 0.285
-shader_parameter/wave_speed = 8.675
-shader_parameter/wave_params = Vector3(10, 0.8, 0.1)
-shader_parameter/wave_center = Vector2(0.5, 0.5)
+resource_local_to_scene = true
+shader = SubResource("Shader_8iemx")
+shader_parameter/wave_progress = 0.208
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_params = Vector3(0, 2.24, 0.085)
+shader_parameter/wave_center = Vector2(0.5, 0.45)
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -897,9 +951,25 @@ scale = Vector2(77, 44.85)
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 visible = false
+z_index = 5
+position = Vector2(780, 309)
+scale = Vector2(3.45703, 2.11914)
+script = SubResource("GDScript_olg7q")
+
+[node name="RadialEcho" type="CanvasLayer" parent="Sprite2D3"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D3/RadialEcho"]
 material = SubResource("ShaderMaterial_64w2a")
-position = Vector2(594, 276)
-scale = Vector2(2, 2)
-texture = ExtResource("12_8iemx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_t1rx8")
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]

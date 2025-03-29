@@ -1,10 +1,13 @@
 extends Area2D
 class_name ProjectileNode
- 
+
 var direction : Vector2 = Vector2.RIGHT
 var speed : float = 200
 var damage : float = 1
 var knockback : float = 90
+var vfx: PackedScene
+var afterFx: PackedScene
+
 var source
 
  

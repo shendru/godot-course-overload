@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=34 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
-[ext_resource type="Resource" uid="uid://cfky1lcl0tb62" path="res://Resources/weapons-experimental/High AC field.tres" id="9_jej6c"]
+[ext_resource type="Resource" uid="uid://cg6k27do7vu2j" path="res://Resources/weapons-experimental/High AC field.tres" id="9_f1ej7"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
+[ext_resource type="Resource" uid="uid://b8gp3ac12r5ue" path="res://Resources/weapons-experimental/LED bomb.tres" id="10_oprun"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
 
@@ -44,22 +45,14 @@ height = 72.0
 radius = 17.0
 height = 70.0
 
-[sub_resource type="Curve" id="Curve_3v2ag"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502242, 1), -3.88626, -3.88626, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_jej6c"]
-curve = SubResource("Curve_3v2ag")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ej7"]
 particle_flag_align_y = true
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(683, 1, 1)
 gravity = Vector3(0, -98, 0)
-scale_min = 0.02
-scale_max = 0.02
-scale_curve = SubResource("CurveTexture_jej6c")
+scale_min = 0.0
+scale_max = 0.01
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur7pv"]
 bg_color = Color(0.592902, 0.611985, 0.529169, 1)
@@ -137,6 +130,7 @@ color_ramp = SubResource("GradientTexture1D_olg7q")
 color_initial_ramp = SubResource("GradientTexture1D_b121j")
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_g2l03")
 
@@ -153,7 +147,7 @@ scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = ExtResource("4_jej6c")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.105787
+frame_progress = 0.201305
 offset = Vector2(0, -590.185)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -178,7 +172,7 @@ debug_color = Color(0.874064, 0.271494, 0.550553, 0.42)
 
 [node name="eyeOffset" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-3, -55)
+position = Vector2(-5, -56)
 
 [node name="offset" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -200,31 +194,33 @@ default_color = Color(4.57242e-07, 0.262341, 0.202909, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 2
 
 [node name="lvlUpVfx" type="GPUParticles2D" parent="CanvasLayer"]
 process_mode = 3
 visible = false
 position = Vector2(673, 766)
-amount = 100
+amount = 50
 texture = ExtResource("5_d2wvv")
-lifetime = 5.0
+lifetime = 4.0
 preprocess = 1.0
-speed_scale = 4.15
+speed_scale = 6.0
+randomness = 1.0
+trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_f1ej7")
 
 [node name="Panel" type="NinePatchRect" parent="CanvasLayer"]
 process_mode = 3
-visible = false
 self_modulate = Color(0.52537, 0.541354, 0.616278, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -282.0
-offset_top = -182.0
-offset_right = 283.0
-offset_bottom = 182.0
+offset_left = -399.5
+offset_top = -322.0
+offset_right = 399.5
+offset_bottom = 322.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_d2wvv")
@@ -334,10 +330,11 @@ grow_vertical = 0
 
 [node name="Slot" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-item = ExtResource("9_jej6c")
+item = ExtResource("9_f1ej7")
 
 [node name="Slot2" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
+item = ExtResource("10_oprun")
 
 [node name="Slot3" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
@@ -375,9 +372,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = 302.0
 offset_top = -20.0
-offset_right = 20.0
+offset_right = 342.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2

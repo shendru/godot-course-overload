@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bi6hsfwnqyq38"]
+
+[ext_resource type="Shader" uid="uid://brpxj60gtwuxe" path="res://shaders/grassSway.gdshader" id="1_gcqua"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_gcqua")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.578
+shader_parameter/maxStrength = 1.0
+shader_parameter/strengthScale = 260.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 2.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+shader_parameter/skew = 0.0

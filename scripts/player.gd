@@ -11,8 +11,10 @@ var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 @export var aim_offset_angle_degrees = 0
 
 var deceleration : float = 800.0
-
 var direction: Vector2 = Vector2.RIGHT
+
+var growth_factor: float = 1.5
+var base_exp: float = 10 #must align with %XP.max_value
 
 #Chara stats
 @export var movement_speed: float = 200
@@ -46,14 +48,15 @@ var level: int = 1:
 	set(value):
 		level = value
 		%Level.text = "Lvl " + str(value)
-		if level >= 13:
-			%XP.max_value = 1000
-		elif level >= 10:
-			%XP.max_value = 100
-		elif level >= 7:
-			%XP.max_value = 40
-		elif level >= 2:
-			%XP.max_value = 20
+		%XP.max_value = base_exp * pow(level, growth_factor)
+		#if level >= 13:
+			#%XP.max_value = 1000
+		#elif level >= 10:
+			#%XP.max_value = 100
+		#elif level >= 7:
+			#%XP.max_value = 40
+		#elif level >= 2:
+			#%XP.max_value = 20
 		%Options.show_option()
 
 var mouse_mode: bool = false

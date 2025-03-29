@@ -164,7 +164,6 @@ motion_mode = 1
 script = ExtResource("1_b1lmh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_cf7er")
 scale = Vector2(0.059, 0.059)

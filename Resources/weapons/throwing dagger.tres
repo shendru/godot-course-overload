@@ -59,12 +59,12 @@ metadata/_custom_type_script = "uid://c2lamgonb1a62"
 [resource]
 script = ExtResource("3_hhqib")
 area = 2.0
-amount = 2
+amount = 10
 reversible = true
-delay = 1.0
+delay = 0.2
 damage = 1.0
-cooldown = 2.0
-speed = 500.0
+cooldown = 3.0
+speed = 1000.0
 projectile_node = ExtResource("2_tb126")
 upgrades = Array[ExtResource("4_62q8d")]([SubResource("Resource_hhqib"), SubResource("Resource_62q8d"), SubResource("Resource_g3baf"), SubResource("Resource_wg5nm"), SubResource("Resource_6e2do")])
 title = "Throwing Dagger"

@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://donucgpn2fid0"]
+
+[ext_resource type="Script" uid="uid://qx5pvbfsflaq" path="res://vfx/radial_echo_follow.gd" id="1_4atvf"]
+[ext_resource type="Shader" uid="uid://d06cxny1ulo3" path="res://shaders/shockwave follow.gdshader" id="2_4atvf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux5qa"]
+resource_local_to_scene = true
+shader = ExtResource("2_4atvf")
+shader_parameter/sprite_screen_pos = Vector2(0, 0)
+shader_parameter/wave_progress = 0.0
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_params = Vector3(5.575, 1.175, 0.16)
+
+[sub_resource type="Animation" id="Animation_gc6eg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/wave_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/wave_params")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.575, 1.175, 0.16)]
+}
+
+[sub_resource type="Animation" id="Animation_4atvf"]
+resource_name = "default"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/wave_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.681]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/wave_params")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.575, 1.175, 0.16), Vector3(5.575, 1.175, -0.02)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r876y"]
+_data = {
+&"RESET": SubResource("Animation_gc6eg"),
+&"default": SubResource("Animation_4atvf")
+}
+
+[node name="RadialEcho" type="CanvasLayer"]
+script = ExtResource("1_4atvf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ux5qa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r876y")
+}
+autoplay = "default"

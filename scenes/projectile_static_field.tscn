@@ -1,59 +1,107 @@
-[gd_scene load_steps=7 format=3 uid="uid://3p5fn8s27a7v"]
+[gd_scene load_steps=11 format=3 uid="uid://3p5fn8s27a7v"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_455ae"]
 [ext_resource type="PackedScene" uid="uid://cx5515eshpyix" path="res://scenes/static_field.tscn" id="2_455ae"]
+[ext_resource type="Script" uid="uid://e752noul2swm" path="res://scenes/projectile_damaging_area.gd" id="2_ronis"]
+[ext_resource type="Script" uid="uid://dct6ef35guuov" path="res://scenes/fadetime.gd" id="4_l4tb5"]
+[ext_resource type="Script" uid="uid://dnlgau1ved2s4" path="res://scripts/extra_condition.gd" id="5_1ybbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ronis"]
 size = Vector2(459, 315)
 
-[sub_resource type="Animation" id="Animation_f064p"]
-resource_name = "onReady"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.3),
-"transitions": PackedFloat32Array(1, 0.287175, 0.287175),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_s3yer"]
+[sub_resource type="Animation" id="Animation_l4tb5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("CollisionShape2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05)]
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Static field:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywp1e"]
+[sub_resource type="Animation" id="Animation_ronis"]
+resource_name = "default"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1, 1.3),
+"transitions": PackedFloat32Array(0.615572, 0.615572, 0.287175, 0.287175),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.2, 0.2), Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1ybbi"]
+resource_name = "fading"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static field:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ybbi"]
 _data = {
-&"RESET": SubResource("Animation_s3yer"),
-&"onReady": SubResource("Animation_f064p")
+&"RESET": SubResource("Animation_l4tb5"),
+&"default": SubResource("Animation_ronis"),
+&"fading": SubResource("Animation_1ybbi")
 }
 
 [node name="ProjectileStaticField" instance=ExtResource("1_455ae")]
-scale = Vector2(1e-05, 1e-05)
+script = ExtResource("2_ronis")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -11.5)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_ronis")
 
 [node name="Static field" parent="." index="3" instance=ExtResource("2_455ae")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="Lifetime" type="Timer" parent="." index="4"]
+one_shot = true
+autostart = true
+
+[node name="Fadetime" type="Timer" parent="." index="5"]
+one_shot = true
+autostart = true
+script = ExtResource("4_l4tb5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
-&"": SubResource("AnimationLibrary_ywp1e")
+&"": SubResource("AnimationLibrary_1ybbi")
 }
-autoplay = "onReady"
+autoplay = "default"
+
+[node name="Node2D" type="Node2D" parent="." index="7"]
+script = ExtResource("5_1ybbi")
+
+[connection signal="area_entered" from="." to="Node2D" method="_on_projectile_static_field_area_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="Fadetime" to="Fadetime" method="_on_timeout"]

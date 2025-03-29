@@ -11,6 +11,7 @@ class_name Weapon
 @export var evolution : Weapon
 
 @export var vfx : PackedScene
+@export var afterFx : PackedScene
 
 var slot
 
