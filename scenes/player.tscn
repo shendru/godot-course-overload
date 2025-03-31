@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=33 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
@@ -8,10 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
-[ext_resource type="Resource" uid="uid://cg6k27do7vu2j" path="res://Resources/weapons-experimental/High AC field.tres" id="9_f1ej7"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
-[ext_resource type="Resource" uid="uid://b8gp3ac12r5ue" path="res://Resources/weapons-experimental/LED bomb.tres" id="10_oprun"]
+[ext_resource type="Resource" uid="uid://djnylwquolmos" path="res://Resources/weapons-experimental/rotating thing2.tres" id="10_jej6c"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
 
@@ -137,6 +136,7 @@ script = ExtResource("1_g2l03")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_4ni07")
+position = Vector2(-55, -34)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h012a")
 
@@ -196,7 +196,18 @@ default_color = Color(4.57242e-07, 0.262341, 0.202909, 1)
 process_mode = 3
 layer = 2
 
-[node name="lvlUpVfx" type="GPUParticles2D" parent="CanvasLayer"]
+[node name="Panel" type="NinePatchRect" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+self_modulate = Color(0.169757, 0.177926, 0.217268, 0.873)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_d2wvv")
+
+[node name="lvlUpVfx" type="GPUParticles2D" parent="CanvasLayer/Panel"]
 process_mode = 3
 visible = false
 position = Vector2(673, 766)
@@ -209,32 +220,85 @@ randomness = 1.0
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_f1ej7")
 
-[node name="Panel" type="NinePatchRect" parent="CanvasLayer"]
+[node name="Options" type="VBoxContainer" parent="CanvasLayer/Panel" node_paths=PackedStringArray("weapons", "passive_items", "player_reference", "particles", "panel", "chara_panel")]
+unique_name_in_owner = true
 process_mode = 3
-self_modulate = Color(0.52537, 0.541354, 0.616278, 1)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -399.5
-offset_top = -322.0
-offset_right = 399.5
-offset_bottom = 322.0
+offset_left = 156.0
+offset_top = -20.0
+offset_right = 196.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+script = ExtResource("9_y4r1p")
+weapons = NodePath("../../Weapons")
+passive_items = NodePath("../../PassiveItems")
+player_reference = NodePath("../../..")
+particles = NodePath("../lvlUpVfx")
+panel = NodePath("..")
+chara_panel = NodePath("../../CharaPanel")
+
+[node name="Panel2" type="NinePatchRect" parent="CanvasLayer/Panel"]
+process_mode = 3
+visible = false
+self_modulate = Color(0.525, 0.541, 0.616, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -303.0
+offset_right = 620.0
+offset_bottom = 303.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_d2wvv")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="CharaPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+clip_contents = true
+offset_left = 105.0
+offset_top = 161.0
+offset_right = 299.0
+offset_bottom = 505.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CharaPanel"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -36.0
-offset_right = 36.0
-offset_bottom = 23.0
+anchor_bottom = 0.5
+offset_left = -1136.0
+offset_top = -488.0
+offset_right = 650.0
+offset_bottom = 752.0
 grow_horizontal = 2
-text = "LEVEL UP"
+grow_vertical = 2
+texture = ExtResource("4_fps5v")
+
+[node name="Label" type="Label" parent="CanvasLayer/CharaPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -11.5
+offset_right = 82.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "* insert banner png *"
 
 [node name="XP" type="ProgressBar" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -246,21 +310,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ur7pv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_y4r1p")
 max_value = 10.0
 
-[node name="Level" type="Label" parent="CanvasLayer/XP"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -158.0
-offset_top = 42.0
-offset_right = -48.0
-offset_bottom = 118.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 50
-text = "Lvl 1"
-horizontal_alignment = 2
-
 [node name="Gold" type="Label" parent="CanvasLayer/XP"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -268,9 +317,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -314.0
-offset_top = 117.0
+offset_top = 31.0
 offset_right = -53.0
-offset_bottom = 172.0
+offset_bottom = 86.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "Gold: 0"
@@ -310,12 +359,25 @@ layout_mode = 2
 offset_right = 512.0
 offset_bottom = 512.0
 grow_vertical = 0
-max_value = 10.0
 step = 0.01
 value = 10.0
 fill_mode = 5
 radial_initial_angle = 315.0
 texture_progress = ExtResource("4_ln11m")
+
+[node name="Level" type="Label" parent="CanvasLayer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -116.556
+offset_right = 219.0
+offset_bottom = 20.4444
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Lvl 1"
+vertical_alignment = 2
 
 [node name="Weapons" type="HBoxContainer" parent="CanvasLayer"]
 process_mode = 1
@@ -330,11 +392,10 @@ grow_vertical = 0
 
 [node name="Slot" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-item = ExtResource("9_f1ej7")
+item = ExtResource("10_jej6c")
 
 [node name="Slot2" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-item = ExtResource("10_oprun")
 
 [node name="Slot3" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
@@ -363,27 +424,6 @@ layout_mode = 2
 
 [node name="PassiveSlot4" parent="CanvasLayer/PassiveItems" instance=ExtResource("10_3v2ag")]
 layout_mode = 2
-
-[node name="Options" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("weapons", "passive_items", "player_reference", "particles", "panel")]
-unique_name_in_owner = true
-process_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 302.0
-offset_top = -20.0
-offset_right = 342.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("9_y4r1p")
-weapons = NodePath("../Weapons")
-passive_items = NodePath("../PassiveItems")
-player_reference = NodePath("../..")
-particles = NodePath("../lvlUpVfx")
-panel = NodePath("../Panel")
 
 [node name="Chest" type="NinePatchRect" parent="CanvasLayer"]
 process_mode = 3

@@ -5,14 +5,17 @@ extends TextureButton
 	set(value):
 		item = value
 		if value.upgrades.size() > 0 and value.upgrades.size() +1 != value.level:
-			texture_normal = value.icon
-			$Title.text = item.title
-			$Lv.text = "Lvl " + str(item.level + 1)
-			$Description.text = value.upgrades[value.level - 1].description
+			#texture_normal = value.icon
+			$VBoxContainer/HBoxContainer2/TextureRect.texture = value.icon
+			$VBoxContainer/HBoxContainer/Title.text = item.title
+			$VBoxContainer/HBoxContainer/Lv.text = "Lvl " + str(item.level)
+			$VBoxContainer/HBoxContainer2/VBoxContainer/Description.text = value.upgrades[value.level - 1].description
+			$VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3/RichTextLabel.text = value.flair
 		else:
-			texture_normal = value.evolution.icon
-			$Lv.text = ""
-			$Description.text = "EVOLUTION"
+			#texture_normal = value.evolution.icon
+			$VBoxContainer/HBoxContainer2/TextureRect.texture = value.evolution.icon
+			$VBoxContainer/HBoxContainer/Lv.text = ""
+			$VBoxContainer/HBoxContainer2/VBoxContainer/Description.text = "EVOLUTION"
  
  
 func _on_gui_input(event : InputEvent):

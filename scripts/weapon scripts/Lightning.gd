@@ -2,6 +2,7 @@ extends Weapon
 class_name Lightning
  
 @export var amount = 1
+@export var paralysis:bool = false
 var projectiles = []
  
 func activate(source, _target, scene_tree):
@@ -23,12 +24,21 @@ func shoot(source : CharacterBody2D, scene_tree : SceneTree):
 		projectile.speed = 0
 		projectile.damage = damage
 		projectile.source = source
-		if texture != null:
-			projectile.find_child("Sprite2D").texture = texture	
-			projectile.find_child("Sprite2D").offset = Vector2(0.0, -141.0) #personal implementation
 		projectile.position = enemy.position
+		
+		projectile.knockback_on_source = true
+		projectile.knockback = 60
+		projectile.z_index = 1
+		if paralysis:
+			projectile.knockback = enemy.movement_speed
+		
+		if texture != null:
+			projectile.find_child("Sprite2D").texture = texture
+			#projectile.find_child("Sprite2D").offset = Vector2(0.0, -141.0) #personal implementation
+		if rescale != 0:
+			projectile.find_child("Sprite2D").scale = Vector2(rescale,rescale)
 		projectiles.append(projectile)
- 
+ 		
 		scene_tree.current_scene.add_child(projectile)
  
 	await scene_tree.create_timer(0.5).timeout

@@ -7,6 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfm1y"]
 shader = ExtResource("1_fjy7r")
+shader_parameter/Intensity = 1.0
 shader_parameter/smooth_step = 0.0
 shader_parameter/UVpanning = 0.0
 shader_parameter/NegativeFlow = 1.0
@@ -119,6 +120,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [20.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Line2D:material:shader_parameter/Intensity")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_coten"]
 resource_name = "default"
@@ -184,6 +197,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [36.0, 20.0, 20.0, 36.0, 20.0, 20.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Line2D:material:shader_parameter/Intensity")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0666667, 0.146667, 0.966667, 1.08, 1.16, 1.94),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [50.0, 1.0, 1.0, 50.0, 1.0, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_02aog"]
 _data = {
@@ -241,6 +266,7 @@ default_color = Color(1.8, 1.2, 0.22, 1)
 texture_mode = 2
 
 [node name="Line2D2" type="Line2D" parent="."]
+texture_filter = 2
 material = SubResource("ShaderMaterial_qfm1y")
 position = Vector2(-48, -30)
 points = PackedVector2Array(-184, 173, 280, 178)

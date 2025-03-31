@@ -4,15 +4,20 @@ class_name ProjectileNode
 var direction : Vector2 = Vector2.RIGHT
 var speed : float = 200
 var damage : float = 1
-var knockback : float = 90
+var knockback : float = 10
+
 var vfx: PackedScene
-var afterFx: PackedScene
+var afterFx : Array[PackedScene]
+var afterFxMAX : PackedScene
 
 var source
+var knockback_on_source: bool = false
 
  
 func _physics_process(delta):
 	position += direction * speed * delta
+	
+	
  
  
 func _on_body_entered(body):
@@ -23,7 +28,11 @@ func _on_body_entered(body):
 		else:	
 			body.call_deferred("take_damage", damage)
 		if source:
-			var knockback_direction = (body.position - source.position).normalized()
+			var knockback_direction: Vector2
+			if not knockback_on_source:
+				knockback_direction = (body.position - global_position).normalized()
+			else:
+				knockback_direction = (body.position - source.position).normalized()
 			body.knockback = knockback_direction * knockback
 		else:
 			body.knockback = direction * knockback

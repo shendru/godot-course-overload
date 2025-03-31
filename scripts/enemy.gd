@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal died
 
+var direction: Vector2
+var facing: float
 var player_reference : CharacterBody2D
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 @onready var flip_timer : Timer = $flipTimer
@@ -50,28 +52,36 @@ func _ready() -> void:
 	
 func _physics_process(delta):
  
-	if velocity.x < 0:
-		if flip_timer.is_stopped(): 
-			sprite.scale.x = -type.resize.x
-			flip_timer.start() 
-	elif velocity.x > 0:
-		if flip_timer.is_stopped():
-			sprite.scale.x = type.resize.x
-			flip_timer.start()
+	update_facing_direction()
 
 	knockback_update(delta)
 		
 func knockback_update(delta):
-	velocity = (player_reference.position - position).normalized() * movement_speed
+	direction = (player_reference.position - position).normalized()
+	facing = sign(direction.x)
+	velocity = direction * movement_speed
+	
 	knockback = knockback.move_toward(Vector2.ZERO, 1)
 	velocity += knockback
 	var collider = move_and_collide(velocity * delta)
 	if collider:
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
+	
+
+func update_facing_direction():
+	if facing < 0:
+		if flip_timer.is_stopped(): 
+			sprite.scale.x = -type.resize.x
+			flip_timer.start()
+	elif facing > 0:
+		if flip_timer.is_stopped():
+			sprite.scale.x = type.resize.x
+			flip_timer.start()
+	
 
 func damage_popup(amount, modifier = 1.0):
 	var popup = damage_popup_node.instantiate()
-	popup.text = str(amount * modifier)
+	popup.text = str(int(amount * modifier))
 	popup.position = position + Vector2(-50,-50)
 	if modifier > 1.0:
 		popup.set("theme_override_colors/font_color", Color.ORANGE_RED)

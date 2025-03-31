@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="Spawn" load_steps=13 format=3 uid="uid://cg6k27do7vu2j"]
+
+[ext_resource type="Texture2D" uid="uid://d2awyyiq8w7os" path="res://assets/items/ac.png" id="1_ikwvi"]
+[ext_resource type="PackedScene" uid="uid://3p5fn8s27a7v" path="res://scenes/projectile_static_field.tscn" id="2_tntfm"]
+[ext_resource type="Script" uid="uid://i8m1v8gej003" path="res://scripts/weapon scripts/Spawn.gd" id="3_dkmhv"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_sobit"]
+[ext_resource type="Script" uid="uid://ctklmhirwofko" path="res://scripts/weapon scripts/SpawnUpgrade.gd" id="5_q7xsp"]
+
+[sub_resource type="Resource" id="Resource_sct8a"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 0.0
+area = 0.0
+delay = 0.0
+knockback = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "Generates a rectangular area of [b]alternating current[/b], damaging enemies within. 
+[b]Alternating Current (AC)[/b] - A type of electrical current, in which the direction of the flow of electrons switches back and forth at regular intervals or cycles."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[sub_resource type="Resource" id="Resource_vjqlk"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 1.0
+area = 0.0
+delay = 0.0
+knockback = 0.0
+damage = 2.0
+cooldown = 0.0
+description = "Extends AC field duration by 1s and increases damage."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[sub_resource type="Resource" id="Resource_ewtbk"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 0.0
+area = 0.1
+delay = 0.0
+knockback = 0.0
+damage = 1.0
+cooldown = 0.0
+description = "Expands the area by 10% and increases damage."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[sub_resource type="Resource" id="Resource_6htu8"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 1.0
+area = 0.2
+delay = 0.0
+knockback = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "Extends duration by 1s and expands the area by 20%."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[sub_resource type="Resource" id="Resource_igeqt"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 0.0
+area = 0.0
+delay = 0.0
+knockback = 60.0
+damage = 0.0
+cooldown = 0.0
+description = "Applies electrical jitter on enemies inside the field. Crippling them."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[sub_resource type="Resource" id="Resource_loo2r"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 2.0
+area = 0.0
+delay = 0.0
+knockback = 10.0
+damage = 0.0
+cooldown = 0.0
+description = "Extends field duration by 2s and enhances electrical jitter."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[sub_resource type="Resource" id="Resource_kc0ah"]
+script = ExtResource("5_q7xsp")
+speed = 0.0
+lifetime = 2.0
+area = 0.1
+delay = 0.0
+knockback = 20.0
+damage = 2.0
+cooldown = 0.0
+description = "Greatly amplifies current, increasing damage, duration and area. Enemies inside the field area greatly crippled."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[resource]
+script = ExtResource("3_dkmhv")
+lifetime = 4.0
+area = 0.6
+mult_collision_shape = 0.0
+delay = 0.2
+spawn_once = true
+knockback = 0.0
+damage = 1.0
+cooldown = 1.0
+speed = 0.0
+projectile_node = ExtResource("2_tntfm")
+upgrades = Array[ExtResource("4_sobit")]([SubResource("Resource_sct8a"), SubResource("Resource_vjqlk"), SubResource("Resource_ewtbk"), SubResource("Resource_6htu8"), SubResource("Resource_igeqt"), SubResource("Resource_loo2r"), SubResource("Resource_kc0ah")])
+afterFx = Array[PackedScene]([])
+title = "High AC Field"
+icon = ExtResource("1_ikwvi")
+rescale = 0.0
+flair = "[hint=Like powering a city, but for... enemies. Stay within the safety regulations][i]\"Like powering a city, but for... enemies. Stay within the safety regulations\"[/i][/hint]"
+level = 1
+metadata/_custom_type_script = "uid://i8m1v8gej003"

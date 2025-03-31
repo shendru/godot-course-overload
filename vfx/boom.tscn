@@ -1,0 +1,171 @@
+[gd_scene load_steps=22 format=3 uid="uid://qltbihy5ev8n"]
+
+[ext_resource type="Shader" uid="uid://bpyhcoy16em87" path="res://vfx/hit_shader.tres" id="1_lm5qc"]
+[ext_resource type="Texture2D" uid="uid://dek60ij0keit" path="res://assets/textures/T_flare81.png" id="2_vlks2"]
+[ext_resource type="Texture2D" uid="uid://coo35c5mmo6c8" path="res://assets/textures/T_circle42.PNG" id="3_qryei"]
+[ext_resource type="Shader" uid="uid://ccfa2f7l17y3t" path="res://shaders/mask-offset.gdshader" id="4_qng3g"]
+[ext_resource type="Texture2D" uid="uid://b0ve6n8kcgtgw" path="res://assets/textures/T_flare12.png" id="5_a5yg0"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="6_66udj"]
+
+[sub_resource type="GDScript" id="GDScript_lm5qc"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	emitParticles()
+	
+func emitParticles():
+	$GPUParticles2D.emitting = true
+	$GPUParticles2D2.emitting = true
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eer1t"]
+shader = ExtResource("1_lm5qc")
+shader_parameter/hit_texture = ExtResource("2_vlks2")
+
+[sub_resource type="Curve" id="Curve_2kwmy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.311558, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d8lkq"]
+curve = SubResource("Curve_2kwmy")
+
+[sub_resource type="Gradient" id="Gradient_2ji7u"]
+colors = PackedColorArray(8, 0.8, 0, 1, 1, 0.5, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_htm4l"]
+gradient = SubResource("Gradient_2ji7u")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_08ag2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v6a0a"]
+curve = SubResource("Curve_08ag2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c8fg1"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 115.0
+scale_max = 200.0
+scale_curve = SubResource("CurveTexture_v6a0a")
+color_ramp = SubResource("GradientTexture1D_htm4l")
+alpha_curve = SubResource("CurveTexture_d8lkq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8hf0"]
+shader = ExtResource("1_lm5qc")
+shader_parameter/hit_texture = ExtResource("3_qryei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rqdpg"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 6.0
+color = Color(6.635, 6.63, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lli3k"]
+shader = ExtResource("4_qng3g")
+shader_parameter/mask_texture = ExtResource("5_a5yg0")
+shader_parameter/offset = 0.0
+shader_parameter/inverse = true
+
+[sub_resource type="Animation" id="Animation_qryei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D4:material:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D4:material:shader_parameter/inverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vlks2"]
+resource_name = "default"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D4:material:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D4:material:shader_parameter/inverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0721645),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qng3g"]
+_data = {
+&"RESET": SubResource("Animation_qryei"),
+&"default": SubResource("Animation_vlks2")
+}
+
+[node name="Boom" type="Node2D"]
+script = SubResource("GDScript_lm5qc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_eer1t")
+position = Vector2(-1, 0)
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_c8fg1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_u8hf0")
+emitting = false
+amount = 25
+lifetime = 0.8
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rqdpg")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lli3k")
+scale = Vector2(0.363281, 0.363281)
+texture = ExtResource("6_66udj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qng3g")
+}
+autoplay = "default"

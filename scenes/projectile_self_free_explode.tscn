@@ -5,7 +5,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83sps"]
 resource_local_to_scene = true
-radius = 50.5964
+radius = 91.08
 
 [node name="ProjectileSelfFreeExplode" instance=ExtResource("1_e31r1")]
 script = ExtResource("2_c3emx")

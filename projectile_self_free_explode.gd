@@ -5,7 +5,7 @@ extends ProjectileNode
 @onready var after_lifetime = $AfterLifetime
 @onready var emergency_exit = $EmergencyExit
 
-var mult_collision_shape: float
+var mult_collision_shape: float = 1
 var flag:bool = true
 
 var vfx_reference
@@ -13,6 +13,8 @@ var vfx_reference
 func _ready() -> void:
 	vfx_reference = vfx.instantiate()
 	vfx_reference.afterFx = afterFx
+	if afterFxMAX != null:
+		vfx_reference.afterFxMAX = afterFxMAX
 	vfx_reference.source = self
 	add_child(vfx_reference)
 	
@@ -29,7 +31,7 @@ func _on_pre_lifetime_timeout() -> void:
 
 
 func _on_after_lifetime_timeout() -> void:
-	queue_free()
+	queue_free() # this is the part where i queue free
 
 func emitVfx(xtra: bool = false):
 	vfx_reference.emitFx(xtra)

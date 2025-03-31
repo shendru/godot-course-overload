@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Spawn" load_steps=5 format=3 uid="uid://cqbq7ntju1vhk"]
+
+[ext_resource type="Texture2D" uid="uid://b1awr575ybu5s" path="res://misc/placeholder_texture_2d.tres" id="1_j8m36"]
+[ext_resource type="PackedScene" uid="uid://bao2ccbafgvd3" path="res://scenes/projectile_homing_sword.tscn" id="2_6ltq2"]
+[ext_resource type="Script" uid="uid://i8m1v8gej003" path="res://scripts/weapon scripts/Spawn.gd" id="3_2h254"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_m07uc"]
+
+[resource]
+script = ExtResource("3_2h254")
+lifetime = 5.0
+area = 1.0
+mult_collision_shape = 0.0
+delay = 0.2
+spawn_once = false
+knockback = 90.0
+damage = 1.0
+cooldown = 1.0
+speed = 500.0
+projectile_node = ExtResource("2_6ltq2")
+upgrades = Array[ExtResource("4_m07uc")]([])
+afterFx = Array[PackedScene]([])
+title = "a"
+icon = ExtResource("1_j8m36")
+texture = ExtResource("1_j8m36")
+rescale = 0.0
+flair = ""
+level = 1
+metadata/_custom_type_script = "uid://i8m1v8gej003"

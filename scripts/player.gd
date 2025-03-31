@@ -18,7 +18,7 @@ var base_exp: float = 10 #must align with %XP.max_value
 
 #Chara stats
 @export var movement_speed: float = 200
-var max_health : float = 10 :
+var max_health : float = 100 :
 	set(value):
 		max_health = value
 		%Health.max_value = value
@@ -61,7 +61,7 @@ var level: int = 1:
 
 var mouse_mode: bool = false
 
-var health: float = 10.0:
+var health: float = 100.0:
 	set(value):
 		health = max(value, 0)
 		%Health.value = value
@@ -133,7 +133,7 @@ func update_aim_rotation() -> void:
 func take_damage(amount):
 	health -= max(amount - armor, 0)
 	take_damage_shader()
-	damage_popup(amount)
+	damage_popup(int(amount))
 
 
 func damage_popup(amount, isHeal: bool = false):
@@ -190,5 +190,5 @@ func open_chest():
 func _on_heartbeat_timeout() -> void:
 	health += recovery
 	if recovery >= 1:
-		damage_popup(recovery, true)
+		damage_popup(int(recovery), true)
 	#print("recovering")

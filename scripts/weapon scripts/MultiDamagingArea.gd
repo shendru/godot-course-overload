@@ -22,8 +22,9 @@ func activate(source, _target, scene_tree):
 	else:
 		for i in range(projectile_reference.size()):
 			var offset = i * (360.0/amount)
-			projectile_reference[i].position = source.position + 100 * Vector2(cos(deg_to_rad(offset)), sin(deg_to_rad(offset)))
+			projectile_reference[i].position = source.position + 200 * Vector2(cos(deg_to_rad(offset)), sin(deg_to_rad(offset)))
 			projectile_reference[i].show()
+		
 	print("num of projectiles:"+str(projectile_reference.size()))
 	
 

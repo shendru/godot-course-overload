@@ -1,7 +1,8 @@
 extends Node2D
 
 var source
-var afterFx:PackedScene
+var afterFx: Array[PackedScene]
+var afterFxMAX : PackedScene
 
 func _ready() -> void:
 	#if source:
@@ -23,13 +24,22 @@ func emitParticle2():
 func emitParticle3():
 	$GPUParticles2D3.emitting = true
 	$GPUParticles2D4.emitting = true
-func _on_timer_timeout() -> void:
+	
+func _on_lifetime_timeout() -> void:
 	emitParticle2()
 	$GPUParticles2D.emitting = false
 	if afterFx!=null:
-		var new_afterFx = afterFx.instantiate()
-		new_afterFx.source = self
-		get_tree().current_scene.add_child(new_afterFx)
+		for i in afterFx:
+			var new_afterFx = i.instantiate()
+			if "source" in new_afterFx:
+				new_afterFx.source = self
+			add_child(new_afterFx)
+			#get_tree().current_scene.add_child(new_afterFx)
+	if afterFxMAX != null:
+		var new_afterFx = afterFxMAX.instantiate()
+		if "source" in new_afterFx:
+			new_afterFx.source = self
+		add_child(new_afterFx)
 	$Sprite2D4.queue_free()
 	
 

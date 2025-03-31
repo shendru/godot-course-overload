@@ -76,6 +76,7 @@ _data = {
 }
 
 [node name="ProjectileStaticField" instance=ExtResource("1_455ae")]
+monitorable = false
 script = ExtResource("2_ronis")
 
 [node name="CollisionShape2D" parent="." index="1"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SpawnArray" load_steps=5 format=3 uid="uid://djnylwquolmos"]
+
+[ext_resource type="PackedScene" uid="uid://bao2ccbafgvd3" path="res://scenes/projectile_homing_sword.tscn" id="1_485x3"]
+[ext_resource type="Script" uid="uid://ci8bu1s25ardi" path="res://SpawnArray.gd" id="2_tbcsy"]
+[ext_resource type="Texture2D" uid="uid://jigsodldnj48" path="res://assets/items-actual/pen2.png" id="3_485x3"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_6dbnu"]
+
+[resource]
+script = ExtResource("2_tbcsy")
+lifetime = 1.0
+area = 1.0
+mult_collision_shape = 0.0
+delay = 0.2
+spawn_once = true
+knockback = 90.0
+amount = 12
+damage = 1.0
+cooldown = 1.0
+speed = 800.0
+projectile_node = ExtResource("1_485x3")
+upgrades = Array[ExtResource("4_6dbnu")]([])
+afterFx = Array[PackedScene]([])
+title = "rotating thing2"
+texture = ExtResource("3_485x3")
+rescale = 0.09
+flair = ""
+level = 1
+metadata/_custom_type_script = "uid://ci8bu1s25ardi"

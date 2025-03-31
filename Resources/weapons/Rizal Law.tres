@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SpawnOnEnemy" load_steps=8 format=3 uid="uid://j0t3ii87dn3c"]
+
+[ext_resource type="Texture2D" uid="uid://bc33p0p7mruxw" path="res://assets/items/noli-me-tangere-and-el-filibusterismo.jpg" id="1_nmoty"]
+[ext_resource type="PackedScene" uid="uid://0m4ddy732aof" path="res://scenes/projectile_damaging_area.tscn" id="2_75y4f"]
+[ext_resource type="Script" uid="uid://cwbgilwycypmi" path="res://scripts/weapon scripts/SpawnOnEnemy.gd" id="3_e5va6"]
+[ext_resource type="Texture2D" uid="uid://dkjjhm1dlyvs1" path="res://assets/items/openbook.png" id="4_0cvt4"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_3m44n"]
+[ext_resource type="Script" uid="uid://ctklmhirwofko" path="res://scripts/weapon scripts/SpawnUpgrade.gd" id="6_75y4f"]
+
+[sub_resource type="Resource" id="Resource_e5va6"]
+script = ExtResource("6_75y4f")
+speed = 0.0
+lifetime = 0.0
+area = 0.0
+delay = 0.0
+knockback = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "Force random enemies to read Rizal's Works and take damage.
+[b]Rizal Law[/b], officially Republic Act No. 1425, mandates the inclusion of courses on José Rizal's life, works, and writings in the curricula of all public and private educational institutions in the Philippines, approved on June 12, 1956."
+metadata/_custom_type_script = "uid://ctklmhirwofko"
+
+[resource]
+script = ExtResource("3_e5va6")
+lifetime = 4.0
+area = 1.0
+mult_collision_shape = 0.0
+delay = 0.2
+spawn_once = false
+knockback = 90.0
+paralysis = true
+amount = 3
+damage = 2.0
+cooldown = 1.0
+speed = 0.0
+projectile_node = ExtResource("2_75y4f")
+upgrades = Array[ExtResource("5_3m44n")]([SubResource("Resource_e5va6")])
+afterFx = Array[PackedScene]([])
+title = "Rizal Law"
+icon = ExtResource("1_nmoty")
+texture = ExtResource("4_0cvt4")
+rescale = 0.08
+flair = "[hint=\"Nationalism will bring us victory!\"][i]\"Nationalism will bring us victory!\"[/i]"
+level = 1
+metadata/_custom_type_script = "uid://cwbgilwycypmi"

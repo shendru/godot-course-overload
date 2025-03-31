@@ -2,7 +2,7 @@ extends Item
 class_name Weapon
 
 @export var damage : float
-@export var cooldown : float
+@export var cooldown : float = 1
 @export var speed : float
  
 @export var projectile_node : PackedScene = preload("res://scenes/projectile_simple.tscn")
@@ -11,7 +11,8 @@ class_name Weapon
 @export var evolution : Weapon
 
 @export var vfx : PackedScene
-@export var afterFx : PackedScene
+@export var afterFx : Array[PackedScene]
+@export var afterFxMAX : PackedScene
 
 var slot
 

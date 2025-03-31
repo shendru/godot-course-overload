@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bao2ccbafgvd3"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_g61qm"]
+[ext_resource type="Script" uid="uid://dokwv3kx5vjps" path="res://projectile_homing_sword.gd" id="2_jhysq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bcww7"]
+resource_local_to_scene = true
+radius = 22.0227
+
+[node name="ProjectileHomingSword" instance=ExtResource("1_g61qm")]
+script = ExtResource("2_jhysq")
+radius = 100.0
+angular_speed = 1.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_bcww7")
+
+[node name="Phase1" type="Timer" parent="." index="3"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Phase1" to="." method="_on_phase_1_timeout"]

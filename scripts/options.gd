@@ -7,6 +7,7 @@ var OptionSlot = preload("res://scenes/option_slot.tscn")
 
 @export var particles : GPUParticles2D
 @export var panel : NinePatchRect
+@export var chara_panel :Control
 
 const weapon_path : String = "res://Resources/weapons/"
 const passive_item_path : String = "res://Resources/passive items/"
@@ -19,12 +20,14 @@ func _ready() -> void:
 	hide()
 	particles.hide()
 	panel.hide()
+	chara_panel.hide()
 	get_all_item()
 	
 func close_option():
 	hide()
 	particles.hide()
 	panel.hide()
+	chara_panel.hide()
 	get_tree().paused = false
 	
 func get_available_resource_in(items)-> Array[Item]:
@@ -81,7 +84,7 @@ func show_option():
 	show()
 	particles.show()
 	panel.show()
-	
+	chara_panel.show()
 	get_tree().paused = true
 
 func slot_available(items):

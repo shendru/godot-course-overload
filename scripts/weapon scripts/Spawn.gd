@@ -4,6 +4,7 @@ class_name Spawn
 @export var lifetime: float = 1
 @export var area: float = 1
 @export var mult_collision_shape: float = 0
+## Collision on and off interval delay
 @export var delay: float = 0.2
 @export var spawn_once: bool = true
 @export var knockback: float = 90
@@ -29,10 +30,12 @@ func spawn(source, _target, scene_tree):
 	projectile.source = source
 	projectile.scale = Vector2(area,area)
 	projectile.knockback = knockback
-	if mult_collision_shape != 0:
+	if mult_collision_shape > 0:
 		projectile.mult_collision_shape = mult_collision_shape
 	if texture != null:
 		projectile.find_child("Sprite2D").texture = texture
+	if rescale != 0:
+		projectile.find_child("Sprite2D").scale = Vector2(rescale,rescale)
 	
 	if vfx != null:
 		#var new_vfx = vfx.instantiate()
@@ -41,9 +44,13 @@ func spawn(source, _target, scene_tree):
 		if afterFx !=null:
 			projectile.afterFx = afterFx
 		#projectile.add_child(new_vfx)
+		if afterFxMAX != null and "afterFxMAX" in projectile and max_level_reached():
+			projectile.afterFxMAX = afterFxMAX
 	scene_tree.current_scene.add_child(projectile)
 	projectile_reference = projectile
- 
+
+
+
 func activate(source, target, scene_tree):
 	spawn(source, target, scene_tree)
 
@@ -59,4 +66,10 @@ func upgrade_item():
 	damage += upgrade.damage
 	cooldown += upgrade.cooldown
 	speed += upgrade.speed
+	
+	lifetime += upgrade.lifetime
+	area += upgrade.area
+	delay += upgrade.delay
+	knockback += upgrade.knockback
+	
 	level += 1
