@@ -26,7 +26,7 @@ func activate(source, _target, scene_tree):
 			projectile_reference[i].show()
 		
 	print("num of projectiles:"+str(projectile_reference.size()))
-	
+
 
 func add_to_world(source, tree):
 	var projectile = projectile_node.instantiate()

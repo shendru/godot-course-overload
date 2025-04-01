@@ -33,7 +33,7 @@ func spawn(source, _target, scene_tree):
 		projectile.source = source
 		projectile.scale = Vector2(area,area)
 		projectile.knockback = knockback
-					
+	
 		var offset = -i * (360.0/amount)
 		projectile.position = source.position + 100 * Vector2(cos(deg_to_rad(offset)), sin(deg_to_rad(offset)))
 		projectile.initial_angle = deg_to_rad(offset)

@@ -15,9 +15,11 @@ var is_rotating: bool = false  # Prevents movement during rotation
 
 func _physics_process(delta: float) -> void:
 	if source and phase0Flag:
-		#angle -= angular_speed * delta
+		angle -= angular_speed * delta
 		var orbit_angle = initial_angle + angle  # Maintain offset from spawn angle
 		global_position = source.global_position + Vector2(cos(orbit_angle), sin(orbit_angle)) * radius
+		#rotation = orbit_angle  # Adjust rotation to face outward
+		rotation = PI / 2
 	elif not phase0Flag and not is_rotating:
 		# Move towards the target after rotation is complete
 		global_position += target_direction * speed * delta
