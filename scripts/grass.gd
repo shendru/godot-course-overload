@@ -1,5 +1,23 @@
 extends Area2D
 
+signal on_grass_free
+
+var player_reference: CharacterBody2D
+
+@export var despawn_distance: float = 850
+var health: float:
+	set(value):
+		health = value
+@export var type : Grass:
+	set(value):	
+		type = value
+		$Sprite2D.texture = value.sprite
+		$Sprite2D.scale = value.resize
+		$Sprite2D.offset = value.sprite_offset
+		#$CollisionShape2D.shape.radius = value.collision_radius
+		#$CollisionShape2D.position = value.collision_position
+		health = value.health
+
 @export var min_skew: float = -5000.0
 @export var max_skew: float = 5000.0
 @onready var sprite = $Sprite2D
@@ -9,6 +27,14 @@ func _ready() -> void:
 	mat = sprite.material as ShaderMaterial
 	if mat:
 		mat.set_shader_parameter("offset", randf_range(0.0, 10.0))
+		mat.set_shader_parameter("heightOffset", type.shader_height_offset)
+
+func _process(_delta: float) -> void:
+	if player_reference:
+		var distance = global_position.distance_to(player_reference.global_position)
+		if distance > despawn_distance:
+			queue_free()
+			emit_signal("on_grass_free")
 
 func apply_sway(effect_source: Node2D) -> void:
 	var direction = global_position.direction_to(effect_source.global_position)

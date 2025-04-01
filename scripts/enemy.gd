@@ -4,7 +4,7 @@ signal died
 
 var direction: Vector2
 var facing: float
-var player_reference : CharacterBody2D
+@export var player_reference : CharacterBody2D
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 @onready var flip_timer : Timer = $flipTimer
 
@@ -32,7 +32,7 @@ var elite : bool = false:
 		if value:
 			scale = Vector2(1.5,1.5)
 
-var type : Enemy:
+@export var type : Enemy:
 	set(value):	
 		type = value
 		$AnimatedSprite2D.sprite_frames = value.sprite

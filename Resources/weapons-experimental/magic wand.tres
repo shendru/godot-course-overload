@@ -43,13 +43,14 @@ metadata/_custom_type_script = "uid://boxo1ndwtcu52"
 
 [resource]
 script = ExtResource("2_tc8l4")
-damage = 1.0
-cooldown = 5.0
+damage = 5.0
+cooldown = 1.0
 speed = 600.0
 projectile_node = ExtResource("4_apdim")
 upgrades = Array[ExtResource("4_w3cwr")]([SubResource("Resource_r3yqg"), SubResource("Resource_r3yqg"), SubResource("Resource_4cvo8"), SubResource("Resource_ajvlc"), SubResource("Resource_g6lrv")])
 item_needed = ExtResource("3_r3yqg")
 evolution = ExtResource("1_apdim")
+afterFx = Array[PackedScene]([])
 title = "Magic wand"
 icon = ExtResource("3_tc8l4")
 texture = ExtResource("6_r3yqg")

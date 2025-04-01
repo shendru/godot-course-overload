@@ -67,7 +67,10 @@ var health: float = 100.0:
 		%Health.value = value
 		if health <= 0:
 			print("you dieded")
-			health_depleted.emit() #does not do aynthing
+			health_depleted.emit()
+			get_tree().paused = true
+			%GameOver.show()
+			
 	
 signal health_depleted
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=40 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Texture2D" uid="uid://deex8i1ac20ia" path="res://assets/testchar.png" id="2_h012a"]
+[ext_resource type="Shader" uid="uid://brlw48jqf4gxr" path="res://shaders/godrays.gdshader" id="2_oprun"]
 [ext_resource type="Shader" uid="uid://dc0c4l4sbvg13" path="res://shaders/outline.gdshader" id="3_4ni07"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
 [ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="4_jej6c"]
@@ -10,9 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
-[ext_resource type="Resource" uid="uid://dvjlul8frdcpc" path="res://Resources/weapons-experimental/pen3.tres" id="10_jej6c"]
+[ext_resource type="Resource" uid="uid://d11xaqbudrdj3" path="res://Resources/weapons-experimental/magic wand.tres" id="10_jej6c"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
+[ext_resource type="Script" uid="uid://bj74q520hggc2" path="res://scripts/game_over.gd" id="14_f1ej7"]
+[ext_resource type="PackedScene" uid="uid://ckg8wmq00dg67" path="res://scenes/Rays_color_rect.tscn" id="15_a8ls1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ni07"]
 shader = ExtResource("3_4ni07")
@@ -43,6 +46,23 @@ height = 72.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sa5an"]
 radius = 17.0
 height = 70.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfm1y"]
+resource_local_to_scene = true
+shader = ExtResource("2_oprun")
+shader_parameter/angle = 0.09
+shader_parameter/position = -0.05
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.315
+shader_parameter/falloff = 1.0
+shader_parameter/edge_fade = 0.39
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ej7"]
 particle_flag_align_y = true
@@ -80,6 +100,43 @@ animations = [{
 "name": &"open",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_f1ej7"]
+resource_name = "gameOverFade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.011, 0.011, 0.011, 0.867), Color(0.011, 0.011, 0.011, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oprun"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.011, 0.011, 0.011, 0.867)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8ls1"]
+_data = {
+&"RESET": SubResource("Animation_oprun"),
+&"gameOverFade": SubResource("Animation_f1ej7")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
 radius = 150.0
@@ -195,6 +252,26 @@ default_color = Color(4.57242e-07, 0.262341, 0.202909, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 2
+
+[node name="RayRect" parent="CanvasLayer" instance=ExtResource("15_a8ls1")]
+material = SubResource("ShaderMaterial_qfm1y")
+offset_left = -197.0
+offset_right = 1169.0
+mouse_filter = 2
+
+[node name="RayRect3" parent="CanvasLayer" instance=ExtResource("15_a8ls1")]
+material = SubResource("ShaderMaterial_qfm1y")
+offset_left = 158.0
+offset_right = 2038.0
+offset_bottom = 973.0
+mouse_filter = 2
+
+[node name="RayRect2" parent="CanvasLayer" instance=ExtResource("15_a8ls1")]
+material = SubResource("ShaderMaterial_qfm1y")
+offset_left = 539.0
+offset_right = 2390.0
+offset_bottom = 480.0
+mouse_filter = 2
 
 [node name="Panel" type="NinePatchRect" parent="CanvasLayer"]
 process_mode = 3
@@ -561,6 +638,114 @@ grow_horizontal = 2
 expand_mode = 1
 stretch_mode = 4
 
+[node name="GameOver" type="NinePatchRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0.011, 0.011, 0.011, 0.867)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_d2wvv")
+script = ExtResource("14_f1ej7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.0
+offset_top = -205.0
+offset_right = 354.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "[b]YOU FAILED[/b]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Retry" type="TextureButton" parent="CanvasLayer/GameOver"]
+self_modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.443631
+anchor_top = 0.542969
+anchor_right = 0.557101
+anchor_bottom = 0.634115
+grow_horizontal = 2
+grow_vertical = 2
+texture_hover = ExtResource("5_d2wvv")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/GameOver/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -32.0
+offset_right = 59.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = "Retry"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer/GameOver"]
+self_modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.449488
+anchor_top = 0.69401
+anchor_right = 0.551244
+anchor_bottom = 0.785156
+grow_horizontal = 2
+grow_vertical = 2
+texture_hover = ExtResource("5_d2wvv")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/GameOver/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -32.0
+offset_right = 59.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = "Quit"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver"]
+libraries = {
+&"": SubResource("AnimationLibrary_a8ls1")
+}
+
 [node name="items" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -590,9 +775,12 @@ trail_enabled = true
 trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_qfm1y")
 
+[connection signal="health_depleted" from="." to="CanvasLayer/GameOver" method="_on_player_health_depleted"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Chest/Open" to="CanvasLayer/Chest" method="_on_open_pressed"]
 [connection signal="pressed" from="CanvasLayer/Chest/Close" to="CanvasLayer/Chest" method="_on_close_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/Retry" to="CanvasLayer/GameOver" method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/Quit" to="CanvasLayer/GameOver" method="_on_quit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
 [connection signal="timeout" from="Heartbeat" to="." method="_on_heartbeat_timeout"]

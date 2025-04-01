@@ -1,14 +1,27 @@
 extends ProjectileNode
 
-var projectile_node: PackedScene = preload("res://scenes/projectile_simple.tscn")
+#var projectile_node: PackedScene = preload("res://scenes/projectile_simple.tscn")
+var projectile_node: PackedScene = preload("res://scenes/projectile_chain.tscn")
 var splash_cone_angle: float = 360
-var splashable = true
+var splashable = false
 
 func _on_body_entered(body):
 	super(body)
+	spawnChain(body)
 	if splashable:
 		spawnSplash(body, 9)
 	queue_free()
+
+func spawnChain(body):
+	var new_projectile = projectile_node.instantiate()
+	new_projectile.chain_limit = 5
+	new_projectile.damage = damage
+	new_projectile.position = global_position
+	new_projectile.source = source
+	new_projectile.speed = 0
+	new_projectile.damage = damage
+	get_tree().current_scene.call_deferred("add_child", new_projectile)
+	new_projectile.call_deferred("chain_to_target", body)
 	
 func spawnSplash(body, num_splash_projectiles):
 	for i in range(num_splash_projectiles):

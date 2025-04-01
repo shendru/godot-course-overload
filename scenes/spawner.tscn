@@ -40,12 +40,28 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -176.0
-offset_top = -40.0
+offset_top = -61.0
 offset_right = -58.0
-offset_bottom = -17.0
+offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Enemies count:"
+horizontal_alignment = 2
+
+[node name="GrassCounter" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -41.0
+offset_right = -78.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Grass count:"
 horizontal_alignment = 2
 
 [node name="Timer" type="Timer" parent="."]

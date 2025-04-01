@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cddtk13buckpg"]
+
+[ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_wg3s4"]
+[ext_resource type="Script" uid="uid://duf67jo6p2mvx" path="res://projectile_chain.gd" id="2_v007b"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="3_13vkc"]
+[ext_resource type="Script" uid="uid://bhjcrhfecq6d" path="res://scenes/line_2d.gd" id="4_13vkc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13vkc"]
+resource_local_to_scene = true
+radius = 22.0227
+
+[sub_resource type="Curve" id="Curve_13vkc"]
+_data = [Vector2(0, 0.485675), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ProjectileChain" instance=ExtResource("1_wg3s4")]
+z_index = 1
+script = ExtResource("2_v007b")
+chain_limit = 3
+chain_radius = 200.0
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.0585938, 0.0585938)
+texture = ExtResource("3_13vkc")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_13vkc")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="2"]
+enable_node_path = NodePath("")
+
+[node name="TrailLine" type="Line2D" parent="." index="3"]
+width_curve = SubResource("Curve_13vkc")
+texture_mode = 2
+script = ExtResource("4_13vkc")
+
+[node name="Timer" type="Timer" parent="." index="4"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="." index="5"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="TrailLine" method="_on_timer_2_timeout"]

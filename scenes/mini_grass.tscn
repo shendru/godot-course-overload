@@ -1,4 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bi6hsfwnqyq38"]
+[gd_scene load_steps=5 format=3 uid="uid://bp7xg7s28ja71"]
+
+[ext_resource type="Texture2D" uid="uid://do7al2relksiy" path="res://assets/grass/lianGrass1.png" id="1_fa3xt"]
+[ext_resource type="Script" uid="uid://ctv5rkh6tf4qo" path="res://scenes/mini_grass.gd" id="2_sskvm"]
 
 [sub_resource type="Shader" id="Shader_hmhnd"]
 code = "// speed - The speed of the wind movement.
@@ -45,16 +48,23 @@ void vertex() {
 	}
 }"
 
-[resource]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e5bs3"]
 resource_local_to_scene = true
 shader = SubResource("Shader_hmhnd")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.578
 shader_parameter/maxStrength = 1.0
-shader_parameter/strengthScale = 260.0
+shader_parameter/strengthScale = 200.0
 shader_parameter/interval = 3.5
-shader_parameter/detail = 2.0
+shader_parameter/detail = 1.0
 shader_parameter/distortion = 0.0
-shader_parameter/heightOffset = 0.0
+shader_parameter/heightOffset = 0.783
 shader_parameter/offset = 0.0
 shader_parameter/skew = 0.0
+
+[node name="MiniGrass" type="Sprite2D"]
+y_sort_enabled = true
+texture_filter = 2
+material = SubResource("ShaderMaterial_e5bs3")
+texture = ExtResource("1_fa3xt")
+script = ExtResource("2_sskvm")
