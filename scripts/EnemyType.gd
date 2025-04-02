@@ -8,6 +8,14 @@ class_name Enemy
 @export var movement_speed : float
 @export var resize : Vector2
 @export var sprite_offset : Vector2
-@export var collision_radius : float
-@export var collision_position : Vector2
+@export var collision_radius : float = 9
+@export var collision_position : Vector2 = Vector2(0, -9)
+
+@export var shadow_position: Vector2
+@export var shadow_size: Vector2
+
+@export_category("Color")
+@export_range(0,1) var hue_shift: float
+@export_range(0,2) var saturation_boost: float = 1
+
 @export var drops : Array[Pickups]

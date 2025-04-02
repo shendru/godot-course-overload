@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://clff68xjnxr3e"]
+
+[ext_resource type="Script" uid="uid://c0b48kjhv1fwv" path="res://scripts/passiveItem.gd" id="1_8clma"]
+[ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="2_qf3qp"]
+
+[resource]
+script = ExtResource("1_8clma")
+upgrades = Array[ExtResource("2_qf3qp")]([])
+title = "Python Installed"
+rescale = 0.0
+flair = ""
+level = 1
+metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

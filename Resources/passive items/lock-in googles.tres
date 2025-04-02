@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PassiveItem" load_steps=8 format=3 uid="uid://b8t2i7ta87r0p"]
 
-[ext_resource type="Texture2D" uid="uid://br3w01p1nbn6h" path="res://assets/items/guy mewing.webp" id="1_own6y"]
+[ext_resource type="Texture2D" uid="uid://bm5kop02w3bff" path="res://assets/items-actual/COAssetConceptGoggles.png" id="1_own6y"]
 [ext_resource type="Script" uid="uid://c0b48kjhv1fwv" path="res://scripts/passiveItem.gd" id="2_ubx8c"]
 [ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="3_v5fd8"]
 
@@ -70,6 +70,6 @@ upgrades = Array[ExtResource("3_v5fd8")]([SubResource("Resource_fq4xg"), SubReso
 title = "Lock-in googles"
 icon = ExtResource("1_own6y")
 rescale = 0.0
-flair = ""
+flair = "[hint=\"Lock in.\"][i]\"Lock in.\"[/i]"
 level = 1
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

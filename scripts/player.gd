@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+
+signal health_depleted
+
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 @onready var offset : Marker2D = %offset
 @onready var eyeOffset : Marker2D = %eyeOffset
@@ -13,7 +16,7 @@ var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 var deceleration : float = 800.0
 var direction: Vector2 = Vector2.RIGHT
 
-var growth_factor: float = 1.5
+var growth_factor: float = 1.1
 var base_exp: float = 10 #must align with %XP.max_value
 
 #Chara stats
@@ -71,8 +74,11 @@ var health: float = 100.0:
 			get_tree().paused = true
 			%GameOver.show()
 			
+var scale_reference: Vector2
 	
-signal health_depleted
+func _ready() -> void:
+	scale_reference = $AnimatedSprite2D.scale
+	sprite.material.set_shader_parameter("flash_amount", 0)
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -88,14 +94,14 @@ func _physics_process(delta):
 		var sprite_position = sprite.global_position
 
 		if mouse_position.x < sprite_position.x:
-			sprite.flip_h = true
+			sprite.scale.x = -scale_reference.x
 		elif mouse_position.x > sprite_position.x:
-			sprite.flip_h = false
+			sprite.scale.x = scale_reference.x
 	else:
 		if velocity.x < 0:
-			sprite.flip_h = true
+			sprite.scale.x = -scale_reference.x
 		elif velocity.x > 0:
-			sprite.flip_h = false
+			sprite.scale.x = scale_reference.x
 	update_animation()
 	check_XP()
 	
@@ -154,11 +160,25 @@ func damage_popup(amount, isHeal: bool = false):
 func take_damage_shader():
 	if shader_material == null:
 		return # Ensure material exists
+	shader_material.set_shader_parameter("flash_color", Color("red"))
 
 	var tween = create_tween() # Use create_tween() on the node
+	
 	tween.tween_property(shader_material, "shader_parameter/flash_amount", 0.5, 0.04)
 	tween.tween_property(shader_material, "shader_parameter/flash_amount", 1.0, 0.04)
 	tween.tween_property(shader_material, "shader_parameter/flash_amount", 0.0, 0.04)
+
+func take_healing_shader():
+	if shader_material == null:
+		return # Ensure material exists
+	shader_material.set_shader_parameter("flash_color", Color("green"))		
+	
+	var tween = create_tween() # Use create_tween() on the node
+	
+	tween.tween_property(shader_material, "shader_parameter/flash_amount", 0.5, 0.08)
+	tween.tween_property(shader_material, "shader_parameter/flash_amount", 1.0, 0.08)
+	tween.tween_property(shader_material, "shader_parameter/flash_amount", 0.0, 0.08)
+
 
 	
 func _on_hurt_box_body_entered(body: Node2D) -> void:
@@ -192,6 +212,10 @@ func open_chest():
 
 func _on_heartbeat_timeout() -> void:
 	health += recovery
-	if recovery >= 1:
-		damage_popup(int(recovery), true)
+		
 	#print("recovering")
+
+func add_health(amount):
+	health+= amount
+	take_healing_shader()
+	damage_popup(int(amount), true)

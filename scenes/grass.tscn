@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://lmrju63t7vib"]
+[gd_scene load_steps=6 format=3 uid="uid://lmrju63t7vib"]
 
 [ext_resource type="Script" uid="uid://s0oqoa1gejnk" path="res://scripts/grass.gd" id="1_3kunl"]
-[ext_resource type="Texture2D" uid="uid://dwl8dt1b5qhx4" path="res://assets/grass/tall grass1.png" id="2_3kunl"]
 [ext_resource type="Material" uid="uid://bi6hsfwnqyq38" path="res://misc/grassSway material.tres" id="2_u68v2"]
+[ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="3_u68v2"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="4_u68v2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u68v2"]
 radius = 13.0384
@@ -17,8 +18,14 @@ script = ExtResource("1_3kunl")
 y_sort_enabled = true
 material = ExtResource("2_u68v2")
 scale = Vector2(0.058, 0.058)
-texture = ExtResource("2_3kunl")
-offset = Vector2(0, -403.335)
+texture = ExtResource("3_u68v2")
+offset = Vector2(0, -100)
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(0.0509804, 0.0509804, 0.0509804, 0.866667)
+z_index = -2
+scale = Vector2(0.269397, 0.0673491)
+texture = ExtResource("4_u68v2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)

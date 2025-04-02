@@ -22,7 +22,7 @@ func _ready() -> void:
 	get_viewport().connect("size_changed", Callable(self, "_on_viewport_resized"))
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
 	# You might want to update the position every frame if the source moves
 

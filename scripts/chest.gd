@@ -27,10 +27,10 @@ func set_reward():
 		upgrade_item(2,3)
 		print("rare")
 	elif chance < get_weighted_chance(weight, 1):
-		upgrade_item(1,4)
+		upgrade_item(2,3)
 		print("epic")
 	else:
-		upgrade_item(0,5)
+		upgrade_item(2,3)
 		print("legendary")
  
 func get_weighted_chance(weight, index):

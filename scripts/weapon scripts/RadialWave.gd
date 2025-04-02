@@ -72,6 +72,7 @@ func upgrade_item():
 	damage += upgrade.damage
 	cooldown += upgrade.cooldown
 	lifetime += upgrade.lifetime
+	knockback += upgrade.knockback
 	#scaling_speed += upgrade.scaling_speed
 	level += 1
 

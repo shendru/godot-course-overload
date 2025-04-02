@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://t2ayvhpto2kr"]
+
+[ext_resource type="Script" uid="uid://cfibjlad87sf6" path="res://scripts/hazard_area_2d.gd" id="1_h4pmq"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="2_44wg6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xa57y"]
+radius = 100.0
+
+[sub_resource type="Animation" id="Animation_h4pmq"]
+resource_name = "default"
+length = 1.52
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.39, 0.39)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"animationComplete"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_44wg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uhsxo"]
+_data = {
+&"RESET": SubResource("Animation_44wg6"),
+&"default": SubResource("Animation_h4pmq")
+}
+
+[sub_resource type="Curve" id="Curve_ncv1t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4laun"]
+curve = SubResource("Curve_ncv1t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_notqk"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 282.06
+initial_velocity_max = 282.06
+gravity = Vector3(0, 0, 0)
+scale_min = 20.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_4laun")
+
+[node name="HazardArea2D" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_h4pmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.99, 0.2376, 0.198, 0.623529)
+z_index = -2
+scale = Vector2(0.378906, 0.378906)
+texture = ExtResource("2_44wg6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0.68, 0.0612, 0.0612, 0.788235)
+z_index = -2
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_44wg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xa57y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uhsxo")
+}
+autoplay = "default"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_notqk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

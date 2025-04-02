@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="SingleShot" load_steps=12 format=3 uid="uid://d11xaqbudrdj3"]
+
+[ext_resource type="Texture2D" uid="uid://b1mnw6ojk43re" path="res://assets/items/Hamiltonian_path.svg.png" id="1_u7ka3"]
+[ext_resource type="PackedScene" uid="uid://dexs7htlnmpio" path="res://scenes/projectile_q_free_on_hit.tscn" id="2_gmifs"]
+[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="3_lis5t"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="4_3yoyr"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_7qnis"]
+[ext_resource type="Script" uid="uid://d3g6ijjc4djpk" path="res://ChainUpgrade.gd" id="6_xglji"]
+[ext_resource type="PackedScene" uid="uid://pkba0i6aybnd" path="res://vfx/trail_line.tscn" id="7_4rmj5"]
+
+[sub_resource type="Resource" id="Resource_lxqtx"]
+script = ExtResource("6_xglji")
+speed = 0.0
+chain_limit = 0
+chain_radius = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "Shoots a projectile then creates a branching path in its radius that damages enemies along its route.
+In graph theory, a [b]Hamiltonian path[/b] is a path that visits every vertex (node) in a graph exactly once. It's an \"open\" path, meaning it doesn't have to return to the starting vertex. 
+"
+metadata/_custom_type_script = "uid://d3g6ijjc4djpk"
+
+[sub_resource type="Resource" id="Resource_2orhj"]
+script = ExtResource("6_xglji")
+speed = 0.0
+chain_limit = 2
+chain_radius = 0.0
+damage = 1.0
+cooldown = 0.0
+description = "Increases number of connections by 2.
+Slightly increases damage."
+metadata/_custom_type_script = "uid://d3g6ijjc4djpk"
+
+[sub_resource type="Resource" id="Resource_38je1"]
+script = ExtResource("6_xglji")
+speed = 0.0
+chain_limit = 0
+chain_radius = 200.0
+damage = 0.0
+cooldown = -0.5
+description = "Enhance attack frequency by 50%.
+Significantly increase chain radius."
+metadata/_custom_type_script = "uid://d3g6ijjc4djpk"
+
+[sub_resource type="Resource" id="Resource_u7ka3"]
+script = ExtResource("6_xglji")
+speed = 0.0
+chain_limit = 5
+chain_radius = 100.0
+damage = 0.0
+cooldown = 0.0
+description = "+5 more connections.
+Significantly increase chain radius."
+metadata/_custom_type_script = "uid://d3g6ijjc4djpk"
+
+[resource]
+script = ExtResource("3_lis5t")
+splashable = false
+chainable = true
+chain_limit = 3
+chain_radius = 200.0
+damage = 5.0
+cooldown = 1.4
+speed = 600.0
+projectile_node = ExtResource("2_gmifs")
+upgrades = Array[ExtResource("5_7qnis")]([SubResource("Resource_lxqtx"), SubResource("Resource_2orhj"), SubResource("Resource_38je1"), SubResource("Resource_u7ka3")])
+vfx = ExtResource("7_4rmj5")
+afterFx = Array[PackedScene]([])
+title = "Hamiltonian path"
+icon = ExtResource("1_u7ka3")
+texture = ExtResource("4_3yoyr")
+rescale = 0.04
+flair = "[hint= \"A man cannot step into the same enemy twice\"][i]\"A man cannot step into the same enemy twice\"[/i]"
+level = 1
+metadata/_custom_type_script = "uid://dltx2s48k2y6d"

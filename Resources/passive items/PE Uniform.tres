@@ -6,7 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_j5on8"]
 script = ExtResource("3_ygql0")
-description = ""
+description = "PE Uniform.
++15 movement Speed."
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
@@ -19,13 +20,13 @@ luck = 0.0
 haste = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
-[sub_resource type="Resource" id="Resource_gqrr4"]
+[sub_resource type="Resource" id="Resource_xt5lx"]
 script = ExtResource("3_ygql0")
-description = "+100 movement speed"
+description = "+10 movement speed"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
-movement_speed = 100.0
+movement_speed = 10.0
 might = 0.0
 area = 0.0
 magnet = 0.0
@@ -36,11 +37,11 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_adaf2"]
 script = ExtResource("3_ygql0")
-description = "+100 movement speed"
+description = "+10 movement speed"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
-movement_speed = 100.0
+movement_speed = 10.0
 might = 0.0
 area = 0.0
 magnet = 0.0
@@ -51,10 +52,10 @@ metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [resource]
 script = ExtResource("2_p0nc2")
-upgrades = Array[ExtResource("3_ygql0")]([SubResource("Resource_j5on8"), SubResource("Resource_gqrr4"), SubResource("Resource_adaf2")])
+upgrades = Array[ExtResource("3_ygql0")]([SubResource("Resource_j5on8"), SubResource("Resource_xt5lx"), SubResource("Resource_adaf2")])
 title = "PE Uniform"
 icon = ExtResource("1_xt5lx")
 rescale = 0.0
-flair = ""
+flair = "[hint=\"Exercise\"][i]Exercise[/i]"
 level = 1
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

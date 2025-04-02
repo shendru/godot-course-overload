@@ -26,11 +26,6 @@ var health: float:
 			is_dead = true # Set the flag
 			drop_item()
 			die()
-var elite : bool = false:
-	set(value):
-		elite = value
-		if value:
-			scale = Vector2(1.5,1.5)
 
 @export var type : Enemy:
 	set(value):	
@@ -40,14 +35,27 @@ var elite : bool = false:
 		$AnimatedSprite2D.offset = value.sprite_offset
 		$CollisionShape2D.shape.radius = value.collision_radius
 		$CollisionShape2D.position = value.collision_position
+		$AnimatedSprite2D/Shadow.position = value.shadow_position
+		$AnimatedSprite2D/Shadow.scale = value.shadow_size
 		movement_speed = value.movement_speed
 		damage = value.damage
 		health = value.health
 
-
+var elite : bool = false:
+	set(value):
+		elite = value
+		if value:
+			scale = Vector2(1.5,1.5)
+			health += 30
+			movement_speed += 50
+			set_collision_mask_value(2,false)
 
 func _ready() -> void:
 	shader_material = sprite.material as ShaderMaterial
+	shader_material.set_shader_parameter("hue_shift", type.hue_shift)
+	shader_material.set_shader_parameter("saturation_boost", type.saturation_boost)
+	if elite:
+		shader_material.set_shader_parameter("enable_rainbow_outline", true)
 	
 	
 func _physics_process(delta):
@@ -63,6 +71,7 @@ func knockback_update(delta):
 	
 	knockback = knockback.move_toward(Vector2.ZERO, 1)
 	velocity += knockback
+	#move_and_collide(velocity * delta)
 	var collider = move_and_collide(velocity * delta)
 	if collider:
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
@@ -109,6 +118,23 @@ func drop_item():
 	item_to_drop.position = position
 	item_to_drop.player_reference = player_reference
 	get_tree().current_scene.call_deferred("add_child", item_to_drop)
+	
+	var additional_drop_chance = 0.1
+	var additional_item = load("res://Resources/pickups/Pater.tres")
+	if randf() < 0.003:
+		additional_item = load("res://Resources/pickups/Vacuum.tres")
+		var additional_item_to_drop = drop.instantiate()
+		additional_item_to_drop.type = additional_item
+		additional_item_to_drop.position = position + Vector2(10,0)
+		additional_item_to_drop.player_reference = player_reference
+		get_tree().current_scene.call_deferred("add_child", additional_item_to_drop)
+	elif randf() < additional_drop_chance:
+		var additional_item_to_drop = drop.instantiate()
+		additional_item_to_drop.type = additional_item
+		additional_item_to_drop.position = position + Vector2(10,0)
+		additional_item_to_drop.player_reference = player_reference
+		get_tree().current_scene.call_deferred("add_child", additional_item_to_drop)
+
 
 func die():
 	died.emit()

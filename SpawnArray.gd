@@ -89,5 +89,6 @@ func upgrade_item():
 	area += upgrade.area
 	delay += upgrade.delay
 	knockback += upgrade.knockback
+	amount += upgrade.amount
 	
 	level += 1

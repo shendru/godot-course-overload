@@ -1,5 +1,8 @@
 extends ProjectileNode
 
+var max_distance: float = 2000.0
+var source_position: Vector2
+
 @export var radius: float = 100.0
 @export var angular_speed: float = 1.0
 
@@ -13,6 +16,12 @@ var is_rotating: bool = false  # Prevents movement during rotation
 
 
 
+
+func _ready() -> void:
+	super()
+	source_position = position
+	knockback_on_source = true
+
 func _physics_process(delta: float) -> void:
 	if source and phase0Flag:
 		angle -= angular_speed * delta
@@ -24,7 +33,14 @@ func _physics_process(delta: float) -> void:
 		# Move towards the target after rotation is complete
 		global_position += target_direction * speed * delta
 
-
+func _process(_delta):
+	if global_position.distance_to(source_position) > max_distance:
+		print("a projectile was freed")
+		queue_free()
+		
+func _on_screen_exited():
+	pass
+	
 func _on_phase_1_timeout() -> void:
 	
 	

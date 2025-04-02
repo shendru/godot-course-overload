@@ -3,15 +3,39 @@
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_wg3s4"]
 [ext_resource type="Script" uid="uid://duf67jo6p2mvx" path="res://projectile_chain.gd" id="2_v007b"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="3_13vkc"]
-[ext_resource type="Script" uid="uid://bhjcrhfecq6d" path="res://scenes/line_2d.gd" id="4_13vkc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_13vkc"]
 resource_local_to_scene = true
 radius = 22.0227
 
-[sub_resource type="Curve" id="Curve_13vkc"]
-_data = [Vector2(0, 0.485675), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_v007b"]
+_data = [Vector2(0, 0.520583), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_v007b"]
+script/source = "extends Line2D
+
+@export var length = 1
+var point = Vector2()
+var flag: bool = false
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	global_position = Vector2(0,0)
+	global_rotation = 0
+	add_point(get_parent().global_position)
+	#global_position = Vector2(0,0)
+	#global_rotation = 0
+	#point = get_parent().global_position
+	#add_point(point)
+	if points.size()>length and flag:
+		remove_point(0)
+
+
+func _on_timer_2_timeout() -> void:
+	flag = true
+	$\"../Sprite2D\".texture = null
+"
 
 [node name="ProjectileChain" instance=ExtResource("1_wg3s4")]
 z_index = 1
@@ -20,7 +44,7 @@ chain_limit = 3
 chain_radius = 200.0
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.0585938, 0.0585938)
+scale = Vector2(0.0429687, 0.0429687)
 texture = ExtResource("3_13vkc")
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -30,9 +54,9 @@ shape = SubResource("CircleShape2D_13vkc")
 enable_node_path = NodePath("")
 
 [node name="TrailLine" type="Line2D" parent="." index="3"]
-width_curve = SubResource("Curve_13vkc")
+width_curve = SubResource("Curve_v007b")
 texture_mode = 2
-script = ExtResource("4_13vkc")
+script = SubResource("GDScript_v007b")
 
 [node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 5.0

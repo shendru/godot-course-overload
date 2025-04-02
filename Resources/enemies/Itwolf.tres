@@ -1,16 +1,82 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://bim25nhb73vg1"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=17 format=3 uid="uid://bim25nhb73vg1"]
 
-[ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="1_1kg2j"]
-[ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="1_l4imq"]
-[ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="2_adlwo"]
-[ext_resource type="Resource" uid="uid://b4kh22en4lkwx" path="res://Resources/pickups/Gem.tres" id="2_apq4g"]
+[ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="1_2yae0"]
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="2_gkgpd"]
+[ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="2_rvhhe"]
+[ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/gem.gd" id="3_qm4qq"]
+[ext_resource type="Texture2D" uid="uid://cr0bauvotmf3i" path="res://assets/charas/ver4/frame0000.png" id="5_4eg48"]
+[ext_resource type="Texture2D" uid="uid://iiof6xpwxkwv" path="res://assets/charas/ver4/frame0001.png" id="6_deuwf"]
+[ext_resource type="Texture2D" uid="uid://byou84rie6dfw" path="res://assets/charas/ver4/frame0002.png" id="7_tsuvb"]
+[ext_resource type="Texture2D" uid="uid://dsbio8c4eqwbs" path="res://assets/charas/ver4/frame0003.png" id="8_wm8ig"]
+[ext_resource type="Texture2D" uid="uid://cico7fekcpjbx" path="res://assets/charas/ver4/frame0004.png" id="9_bvijd"]
+[ext_resource type="Texture2D" uid="uid://cpg7rq317j406" path="res://assets/charas/ver4/frame0005.png" id="10_7iglj"]
+[ext_resource type="Texture2D" uid="uid://c00k8dnk3881t" path="res://assets/charas/ver4/frame0006.png" id="11_xlswh"]
+[ext_resource type="Texture2D" uid="uid://dcn3xi78cg6yj" path="res://assets/charas/ver4/frame0007.png" id="12_10m31"]
+[ext_resource type="Texture2D" uid="uid://bi8psje6em0sh" path="res://assets/charas/ver4/frame0008.png" id="13_krqth"]
+[ext_resource type="Texture2D" uid="uid://cas5g5wt7wl0c" path="res://assets/charas/ver4/frame0009.png" id="14_lc2fl"]
+
+[sub_resource type="Resource" id="Resource_wc2bn"]
+script = ExtResource("3_qm4qq")
+XP = 10.0
+title = "Greater Gem"
+icon = ExtResource("2_gkgpd")
+scale = Vector2(0.04, 0.04)
+modulate = Color(0.756928, 0, 0.343568, 1)
+description = "This gem gives more exp."
+metadata/_custom_type_script = "uid://ce48g8idjyswm"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbwv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4eg48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_deuwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tsuvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wm8ig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bvijd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7iglj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xlswh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_10m31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_krqth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lc2fl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
 
 [resource]
-script = ExtResource("1_1kg2j")
-title = "ItWolf"
-sprite = ExtResource("2_adlwo")
-health = 5.0
-damage = 2.0
-resize = Vector2(0.057, 0.057)
-drops = Array[ExtResource("1_l4imq")]([ExtResource("2_apq4g")])
+script = ExtResource("2_rvhhe")
+title = "IT wolf alter"
+sprite = SubResource("SpriteFrames_qbwv7")
+health = 100.0
+damage = 8.0
+movement_speed = 230.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -591.41)
+collision_radius = 9.0
+collision_position = Vector2(0, -25)
+shadow_position = Vector2(-67.7966, 25.4237)
+shadow_size = Vector2(1.65519, 0.297934)
+hue_shift = 0.505
+saturation_boost = 1.185
+drops = Array[ExtResource("1_2yae0")]([SubResource("Resource_wc2bn")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

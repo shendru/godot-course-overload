@@ -7,6 +7,9 @@ extends Node2D
 @export var grass : PackedScene
 @export var grass_limit : int = 60
 @export var grass_types : Array[Grass]
+
+@export var hazard_types : Array[Enemy]
+@export var hazard_area : PackedScene = preload("res://scenes/hazard_area_2d.tscn")
 var grass_counter:int = 0:
 	set(value):
 		grass_counter = value
@@ -47,7 +50,7 @@ func spawn(pos : Vector2, elite : bool = false):
 	enemy_instance.player_reference = player
 	enemy_instance.elite = elite
 	enemy_instance.connect("died", _on_enemy_died)
-	get_tree().current_scene.add_child(enemy_instance)
+	get_tree().current_scene.add_child.call_deferred(enemy_instance)
 	enemy_counter+=1
 
 func spawnGrass(pos : Vector2):
@@ -58,6 +61,14 @@ func spawnGrass(pos : Vector2):
 	grass_instance.connect("on_grass_free", _on_grass_free)
 	get_tree().current_scene.add_child.call_deferred(grass_instance)
 	grass_counter += 1
+
+func spawnHazards(pos : Vector2):
+	var hazard_instance = hazard_area.instantiate()
+	hazard_instance.type = hazard_types.pick_random()
+	#hazard_instance.position = get_random_position()
+	hazard_instance.position = pos
+	hazard_instance.player_reference = player
+	get_tree().current_scene.add_child.call_deferred(hazard_instance)
 
 func init_some_grass():
 	var initial_grass_count = min(grass_limit, 20)
@@ -77,6 +88,13 @@ func get_random_position_radius(radius: float) -> Vector2:
 	var random_angle = randf_range(0, 2 * PI)
 	var random_radius = sqrt(randf()) * radius
 	return player.position + Vector2.RIGHT.rotated(random_angle) * random_radius
+
+func spawn_in_circle(count: int, radius: float):
+	for i in range(count):
+		var angle = i * (2 * PI / count) 
+		var spawn_pos = player.position + Vector2.RIGHT.rotated(angle) * radius
+		spawnHazards(spawn_pos)
+
  
 func amount(number : int = 1):
 	for i in range(number):
@@ -100,3 +118,7 @@ func _on_enemy_died():
 
 func _on_grass_free():
 	grass_counter -= 1
+
+
+func _on_hazard_timeout() -> void:
+	spawn_in_circle(9, 240)

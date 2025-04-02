@@ -27,6 +27,8 @@ func add_to_player(source):
 	projectile.source = source
 	if texture != null:
 		projectile.find_child("Sprite2D").texture = texture
+	if rescale != 0:
+		projectile.find_child("Sprite2D").scale = Vector2(rescale,rescale)
 	projectile.hide()
 	projectile_reference.append(projectile)
 	source.offset.call_deferred("add_child",projectile) #offset

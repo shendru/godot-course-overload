@@ -8,15 +8,17 @@ script = ExtResource("1_2vbf6")
 enemy = ExtResource("2_ik2nu")
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+top_level = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
-offset_top = 41.0
+offset_top = 18.0
 offset_right = 20.0
-offset_bottom = 81.0
+offset_bottom = 58.0
 grow_horizontal = 2
 
 [node name="Minute" type="Label" parent="UI/HBoxContainer"]
@@ -75,6 +77,11 @@ autostart = true
 wait_time = 9.0
 autostart = true
 
+[node name="Hazard" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Pattern" to="." method="_on_pattern_timeout"]
 [connection signal="timeout" from="Elite" to="." method="_on_elite_timeout"]
+[connection signal="timeout" from="Hazard" to="." method="_on_hazard_timeout"]

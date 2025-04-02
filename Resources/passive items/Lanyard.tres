@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PassiveItem" load_steps=7 format=3 uid="uid://desm6qyo5ioo5"]
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=5 format=3 uid="uid://desm6qyo5ioo5"]
 
 [ext_resource type="Texture2D" uid="uid://cf5302wrjt4os" path="res://assets/items-actual/lanyard2.png" id="1_lg11v"]
 [ext_resource type="Script" uid="uid://c0b48kjhv1fwv" path="res://scripts/passiveItem.gd" id="2_x5udf"]
@@ -6,55 +6,25 @@
 
 [sub_resource type="Resource" id="Resource_shruq"]
 script = ExtResource("3_eh3a7")
-description = ""
-max_health = 0.0
-recovery = 0.0
-armor = 0.0
-movement_speed = 0.0
-might = 0.0
+description = "Slightly buffs every stat."
+max_health = 1.0
+recovery = 0.1
+armor = 0.1
+movement_speed = 1.0
+might = 0.05
 area = 0.0
 magnet = 15.0
-growth = 0.0
-luck = 0.0
-haste = 0.0
-metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
-
-[sub_resource type="Resource" id="Resource_1njuf"]
-script = ExtResource("3_eh3a7")
-description = "+15 Magnet Range"
-max_health = 0.0
-recovery = 0.0
-armor = 0.0
-movement_speed = 0.0
-might = 0.0
-area = 0.0
-magnet = 15.0
-growth = 0.0
-luck = 0.0
-haste = 0.0
-metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
-
-[sub_resource type="Resource" id="Resource_m54rm"]
-script = ExtResource("3_eh3a7")
-description = "+15 Magnet Range"
-max_health = 0.0
-recovery = 0.0
-armor = 0.0
-movement_speed = 0.0
-might = 0.0
-area = 0.0
-magnet = 15.0
-growth = 0.0
-luck = 0.0
+growth = 0.01
+luck = 0.01
 haste = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [resource]
 script = ExtResource("2_x5udf")
-upgrades = Array[ExtResource("3_eh3a7")]([SubResource("Resource_shruq"), SubResource("Resource_1njuf"), SubResource("Resource_m54rm")])
+upgrades = Array[ExtResource("3_eh3a7")]([SubResource("Resource_shruq"), SubResource("Resource_shruq"), SubResource("Resource_shruq")])
 title = "Lanyard"
 icon = ExtResource("1_lg11v")
 rescale = 0.0
-flair = ""
+flair = "[hint=\"Never forget to bring this with you\"][i]\"Never forget to bring this with you\"[/i]"
 level = 1
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

@@ -8,6 +8,13 @@ var chain_count: int = 0
 # List of enemies that have already been hit; helps avoid looping back.
 var already_hit: Array = []
 
+var chaining = false
+
+func _on_body_entered(body):
+	super(body)
+	if not chaining:
+		chain_to_target(body)
+		chaining = true
 
 # Call this function to begin chaining to a specific target.
 func chain_to_target(target_enemy) -> void:
@@ -36,7 +43,8 @@ func on_hit_enemy(enemy) -> void:
 		call_deferred("chain_to_nearby_enemy", enemy)
 	else:
 		# End the chain.
-		queue_free()
+		pass
+		#queue_free()
 
 
 # This function looks for a nearby enemy (not already hit) to chain to.
@@ -71,6 +79,7 @@ func chain_to_nearby_enemy(current_enemy) -> void:
 	new_projectile.already_hit = already_hit.duplicate()
 	
 	new_projectile.position = current_enemy.global_position
+	new_projectile.chaining = true
 	get_parent().add_child(new_projectile)
 	
 	new_projectile.chain_to_target(next_enemy)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Gem" load_steps=3 format=3 uid="uid://c8yjikh21ido2"]
+
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="1_1dpad"]
+[ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/gem.gd" id="1_ps2rk"]
+
+[resource]
+script = ExtResource("1_ps2rk")
+XP = 5.0
+title = "Greater Gem"
+icon = ExtResource("1_1dpad")
+scale = Vector2(0.04, 0.04)
+modulate = Color(0.756928, 0, 0.343568, 1)
+description = "This gem gives more exp."
+metadata/_custom_type_script = "uid://ce48g8idjyswm"

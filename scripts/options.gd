@@ -48,8 +48,8 @@ func add_option(item) -> int:
 func show_option():
 	var weapons_available = get_available_resource_in(weapons)
 	var passive_item_available = get_available_resource_in(passive_items)
-	if weapons_available.size() == 0 and passive_item_available.size() == 0:
-		return
+	#if weapons_available.size() == 0 and passive_item_available.size() == 0:
+		#return
  
 	for slot in get_children():
 		slot.queue_free()

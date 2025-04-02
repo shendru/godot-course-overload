@@ -1,31 +1,40 @@
 extends ProjectileNode
 
-#var projectile_node: PackedScene = preload("res://scenes/projectile_simple.tscn")
-var projectile_node: PackedScene = preload("res://scenes/projectile_chain.tscn")
-var splash_cone_angle: float = 360
+var projectile_nodeS: PackedScene = preload("res://scenes/projectile_disabled_vose.tscn")
+var projectile_nodeC: PackedScene = preload("res://scenes/projectile_chain.tscn")
+
+
 var splashable = false
+var splash_count: int = 3
+var splash_cone_angle: float = 75
+
+var chainable = false
+var chain_limit: int = 3
+var chain_radius: int = 200
 
 func _on_body_entered(body):
 	super(body)
-	spawnChain(body)
+	if chainable:
+		spawnChain(body)
 	if splashable:
-		spawnSplash(body, 9)
+		spawnSplash(body, splash_count)
 	queue_free()
 
-func spawnChain(body):
-	var new_projectile = projectile_node.instantiate()
-	new_projectile.chain_limit = 5
+func spawnChain(_body):
+	var new_projectile = projectile_nodeC.instantiate()
+	new_projectile.chain_limit = chain_limit
+	new_projectile.chain_radius = chain_radius
 	new_projectile.damage = damage
 	new_projectile.position = global_position
 	new_projectile.source = source
 	new_projectile.speed = 0
 	new_projectile.damage = damage
 	get_tree().current_scene.call_deferred("add_child", new_projectile)
-	new_projectile.call_deferred("chain_to_target", body)
+	#new_projectile.call_deferred("chain_to_target", body)
 	
-func spawnSplash(body, num_splash_projectiles):
+func spawnSplash(_body, num_splash_projectiles):
 	for i in range(num_splash_projectiles):
-		var splash_projectile_instance = projectile_node.instantiate()
+		var splash_projectile_instance = projectile_nodeS.instantiate()
 		splash_projectile_instance.position = global_position # Spawn at the source's global position
 		splash_projectile_instance.damage = damage # Inherit damage
 		splash_projectile_instance.source = source # Inherit source

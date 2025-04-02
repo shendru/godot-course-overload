@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HealthPickup" load_steps=3 format=3 uid="uid://c2pxn7gbha6y7"]
+
+[ext_resource type="Texture2D" uid="uid://bnjw0vv1eghy" path="res://assets/items/onigiri.png" id="1_1e7j5"]
+[ext_resource type="Script" uid="uid://la2tquiso8d2" path="res://healthPickup.gd" id="2_841mk"]
+
+[resource]
+script = ExtResource("2_841mk")
+amount = 5
+title = "Pater"
+icon = ExtResource("1_1e7j5")
+scale = Vector2(0.039, 0.039)
+modulate = Color(1, 1, 1, 1)
+description = "+health lmao"
+metadata/_custom_type_script = "uid://la2tquiso8d2"

@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=7 format=3 uid="uid://d0w420l17lxve"]
+
+[ext_resource type="Texture2D" uid="uid://b4y7ey2akqxvw" path="res://assets/items/coffee.jpg" id="1_mb5es"]
+[ext_resource type="Script" uid="uid://c0b48kjhv1fwv" path="res://scripts/passiveItem.gd" id="2_eyxna"]
+[ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="3_ov0ch"]
+
+[sub_resource type="Resource" id="Resource_t665q"]
+script = ExtResource("3_ov0ch")
+description = "Have a cup of coffee. 
+You will be more efficient but at the cost of your health.
+Might increases by 10%.
+Movement speed slightly increased."
+max_health = -10.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 10.0
+might = 0.1
+area = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 0.0
+haste = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_r0gig"]
+script = ExtResource("3_ov0ch")
+description = "-5 max health.
+Increases might by 5%"
+max_health = -5.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 0.0
+might = 0.05
+area = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 0.0
+haste = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_4g3or"]
+script = ExtResource("3_ov0ch")
+description = "-5 max health.
+Increases might by 6%."
+max_health = -5.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 0.0
+might = 0.06
+area = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 0.0
+haste = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[resource]
+script = ExtResource("2_eyxna")
+upgrades = Array[ExtResource("3_ov0ch")]([SubResource("Resource_t665q"), SubResource("Resource_r0gig"), SubResource("Resource_4g3or")])
+title = "Coffee"
+icon = ExtResource("1_mb5es")
+rescale = 0.0
+flair = "[hint=\"Fuel for the all nighters\"][i]\"Fuel for the all nighters\"[/i]"
+level = 1
+metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

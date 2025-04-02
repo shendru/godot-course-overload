@@ -1,21 +1,117 @@
-[gd_scene load_steps=27 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=45 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="2_64w2a"]
-[ext_resource type="Texture2D" uid="uid://dwl8dt1b5qhx4" path="res://assets/grass/tall grass1.png" id="2_fpun6"]
 [ext_resource type="PackedScene" uid="uid://b8lbnwk4jlkb" path="res://scenes/rock.tscn" id="3_2an5l"]
 [ext_resource type="PackedScene" uid="uid://c7k8i5yeqluox" path="res://scenes/spawner.tscn" id="4_ppgk2"]
 [ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="5_olg7q"]
 [ext_resource type="PackedScene" uid="uid://lmrju63t7vib" path="res://scenes/grass.tscn" id="5_ppgk2"]
+[ext_resource type="Resource" uid="uid://bim25nhb73vg1" path="res://Resources/enemies/Itwolf.tres" id="5_xy2fk"]
+[ext_resource type="Resource" uid="uid://b4kh22en4lkwx" path="res://Resources/pickups/Gem.tres" id="6_3ies3"]
 [ext_resource type="Texture2D" uid="uid://clbvn01r84bxf" path="res://assets/enemies/router crab/frame0000.png" id="6_klq6b"]
 [ext_resource type="Resource" uid="uid://b85py2udnw15c" path="res://Resources/enemies/slime.tres" id="6_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://ck6ngdfe0m1mv" path="res://assets/tiles/EPIC RPG World Pack-[FREE Demo]Grass Land 2.0/Tilesets and props/Tilesets and props Demo.png" id="6_xucc8"]
 [ext_resource type="Resource" uid="uid://cpm3vl1brjth7" path="res://Resources/enemies/router crab.tres" id="7_8iemx"]
 [ext_resource type="Texture2D" uid="uid://cvj8y2k6i2hje" path="res://assets/enemies/slime ver3/frame0011.png" id="7_b121j"]
+[ext_resource type="SpriteFrames" uid="uid://dvsm78yeokyux" path="res://animations/SlimeFrames.tres" id="7_xy2fk"]
 [ext_resource type="Script" uid="uid://duoq4yha0d45m" path="res://scripts/GrassType.gd" id="8_fpun6"]
 [ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="9_wc255"]
 [ext_resource type="AudioStream" uid="uid://bs5dm3i4ult17" path="res://assets/music/CO [field] (composition ver.).mp3" id="11_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://djfn3jk7c0s6y" path="res://assets/grass/lianGrass3.png" id="11_wc255"]
+[ext_resource type="Texture2D" uid="uid://hprga5vvxx81" path="res://assets/enemies/router crab/frame0001.png" id="17_5k0ak"]
+[ext_resource type="Texture2D" uid="uid://cfi8xycibkfs6" path="res://assets/enemies/router crab/frame0002.png" id="18_wu01b"]
+[ext_resource type="Texture2D" uid="uid://dqkenvvtx7y52" path="res://assets/enemies/router crab/frame0003.png" id="19_3ies3"]
+[ext_resource type="Texture2D" uid="uid://cv8a6w2ub7wj5" path="res://assets/enemies/router crab/frame0004.png" id="20_xy2fk"]
+[ext_resource type="Texture2D" uid="uid://b0hfg4piw34yf" path="res://assets/enemies/router crab/frame0005.png" id="21_cmcjb"]
+[ext_resource type="Texture2D" uid="uid://b1xjbhn42xmh1" path="res://assets/enemies/router crab/frame0006.png" id="22_556r4"]
+[ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="23_7agi7"]
+[ext_resource type="Texture2D" uid="uid://bnjw0vv1eghy" path="res://assets/items/onigiri.png" id="25_3ies3"]
+
+[sub_resource type="Resource" id="Resource_cmcjb"]
+script = ExtResource("5_olg7q")
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 25.0
+damage = 8.0
+movement_speed = 85.0
+resize = Vector2(0.09, 0.09)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(-152.542, 25.4237)
+shadow_size = Vector2(2.05244, 0.297934)
+hue_shift = 0.505
+saturation_boost = 1.2
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_xy2fk"]
+script = ExtResource("5_olg7q")
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 40.0
+damage = 8.0
+movement_speed = 100.0
+resize = Vector2(0.1, 0.1)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(-152.542, 25.4237)
+shadow_size = Vector2(2.05244, 0.297934)
+hue_shift = 0.758
+saturation_boost = 1.2
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4i2d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_klq6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5k0ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wu01b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3ies3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xy2fk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cmcjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_556r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7agi7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Resource" id="Resource_556r4"]
+script = ExtResource("5_olg7q")
+title = "router crab"
+sprite = SubResource("SpriteFrames_v4i2d")
+health = 20.0
+damage = 8.0
+movement_speed = 200.0
+resize = Vector2(0.038, 0.038)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, -12)
+shadow_position = Vector2(0, -203.122)
+shadow_size = Vector2(2.582, 1.091)
+hue_shift = 0.6
+saturation_boost = 1.19
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 
 [sub_resource type="Resource" id="Resource_arp2o"]
 script = ExtResource("8_fpun6")
@@ -24,7 +120,7 @@ sprite = ExtResource("2_64w2a")
 health = 10.0
 resize = Vector2(0.2, 0.2)
 sprite_offset = Vector2(0, -100)
-shader_height_offset = 0.8
+shader_height_offset = 0.95
 drops = Array[ExtResource("9_wc255")]([])
 metadata/_custom_type_script = "uid://duoq4yha0d45m"
 
@@ -57,7 +153,7 @@ sprite = ExtResource("2_64w2a")
 health = 10.0
 resize = Vector2(0.34, 0.34)
 sprite_offset = Vector2(0, -100)
-shader_height_offset = 0.789
+shader_height_offset = 0.83
 drops = Array[ExtResource("9_wc255")]([])
 metadata/_custom_type_script = "uid://duoq4yha0d45m"
 
@@ -68,9 +164,27 @@ sprite = ExtResource("11_wc255")
 health = 10.0
 resize = Vector2(0.22, 0.22)
 sprite_offset = Vector2(0, -100)
-shader_height_offset = 0.8
+shader_height_offset = 0.9
 drops = Array[ExtResource("9_wc255")]([])
 metadata/_custom_type_script = "uid://duoq4yha0d45m"
+
+[sub_resource type="Resource" id="Resource_3ies3"]
+script = ExtResource("5_olg7q")
+title = "router crab"
+sprite = SubResource("SpriteFrames_v4i2d")
+health = 30.0
+damage = 8.0
+movement_speed = 120.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, -12)
+shadow_position = Vector2(0, -203.122)
+shadow_size = Vector2(2.582, 1.091)
+hue_shift = 0.421
+saturation_boost = 1.379
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8fg4"]
 texture = ExtResource("6_xucc8")
@@ -743,6 +857,82 @@ shader_parameter/wave_speed = 1.0
 shader_parameter/wave_params = Vector3(0, 2.24, 0.085)
 shader_parameter/wave_center = Vector2(0.5, 0.45)
 
+[sub_resource type="Shader" id="Shader_kih21"]
+code = "shader_type canvas_item;
+
+uniform float line_thickness : hint_range(0, 20) = 1.0; // Increased hint range
+uniform float sin_frequency : hint_range(0.1, 2.0) = 0.5;
+uniform float sin_offset : hint_range(0.0, 360.0) = 0.0;
+uniform float light_offset : hint_range(0.0, 1.0) = 0.5;
+
+const vec2 OFFSETS[24] = { // Increased offset array
+    vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1),
+    vec2(1, -1), vec2(1, 0), vec2(1, 1),
+    vec2(-2, -2), vec2(-2, -1), vec2(-2, 0), vec2(-2, 1), vec2(-2, 2),
+    vec2(-1, -2), vec2(0, -2), vec2(1, -2), vec2(2, -2),
+    vec2(2, -1), vec2(2, 0), vec2(2, 1), vec2(2, 2),
+    vec2(-1, 2), vec2(0, 2), vec2(1, 2)
+};
+
+void fragment() {
+    vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+    float outline = 1.0;
+
+    for (int i = 0; i < OFFSETS.length(); i++) {
+        outline *= texture(TEXTURE, UV + size * OFFSETS[i]).a;
+    }
+    outline = 1.0 - outline;
+
+    vec4 animated_line_color = vec4(
+        light_offset + sin(2.0 * 3.14 * sin_frequency * TIME + radians(sin_offset)),
+        light_offset + sin(2.0 * 3.14 * sin_frequency * TIME + radians(120.0 + sin_offset)),
+        light_offset + sin(2.0 * 3.14 * sin_frequency * TIME + radians(240.0 + sin_offset)),
+        1.0
+    );
+
+    vec4 color = texture(TEXTURE, UV);
+    COLOR = mix(color, animated_line_color, outline * color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3o6u"]
+shader = SubResource("Shader_kih21")
+shader_parameter/line_thickness = 8.235
+shader_parameter/sin_frequency = 0.5
+shader_parameter/sin_offset = 0.0
+shader_parameter/light_offset = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svjb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_klq6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5k0ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wu01b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3ies3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xy2fk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cmcjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_556r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7agi7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
 
@@ -782,10 +972,11 @@ y_sort_enabled = true
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
 player = NodePath("../player")
-enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("6_t1rx8"), ExtResource("7_8iemx"), ExtResource("6_t1rx8")])
+enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("6_t1rx8"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk")])
 grass = ExtResource("5_ppgk2")
 grass_limit = 50
 grass_types = Array[ExtResource("8_fpun6")]([SubResource("Resource_arp2o"), SubResource("Resource_ux5qa"), SubResource("Resource_82cfe"), SubResource("Resource_gunhw"), SubResource("Resource_8gofh")])
+hazard_types = Array[ExtResource("5_olg7q")]([SubResource("Resource_3ies3")])
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
@@ -1038,8 +1229,15 @@ stream = ExtResource("11_t1rx8")
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(415, 309.8)
-scale = Vector2(0.0580001, 0.0580001)
-texture = ExtResource("2_fpun6")
-offset = Vector2(0, -417.425)
+scale = Vector2(0.0390626, 0.0390626)
+texture = ExtResource("25_3ies3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_w3o6u")
+position = Vector2(213, 216)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_svjb4")
+frame_progress = 0.518178
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]

@@ -55,6 +55,6 @@ upgrades = Array[ExtResource("3_v8ysp")]([SubResource("Resource_0jh2f"), SubReso
 title = "Study glasses"
 icon = ExtResource("1_fm2su")
 rescale = 0.0
-flair = ""
+flair = "[hint=\"While you were outside partying, I was inside studying\"][i]\"While you were outside partying, I was inside studying\"[/i]"
 level = 1
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"

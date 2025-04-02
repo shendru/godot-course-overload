@@ -73,4 +73,7 @@ func upgrade_item():
 	damage += upgrade.damage
 	cooldown += upgrade.cooldown
 	speed += upgrade.speed
+	knockback += upgrade.knockback
+	amount += upgrade.amount
+	
 	level += 1

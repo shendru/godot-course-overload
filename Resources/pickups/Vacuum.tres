@@ -7,7 +7,7 @@
 script = ExtResource("2_q8tmm")
 title = "Vacuum"
 icon = ExtResource("1_bbftk")
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.06, 0.06)
 modulate = Color(5.29438e-07, 0.437543, 0.542817, 1)
 description = "Suck all gems in"
 metadata/_custom_type_script = "uid://cwxfbrl3wfujt"

@@ -14,6 +14,11 @@ var source
 var knockback_on_source: bool = false
 
  
+func _ready() -> void:
+	if vfx!=null:
+		var new_vfx = vfx.instantiate()
+		add_child(new_vfx)
+
 func _physics_process(delta):
 	position += direction * speed * delta
 	

@@ -6,7 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_pejsu"]
 script = ExtResource("3_p04kg")
-description = ""
+description = "Rotc Uniform.
++1 Armor"
 max_health = 0.0
 recovery = 0.0
 armor = 1.0
@@ -55,6 +56,6 @@ upgrades = Array[ExtResource("3_p04kg")]([SubResource("Resource_pejsu"), SubReso
 title = "ROTC Uniform"
 icon = ExtResource("1_38tot")
 rescale = 0.0
-flair = ""
+flair = "[hint=\"TUNE!\"][i]\"TUNE!\"[/i]"
 level = 1
 metadata/_custom_type_script = "uid://c0b48kjhv1fwv"
