@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=60 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="2_64w2a"]
@@ -27,8 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="23_7agi7"]
 [ext_resource type="Texture2D" uid="uid://bnjw0vv1eghy" path="res://assets/items/onigiri.png" id="25_3ies3"]
 [ext_resource type="PackedScene" uid="uid://dpdjnvxy2nivc" path="res://scenes/pickups.tscn" id="27_7agi7"]
-[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="28_kih21"]
-[ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/gem.gd" id="29_w3o6u"]
+[ext_resource type="Resource" uid="uid://be3nqqg2v7jyl" path="res://Resources/pickups/Vacuum.tres" id="28_7agi7"]
+[ext_resource type="Script" uid="uid://efn5sfwcgwhy" path="res://scenes/start_area_2d.gd" id="30_kih21"]
 
 [sub_resource type="Resource" id="Resource_cmcjb"]
 script = ExtResource("5_olg7q")
@@ -972,15 +972,182 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_2e2fo"]
-script = ExtResource("29_w3o6u")
-XP = 11.0
-title = "Greater Gem"
-icon = ExtResource("28_kih21")
-scale = Vector2(0.04, 0.04)
-modulate = Color(0.756928, 0, 0.343568, 1)
-description = "This gem gives more exp."
-metadata/_custom_type_script = "uid://ce48g8idjyswm"
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3o6u"]
+radius = 99.4082
+
+[sub_resource type="Animation" id="Animation_7agi7"]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 1.23333, 1.3, 1.36, 1.43),
+"transitions": PackedFloat32Array(13.4543, 0.287176, 0.287176, 0.287176, 0.287176),
+"update": 0,
+"values": [Vector2(604.5, 251.875), Vector2(604.5, 114.985), Vector2(604.5, 157.57), Vector2(604.5, 139.2), Vector2(604.5, 157.57)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/RichTextLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1.31, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kih21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(504.5, 193)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/RichTextLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3o6u"]
+_data = {
+&"RESET": SubResource("Animation_kih21"),
+&"start": SubResource("Animation_7agi7")
+}
+
+[sub_resource type="Animation" id="Animation_w3o6u"]
+resource_name = "textDefault"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2e2fo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gur6y"]
+_data = {
+&"RESET": SubResource("Animation_2e2fo"),
+&"textDefault": SubResource("Animation_w3o6u")
+}
+
+[sub_resource type="Animation" id="Animation_v3why"]
+resource_name = "defaultText"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.03333, 6.618),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.03333, 6.618),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_asl66"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jdvr"]
+_data = {
+&"RESET": SubResource("Animation_asl66"),
+&"defaultText": SubResource("Animation_v3why")
+}
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -1012,7 +1179,7 @@ position = Vector2(31, 621)
 position = Vector2(1124, 621)
 
 [node name="player" parent="." instance=ExtResource("1_ajxwd")]
-position = Vector2(575, 325)
+position = Vector2(585, 458)
 
 [node name="enemies" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1020,6 +1187,7 @@ y_sort_enabled = true
 [node name="exp_holder" type="Node" parent="."]
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
+process_mode = 4
 player = NodePath("../player")
 enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("6_t1rx8"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk")])
 grass = ExtResource("5_ppgk2")
@@ -1293,7 +1461,155 @@ frame_progress = 0.518178
 
 [node name="Pickups" parent="." node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
 position = Vector2(581, 139)
-type = SubResource("Resource_2e2fo")
+type = ExtResource("28_7agi7")
 player_reference = NodePath("../player")
 
+[node name="StartArea2d" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("30_kih21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartArea2d"]
+position = Vector2(580, 140)
+shape = SubResource("CircleShape2D_w3o6u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartArea2d"]
+libraries = {
+&"": SubResource("AnimationLibrary_w3o6u")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="StartArea2d"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartArea2d/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -191.0
+offset_right = -21.5
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_font_size = 51
+bbcode_enabled = true
+text = "[b]START"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartArea2d"]
+clip_contents = false
+offset_left = 508.0
+offset_top = 199.0
+offset_right = 654.0
+offset_bottom = 239.0
+bbcode_enabled = true
+text = "[wave amp=12 freq=4]Pick up the EXP[/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartArea2d/RichTextLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_gur6y")
+}
+autoplay = "textDefault"
+
+[node name="Node2D" type="Node2D" parent="StartArea2d/RichTextLabel"]
+
+[node name="Line2D" type="Line2D" parent="StartArea2d/RichTextLabel/Node2D"]
+position = Vector2(-11.025, -25.5741)
+rotation = 1.11701
+points = PackedVector2Array(0, -8.025, 0, -61.025)
+width = 2.0
+
+[node name="Line2D2" type="Line2D" parent="StartArea2d/RichTextLabel/Node2D/Line2D"]
+points = PackedVector2Array(-6.0002, -56, 0, -61.025, 6.9998, -56)
+width = 2.0
+
+[node name="Line2D2" type="Line2D" parent="StartArea2d/RichTextLabel/Node2D"]
+position = Vector2(157, -25.5741)
+rotation = -1.11701
+points = PackedVector2Array(0, -8.025, 0, -61.025)
+width = 2.0
+
+[node name="Line2D2" type="Line2D" parent="StartArea2d/RichTextLabel/Node2D/Line2D2"]
+points = PackedVector2Array(-6.0002, -56, 0, -61.025, 6.9998, -56)
+width = 2.0
+
+[node name="Line2D3" type="Line2D" parent="StartArea2d/RichTextLabel/Node2D"]
+position = Vector2(71, 26.4259)
+points = PackedVector2Array(0, -30, 0, -61.025)
+width = 2.0
+
+[node name="Line2D2" type="Line2D" parent="StartArea2d/RichTextLabel/Node2D/Line2D3"]
+points = PackedVector2Array(-6.0002, -56, 0, -61.025, 6.9998, -56)
+width = 2.0
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="StartArea2d/RichTextLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_2jdvr")
+}
+autoplay = "defaultText"
+
+[node name="StartingPickups" type="Node2D" parent="."]
+
+[node name="Pickups2" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(644, 1038)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups3" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(-368, 139)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups4" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(624, -336)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups5" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(-347, 495)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups9" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(260, -262)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups10" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(412, -356)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups12" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(1010, -230)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups11" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(871, -314)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups6" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(1132, -274)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups7" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(1664, 234)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
+[node name="Pickups8" parent="StartingPickups" node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(1643, 459)
+type = ExtResource("6_3ies3")
+player_reference = NodePath("../../player")
+
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
+[connection signal="body_entered" from="StartArea2d" to="StartArea2d" method="_on_body_entered"]

@@ -19,6 +19,6 @@ collision_position = Vector2(0, -9)
 shadow_position = Vector2(-152.542, 25.4237)
 shadow_size = Vector2(2.05244, 0.297934)
 hue_shift = 0.158
-saturation_boost = 1.125
+saturation_boost = 1.0
 drops = Array[ExtResource("1_772x5")]([ExtResource("2_v8pyd")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

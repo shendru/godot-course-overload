@@ -28,7 +28,7 @@ func upgrade_item():
 	player_reference.magnet += upgrade.magnet
 	player_reference.growth += upgrade.growth
 	player_reference.luck += upgrade.luck 
-	player_reference.knockback += upgrade.knocback
+	player_reference.knockback += upgrade.knockback
 
 	level += 1
  
