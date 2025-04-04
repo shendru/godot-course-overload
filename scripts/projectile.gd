@@ -38,9 +38,11 @@ func _on_body_entered(body):
 				knockback_direction = (body.position - global_position).normalized()
 			else:
 				knockback_direction = (body.position - source.position).normalized()
-			body.knockback = knockback_direction * knockback
+			var knockback_to_add = knockback_direction * (knockback + source.knockback)
+			#body.knockback = knockback_direction * (knockback + source.knockback)
+			body.add_knockback(knockback_to_add)
 		else:
-			body.knockback = direction * knockback
+			body.add_knockback(direction* knockback)
  
  
 func _on_screen_exited():

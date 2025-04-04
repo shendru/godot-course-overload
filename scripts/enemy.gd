@@ -76,6 +76,8 @@ func knockback_update(delta):
 	if collider:
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 	
+func add_knockback(amount):
+	knockback += amount
 
 func update_facing_direction():
 	if facing < 0:
@@ -111,7 +113,8 @@ func drop_item():
 		return
 	var item = type.drops.pick_random()
 	if elite:
-		item = load("res://Resources/pickups/Chest.tres")
+		#item = load("res://Resources/pickups/Chest.tres")
+		item = load("res://Resources/pickups/GemHuge.tres")
 	var item_to_drop = drop.instantiate()
 	
 	item_to_drop.type = item

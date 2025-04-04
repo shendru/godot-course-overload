@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	self.set_collision_mask_value(2, false)
 	$CollisionShape2D.shape.radius = 0.01
-	pre_lifetime.wait_time = lifetime.wait_time - 2
+	pre_lifetime.wait_time = max(lifetime.wait_time - 2, 1)
 	emergency_exit.wait_time = 2.0
 	after_lifetime.wait_time = 0.6
 	pre_lifetime.start()

@@ -45,6 +45,7 @@ func spawn(source, _target, scene_tree):
 			projectile.afterFx = afterFx
 		#projectile.add_child(new_vfx)
 		if afterFxMAX != null and "afterFxMAX" in projectile and max_level_reached():
+		#if afterFxMAX != null and "afterFxMAX" in projectile:
 			projectile.afterFxMAX = afterFxMAX
 	scene_tree.current_scene.add_child(projectile)
 	projectile_reference = projectile

@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="ModifiedBlade" load_steps=12 format=3 uid="uid://c5x2ha42ifrt"]
+
+[ext_resource type="Texture2D" uid="uid://ea6qi1dfwfjd" path="res://assets/items/ethernet calbe.jpeg" id="1_oik5t"]
+[ext_resource type="PackedScene" uid="uid://df17ea4uupv2g" path="res://scenes/projectile_melee.tscn" id="2_te6e1"]
+[ext_resource type="Script" uid="uid://cm7nytj53uq81" path="res://ModifiedBlade.gd" id="3_vbdaf"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_7agd5"]
+[ext_resource type="Script" uid="uid://c2lamgonb1a62" path="res://scripts/weapon scripts/BladeUpgrade.gd" id="5_8vw6b"]
+[ext_resource type="PackedScene" uid="uid://cdlfiithg7jhx" path="res://vfx/whip_slash.tscn" id="6_acvrw"]
+
+[sub_resource type="Resource" id="Resource_7dfq6"]
+script = ExtResource("5_8vw6b")
+area = 0.0
+speed = 0.0
+lifetime = 0.0
+knockback = 0.0
+enable_both_sides = false
+amount = 0.0
+damage = 0.0
+cooldown = 0.0
+description = ""
+metadata/_custom_type_script = "uid://c2lamgonb1a62"
+
+[sub_resource type="Resource" id="Resource_t12ga"]
+script = ExtResource("5_8vw6b")
+area = 0.0
+speed = 0.0
+lifetime = 0.0
+knockback = 0.0
+enable_both_sides = true
+amount = 0.0
+damage = 5.0
+cooldown = 0.0
+description = "Slap the cable like a whip.
+Additionally strikes behind, increases damage by 5."
+metadata/_custom_type_script = "uid://c2lamgonb1a62"
+
+[sub_resource type="Resource" id="Resource_g53d2"]
+script = ExtResource("5_8vw6b")
+area = 0.1
+speed = 0.0
+lifetime = 0.0
+knockback = 0.0
+enable_both_sides = false
+amount = 0.0
+damage = 0.0
+cooldown = -0.1
+description = "Reduces cooldown by 0.1.
+Increase size by 10%."
+metadata/_custom_type_script = "uid://c2lamgonb1a62"
+
+[sub_resource type="Resource" id="Resource_gb56b"]
+script = ExtResource("5_8vw6b")
+area = 0.0
+speed = 0.0
+lifetime = 0.0
+knockback = 60.0
+enable_both_sides = false
+amount = 0.0
+damage = 0.0
+cooldown = -0.2
+description = "Reduces cooldown by 0.2.
+Adds more knockback to attacks."
+metadata/_custom_type_script = "uid://c2lamgonb1a62"
+
+[sub_resource type="Resource" id="Resource_4jihs"]
+script = ExtResource("5_8vw6b")
+area = 0.8
+speed = 0.0
+lifetime = 0.0
+knockback = 0.0
+enable_both_sides = false
+amount = 0.0
+damage = 10.0
+cooldown = 0.0
+description = "Increases size by 80%.
+Increase damage by 10."
+metadata/_custom_type_script = "uid://c2lamgonb1a62"
+
+[resource]
+script = ExtResource("3_vbdaf")
+lifetime = 0.2
+area = 1.0
+attack_both_sides = false
+knockback = 50.0
+damage = 10.0
+cooldown = 1.0
+speed = 50.0
+projectile_node = ExtResource("2_te6e1")
+upgrades = Array[ExtResource("4_7agd5")]([SubResource("Resource_7dfq6"), SubResource("Resource_t12ga"), SubResource("Resource_g53d2"), SubResource("Resource_gb56b"), SubResource("Resource_4jihs")])
+vfx = ExtResource("6_acvrw")
+afterFx = Array[PackedScene]([])
+title = "Ethernet Cable"
+icon = ExtResource("1_oik5t")
+rescale = 0.0
+flair = ""
+level = 2
+metadata/_custom_type_script = "uid://cm7nytj53uq81"

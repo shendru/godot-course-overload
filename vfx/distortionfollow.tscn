@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk8jh3khlvt7d"]
+
+[sub_resource type="GDScript" id="GDScript_xy2fk"]
+script/source = "extends Node2D
+
+@export var target_node_path: NodePath
+@onready var target_node: Node2D = get_node(target_node_path)
+@onready var shockwave_color_rect: ColorRect = $CanvasLayer/Shockwave
+var camera_node: Camera2D
+
+func _ready():
+	# Find the first active Camera2D node in the scene tree
+	var cameras = get_tree().get_nodes_in_group(\"cameras\") # Assuming your camera is in the \"cameras\" group
+	if cameras.size() > 0:
+		camera_node = cameras[0] as Camera2D
+		if not is_instance_valid(camera_node):
+			printerr(\"Error: Found a node in 'cameras' group but it's not a valid Camera2D node.\")
+			camera_node = null
+	else:
+		# Fallback: Try to find the first Camera2D node if not in a group
+		var all_cameras = get_tree().get_nodes_in_group(\"\")
+		for node in all_cameras:
+			if node is Camera2D and node.is_active():
+				camera_node = node
+				break
+
+	if not is_instance_valid(camera_node):
+		printerr(\"Error: No active Camera2D node found in the scene.\")
+
+	if not target_node:
+		printerr(\"Error: Target Node not found at path:\", target_node_path)
+		set_process(false) # Disable _process if target is missing
+
+	if not shockwave_color_rect:
+		printerr(\"Error: Shockwave ColorRect not found at path: $CanvasLayer/Shockwave\")
+		set_process(false) # Disable _process if shockwave rect is missing
+
+	if shockwave_color_rect and shockwave_color_rect.material is ShaderMaterial:
+		pass # Shader material is ready
+	else:
+		printerr(\"Error: Shockwave ColorRect does not have a ShaderMaterial assigned.\")
+		set_process(false)
+
+func _process(delta):
+	if is_instance_valid(camera_node) and target_node and shockwave_color_rect and shockwave_color_rect.material is ShaderMaterial:
+		# Get the target node's global position
+		var target_global_position = target_node.global_position
+		print(\"Target Global:\", target_global_position)
+
+		# Get the camera's global position
+		var camera_global_position = camera_node.global_position
+		print(\"Camera Global:\", camera_global_position)
+
+		# Get the viewport rectangle (in screen coordinates)
+		var viewport_rect = get_viewport_rect()
+		print(\"Viewport Rect:\", viewport_rect)
+
+		# Calculate the target's position within the camera's *world view*
+		var target_in_camera_view = target_global_position - camera_global_position
+
+		# Normalize this position by the viewport size to get screen coordinates (0-1)
+		var viewport_size = viewport_rect.size
+		var normalized_position = target_in_camera_view / viewport_size
+
+		# We might need to adjust the origin (center the normalized coordinates around 0.5)
+		var adjusted_normalized_position = normalized_position + Vector2(0.5, 0.5)
+
+		print(\"Normalized (Adjusted):\", adjusted_normalized_position)
+		shockwave_color_rect.material.set_shader_parameter(\"center\", adjusted_normalized_position)
+"
+
+[sub_resource type="Shader" id="Shader_xy2fk"]
+code = "shader_type canvas_item;
+uniform sampler2D SCREEN_TEXTURE :hint_screen_texture, filter_linear_mipmap;
+
+uniform vec2 center; // Center of the shockwave (0.0-1.0)
+uniform float force : hint_range(0.0, 10.0) = 2.0;
+uniform float radius : hint_range(0.0, 1.0) = 0.2;
+uniform float thickness : hint_range(0.0, 0.5) = 0.1;
+
+void fragment() {
+    vec2 uv = UV;
+
+    float dist_to_center = length(uv - center);
+    float falloff = smoothstep(radius - thickness, radius, dist_to_center) - smoothstep(radius, radius + thickness, dist_to_center);
+
+    vec2 displacement = normalize(uv - center) * force * falloff;
+
+    COLOR = texture(SCREEN_TEXTURE, SCREEN_UV - displacement);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7agi7"]
+shader = SubResource("Shader_xy2fk")
+shader_parameter/center = Vector2(0.44, 0.41)
+shader_parameter/force = 0.235
+shader_parameter/radius = 0.194
+shader_parameter/thickness = 0.098
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_xy2fk")
+target_node_path = NodePath("../Sprite2D4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Shockwave" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_7agi7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

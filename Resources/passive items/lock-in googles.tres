@@ -6,7 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_fq4xg"]
 script = ExtResource("3_v5fd8")
-description = "+0.1 luck/crit chance"
+description = "Adds Knockback to attacks.
++0.1 luck/crit chance."
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
@@ -17,6 +18,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.1
 haste = 0.0
+knockback = 30.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_1bj8g"]
@@ -32,6 +34,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.2
 haste = 0.0
+knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_741f3"]
@@ -47,6 +50,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.3
 haste = 0.0
+knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_tgkl0"]
@@ -62,6 +66,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.4
 haste = 0.0
+knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [resource]

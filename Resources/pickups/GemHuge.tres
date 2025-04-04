@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_ps2rk")
-XP = 5.0
+XP = 30.0
 title = "Greater Gem"
 icon = ExtResource("1_1dpad")
 scale = Vector2(0.04, 0.04)

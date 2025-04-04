@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=51 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="2_64w2a"]
@@ -26,17 +26,20 @@
 [ext_resource type="Texture2D" uid="uid://b1xjbhn42xmh1" path="res://assets/enemies/router crab/frame0006.png" id="22_556r4"]
 [ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="23_7agi7"]
 [ext_resource type="Texture2D" uid="uid://bnjw0vv1eghy" path="res://assets/items/onigiri.png" id="25_3ies3"]
+[ext_resource type="PackedScene" uid="uid://dpdjnvxy2nivc" path="res://scenes/pickups.tscn" id="27_7agi7"]
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="28_kih21"]
+[ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/gem.gd" id="29_w3o6u"]
 
 [sub_resource type="Resource" id="Resource_cmcjb"]
 script = ExtResource("5_olg7q")
 title = "Slime"
 sprite = ExtResource("7_xy2fk")
-health = 25.0
+health = 12.0
 damage = 8.0
 movement_speed = 85.0
-resize = Vector2(0.09, 0.09)
+resize = Vector2(0.11, 0.11)
 sprite_offset = Vector2(0, -349.095)
-collision_radius = 9.0
+collision_radius = 15.0
 collision_position = Vector2(0, -9)
 shadow_position = Vector2(-152.542, 25.4237)
 shadow_size = Vector2(2.05244, 0.297934)
@@ -49,7 +52,7 @@ metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 script = ExtResource("5_olg7q")
 title = "Slime"
 sprite = ExtResource("7_xy2fk")
-health = 40.0
+health = 25.0
 damage = 8.0
 movement_speed = 100.0
 resize = Vector2(0.1, 0.1)
@@ -175,6 +178,42 @@ sprite = SubResource("SpriteFrames_v4i2d")
 health = 30.0
 damage = 8.0
 movement_speed = 120.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, -12)
+shadow_position = Vector2(0, -203.122)
+shadow_size = Vector2(2.582, 1.091)
+hue_shift = 0.421
+saturation_boost = 1.379
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_kih21"]
+script = ExtResource("5_olg7q")
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 100.0
+damage = 5.0
+movement_speed = 10.0
+resize = Vector2(0.2, 0.2)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 30.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(-152.542, 25.4237)
+shadow_size = Vector2(2.05244, 0.297934)
+hue_shift = 0.505
+saturation_boost = 1.2
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_7agi7"]
+script = ExtResource("5_olg7q")
+title = "router crab"
+sprite = SubResource("SpriteFrames_v4i2d")
+health = 30.0
+damage = 8.0
+movement_speed = 1000.0
 resize = Vector2(0.059, 0.059)
 sprite_offset = Vector2(0, -349.095)
 collision_radius = 9.0
@@ -933,6 +972,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_2e2fo"]
+script = ExtResource("29_w3o6u")
+XP = 11.0
+title = "Greater Gem"
+icon = ExtResource("28_kih21")
+scale = Vector2(0.04, 0.04)
+modulate = Color(0.756928, 0, 0.343568, 1)
+description = "This gem gives more exp."
+metadata/_custom_type_script = "uid://ce48g8idjyswm"
+
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
 
@@ -977,6 +1026,8 @@ grass = ExtResource("5_ppgk2")
 grass_limit = 50
 grass_types = Array[ExtResource("8_fpun6")]([SubResource("Resource_arp2o"), SubResource("Resource_ux5qa"), SubResource("Resource_82cfe"), SubResource("Resource_gunhw"), SubResource("Resource_8gofh")])
 hazard_types = Array[ExtResource("5_olg7q")]([SubResource("Resource_3ies3")])
+hazard_types_slow = Array[ExtResource("5_olg7q")]([SubResource("Resource_kih21")])
+hazard_types_fast = Array[ExtResource("5_olg7q")]([SubResource("Resource_7agi7")])
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
@@ -1229,15 +1280,20 @@ stream = ExtResource("11_t1rx8")
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(415, 309.8)
-scale = Vector2(0.0390626, 0.0390626)
+scale = Vector2(0.0419386, 0.0419386)
 texture = ExtResource("25_3ies3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_w3o6u")
-position = Vector2(213, 216)
+position = Vector2(231, 224)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_svjb4")
 frame_progress = 0.518178
+
+[node name="Pickups" parent="." node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
+position = Vector2(581, 139)
+type = SubResource("Resource_2e2fo")
+player_reference = NodePath("../player")
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]

@@ -19,7 +19,8 @@ func activate(source, _target, scene_tree):
 	main_weapon_instance.scale = Vector2(2.0,2.0)
 	var timer = main_weapon_instance.find_child("Lifetime")
 	timer.wait_time = main_weapon_lifetime
-	
+	if texture != null:
+		main_weapon_instance.find_child("Sprite2D").texture = texture
 	source.offset.add_child(main_weapon_instance)
 	#if timer:
 		##print("timer exists")

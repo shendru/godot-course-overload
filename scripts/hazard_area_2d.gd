@@ -1,9 +1,11 @@
 extends Area2D
 
-var enemy: PackedScene = preload("res://scenes/enemy.tscn")
+var enemy: PackedScene = preload("res://scenes/enemy_event_type.tscn")
 
 var type: Enemy
 var player_reference : CharacterBody2D
+
+var lifetime = 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +19,9 @@ func animationComplete():
 	enemy_instance.type = type
 	enemy_instance.position = global_position
 	enemy_instance.player_reference = player_reference
+	enemy_instance.set_collision_mask_value(2, false)
+	if enemy_instance.has_node("Lifetime"):
+		enemy_instance.get_node("Lifetime").wait_time = max(lifetime,0.1)
 	get_tree().current_scene.add_child.call_deferred(enemy_instance)
 	tweenCollision()
 	

@@ -20,6 +20,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.0
 haste = 0.0
+knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_r0gig"]
@@ -36,6 +37,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.0
 haste = 0.0
+knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [sub_resource type="Resource" id="Resource_4g3or"]
@@ -52,6 +54,7 @@ magnet = 0.0
 growth = 0.0
 luck = 0.0
 haste = 0.0
+knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [resource]

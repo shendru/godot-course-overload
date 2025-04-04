@@ -22,5 +22,6 @@ func _on_gui_input(event : InputEvent):
 	if event.is_action_pressed("left_click") and item:
 		print(item.title)
 		get_parent().check_item(item)
+		#get_parent().check_item(item.duplicate(true))
 		item.upgrade_item()
 		get_parent().close_option()

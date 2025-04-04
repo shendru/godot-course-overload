@@ -2,6 +2,7 @@ extends PanelContainer
 
 @export var item: Weapon:
 	set(value):
+		
 		if item != null and item.has_method("reset"):
 			item.reset()
 		
@@ -9,6 +10,8 @@ extends PanelContainer
 		$TextureRect.texture = value.icon
 		$Cooldown.wait_time = value.cooldown
 		item.slot = self
+		print(str(item.title)+":"+str(item.level))
+
 
 func _physics_process(delta: float) -> void:
 	if item !=null and item.has_method("update"):

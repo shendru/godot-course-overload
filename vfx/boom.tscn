@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://qltbihy5ev8n"]
 
-[ext_resource type="Shader" uid="uid://bpyhcoy16em87" path="res://vfx/hit_shader.tres" id="1_lm5qc"]
+[ext_resource type="Shader" uid="uid://bpyhcoy16em87" path="res://vfx/simple_shader.tres" id="1_lm5qc"]
 [ext_resource type="Texture2D" uid="uid://dek60ij0keit" path="res://assets/textures/T_flare81.png" id="2_vlks2"]
 [ext_resource type="Texture2D" uid="uid://coo35c5mmo6c8" path="res://assets/textures/T_circle42.PNG" id="3_qryei"]
 [ext_resource type="Shader" uid="uid://ccfa2f7l17y3t" path="res://shaders/mask-offset.gdshader" id="4_qng3g"]

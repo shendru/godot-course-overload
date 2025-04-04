@@ -9,7 +9,7 @@ func _ready() -> void:
 		#print("source exists"+str(source))
 	if "lifetime" in source:
 		$Lifetime.wait_time = 2
-		$PreLifetime.wait_time = source.lifetime.wait_time - 2
+		$PreLifetime.wait_time = max(source.lifetime.wait_time - 2, 1)
 		$PreLifetime.start()
 		
 func runAnim():

@@ -6,7 +6,6 @@
 radius = 21.0238
 
 [node name="Pickups" type="Area2D" groups=["Pickups"]]
-process_mode = 3
 z_index = -5
 collision_layer = 4
 script = ExtResource("1_xnt6b")

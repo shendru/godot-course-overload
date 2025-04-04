@@ -4,7 +4,8 @@ extends ProjectileNode
 @onready var PreLifetime = $PreLifetime
 
 func _ready() -> void:
-	PreLifetime.wait_time = Lifetime.wait_time - 1
+	super()
+	PreLifetime.wait_time = max(Lifetime.wait_time - 1, 0.1)
 	PreLifetime.start()
 
 func _on_lifetime_timeout() -> void:

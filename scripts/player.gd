@@ -3,6 +3,10 @@ extends CharacterBody2D
 
 signal health_depleted
 
+var main_weapon = load("res://Resources/weapons temp/whip.tres")
+@export var weapon_slot_1 = PanelContainer
+
+
 var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 @onready var offset : Marker2D = %offset
 @onready var eyeOffset : Marker2D = %eyeOffset
@@ -16,7 +20,7 @@ var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 var deceleration : float = 800.0
 var direction: Vector2 = Vector2.RIGHT
 
-var growth_factor: float = 1.1
+var growth_factor: float = 1.01
 var base_exp: float = 10 #must align with %XP.max_value
 
 #Chara stats
@@ -35,7 +39,7 @@ var knockback : float = 0.0
 var magnet : float = 0.0:
 	set(value):
 		magnet = value
-		%Magnet.shape.radius = 150 + value
+		%Magnet.shape.radius = 300 + value
 var growth : float = 1.0
 var luck : float = 1.0
 var gold : int = 0:
@@ -67,6 +71,8 @@ var mouse_mode: bool = false
 var health: float = 100.0:
 	set(value):
 		health = max(value, 0)
+		if health >= max_health:
+			health = max_health
 		%Health.value = value
 		if health <= 0:
 			print("you dieded")
@@ -75,8 +81,11 @@ var health: float = 100.0:
 			%GameOver.show()
 			
 var scale_reference: Vector2
+
 	
 func _ready() -> void:
+	var main_weapon_duplicate = main_weapon.duplicate()
+	weapon_slot_1.item = main_weapon_duplicate
 	scale_reference = $AnimatedSprite2D.scale
 	sprite.material.set_shader_parameter("flash_amount", 0)
 

@@ -62,7 +62,7 @@ func _on_phase_1_timeout() -> void:
 	var target_angle = global_position.angle_to_point(enemy_position)
 	is_rotating = true  # Disable movement while rotating
 	
-	tween.tween_property(self, "rotation", target_angle, 1)  # Rotate over 0.3s
+	tween.tween_property(self, "rotation", target_angle, 0.3)  # Rotate over 0.3s
 	tween.tween_callback(func(): start_moving())  # Call function after tween
 	
 

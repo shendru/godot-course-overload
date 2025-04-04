@@ -1,5 +1,7 @@
 extends Node2D
  
+var long_line: bool = false
+
 @export var player : CharacterBody2D
 @export var enemy : PackedScene
 @export var enemy_types : Array[Enemy]
@@ -9,7 +11,10 @@ extends Node2D
 @export var grass_types : Array[Grass]
 
 @export var hazard_types : Array[Enemy]
+@export var hazard_types_slow : Array[Enemy]
+@export var hazard_types_fast : Array[Enemy]
 @export var hazard_area : PackedScene = preload("res://scenes/hazard_area_2d.tscn")
+@export var hazard_area2 : PackedScene = preload("res://scenes/hazard_long_line.tscn")
 var grass_counter:int = 0:
 	set(value):
 		grass_counter = value
@@ -39,16 +44,24 @@ var second : int:
 		%Second.text = str(second).lpad(2,'0')
 
 func _ready():
+	$Hazard.wait_time = randf() * 10 + 60
+	$Hazard.start()
+	
+	$Hazard2.wait_time = randf() * 10 + 80
+	$Hazard2.start()
 	init_some_grass()
 	pass
 
 func spawn(pos : Vector2, elite : bool = false):
 	var enemy_instance = enemy.instantiate()
+	
 	enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
 	#enemy_instance.position = get_random_position()
 	enemy_instance.position = pos
+	
 	enemy_instance.player_reference = player
 	enemy_instance.elite = elite
+	
 	enemy_instance.connect("died", _on_enemy_died)
 	get_tree().current_scene.add_child.call_deferred(enemy_instance)
 	enemy_counter+=1
@@ -70,15 +83,32 @@ func spawnHazards(pos : Vector2):
 	hazard_instance.player_reference = player
 	get_tree().current_scene.add_child.call_deferred(hazard_instance)
 
+func spawnHazardsV2(pos : Vector2):
+	var hazard_instance = hazard_area.instantiate()
+	hazard_instance.type = hazard_types_slow.pick_random()
+	#hazard_instance.position = get_random_position()
+	hazard_instance.position = pos
+	hazard_instance.player_reference = player
+	get_tree().current_scene.add_child.call_deferred(hazard_instance)
+
+func spawnHazards2(pos : Vector2):
+	var hazard_instance = hazard_area2.instantiate()
+	hazard_instance.type = hazard_types_fast.pick_random()
+	#hazard_instance.position = get_random_position()
+	hazard_instance.position = pos
+	hazard_instance.player_reference = player
+	var direction = (player.position - pos).normalized()
+	hazard_instance.direction = direction
+	var rotation_angle = atan2(direction.y, direction.x)
+	hazard_instance.rotation = rotation_angle
+	get_tree().current_scene.add_child.call_deferred(hazard_instance)
+
 func init_some_grass():
 	var initial_grass_count = min(grass_limit, 20)
 	for i in range(initial_grass_count):
 		var pos = get_random_position_radius(initial_grass_radius)
 		spawnGrass(pos)
 
-func _on_timer_timeout():
-	second += 1
-	amount(second % 10)
  
  
 func get_random_position() -> Vector2:
@@ -94,15 +124,59 @@ func spawn_in_circle(count: int, radius: float):
 		var angle = i * (2 * PI / count) 
 		var spawn_pos = player.position + Vector2.RIGHT.rotated(angle) * radius
 		spawnHazards(spawn_pos)
+		
+func spawn_in_square(count: int, size: float):
+	if count < 4:
+		# If too small, fallback to corners
+		var offsets = [
+			Vector2(-1, -1), Vector2(1, -1),
+			Vector2(1, 1), Vector2(-1, 1),
+		]
+		for i in range(count):
+			var pos = player.position + offsets[i] * (size / 2)
+			spawnHazards(pos)
+		return
+
+	var positions: Array[Vector2] = []
+	var perimeter = size * 4
+	var spacing = perimeter / count
+
+	var current_pos = Vector2(-size / 2, -size / 2)  # Start top-left
+	var dir = Vector2.RIGHT  # Initial direction
+	var side_lengths = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
+
+	var distance_travelled = 0.0
+	var side_index = 0
+
+	for i in range(count):
+		positions.append(current_pos)
+		current_pos += dir * spacing
+		distance_travelled += spacing
+
+		# Turn corner if needed
+		if distance_travelled >= size:
+			distance_travelled = 0.0
+			side_index = (side_index + 1) % 4
+			dir = side_lengths[side_index]
+
+	for pos in positions:
+		spawnHazardsV2(player.position + pos)
+
+
 
  
 func amount(number : int = 1):
 	for i in range(number):
 		spawn(get_random_position())
+		if long_line:
+			spawnHazards2(get_random_position())
 		if grass_counter < grass_limit:
 			spawnGrass(get_random_position())
 			spawnGrass(get_random_position())
  
+func _on_timer_timeout():
+	second += 1
+	amount(second % 10)
  
 func _on_pattern_timeout():
 	for i in range(10):
@@ -122,3 +196,20 @@ func _on_grass_free():
 
 func _on_hazard_timeout() -> void:
 	spawn_in_circle(9, 240)
+	$Hazard.wait_time = randf() * 10 + 60
+	$Hazard.start()
+
+
+func _on_hazard_2_timeout() -> void:
+	spawn_in_square(16,400)
+	$Hazard2.wait_time = randf() * 10 + 80
+	$Hazard2.start()
+
+
+func _on_hazard_long_line_timeout() -> void:
+	$HazardLongLineEnd.start()
+	long_line = true
+
+
+func _on_hazard_long_line_end_timeout() -> void:
+	long_line = false

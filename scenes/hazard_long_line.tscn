@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://blccidst73gt8"]
+
+[ext_resource type="Script" uid="uid://bqft7px4qj0we" path="res://scenes/hazard_long_line.gd" id="1_yxku8"]
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="2_yxku8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yxku8"]
+load_path = "res://.godot/imported/square.png-139b39937238d80ff33ccd9b90f0e588.ctex"
+
+[sub_resource type="Animation" id="Animation_lelx6"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-93.8177, 0), Vector2(829.615, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.0124309, 0.144531), Vector2(-3.61959, 0.144531)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"animationComplete"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vvpbf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-96.9995, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.0124309, 0.144531)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61fyb"]
+_data = {
+&"RESET": SubResource("Animation_vvpbf"),
+&"default": SubResource("Animation_lelx6")
+}
+
+[node name="HazardLongLine" type="Node2D"]
+script = ExtResource("1_yxku8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.99, 0.2376, 0.198, 0.623529)
+z_index = -2
+position = Vector2(830, 0)
+scale = Vector2(3.62109, 0.144531)
+texture = ExtResource("2_yxku8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0.678431, 0.0627451, 0.0627451, 0.788235)
+z_index = -2
+position = Vector2(-96.9995, 0)
+scale = Vector2(-0.0124309, 0.144531)
+texture = SubResource("CompressedTexture2D_yxku8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_61fyb")
+}
+autoplay = "default"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

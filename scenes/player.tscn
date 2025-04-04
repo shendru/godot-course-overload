@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=42 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Shader" uid="uid://brlw48jqf4gxr" path="res://shaders/godrays.gdshader" id="2_oprun"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
-[ext_resource type="Resource" uid="uid://yocjo1gcyfvs" path="res://Resources/weapons/Simple Wand.tres" id="13_qfm1y"]
 [ext_resource type="Script" uid="uid://bj74q520hggc2" path="res://scripts/game_over.gd" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://ckg8wmq00dg67" path="res://scenes/Rays_color_rect.tscn" id="15_a8ls1"]
 
@@ -220,10 +219,11 @@ scale_max = 1.8
 color_ramp = SubResource("GradientTexture1D_olg7q")
 color_initial_ramp = SubResource("GradientTexture1D_b121j")
 
-[node name="player" type="CharacterBody2D" groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_slot_1") groups=["player"]]
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_g2l03")
+weapon_slot_1 = NodePath("CanvasLayer/Weapons/Slot")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -255,8 +255,8 @@ z_index = 1
 position = Vector2(-1, -33)
 shape = SubResource("CapsuleShape2D_y5sbg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.2, 1.2)
+[node name="Camera2D" type="Camera2D" parent="." groups=["cameras"]]
+zoom = Vector2(1.1, 1.1)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -290,7 +290,6 @@ position = Vector2(28, 0)
 rotation = 1.5708
 points = PackedVector2Array(0, -8.025, 0, -61.025)
 width = 2.0
-default_color = Color(4.57242e-07, 0.262341, 0.202909, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -512,7 +511,6 @@ grow_vertical = 0
 
 [node name="Slot" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2
-item = ExtResource("13_qfm1y")
 
 [node name="Slot2" parent="CanvasLayer/Weapons" instance=ExtResource("8_y4r1p")]
 layout_mode = 2

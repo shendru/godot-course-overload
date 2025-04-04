@@ -1,5 +1,7 @@
 extends ProjectileNode
 
+@onready var qfree_timer = $QFreeTimer
+
 @export var chain_limit: int = 3  # Maximum number of chains allowed
 @export var chain_radius: float = 200 # How far to look for the next enemy
 
