@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://blccidst73gt8"]
 
-[ext_resource type="Script" uid="uid://bqft7px4qj0we" path="res://scenes/hazard_long_line.gd" id="1_yxku8"]
+[ext_resource type="Script" uid="uid://bqft7px4qj0we" path="res://scripts/hazard_long_line.gd" id="1_yxku8"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="2_yxku8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yxku8"]

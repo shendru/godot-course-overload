@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Chain" load_steps=4 format=3 uid="uid://coq10wm446k7h"]
 
 [ext_resource type="PackedScene" uid="uid://cddtk13buckpg" path="res://scenes/projectile_chain.tscn" id="1_mjcqr"]
-[ext_resource type="Script" uid="uid://b84sqw6jav2w7" path="res://Chain.gd" id="2_opyrp"]
+[ext_resource type="Script" uid="uid://b84sqw6jav2w7" path="res://scripts/weapon scripts/Chain.gd" id="2_opyrp"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_nbxl3"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct572mbvpopab"]
 
-[ext_resource type="Script" uid="uid://c8y2f8yyydwdy" path="res://scripts/weapon_panel.gd" id="1_kky2p"]
+[ext_resource type="Script" uid="uid://c8y2f8yyydwdy" path="res://old/weapon_panel.gd" id="1_kky2p"]
 
 [node name="Panel" type="PanelContainer"]
 anchors_preset = 2

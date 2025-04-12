@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpawnArray2" load_steps=5 format=3 uid="uid://dvjlul8frdcpc"]
 
 [ext_resource type="PackedScene" uid="uid://ceteuksabt443" path="res://scenes/projectile_disabled_vose.tscn" id="1_1k7p4"]
-[ext_resource type="Script" uid="uid://xfv0vkyxexd" path="res://SpawnArray2.gd" id="2_2hm8i"]
+[ext_resource type="Script" uid="uid://xfv0vkyxexd" path="res://scripts/weapon scripts/SpawnArray2.gd" id="2_2hm8i"]
 [ext_resource type="Texture2D" uid="uid://jigsodldnj48" path="res://assets/items-actual/pen2.png" id="3_kmtoq"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_865ky"]
 

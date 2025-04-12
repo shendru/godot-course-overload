@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cddtk13buckpg"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_wg3s4"]
-[ext_resource type="Script" uid="uid://duf67jo6p2mvx" path="res://projectile_chain.gd" id="2_v007b"]
+[ext_resource type="Script" uid="uid://duf67jo6p2mvx" path="res://scripts/projectile scripts/projectile_chain.gd" id="2_v007b"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="3_13vkc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_13vkc"]

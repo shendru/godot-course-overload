@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cjpg8gwvbn6qq" path="res://assets/items/keyboard.png" id="1_jicyy"]
 [ext_resource type="PackedScene" uid="uid://sjmbs6vty7p2" path="res://scenes/projectile_self_free.tscn" id="2_n6hsh"]
-[ext_resource type="Script" uid="uid://cajc1mc15mji4" path="res://scripts/SlamAndSplash.gd" id="3_k2mr4"]
+[ext_resource type="Script" uid="uid://cajc1mc15mji4" path="res://scripts/weapon scripts/SlamAndSplash.gd" id="3_k2mr4"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="3_n6hsh"]
 [ext_resource type="PackedScene" uid="uid://dexs7htlnmpio" path="res://scenes/projectile_q_free_on_hit.tscn" id="4_rd5xm"]
 [ext_resource type="Texture2D" uid="uid://b1awr575ybu5s" path="res://misc/placeholder_texture_2d.tres" id="5_k2mr4"]

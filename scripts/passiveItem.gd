@@ -24,11 +24,11 @@ func upgrade_item():
 	player_reference.armor += upgrade.armor
 	player_reference.movement_speed += upgrade.movement_speed
 	player_reference.might += upgrade.might
-	player_reference.area += upgrade.area
+	player_reference.attack_aoe += upgrade.attack_aoe
 	player_reference.magnet += upgrade.magnet
 	player_reference.growth += upgrade.growth
 	player_reference.luck += upgrade.luck 
-	player_reference.knockback += upgrade.knockback
+	player_reference.weapon_knockback += upgrade.weapon_knockback
 
 	level += 1
  

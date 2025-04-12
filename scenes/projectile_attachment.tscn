@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv7jb5wlb3lh2"]
+
+[ext_resource type="Script" uid="uid://b6h7e1uvcqftq" path="res://scripts/projectile scripts/projectile_attachment.gd" id="1_q13l3"]
+[ext_resource type="Resource" uid="uid://yocjo1gcyfvs" path="res://Resources/weapons-experimental/Simple Wand.tres" id="2_3cbn6"]
+
+[node name="ProjectileAttachment" type="Node2D"]
+script = ExtResource("1_q13l3")
+item = ExtResource("2_3cbn6")
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://d32ubwtklxff8"]
+[gd_scene load_steps=23 format=3 uid="uid://d32ubwtklxff8"]
 
 [ext_resource type="Texture2D" uid="uid://bxn8qua808qta" path="res://assets/items/LED.png" id="1_36tes"]
 [ext_resource type="Script" uid="uid://b58p80mf0hhgv" path="res://vfx/check_source_projectile.gd" id="1_lf1xj"]
 [ext_resource type="Shader" uid="uid://bitvbkd7ovofv" path="res://shaders/blink_shader.gdshader" id="2_tuxoo"]
+[ext_resource type="Shader" uid="uid://bpyhcoy16em87" path="res://vfx/simple_shader.tres" id="4_0qu05"]
+[ext_resource type="Texture2D" uid="uid://b8auuowtijjd8" path="res://assets/kenney_particlePack/PNG/smoke_04.png" id="5_7qyun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_604ft"]
 resource_local_to_scene = true
@@ -62,6 +64,10 @@ scale_max = 3.6
 scale_curve = SubResource("CurveTexture_604ft")
 color = Color(0.874128, 0.288249, 0.167215, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvghd"]
+shader = ExtResource("4_0qu05")
+shader_parameter/hit_texture = ExtResource("5_7qyun")
+
 [sub_resource type="Curve" id="Curve_604ft"]
 _data = [Vector2(0, 0), 0.0, 4.85742, 0, 0, Vector2(0.120603, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -73,11 +79,11 @@ curve = SubResource("Curve_604ft")
 particle_flag_disable_z = true
 direction = Vector3(0.3, -1, 0)
 spread = 15.0
-initial_velocity_min = 75.95
-initial_velocity_max = 143.46
+initial_velocity_min = 221.25
+initial_velocity_max = 288.76
 gravity = Vector3(0, 98, 0)
-scale_min = 5.22
-scale_max = 7.82
+scale_min = 35.13
+scale_max = 37.73
 scale_curve = SubResource("CurveTexture_0qu05")
 color = Color(0.502, 0.486, 0.482, 0.271)
 turbulence_enabled = true
@@ -142,6 +148,7 @@ texture = ExtResource("1_36tes")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 20
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_arp2o")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
@@ -156,10 +163,11 @@ process_material = SubResource("ParticleProcessMaterial_604ft")
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 30
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_0qu05")
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
-emitting = false
+material = SubResource("ShaderMaterial_nvghd")
 amount = 30
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7qyun")

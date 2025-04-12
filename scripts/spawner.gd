@@ -38,8 +38,8 @@ var minute : int:
 var second : int:
 	set(value):
 		second = value
-		if second >= 10:
-			second -= 10
+		if second >= 60:
+			second -= 60
 			minute += 1
 		%Second.text = str(second).lpad(2,'0')
 
@@ -47,7 +47,7 @@ func _ready():
 	$Hazard.wait_time = randf() * 10 + 60
 	$Hazard.start()
 	
-	$Hazard2.wait_time = randf() * 10 + 80
+	$Hazard2.wait_time = randf() * 10 + 0
 	$Hazard2.start()
 	init_some_grass()
 	pass
@@ -176,7 +176,8 @@ func amount(number : int = 1):
  
 func _on_timer_timeout():
 	second += 1
-	amount(second % 10)
+	#amount(second % 10)
+	amount(1)
  
 func _on_pattern_timeout():
 	for i in range(10):
@@ -201,7 +202,7 @@ func _on_hazard_timeout() -> void:
 
 
 func _on_hazard_2_timeout() -> void:
-	spawn_in_square(16,400)
+	spawn_in_square(16,800)
 	$Hazard2.wait_time = randf() * 10 + 80
 	$Hazard2.start()
 

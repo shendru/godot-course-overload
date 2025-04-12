@@ -148,8 +148,8 @@ material = SubResource("ShaderMaterial_cf7er")
 scale = Vector2(0.059, 0.059)
 sprite_frames = SubResource("SpriteFrames_5uy6h")
 autoplay = "default"
-frame = 2
-offset = Vector2(0, -591.41)
+frame = 1
+offset = Vector2(0, -365.78)
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
 self_modulate = Color(0.05, 0.05, 0.05, 0.866667)
@@ -159,7 +159,7 @@ scale = Vector2(1.65519, 0.297934)
 texture = ExtResource("10_8qclf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -25.75)
+position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_gmke4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://ea6qi1dfwfjd" path="res://assets/items/ethernet calbe.jpeg" id="1_oik5t"]
 [ext_resource type="PackedScene" uid="uid://df17ea4uupv2g" path="res://scenes/projectile_melee.tscn" id="2_te6e1"]
-[ext_resource type="Script" uid="uid://cm7nytj53uq81" path="res://ModifiedBlade.gd" id="3_vbdaf"]
+[ext_resource type="Script" uid="uid://cm7nytj53uq81" path="res://scripts/weapon scripts/ModifiedBlade.gd" id="3_vbdaf"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_7agd5"]
 [ext_resource type="Script" uid="uid://c2lamgonb1a62" path="res://scripts/weapon scripts/BladeUpgrade.gd" id="5_8vw6b"]
-[ext_resource type="PackedScene" uid="uid://cdlfiithg7jhx" path="res://vfx/whip_slash.tscn" id="6_acvrw"]
+[ext_resource type="PackedScene" uid="uid://cdlfiithg7jhx" path="res://vfx/whip_slash.tscn" id="6_oik5t"]
 
 [sub_resource type="Resource" id="Resource_7dfq6"]
 script = ExtResource("5_8vw6b")
@@ -87,7 +87,7 @@ cooldown = 1.0
 speed = 50.0
 projectile_node = ExtResource("2_te6e1")
 upgrades = Array[ExtResource("4_7agd5")]([SubResource("Resource_7dfq6"), SubResource("Resource_t12ga"), SubResource("Resource_g53d2"), SubResource("Resource_gb56b"), SubResource("Resource_4jihs")])
-vfx = ExtResource("6_acvrw")
+vfx = ExtResource("6_oik5t")
 afterFx = Array[PackedScene]([])
 title = "Ethernet Cable"
 icon = ExtResource("1_oik5t")

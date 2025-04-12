@@ -19,6 +19,7 @@ var damage_popup_node = preload("res://scenes/damageLabel.tscn")
 
 var deceleration : float = 800.0
 var direction: Vector2 = Vector2.RIGHT
+var knockback : Vector2 = Vector2.ZERO
 
 var growth_factor: float = 1.01
 var base_exp: float = 10 #must align with %XP.max_value
@@ -30,12 +31,12 @@ var max_health : float = 100 :
 		max_health = value
 		%Health.max_value = value
 		
-var recovery : float = 0
-var armor : float = 0		
-var might : float = 1.0
-var area : float = 0.0
-var haste : float = 0.0
-var knockback : float = 0.0
+var recovery : float = 0	#check
+var armor : float = 0		#check
+var might : float = 1.0		#check
+var attack_aoe : float = 0 #formerly area, increases size of weapons, adds to projectile scale on projectile ready
+var haste : float = 0 # subtracts to the weapon cooldown in slot.gd
+var weapon_knockback: float = 0.0 # adds to the projectile knockback
 var magnet : float = 0.0:
 	set(value):
 		magnet = value
@@ -77,8 +78,8 @@ var health: float = 100.0:
 		if health <= 0:
 			print("you dieded")
 			health_depleted.emit()
-			get_tree().paused = true
-			%GameOver.show()
+			#get_tree().paused = true
+			#%GameOver.show()
 			
 var scale_reference: Vector2
 
@@ -111,8 +112,24 @@ func _physics_process(delta):
 			sprite.scale.x = -scale_reference.x
 		elif velocity.x > 0:
 			sprite.scale.x = scale_reference.x
+	knockback_update(delta)
 	update_animation()
 	check_XP()
+
+
+func knockback_update(delta):
+	
+	knockback = knockback.move_toward(Vector2.ZERO, 1)
+	velocity += knockback
+	
+	#move_and_collide(velocity * delta)
+	#var collider = move_and_collide(velocity * delta)
+	#if collider:
+		#collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
+	
+func add_knockback(amount):
+	knockback += amount
+
 	
 func update_animation():
 	if velocity.length() > 0:
@@ -149,6 +166,7 @@ func update_aim_rotation() -> void:
 			
 
 func take_damage(amount):
+	print(amount)
 	health -= max(amount - armor, 0)
 	take_damage_shader()
 	damage_popup(int(amount))

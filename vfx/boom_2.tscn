@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://iflywfx5p7s5"]
+
+[ext_resource type="Shader" uid="uid://bpyhcoy16em87" path="res://vfx/simple_shader.tres" id="1_jk8nd"]
+[ext_resource type="Texture2D" uid="uid://c46nya2m3jjr4" path="res://assets/kenney_particlePack/PNG/smoke_07.png" id="2_jlheq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cs8xi"]
+resource_local_to_scene = true
+shader = ExtResource("1_jk8nd")
+shader_parameter/hit_texture = ExtResource("2_jlheq")
+
+[sub_resource type="Gradient" id="Gradient_5o7yv"]
+offsets = PackedFloat32Array(0, 0.182353, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q6sj3"]
+gradient = SubResource("Gradient_5o7yv")
+
+[sub_resource type="Curve" id="Curve_g7am2"]
+_data = [Vector2(0, 0.806969), 0.0, 0.0, 0, 0, Vector2(0.219388, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vyrj5"]
+curve = SubResource("Curve_g7am2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_heexc"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 55.55
+initial_velocity_max = 55.55
+angular_velocity_min = -40.0
+angular_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 17.09
+tangential_accel_max = 63.25
+damping_min = 38.889
+damping_max = 44.017
+scale_min = 13.82
+scale_max = 13.82
+scale_curve = SubResource("CurveTexture_vyrj5")
+color_ramp = SubResource("GradientTexture1D_q6sj3")
+turbulence_noise_speed = Vector3(3.965, 4.165, 0)
+turbulence_noise_speed_random = 0.91
+turbulence_influence_min = 0.551
+turbulence_influence_max = 0.551
+turbulence_initial_displacement_min = 21.8
+turbulence_initial_displacement_max = 21.8
+
+[node name="boom2" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_cs8xi")
+amount = 40
+lifetime = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_heexc")

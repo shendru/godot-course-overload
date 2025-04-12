@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dexs7htlnmpio"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_shbd3"]
-[ext_resource type="Script" uid="uid://c4gxhfgrka2xe" path="res://scripts/projectile_qfree_on_hit.gd" id="2_8x81n"]
+[ext_resource type="Script" uid="uid://c4gxhfgrka2xe" path="res://scripts/projectile scripts/projectile_qfree_on_hit.gd" id="2_8x81n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgr8l"]
 resource_local_to_scene = true

@@ -219,6 +219,33 @@ scale_max = 1.8
 color_ramp = SubResource("GradientTexture1D_olg7q")
 color_initial_ramp = SubResource("GradientTexture1D_b121j")
 
+[sub_resource type="Animation" id="Animation_qfm1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-67, -147)]
+}
+
 [sub_resource type="Animation" id="Animation_a8ls1"]
 resource_name = "text"
 length = 10.0
@@ -261,7 +288,13 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_qfm1y"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fulsm"]
+_data = {
+&"RESET": SubResource("Animation_qfm1y"),
+&"text": SubResource("Animation_a8ls1")
+}
+
+[sub_resource type="Animation" id="Animation_60mlk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -285,13 +318,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-67, -147)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fulsm"]
-_data = {
-&"RESET": SubResource("Animation_qfm1y"),
-&"text": SubResource("Animation_a8ls1")
+"values": [Vector2(-114, -124)]
 }
 
 [sub_resource type="Animation" id="Animation_4r5pv"]
@@ -334,33 +361,6 @@ tracks/2/keys = {
 "args": [],
 "method": &"queue_free"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_60mlk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-114, -124)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i4ail"]
@@ -1012,9 +1012,9 @@ autoplay = "text"
 [node name="tutorial2" type="RichTextLabel" parent="."]
 clip_contents = false
 offset_left = -114.0
-offset_top = -76.385
+offset_top = -124.0
 offset_right = 132.0
-offset_bottom = -36.385
+offset_bottom = -84.0
 bbcode_enabled = true
 text = "[wave amp=25 freq=4]Aim by pressing [b]Left Click Once[/b][/wave]"
 fit_content = true

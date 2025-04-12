@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="3_lis5t"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="4_3yoyr"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_7qnis"]
-[ext_resource type="Script" uid="uid://d3g6ijjc4djpk" path="res://ChainUpgrade.gd" id="6_xglji"]
+[ext_resource type="Script" uid="uid://d3g6ijjc4djpk" path="res://scripts/weapon scripts/ChainUpgrade.gd" id="6_xglji"]
 [ext_resource type="PackedScene" uid="uid://pkba0i6aybnd" path="res://vfx/trail_line.tscn" id="7_4rmj5"]
 
 [sub_resource type="Resource" id="Resource_lxqtx"]

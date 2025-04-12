@@ -74,7 +74,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="Elite" type="Timer" parent="."]
-wait_time = 9.0
+wait_time = 59.0
 autostart = true
 
 [node name="Hazard" type="Timer" parent="."]

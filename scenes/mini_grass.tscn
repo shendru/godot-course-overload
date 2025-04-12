@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp7xg7s28ja71"]
 
 [ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="1_fa3xt"]
-[ext_resource type="Script" uid="uid://ctv5rkh6tf4qo" path="res://scenes/mini_grass.gd" id="2_sskvm"]
+[ext_resource type="Script" uid="uid://ctv5rkh6tf4qo" path="res://scripts/mini_grass.gd" id="2_sskvm"]
 
 [sub_resource type="Shader" id="Shader_hmhnd"]
 code = "// speed - The speed of the wind movement.

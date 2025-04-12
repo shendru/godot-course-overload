@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://cqpkwlwi7wpg1"]
+
+[ext_resource type="Texture2D" uid="uid://clbvn01r84bxf" path="res://assets/enemies/router crab/frame0000.png" id="1_ntfwn"]
+[ext_resource type="Texture2D" uid="uid://dkbfg0pj58nf2" path="res://assets/enemies/slime ver3/frame0000.png" id="2_1gi32"]
+[ext_resource type="Texture2D" uid="uid://cr0bauvotmf3i" path="res://assets/charas/ver4/frame0000.png" id="3_uqvhn"]
+[ext_resource type="Texture2D" uid="uid://c6pnjkf0n5d43" path="res://assets/enemies/calculator nme/calcv1/frame0000.png" id="4_8x2of"]
+[ext_resource type="Texture2D" uid="uid://cufkj3dyn8num" path="res://assets/enemies/calculator nme/calcv1/frame0001.png" id="5_whwfv"]
+[ext_resource type="Texture2D" uid="uid://bvmqn2c7ncwl" path="res://assets/enemies/calculator nme/calcv1/frame0002.png" id="6_eud4t"]
+[ext_resource type="Texture2D" uid="uid://dqu50s5tlkg8i" path="res://assets/enemies/calculator nme/calcv1/frame0003.png" id="7_xigh6"]
+[ext_resource type="Texture2D" uid="uid://bt56786uui1y7" path="res://assets/enemies/calculator nme/calcv1/frame0004.png" id="8_y5671"]
+[ext_resource type="Texture2D" uid="uid://b7x7iusuvdmby" path="res://assets/enemies/calculator nme/calcv1/frame0005.png" id="9_f1ogv"]
+[ext_resource type="Texture2D" uid="uid://deeayguv6bpwj" path="res://assets/enemies/calculator nme/calcv1/frame0006.png" id="10_l8ot4"]
+[ext_resource type="Texture2D" uid="uid://bmko4pjedvysa" path="res://assets/enemies/calculator nme/calcv1/frame0007.png" id="11_gubri"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ntfwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1gi32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uqvhn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8x2of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_whwfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eud4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xigh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y5671")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f1ogv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l8ot4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gubri")
+}],
+"loop": false,
+"name": &"selfDestruct",
+"speed": 10.0
+}]

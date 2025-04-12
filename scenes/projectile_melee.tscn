@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://df17ea4uupv2g"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_mx4h7"]
-[ext_resource type="Script" uid="uid://dtuwhjl0j5xe0" path="res://projectile_self_free.gd" id="2_g4h2j"]
+[ext_resource type="Script" uid="uid://dtuwhjl0j5xe0" path="res://scripts/projectile scripts/projectile_self_free.gd" id="2_g4h2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dufb6"]
 size = Vector2(215, 56)

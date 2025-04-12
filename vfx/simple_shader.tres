@@ -15,7 +15,7 @@ operator = 2
 
 [resource]
 code = "shader_type canvas_item;
-render_mode blend_mix, unshaded;
+render_mode blend_add, unshaded;
 
 uniform sampler2D hit_texture;
 
@@ -44,6 +44,7 @@ void fragment() {
 }
 "
 mode = 1
+modes/blend = 1
 flags/unshaded = true
 flags/light_only = false
 nodes/fragment/0/position = Vector2(540, 140)

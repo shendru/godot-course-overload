@@ -18,6 +18,6 @@ func _physics_process(delta: float) -> void:
 		item.update(delta)
 
 func _on_cooldown_timeout() -> void:
-	if item:
-		$Cooldown.wait_time = item.cooldown
+	if item and owner:
+		$Cooldown.wait_time = max(item.cooldown - owner.haste, 0.1)
 		item.activate(owner, owner.direction, get_tree())

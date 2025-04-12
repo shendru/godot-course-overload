@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbwm4f6by17vv" path="res://assets/items-actual/pen.png" id="1_2jqe7"]
 [ext_resource type="PackedScene" uid="uid://bao2ccbafgvd3" path="res://scenes/projectile_homing_sword.tscn" id="2_t4ath"]
-[ext_resource type="Script" uid="uid://ci8bu1s25ardi" path="res://SpawnArray.gd" id="3_7jyqx"]
+[ext_resource type="Script" uid="uid://ci8bu1s25ardi" path="res://scripts/weapon scripts/SpawnArray.gd" id="3_7jyqx"]
 [ext_resource type="Texture2D" uid="uid://jigsodldnj48" path="res://assets/items-actual/pen2.png" id="4_ho6d6"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_a3e52"]
 [ext_resource type="Script" uid="uid://buoemmnxxjv63" path="res://scripts/weapon scripts/SpawnArrayUpgrade.gd" id="6_i3qk2"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgpbdr3kmibar"]
 
-[ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://components/ui/exp_ui.tscn" id="1_jesul"]
+[ext_resource type="PackedScene" uid="uid://ge7x23pb4ykl" path="res://old/components/ui/exp_ui.tscn" id="1_jesul"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="2_rpa2l"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="3_fy1cj"]
-[ext_resource type="Script" uid="uid://c8y2f8yyydwdy" path="res://scripts/weapon_panel.gd" id="4_ym4at"]
+[ext_resource type="Script" uid="uid://c8y2f8yyydwdy" path="res://old/weapon_panel.gd" id="4_ym4at"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3

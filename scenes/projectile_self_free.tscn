@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://sjmbs6vty7p2"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_6aq50"]
-[ext_resource type="Script" uid="uid://dtuwhjl0j5xe0" path="res://projectile_self_free.gd" id="2_dacta"]
+[ext_resource type="Script" uid="uid://dtuwhjl0j5xe0" path="res://scripts/projectile scripts/projectile_self_free.gd" id="2_dacta"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aq50"]
 resource_local_to_scene = true

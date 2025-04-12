@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgqygdtp78vd3"]
+
+[ext_resource type="Script" uid="uid://b78nnjlrsdl7o" path="res://scripts/hit_area_2d.gd" id="1_mmn7c"]
+[ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="2_7yth0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xa57y"]
+radius = 100.0
+
+[sub_resource type="Curve" id="Curve_ncv1t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4laun"]
+curve = SubResource("Curve_ncv1t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_notqk"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 282.06
+initial_velocity_max = 282.06
+gravity = Vector3(0, 0, 0)
+scale_min = 20.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_4laun")
+
+[node name="HitArea2D" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_mmn7c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.99, 0.2376, 0.198, 0.623529)
+z_index = -2
+scale = Vector2(0.378906, 0.378906)
+texture = ExtResource("2_7yth0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0.68, 0.0612, 0.0612, 0.788235)
+z_index = -2
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_7yth0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xa57y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_notqk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

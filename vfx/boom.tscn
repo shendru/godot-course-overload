@@ -19,6 +19,7 @@ func emitParticles():
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eer1t"]
+resource_local_to_scene = true
 shader = ExtResource("1_lm5qc")
 shader_parameter/hit_texture = ExtResource("2_vlks2")
 
@@ -55,6 +56,7 @@ color_ramp = SubResource("GradientTexture1D_htm4l")
 alpha_curve = SubResource("CurveTexture_d8lkq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8hf0"]
+resource_local_to_scene = true
 shader = ExtResource("1_lm5qc")
 shader_parameter/hit_texture = ExtResource("3_qryei")
 
@@ -70,6 +72,7 @@ scale_max = 6.0
 color = Color(6.635, 6.63, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lli3k"]
+resource_local_to_scene = true
 shader = ExtResource("4_qng3g")
 shader_parameter/mask_texture = ExtResource("5_a5yg0")
 shader_parameter/offset = 0.0
@@ -104,7 +107,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_vlks2"]
 resource_name = "default"
-length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,6 +130,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qng3g"]

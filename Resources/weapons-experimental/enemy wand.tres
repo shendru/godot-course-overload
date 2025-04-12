@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="SingleShot" load_steps=12 format=3 uid="uid://jtqsd12h7ipm"]
+
+[ext_resource type="Texture2D" uid="uid://c554vptdfqnb" path="res://assets/items/Magic-wand-icon.png" id="1_pvq3v"]
+[ext_resource type="PackedScene" uid="uid://c7msixjetr28p" path="res://scenes/projectile_simple_enemy.tscn" id="2_pvq3v"]
+[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="3_20khs"]
+[ext_resource type="Texture2D" uid="uid://dkrnpq843ahwe" path="res://assets/enemies/calculator nme/calcv1/ball.png" id="4_tpkmu"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_hs4gt"]
+[ext_resource type="Script" uid="uid://boxo1ndwtcu52" path="res://scripts/weapon scripts/SingleShotUpgrade.gd" id="6_be6pj"]
+
+[sub_resource type="Resource" id="Resource_2rxhf"]
+script = ExtResource("6_be6pj")
+speed = 0.0
+damage = 0.0
+cooldown = 0.0
+description = ""
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_he7v2"]
+script = ExtResource("6_be6pj")
+speed = 200.0
+damage = 1.0
+cooldown = 0.0
+description = "+200 more speed.
++1 damage."
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_vw433"]
+script = ExtResource("6_be6pj")
+speed = 0.0
+damage = 0.0
+cooldown = -0.2
+description = "reduces cooldown by 20%"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_f1p2h"]
+script = ExtResource("6_be6pj")
+speed = 0.0
+damage = 5.0
+cooldown = -0.2
+description = "Reduces cooldown by another 20%.
++5 damage."
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_j2nct"]
+script = ExtResource("6_be6pj")
+speed = 200.0
+damage = 1.0
+cooldown = -0.3
+description = "Greatly Reduces Cooldown
++200 more speed.
++5 damage."
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[resource]
+script = ExtResource("3_20khs")
+splashable = false
+chainable = false
+chain_limit = 5
+chain_radius = 200.0
+damage = 10.0
+cooldown = 3.0
+speed = 300.0
+projectile_node = ExtResource("2_pvq3v")
+upgrades = Array[ExtResource("5_hs4gt")]([SubResource("Resource_2rxhf"), SubResource("Resource_he7v2"), SubResource("Resource_vw433"), SubResource("Resource_f1p2h"), SubResource("Resource_j2nct")])
+afterFx = Array[PackedScene]([])
+title = "Simple Wand"
+icon = ExtResource("1_pvq3v")
+texture = ExtResource("4_tpkmu")
+rescale = 0.04
+flair = "[hint=\"Simple and well balanced wand\"][i]\"Simple and well balanced wand\"[/i]"
+level = 2
+metadata/_custom_type_script = "uid://dltx2s48k2y6d"

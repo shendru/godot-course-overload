@@ -73,7 +73,7 @@ metadata/_custom_type_script = "uid://ctklmhirwofko"
 
 [resource]
 script = ExtResource("3_fbukj")
-lifetime = 5.0
+lifetime = 6.0
 area = 1.5
 mult_collision_shape = 1.8
 delay = 0.0

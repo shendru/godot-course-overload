@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_455ae"]
 [ext_resource type="PackedScene" uid="uid://cx5515eshpyix" path="res://scenes/static_field.tscn" id="2_455ae"]
-[ext_resource type="Script" uid="uid://e752noul2swm" path="res://scenes/projectile_damaging_area.gd" id="2_ronis"]
-[ext_resource type="Script" uid="uid://dct6ef35guuov" path="res://scenes/fadetime.gd" id="4_l4tb5"]
+[ext_resource type="Script" uid="uid://e752noul2swm" path="res://scripts/projectile scripts/projectile_damaging_area.gd" id="2_ronis"]
+[ext_resource type="Script" uid="uid://dct6ef35guuov" path="res://scripts/fadetime.gd" id="4_l4tb5"]
 [ext_resource type="Script" uid="uid://dnlgau1ved2s4" path="res://scripts/extra_condition.gd" id="5_1ybbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ronis"]
