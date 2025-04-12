@@ -203,9 +203,12 @@ func _on_timer_timeout() -> void:
 
 
 func _on_self_destruct_timeout() -> void:
-	var explode_vfx = preload("res://vfx/boom.tscn").instantiate()
-	explode_vfx.position = global_position
+	var explode_vfx = preload("res://vfx/boom_2.tscn").instantiate()
+	var explode_vfx2 = preload("res://vfx/radial_echo_follow2.tscn").instantiate()
+	explode_vfx.position = global_position + Vector2.UP * 50
+	explode_vfx2.source = explode_vfx
 	get_tree().current_scene.call_deferred("add_child",explode_vfx)
+	get_tree().current_scene.call_deferred("add_child",explode_vfx2)
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
 

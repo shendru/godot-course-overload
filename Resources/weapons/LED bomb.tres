@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Spawn" load_steps=13 format=3 uid="uid://b8gp3ac12r5ue"]
+[gd_resource type="Resource" script_class="Spawn" load_steps=14 format=3 uid="uid://b8gp3ac12r5ue"]
 
 [ext_resource type="Texture2D" uid="uid://cma4c7h4spalj" path="res://assets/items/LED.jpg" id="1_yx8d8"]
 [ext_resource type="PackedScene" uid="uid://qltbihy5ev8n" path="res://vfx/boom.tscn" id="2_fbukj"]
 [ext_resource type="PackedScene" uid="uid://c2kajnct0oeca" path="res://scenes/projectile_self_free_explode.tscn" id="2_i3hyp"]
+[ext_resource type="PackedScene" uid="uid://3jyuqob44ais" path="res://vfx/radial_echo_follow2.tscn" id="2_ntwbj"]
 [ext_resource type="Script" uid="uid://i8m1v8gej003" path="res://scripts/weapon scripts/Spawn.gd" id="3_fbukj"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_o8rmf"]
 [ext_resource type="PackedScene" uid="uid://d32ubwtklxff8" path="res://vfx/sparks_then_boom.tscn" id="5_yx8d8"]
@@ -73,7 +74,7 @@ metadata/_custom_type_script = "uid://ctklmhirwofko"
 
 [resource]
 script = ExtResource("3_fbukj")
-lifetime = 6.0
+lifetime = 4.0
 area = 1.5
 mult_collision_shape = 1.8
 delay = 0.0
@@ -85,7 +86,7 @@ speed = 0.0
 projectile_node = ExtResource("2_i3hyp")
 upgrades = Array[ExtResource("5_o8rmf")]([SubResource("Resource_o8rmf"), SubResource("Resource_ntwbj"), SubResource("Resource_tpy2o"), SubResource("Resource_d30so"), SubResource("Resource_omssm")])
 vfx = ExtResource("5_yx8d8")
-afterFx = Array[PackedScene]([ExtResource("2_fbukj")])
+afterFx = Array[PackedScene]([ExtResource("2_fbukj"), ExtResource("2_ntwbj")])
 title = "LED Bomb"
 icon = ExtResource("1_yx8d8")
 rescale = 0.0

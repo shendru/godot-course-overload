@@ -15,7 +15,7 @@ operator = 2
 
 [resource]
 code = "shader_type canvas_item;
-render_mode blend_add, unshaded;
+render_mode blend_mix;
 
 uniform sampler2D hit_texture;
 
@@ -24,7 +24,7 @@ uniform sampler2D hit_texture;
 void fragment() {
 // Input:2
 	vec4 n_out2p0 = COLOR;
-	float n_out2p4 = n_out2p0.a;
+	float n_out2p1 = n_out2p0.r;
 
 
 	vec4 n_out4p0;
@@ -33,7 +33,7 @@ void fragment() {
 
 
 // FloatOp:5
-	float n_out5p0 = n_out4p0.x * n_out2p4;
+	float n_out5p0 = n_out4p0.x * n_out2p1;
 
 
 // Output:0
@@ -44,10 +44,8 @@ void fragment() {
 }
 "
 mode = 1
-modes/blend = 1
-flags/unshaded = true
 flags/light_only = false
-nodes/fragment/0/position = Vector2(540, 140)
+nodes/fragment/0/position = Vector2(620, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_w4ha7")
 nodes/fragment/2/position = Vector2(-40, 120)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_5di8t")
@@ -55,5 +53,5 @@ nodes/fragment/3/position = Vector2(-440, 460)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_r1cm6")
 nodes/fragment/4/position = Vector2(-100, 480)
 nodes/fragment/5/node = SubResource("VisualShaderNodeFloatOp_bilsa")
-nodes/fragment/5/position = Vector2(340, 360)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 4, 2, 4, 0, 5, 0, 2, 4, 5, 1, 5, 0, 0, 1)
+nodes/fragment/5/position = Vector2(320, 360)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 4, 0, 5, 0, 5, 0, 0, 1, 2, 1, 5, 1, 2, 0, 0, 0)

@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk8jh3khlvt7d"]
+[gd_scene load_steps=5 format=3 uid="uid://bk8jh3khlvt7d"]
+
+[ext_resource type="Texture2D" uid="uid://cdcnawhnwrk0q" path="res://assets/kenney_particlePack/PNG/star_09.png" id="1_fmhmj"]
 
 [sub_resource type="GDScript" id="GDScript_xy2fk"]
 script/source = "extends Node2D
@@ -71,12 +73,13 @@ func _process(delta):
 
 [sub_resource type="Shader" id="Shader_xy2fk"]
 code = "shader_type canvas_item;
-uniform sampler2D SCREEN_TEXTURE :hint_screen_texture, filter_linear_mipmap;
-
-uniform vec2 center; // Center of the shockwave (0.0-1.0)
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D distortion_mask; // Texture to define the shape of the distortion
+uniform vec2 center; // Center of the distortion (0.0-1.0)
 uniform float force : hint_range(0.0, 10.0) = 2.0;
 uniform float radius : hint_range(0.0, 1.0) = 0.2;
 uniform float thickness : hint_range(0.0, 0.5) = 0.1;
+uniform float distortion_strength : hint_range(-1.0, 1.0) = 0.1; // Intensity of the mask distortion
 
 void fragment() {
     vec2 uv = UV;
@@ -84,19 +87,28 @@ void fragment() {
     float dist_to_center = length(uv - center);
     float falloff = smoothstep(radius - thickness, radius, dist_to_center) - smoothstep(radius, radius + thickness, dist_to_center);
 
-    vec2 displacement = normalize(uv - center) * force * falloff;
+    // Sample the distortion mask texture
+    float mask_value = texture(distortion_mask, uv).r; // Use the red channel as the mask
+
+    // Calculate a circular falloff based on distance to center
+    float circular_mask = 1.0 - smoothstep(radius - thickness * 0.5, radius + thickness * 0.5, dist_to_center);
+
+    // Calculate the displacement based on the circular mask and the distortion mask
+    vec2 displacement = normalize(uv - center) * force * falloff * circular_mask * distortion_strength * mask_value;
 
     COLOR = texture(SCREEN_TEXTURE, SCREEN_UV - displacement);
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7agi7"]
 shader = SubResource("Shader_xy2fk")
-shader_parameter/center = Vector2(0.44, 0.41)
-shader_parameter/force = 0.235
-shader_parameter/radius = 0.194
-shader_parameter/thickness = 0.098
+shader_parameter/distortion_mask = ExtResource("1_fmhmj")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 5.364
+shader_parameter/radius = 0.209
+shader_parameter/thickness = 0.033
+shader_parameter/distortion_strength = -0.068
 
-[node name="Node2D" type="Node2D"]
+[node name="DistortionFollow" type="Node2D"]
 script = SubResource("GDScript_xy2fk")
 target_node_path = NodePath("../Sprite2D4")
 

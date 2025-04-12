@@ -168,6 +168,7 @@ process_material = SubResource("ParticleProcessMaterial_0qu05")
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_nvghd")
+emitting = false
 amount = 30
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7qyun")
