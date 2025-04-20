@@ -78,8 +78,8 @@ var health: float = 100.0:
 		if health <= 0:
 			print("you dieded")
 			health_depleted.emit()
-			#get_tree().paused = true
-			#%GameOver.show()
+			get_tree().paused = true
+			%GameOver.show()
 			
 var scale_reference: Vector2
 
@@ -147,7 +147,7 @@ func _input(event: InputEvent) -> void:
 		mouse_mode = false
 		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event.is_action_pressed("ui_accept"):
-		gain_XP(11)
+		gain_XP(100)
 
 
 func update_aim_rotation() -> void:

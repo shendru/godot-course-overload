@@ -412,7 +412,7 @@ zoom = Vector2(1.1, 1.1)
 unique_name_in_owner = true
 position = Vector2(-1, -32)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBox"]
 unique_name_in_owner = true
@@ -584,9 +584,11 @@ grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ur7pv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_y4r1p")
 max_value = 10.0
+show_percentage = false
 
 [node name="Gold" type="Label" parent="CanvasLayer/XP"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -629,11 +631,12 @@ texture = ExtResource("4_fps5v")
 
 [node name="Health" type="TextureProgressBar" parent="CanvasLayer/PanelContainer"]
 unique_name_in_owner = true
-modulate = Color(0.972549, 0.286275, 0.756863, 1)
+modulate = Color(4.71681e-06, 0.863639, 0.423333, 1)
 layout_mode = 2
 offset_right = 512.0
 offset_bottom = 512.0
 grow_vertical = 0
+max_value = 10.0
 step = 0.01
 value = 10.0
 fill_mode = 5

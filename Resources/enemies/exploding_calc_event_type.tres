@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=13 format=3 uid="uid://dcavnsv8ojt5d"]
+
+[ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="1_f3jem"]
+[ext_resource type="Resource" uid="uid://b4kh22en4lkwx" path="res://Resources/pickups/Gem.tres" id="2_8hqws"]
+[ext_resource type="Script" uid="uid://bm4nryj3mjmqd" path="res://scripts/EnemyType.gd" id="3_iqrjd"]
+[ext_resource type="Texture2D" uid="uid://c6pnjkf0n5d43" path="res://assets/enemies/calculator nme/calcv1/frame0000.png" id="4_lcp0q"]
+[ext_resource type="Texture2D" uid="uid://cufkj3dyn8num" path="res://assets/enemies/calculator nme/calcv1/frame0001.png" id="5_608m4"]
+[ext_resource type="Texture2D" uid="uid://bvmqn2c7ncwl" path="res://assets/enemies/calculator nme/calcv1/frame0002.png" id="6_daeox"]
+[ext_resource type="Texture2D" uid="uid://dqu50s5tlkg8i" path="res://assets/enemies/calculator nme/calcv1/frame0003.png" id="7_pyfn4"]
+[ext_resource type="Texture2D" uid="uid://bt56786uui1y7" path="res://assets/enemies/calculator nme/calcv1/frame0004.png" id="8_hyvsl"]
+[ext_resource type="Texture2D" uid="uid://b7x7iusuvdmby" path="res://assets/enemies/calculator nme/calcv1/frame0005.png" id="9_xr08v"]
+[ext_resource type="Texture2D" uid="uid://deeayguv6bpwj" path="res://assets/enemies/calculator nme/calcv1/frame0006.png" id="10_kixil"]
+[ext_resource type="Texture2D" uid="uid://bmko4pjedvysa" path="res://assets/enemies/calculator nme/calcv1/frame0007.png" id="11_11d85"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4d4p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lcp0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_608m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_daeox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lcp0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_608m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_daeox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pyfn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hyvsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xr08v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kixil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_11d85")
+}],
+"loop": false,
+"name": &"selfDestruct",
+"speed": 8.0
+}]
+
+[resource]
+script = ExtResource("3_iqrjd")
+title = "Calculator"
+sprite = SubResource("SpriteFrames_v4d4p")
+health = 100.0
+damage = 5.0
+movement_speed = 200.0
+resize = Vector2(0.09, 0.09)
+sprite_offset = Vector2(0, -622.46)
+collision_radius = 30.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(0, 0)
+shadow_size = Vector2(1.25794, 0.297934)
+shooter = false
+lifetime_usage = true
+lifetime = 15.0
+self_destruct = true
+self_destruct_timer = 2.5
+hue_shift = 0.505
+saturation_boost = 1.2
+drops = Array[ExtResource("1_f3jem")]([ExtResource("2_8hqws")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"

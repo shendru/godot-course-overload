@@ -4,6 +4,7 @@ class_name Circular
 @export var angular_speed = 20
 @export var radius = 20
 @export var amount = 1
+@export var knockback = 20
 var projectile_reference : Array[Area2D]
 var angle : float
  
@@ -25,6 +26,8 @@ func add_to_player(source):
 	projectile.speed = 0
 	projectile.damage = damage
 	projectile.source = source
+	projectile.knockback = knockback
+	projectile.knockback_on_source = true
 	if texture != null:
 		projectile.find_child("Sprite2D").texture = texture
 	if rescale != 0:
@@ -44,6 +47,8 @@ func upgrade_item():
 	var upgrade = upgrades[level - 1]
  
 	angular_speed += upgrade.angular_speed
+	knockback += upgrade.knockback
+	radius += upgrade.radius
 	amount += upgrade.amount
 	damage += upgrade.damage
  

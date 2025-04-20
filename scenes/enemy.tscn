@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy2y4ioee72mg"]
+[gd_scene load_steps=15 format=3 uid="uid://dy2y4ioee72mg"]
 
 [ext_resource type="Script" uid="uid://6acgt1oyev0h" path="res://scripts/enemy.gd" id="1_b1lmh"]
 [ext_resource type="Texture2D" uid="uid://clbvn01r84bxf" path="res://assets/enemies/router crab/frame0000.png" id="2_4ra3w"]
 [ext_resource type="Shader" uid="uid://d10qnb0m8r7le" path="res://shaders/ColorControl.gdshader" id="2_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://dkbfg0pj58nf2" path="res://assets/enemies/slime ver3/frame0000.png" id="3_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://cr0bauvotmf3i" path="res://assets/charas/ver4/frame0000.png" id="5_xwavj"]
+[ext_resource type="Texture2D" uid="uid://c6pnjkf0n5d43" path="res://assets/enemies/calculator nme/calcv1/frame0000.png" id="6_nenq2"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="10_8qclf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cf7er"]
@@ -33,6 +34,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nenq2")
 }],
 "loop": true,
 "name": &"default",
@@ -148,14 +152,13 @@ material = SubResource("ShaderMaterial_cf7er")
 scale = Vector2(0.059, 0.059)
 sprite_frames = SubResource("SpriteFrames_5uy6h")
 autoplay = "default"
-frame = 1
-offset = Vector2(0, -365.78)
+frame = 3
+offset = Vector2(0, -622.46)
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
 self_modulate = Color(0.05, 0.05, 0.05, 0.866667)
 z_index = -2
-position = Vector2(-67.7966, 25.4237)
-scale = Vector2(1.65519, 0.297934)
+scale = Vector2(1.25794, 0.297934)
 texture = ExtResource("10_8qclf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

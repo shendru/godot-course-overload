@@ -1,9 +1,9 @@
-extends Label
+extends RichTextLabel
  
 func _ready():
-	pop()
+	popp()
  
-func pop():
+func popp():
 	var tween = get_tree().create_tween()
 	var initial_position = position
 

@@ -1,10 +1,13 @@
 extends Node2D
- 
+
+signal overload
 var long_line: bool = false
 
 @export var player : CharacterBody2D
 @export var enemy : PackedScene
 @export var enemy_types : Array[Enemy]
+@export var enemy_event : PackedScene
+@export var enemy_event_types : Array[Enemy]
 
 @export var grass : PackedScene
 @export var grass_limit : int = 60
@@ -13,6 +16,9 @@ var long_line: bool = false
 @export var hazard_types : Array[Enemy]
 @export var hazard_types_slow : Array[Enemy]
 @export var hazard_types_fast : Array[Enemy]
+@export var square_type: Array[hazardSquareType]
+var square_type_index: int = 0
+
 @export var hazard_area : PackedScene = preload("res://scenes/hazard_area_2d.tscn")
 @export var hazard_area2 : PackedScene = preload("res://scenes/hazard_long_line.tscn")
 var grass_counter:int = 0:
@@ -34,20 +40,31 @@ var minute : int:
 	set(value):
 		minute = value
 		%Minute.text = str(value)
- 
+				
+var overload_phase: bool = false			
+
 var second : int:
 	set(value):
 		second = value
-		if second >= 60:
+		if second >= 10 and overload_phase:
+			second -= 10
+			minute += 1
+			popp()
+		elif second >= 60 and not overload_phase:
 			second -= 60
 			minute += 1
+			overload_phase = true
+			popp()
+			overload.emit()
 		%Second.text = str(second).lpad(2,'0')
 
+
+
 func _ready():
-	$Hazard.wait_time = randf() * 10 + 60
+	$Hazard.wait_time = randf() * 10 + 70
 	$Hazard.start()
 	
-	$Hazard2.wait_time = randf() * 10 + 0
+	$Hazard2.wait_time = randf() * 10 + 30
 	$Hazard2.start()
 	init_some_grass()
 	pass
@@ -56,6 +73,20 @@ func spawn(pos : Vector2, elite : bool = false):
 	var enemy_instance = enemy.instantiate()
 	
 	enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
+	#enemy_instance.position = get_random_position()
+	enemy_instance.position = pos
+	
+	enemy_instance.player_reference = player
+	enemy_instance.elite = elite
+	
+	enemy_instance.connect("died", _on_enemy_died)
+	get_tree().current_scene.add_child.call_deferred(enemy_instance)
+	enemy_counter+=1
+
+func spawn_event(pos : Vector2, elite : bool = false):
+	var enemy_instance = enemy_event.instantiate()
+	
+	enemy_instance.type = enemy_event_types[min(minute, enemy_event_types.size()-1)]
 	#enemy_instance.position = get_random_position()
 	enemy_instance.position = pos
 	
@@ -83,9 +114,9 @@ func spawnHazards(pos : Vector2):
 	hazard_instance.player_reference = player
 	get_tree().current_scene.add_child.call_deferred(hazard_instance)
 
-func spawnHazardsV2(pos : Vector2):
+func spawnHazardsV2(pos : Vector2, index: int):
 	var hazard_instance = hazard_area.instantiate()
-	hazard_instance.type = hazard_types_slow.pick_random()
+	hazard_instance.type = hazard_types_slow[index]
 	#hazard_instance.position = get_random_position()
 	hazard_instance.position = pos
 	hazard_instance.player_reference = player
@@ -160,7 +191,7 @@ func spawn_in_square(count: int, size: float):
 			dir = side_lengths[side_index]
 
 	for pos in positions:
-		spawnHazardsV2(player.position + pos)
+		spawnHazardsV2(player.position + pos, min(square_type_index, hazard_types_slow.size()-1))
 
 
 
@@ -176,8 +207,10 @@ func amount(number : int = 1):
  
 func _on_timer_timeout():
 	second += 1
-	#amount(second % 10)
-	amount(1)
+	if overload_phase:
+		amount(second % 10)
+	else:
+		amount(1)
  
 func _on_pattern_timeout():
 	for i in range(10):
@@ -202,8 +235,11 @@ func _on_hazard_timeout() -> void:
 
 
 func _on_hazard_2_timeout() -> void:
-	spawn_in_square(16,800)
-	$Hazard2.wait_time = randf() * 10 + 80
+	var count = square_type[min(square_type_index, square_type.size()-1)].count
+	var square_radius = square_type[min(square_type_index, square_type.size()-1)].square_radius
+	square_type_index += 1
+	spawn_in_square(count,square_radius)
+	$Hazard2.wait_time = randf() * 10 + 30
 	$Hazard2.start()
 
 
@@ -214,3 +250,16 @@ func _on_hazard_long_line_timeout() -> void:
 
 func _on_hazard_long_line_end_timeout() -> void:
 	long_line = false
+
+
+func _on_unique_timer_1_timeout() -> void:
+	spawn_event(get_random_position())
+
+func popp():
+	var tween = get_tree().create_tween()
+
+	tween.tween_property(%Minute, "scale", Vector2(2, 2), 0.1)
+	tween.tween_property(%Second, "scale", Vector2(2, 2), 0.1)
+
+	tween.chain().tween_property(%Minute, "scale", Vector2(1, 1), 0.2)
+	tween.chain().tween_property(%Second, "scale", Vector2(1, 1), 0.2)

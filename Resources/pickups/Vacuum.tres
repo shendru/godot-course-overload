@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_q8tmm")
+isStartingPickup = false
 title = "Vacuum"
 icon = ExtResource("1_bbftk")
 scale = Vector2(0.06, 0.06)

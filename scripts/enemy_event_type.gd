@@ -29,6 +29,7 @@ var facing: float
 var shader_material: ShaderMaterial
 
 var knockback: Vector2
+var knockback_reduction: float = 0.7
 @export var movement_speed: float = 100.0
 var damage: float
 var is_dead = false
@@ -109,7 +110,7 @@ func knockback_update(delta):
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 
 func add_knockback(amount):
-	knockback += amount
+	knockback += amount * (1.0 - knockback_reduction)
 
 func update_aim_rotation() -> void:
 	if velocity.length() > 0:
@@ -217,6 +218,7 @@ func _on_self_destruct_timeout() -> void:
 
 func _on_aggro_area_body_entered(_body: Node2D) -> void:
 	if self_destruct and not self_destruct_sequence:
+		movement_speed = 50
 		var self_destruct_timer = type.self_destruct_timer
 		sprite.play("selfDestruct")
 		animation_player.play("flash")

@@ -11,10 +11,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_body_entered(body: Node2D) -> void:
+func activate() -> void:
+	$StaticBody2D.queue_free()
 	$CanvasLayer/RichTextLabel.show()
 	print("starting")
 	$RichTextLabel.queue_free()
 	$AnimationPlayer.play("start")
 	spawner.set_process_mode(Node.PROCESS_MODE_INHERIT)
+
+func _on_body_entered(body: Node2D) -> void:
+	pass
+	#if body.has_method("take_damage"):
+		#$StaticBody2D.queue_free()
+		#$CanvasLayer/RichTextLabel.show()
+		#print("starting")
+		#$RichTextLabel.queue_free()
+		#$AnimationPlayer.play("start")
+		#spawner.set_process_mode(Node.PROCESS_MODE_INHERIT)

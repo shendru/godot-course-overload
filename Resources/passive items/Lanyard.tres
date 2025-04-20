@@ -7,16 +7,17 @@
 [sub_resource type="Resource" id="Resource_shruq"]
 script = ExtResource("3_eh3a7")
 description = "Slightly buffs every stat."
-max_health = 1.0
-recovery = 0.1
-armor = 0.1
-movement_speed = 1.0
+max_health = 10.0
+recovery = 1.0
+armor = 1.0
+movement_speed = 2.0
 might = 0.05
-area = 0.0
+attack_aoe = 0.0
 magnet = 15.0
 growth = 0.01
 luck = 0.01
 haste = 0.0
+weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [resource]

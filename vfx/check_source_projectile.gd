@@ -3,6 +3,8 @@ extends Node2D
 var source
 var afterFx: Array[PackedScene]
 var afterFxMAX : PackedScene
+var xtraFx : PackedScene = preload("res://vfx/radial_echo_follow2.tscn")
+var emit_xtra:bool = false
 
 func _ready() -> void:
 	#if source:
@@ -35,6 +37,11 @@ func _on_lifetime_timeout() -> void:
 				new_afterFx.source = self
 			add_child(new_afterFx)
 			#get_tree().current_scene.add_child(new_afterFx)
+		if emit_xtra:
+			var new_xtraFx = xtraFx.instantiate()
+			if "source" in new_xtraFx:
+				new_xtraFx.source = self
+			add_child(new_xtraFx)
 	if afterFxMAX != null:
 		var new_afterFx = afterFxMAX.instantiate()
 		if "source" in new_afterFx:
@@ -52,5 +59,6 @@ func emitFx(xtra: bool = false):
 	$Lifetime.start()
 	if xtra:
 		emitParticle3()
+		emit_xtra = true
 	emitParticle1()
 	runAnim()

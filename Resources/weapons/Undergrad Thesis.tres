@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Circular" load_steps=13 format=3 uid="uid://bcdmx25t83h2d"]
+[gd_resource type="Resource" script_class="Circular" load_steps=12 format=3 uid="uid://bcdmx25t83h2d"]
 
 [ext_resource type="Texture2D" uid="uid://t38nptiuoycu" path="res://assets/items/thesis.jpg" id="1_28nyj"]
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="2_ygxwp"]
@@ -10,6 +10,8 @@
 [sub_resource type="Resource" id="Resource_ygxwp"]
 script = ExtResource("6_ylaji")
 angular_speed = 0.0
+radius = 0.0
+knockback = 0.0
 amount = 0
 damage = 0.0
 cooldown = 0.0
@@ -19,58 +21,66 @@ metadata/_custom_type_script = "uid://cs5eybt0dao03"
 [sub_resource type="Resource" id="Resource_bu48f"]
 script = ExtResource("6_ylaji")
 angular_speed = 0.0
+radius = 50.0
+knockback = 0.0
 amount = 1
 damage = 0.0
 cooldown = 0.0
-description = "+1 Projectile"
+description = "+1 Undergrad Thesis
++50 radius
+"
 metadata/_custom_type_script = "uid://cs5eybt0dao03"
 
 [sub_resource type="Resource" id="Resource_mvt1b"]
 script = ExtResource("6_ylaji")
 angular_speed = 90.0
+radius = 0.0
+knockback = 0.0
 amount = 1
 damage = 0.0
 cooldown = 0.0
-description = "+90 angular speed"
+description = "+1 Undergrad Thesis
++90 angular speed"
 metadata/_custom_type_script = "uid://cs5eybt0dao03"
 
 [sub_resource type="Resource" id="Resource_0derx"]
 script = ExtResource("6_ylaji")
-angular_speed = 0.0
-amount = 1
+angular_speed = 100.0
+radius = 40.0
+knockback = 0.0
+amount = 2
 damage = 0.0
 cooldown = 0.0
-description = "+1 projectile"
+description = "+2 Undergrad Thesis
++100 Angular speed
++40 radius"
 metadata/_custom_type_script = "uid://cs5eybt0dao03"
 
 [sub_resource type="Resource" id="Resource_y5t2i"]
 script = ExtResource("6_ylaji")
 angular_speed = 90.0
-amount = 0
-damage = 0.0
-cooldown = 0.0
-description = "+90 angular speed"
-metadata/_custom_type_script = "uid://cs5eybt0dao03"
-
-[sub_resource type="Resource" id="Resource_4uscb"]
-script = ExtResource("6_ylaji")
-angular_speed = 0.0
+radius = 40.0
+knockback = 50.0
 amount = 1
 damage = 0.0
 cooldown = 0.0
-description = "+1 projectile"
+description = "+1 Undergrad Thesis
++90 angular speed
++30 knockback
++40 radius"
 metadata/_custom_type_script = "uid://cs5eybt0dao03"
 
 [resource]
 script = ExtResource("3_f1ec7")
-angular_speed = 90
+angular_speed = 200
 radius = 75
 amount = 1
-damage = 1.0
+knockback = 20
+damage = 2.0
 cooldown = 2.0
 speed = 0.0
 projectile_node = ExtResource("2_ygxwp")
-upgrades = Array[ExtResource("5_mtry6")]([SubResource("Resource_ygxwp"), SubResource("Resource_bu48f"), SubResource("Resource_mvt1b"), SubResource("Resource_0derx"), SubResource("Resource_y5t2i"), SubResource("Resource_4uscb")])
+upgrades = Array[ExtResource("5_mtry6")]([SubResource("Resource_ygxwp"), SubResource("Resource_bu48f"), SubResource("Resource_mvt1b"), SubResource("Resource_0derx"), SubResource("Resource_y5t2i")])
 afterFx = Array[PackedScene]([])
 title = "Undergrad Thesis"
 icon = ExtResource("1_28nyj")

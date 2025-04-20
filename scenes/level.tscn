@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=112 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="2_64w2a"]
@@ -18,23 +18,37 @@
 [ext_resource type="AudioStream" uid="uid://bs5dm3i4ult17" path="res://assets/music/CO [field] (composition ver.).mp3" id="11_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://djfn3jk7c0s6y" path="res://assets/grass/lianGrass3.png" id="11_wc255"]
 [ext_resource type="Texture2D" uid="uid://hprga5vvxx81" path="res://assets/enemies/router crab/frame0001.png" id="17_5k0ak"]
+[ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="18_sc620"]
+[ext_resource type="PackedScene" uid="uid://dt2dvsrbg2j3k" path="res://scenes/enemy_event_type.tscn" id="18_svjb4"]
 [ext_resource type="Texture2D" uid="uid://cfi8xycibkfs6" path="res://assets/enemies/router crab/frame0002.png" id="18_wu01b"]
 [ext_resource type="Texture2D" uid="uid://dqkenvvtx7y52" path="res://assets/enemies/router crab/frame0003.png" id="19_3ies3"]
+[ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/gem.gd" id="19_421lv"]
+[ext_resource type="Resource" uid="uid://dcavnsv8ojt5d" path="res://Resources/enemies/exploding_calc_event_type.tres" id="19_c1pbi"]
+[ext_resource type="Texture2D" uid="uid://c6pnjkf0n5d43" path="res://assets/enemies/calculator nme/calcv1/frame0000.png" id="20_lqb7q"]
+[ext_resource type="Texture2D" uid="uid://cr0bauvotmf3i" path="res://assets/charas/ver4/frame0000.png" id="20_oksur"]
 [ext_resource type="Texture2D" uid="uid://cv8a6w2ub7wj5" path="res://assets/enemies/router crab/frame0004.png" id="20_xy2fk"]
 [ext_resource type="Texture2D" uid="uid://b0hfg4piw34yf" path="res://assets/enemies/router crab/frame0005.png" id="21_cmcjb"]
+[ext_resource type="Texture2D" uid="uid://iiof6xpwxkwv" path="res://assets/charas/ver4/frame0001.png" id="21_jide8"]
+[ext_resource type="Texture2D" uid="uid://cufkj3dyn8num" path="res://assets/enemies/calculator nme/calcv1/frame0001.png" id="21_ok3ci"]
+[ext_resource type="Script" uid="uid://c0p0mfhbi5ohv" path="res://hazardSquareType.gd" id="22_2jdvr"]
+[ext_resource type="Texture2D" uid="uid://byou84rie6dfw" path="res://assets/charas/ver4/frame0002.png" id="22_4h8xp"]
 [ext_resource type="Texture2D" uid="uid://b1xjbhn42xmh1" path="res://assets/enemies/router crab/frame0006.png" id="22_556r4"]
-[ext_resource type="Texture2D" uid="uid://c6pnjkf0n5d43" path="res://assets/enemies/calculator nme/calcv1/frame0000.png" id="23_0fmhk"]
+[ext_resource type="Texture2D" uid="uid://bvmqn2c7ncwl" path="res://assets/enemies/calculator nme/calcv1/frame0002.png" id="22_hv3ux"]
 [ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="23_7agi7"]
-[ext_resource type="Texture2D" uid="uid://cufkj3dyn8num" path="res://assets/enemies/calculator nme/calcv1/frame0001.png" id="24_iafhg"]
+[ext_resource type="Texture2D" uid="uid://dqu50s5tlkg8i" path="res://assets/enemies/calculator nme/calcv1/frame0003.png" id="23_j4eoh"]
+[ext_resource type="Texture2D" uid="uid://dsbio8c4eqwbs" path="res://assets/charas/ver4/frame0003.png" id="23_ql8jr"]
+[ext_resource type="Texture2D" uid="uid://cico7fekcpjbx" path="res://assets/charas/ver4/frame0004.png" id="24_5ga6x"]
+[ext_resource type="Texture2D" uid="uid://bt56786uui1y7" path="res://assets/enemies/calculator nme/calcv1/frame0004.png" id="24_bhb1k"]
 [ext_resource type="Texture2D" uid="uid://bnjw0vv1eghy" path="res://assets/items/onigiri.png" id="25_3ies3"]
-[ext_resource type="Texture2D" uid="uid://bvmqn2c7ncwl" path="res://assets/enemies/calculator nme/calcv1/frame0002.png" id="25_cr74b"]
-[ext_resource type="Texture2D" uid="uid://dqu50s5tlkg8i" path="res://assets/enemies/calculator nme/calcv1/frame0003.png" id="26_uhfbm"]
+[ext_resource type="Texture2D" uid="uid://cpg7rq317j406" path="res://assets/charas/ver4/frame0005.png" id="25_nj2gj"]
+[ext_resource type="Texture2D" uid="uid://b7x7iusuvdmby" path="res://assets/enemies/calculator nme/calcv1/frame0005.png" id="25_tcyu4"]
+[ext_resource type="Texture2D" uid="uid://c00k8dnk3881t" path="res://assets/charas/ver4/frame0006.png" id="26_msn66"]
+[ext_resource type="Texture2D" uid="uid://deeayguv6bpwj" path="res://assets/enemies/calculator nme/calcv1/frame0006.png" id="26_vmndo"]
 [ext_resource type="PackedScene" uid="uid://dpdjnvxy2nivc" path="res://scenes/pickups.tscn" id="27_7agi7"]
-[ext_resource type="Texture2D" uid="uid://bt56786uui1y7" path="res://assets/enemies/calculator nme/calcv1/frame0004.png" id="27_lqb7q"]
-[ext_resource type="Resource" uid="uid://be3nqqg2v7jyl" path="res://Resources/pickups/Vacuum.tres" id="28_7agi7"]
-[ext_resource type="Texture2D" uid="uid://b7x7iusuvdmby" path="res://assets/enemies/calculator nme/calcv1/frame0005.png" id="28_ok3ci"]
-[ext_resource type="Texture2D" uid="uid://deeayguv6bpwj" path="res://assets/enemies/calculator nme/calcv1/frame0006.png" id="29_hv3ux"]
-[ext_resource type="Texture2D" uid="uid://bmko4pjedvysa" path="res://assets/enemies/calculator nme/calcv1/frame0007.png" id="30_j4eoh"]
+[ext_resource type="Texture2D" uid="uid://bmko4pjedvysa" path="res://assets/enemies/calculator nme/calcv1/frame0007.png" id="27_bo6tc"]
+[ext_resource type="Texture2D" uid="uid://dcn3xi78cg6yj" path="res://assets/charas/ver4/frame0007.png" id="27_xmwm8"]
+[ext_resource type="Texture2D" uid="uid://bi8psje6em0sh" path="res://assets/charas/ver4/frame0008.png" id="28_jydfl"]
+[ext_resource type="Texture2D" uid="uid://cas5g5wt7wl0c" path="res://assets/charas/ver4/frame0009.png" id="29_u0n8q"]
 [ext_resource type="Script" uid="uid://efn5sfwcgwhy" path="res://scripts/start_area_2d.gd" id="30_kih21"]
 [ext_resource type="Texture2D" uid="uid://clpdvaf8vpq1c" path="res://assets/grass/lianTree.png" id="42_0fmhk"]
 [ext_resource type="Texture2D" uid="uid://byx3ew7nugi0d" path="res://assets/kenney_particlePack/PNG/star_08.png" id="43_cr74b"]
@@ -43,6 +57,8 @@
 [ext_resource type="Texture2D" uid="uid://n2nirkrrprcg" path="res://assets/grass/lianTreeTh.png" id="44_cr74b"]
 [ext_resource type="PackedScene" uid="uid://bp7xg7s28ja71" path="res://scenes/mini_grass.tscn" id="45_lqb7q"]
 [ext_resource type="Texture2D" uid="uid://cs4gj0scocel3" path="res://assets/grass/ATree.png" id="45_uhfbm"]
+[ext_resource type="Texture2D" uid="uid://bofngs817crao" path="res://assets/simple shapes/square-not full.png" id="50_421lv"]
+[ext_resource type="Script" uid="uid://cwxfbrl3wfujt" path="res://scripts/Vacuum.gd" id="51_oksur"]
 
 [sub_resource type="Resource" id="Resource_cmcjb"]
 script = ExtResource("5_olg7q")
@@ -119,7 +135,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="Resource" id="Resource_556r4"]
@@ -142,6 +158,146 @@ self_destruct = false
 self_destruct_timer = 0.0
 hue_shift = 0.6
 saturation_boost = 1.19
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_wc2bn"]
+script = ExtResource("19_421lv")
+XP = 10.0
+title = "Greater Gem"
+icon = ExtResource("18_sc620")
+scale = Vector2(0.04, 0.04)
+modulate = Color(0.756928, 0, 0.343568, 1)
+description = "This gem gives more exp."
+metadata/_custom_type_script = "uid://ce48g8idjyswm"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbwv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_oksur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jide8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_4h8xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ql8jr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_5ga6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_nj2gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_msn66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xmwm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_jydfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_u0n8q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="Resource" id="Resource_d5irf"]
+script = ExtResource("5_olg7q")
+title = "IT wolf alter"
+sprite = SubResource("SpriteFrames_qbwv7")
+health = 200.0
+damage = 10.0
+movement_speed = 240.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -591.41)
+collision_radius = 9.0
+collision_position = Vector2(0, -25)
+shadow_position = Vector2(-67.7966, 25.4237)
+shadow_size = Vector2(1.65519, 0.297934)
+shooter = false
+lifetime_usage = false
+lifetime = 6.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.768
+saturation_boost = 1.456
+drops = Array[ExtResource("9_wc255")]([SubResource("Resource_wc2bn")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4d4p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_lqb7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ok3ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hv3ux")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_lqb7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ok3ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hv3ux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_j4eoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bhb1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_tcyu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vmndo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_bo6tc")
+}],
+"loop": false,
+"name": &"selfDestruct",
+"speed": 8.0
+}]
+
+[sub_resource type="Resource" id="Resource_7iqcu"]
+script = ExtResource("5_olg7q")
+title = "Calculator"
+sprite = SubResource("SpriteFrames_v4d4p")
+health = 100.0
+damage = 5.0
+movement_speed = 200.0
+resize = Vector2(0.09, 0.09)
+sprite_offset = Vector2(0, -622.46)
+collision_radius = 30.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(0, 0)
+shadow_size = Vector2(1.25794, 0.297934)
+shooter = false
+lifetime_usage = true
+lifetime = 15.0
+self_destruct = true
+self_destruct_timer = 1.0
+hue_shift = 0.505
+saturation_boost = 1.2
 drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 
@@ -223,72 +379,72 @@ saturation_boost = 1.379
 drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_v4d4p"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("23_0fmhk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_iafhg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_cr74b")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("23_0fmhk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_iafhg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_cr74b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_uhfbm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_lqb7q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_ok3ci")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_hv3ux")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_j4eoh")
-}],
-"loop": false,
-"name": &"selfDestruct",
-"speed": 8.0
-}]
-
-[sub_resource type="Resource" id="Resource_30hdq"]
+[sub_resource type="Resource" id="Resource_asl66"]
 script = ExtResource("5_olg7q")
-title = "Calculator"
-sprite = SubResource("SpriteFrames_v4d4p")
-health = 100.0
-damage = 5.0
-movement_speed = 10.0
-resize = Vector2(0.09, 0.09)
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 70.0
+damage = 8.0
+movement_speed = 50.0
+resize = Vector2(0.2, 0.2)
 sprite_offset = Vector2(0, -349.095)
-collision_radius = 30.0
+collision_radius = 20.0
 collision_position = Vector2(0, -9)
 shadow_position = Vector2(-152.542, 25.4237)
 shadow_size = Vector2(2.05244, 0.297934)
 shooter = false
-lifetime_usage = false
+lifetime_usage = true
+lifetime = 10.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.619
+saturation_boost = 1.254
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_q4oe8"]
+script = ExtResource("5_olg7q")
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 70.0
+damage = 8.0
+movement_speed = 40.0
+resize = Vector2(0.2, 0.2)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 20.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(-152.542, 25.4237)
+shadow_size = Vector2(2.05244, 0.297934)
+shooter = false
+lifetime_usage = true
 lifetime = 6.0
-self_destruct = true
-self_destruct_timer = 4.0
-hue_shift = 0.505
-saturation_boost = 1.2
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.356
+saturation_boost = 1.254
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_svjb4"]
+script = ExtResource("5_olg7q")
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 70.0
+damage = 8.0
+movement_speed = 30.0
+resize = Vector2(0.2, 0.2)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 20.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(-152.542, 25.4237)
+shadow_size = Vector2(2.05244, 0.297934)
+shooter = false
+lifetime_usage = true
+lifetime = 6.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.0
+saturation_boost = 1.254
 drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 
@@ -296,9 +452,9 @@ metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 script = ExtResource("5_olg7q")
 title = "router crab"
 sprite = SubResource("SpriteFrames_v4i2d")
-health = 30.0
+health = 70.0
 damage = 8.0
-movement_speed = 1000.0
+movement_speed = 1300.0
 resize = Vector2(0.059, 0.059)
 sprite_offset = Vector2(0, -349.095)
 collision_radius = 9.0
@@ -314,6 +470,36 @@ hue_shift = 0.421
 saturation_boost = 1.379
 drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_c1pbi"]
+script = ExtResource("22_2jdvr")
+count = 16
+square_radius = 600.0
+metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
+
+[sub_resource type="Resource" id="Resource_535f6"]
+script = ExtResource("22_2jdvr")
+count = 16
+square_radius = 500.0
+metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
+
+[sub_resource type="Resource" id="Resource_50fbu"]
+script = ExtResource("22_2jdvr")
+count = 4
+square_radius = 300.0
+metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
+
+[sub_resource type="Resource" id="Resource_0fmhk"]
+script = ExtResource("22_2jdvr")
+count = 16
+square_radius = 400.0
+metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
+
+[sub_resource type="Resource" id="Resource_iafhg"]
+script = ExtResource("22_2jdvr")
+count = 16
+square_radius = 440.0
+metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8fg4"]
 texture = ExtResource("6_xucc8")
@@ -924,68 +1110,6 @@ terrain_set_0/terrain_2/name = "grass2"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/3 = SubResource("TileSetAtlasSource_c8fg4")
 
-[sub_resource type="GDScript" id="GDScript_olg7q"]
-
-[sub_resource type="Shader" id="Shader_8iemx"]
-code = "shader_type canvas_item;
-
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
-
-uniform float wave_progress : hint_range(0.0, 5.0) = 0.0; // Controlled by AnimationPlayer
-uniform float wave_speed = 1.0;
-uniform vec3 wave_params = vec3(10.0, 0.8, 0.1); // (Frequency, Intensity, Thickness)
-uniform vec2 wave_center = vec2(0.5, 0.5); // Normalized center of ripple
-
-void fragment() {
-    vec2 resolution = vec2(textureSize(SCREEN_TEXTURE, 0));
-    float ratio = resolution.x / resolution.y; // Aspect ratio correction
-    vec2 uv = SCREEN_UV;
-
-    // Normalize coordinates
-    vec2 center = wave_center;
-    vec2 dir = uv - center;
-
-    // Apply aspect ratio correction **only to direction vector**
-    dir.x *= ratio;
-
-    float dist = length(dir);
-
-    // Get original screen color
-    vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
-
-    // Apply ripple only within the donut-shaped range
-    if ((dist <= (wave_progress + wave_params.z)) && (dist >= (wave_progress - wave_params.z))) {
-        float diff = (dist - wave_progress);
-        float scale_diff = 1.0 - pow(abs(diff * wave_params.x), wave_params.y);
-        float diff_time = diff * scale_diff;
-
-        // Normalize direction vector **after correction**
-        vec2 diff_tex_coord = normalize(dir);
-        diff_tex_coord.x /= ratio; // Undo aspect correction after normalization
-
-        // Apply distortion ONLY inside the ripple
-        uv += ((diff_tex_coord * diff_time) / (wave_progress * dist * 40.0));
-
-        // Blend new color with original screen color
-        color = texture(SCREEN_TEXTURE, uv);
-
-        // Enhance ripple effect by amplifying the color
-        color += (color * scale_diff) / (wave_progress * dist * 40.0);
-    }
-
-    // Output final color
-    COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_64w2a"]
-resource_local_to_scene = true
-shader = SubResource("Shader_8iemx")
-shader_parameter/wave_progress = 0.208
-shader_parameter/wave_speed = 1.0
-shader_parameter/wave_params = Vector3(0, 2.24, 0.085)
-shader_parameter/wave_center = Vector2(0.5, 0.45)
-
 [sub_resource type="Shader" id="Shader_kih21"]
 code = "shader_type canvas_item;
 
@@ -1062,8 +1186,18 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_jide8"]
+script = ExtResource("51_oksur")
+isStartingPickup = true
+title = "Vacuum"
+icon = ExtResource("50_421lv")
+scale = Vector2(0.06, 0.06)
+modulate = Color(5.29438e-07, 0.437543, 0.542817, 1)
+description = "Suck all gems in"
+metadata/_custom_type_script = "uid://cwxfbrl3wfujt"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w3o6u"]
-radius = 99.4082
+radius = 62.2896
 
 [sub_resource type="Animation" id="Animation_kih21"]
 length = 0.001
@@ -1237,6 +1371,156 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_asl66"),
 &"defaultText": SubResource("Animation_v3why")
+}
+
+[sub_resource type="GDScript" id="GDScript_sc620"]
+script/source = "extends CanvasLayer
+
+
+func _ready() -> void:
+	hide_everything()
+
+func hide_everything() -> void:
+	$RichTextLabel.hide()
+	$RichTextLabel2.hide()
+	$RichTextLabel3.hide()
+
+func show_everything() -> void:
+	$RichTextLabel.show()
+	$RichTextLabel2.show()
+	$RichTextLabel3.show()
+	
+func animate() -> void:
+	$AnimationPlayer.play(\"overload\")
+	
+
+
+func _on_spawner_overload() -> void:
+	show_everything()
+	animate()
+"
+
+[sub_resource type="Animation" id="Animation_sc620"]
+resource_name = "overload"
+length = 4.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 1.23333, 1.3, 1.36, 1.43),
+"transitions": PackedFloat32Array(13.4543, 0.287176, 0.287176, 0.287176, 0.287176),
+"update": 0,
+"values": [Vector2(543.5, 251.875), Vector2(543.5, 114.985), Vector2(543.5, 157.57), Vector2(543.5, 139.2), Vector2(543.5, 157.57)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1.31, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.53333, 1.8, 2.14141, 2.42638, 2.68212, 2.93738, 3.19312),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel3:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.53333, 1.8, 2.14141, 2.42638, 2.68212, 2.93738, 3.19312),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.26667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_421lv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(543.5, 148.936)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel3:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oksur"]
+_data = {
+&"RESET": SubResource("Animation_421lv"),
+&"overload": SubResource("Animation_sc620")
 }
 
 [sub_resource type="Shader" id="Shader_cr74b"]
@@ -1458,6 +1742,7 @@ color = Color(0.1961, 0.37, 0.204795, 1)
 
 [node name="player" parent="." instance=ExtResource("1_ajxwd")]
 position = Vector2(585, 458)
+collision_mask = 1
 
 [node name="enemies" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1467,13 +1752,16 @@ y_sort_enabled = true
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
 process_mode = 4
 player = NodePath("../player")
-enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("6_t1rx8"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk")])
+enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("6_t1rx8"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk"), ExtResource("5_xy2fk"), SubResource("Resource_d5irf")])
+enemy_event = ExtResource("18_svjb4")
+enemy_event_types = Array[ExtResource("5_olg7q")]([ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), SubResource("Resource_7iqcu")])
 grass = ExtResource("5_ppgk2")
 grass_limit = 50
 grass_types = Array[ExtResource("8_fpun6")]([SubResource("Resource_arp2o"), SubResource("Resource_ux5qa"), SubResource("Resource_82cfe"), SubResource("Resource_gunhw"), SubResource("Resource_8gofh")])
 hazard_types = Array[ExtResource("5_olg7q")]([SubResource("Resource_3ies3")])
-hazard_types_slow = Array[ExtResource("5_olg7q")]([SubResource("Resource_30hdq")])
+hazard_types_slow = Array[ExtResource("5_olg7q")]([SubResource("Resource_asl66"), SubResource("Resource_q4oe8"), SubResource("Resource_svjb4")])
 hazard_types_fast = Array[ExtResource("5_olg7q")]([SubResource("Resource_7agi7")])
+square_type = Array[ExtResource("22_2jdvr")]([SubResource("Resource_c1pbi"), SubResource("Resource_535f6"), SubResource("Resource_50fbu"), SubResource("Resource_0fmhk"), SubResource("Resource_iafhg")])
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
@@ -1700,30 +1988,12 @@ tile_set = SubResource("TileSet_7iiyt")
 position = Vector2(571, 327.5)
 scale = Vector2(77, 44.85)
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-visible = false
-z_index = 5
-position = Vector2(780, 309)
-scale = Vector2(3.45703, 2.11914)
-script = SubResource("GDScript_olg7q")
-
-[node name="RadialEcho" type="CanvasLayer" parent="Sprite2D3"]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Sprite2D3/RadialEcho"]
-material = SubResource("ShaderMaterial_64w2a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_t1rx8")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(324, 527)
 scale = Vector2(0.0419386, 0.0419386)
 texture = ExtResource("25_3ies3")
@@ -1738,15 +2008,15 @@ frame_progress = 0.518178
 
 [node name="Pickups" parent="." node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
 position = Vector2(581, 139)
-type = ExtResource("28_7agi7")
+type = SubResource("Resource_jide8")
 player_reference = NodePath("../player")
 
 [node name="StartArea2d" type="Area2D" parent="."]
+position = Vector2(580, 141)
 collision_layer = 0
 script = ExtResource("30_kih21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartArea2d"]
-position = Vector2(580, 140)
 shape = SubResource("CircleShape2D_w3o6u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartArea2d"]
@@ -1762,10 +2032,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -178.5
-offset_top = -191.0
-offset_right = -21.5
-offset_bottom = -121.0
+offset_left = -78.5
+offset_top = -132.127
+offset_right = 78.5
+offset_bottom = -62.1266
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/bold_font_size = 51
@@ -1777,10 +2047,17 @@ horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="StartArea2d"]
 clip_contents = false
-offset_left = 508.0
-offset_top = 199.0
-offset_right = 654.0
-offset_bottom = 239.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = 61.0
+offset_right = 73.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
 text = "[wave amp=12 freq=4]Pick up the EXP[/wave]"
 fit_content = true
@@ -1830,6 +2107,77 @@ libraries = {
 &"": SubResource("AnimationLibrary_2jdvr")
 }
 autoplay = "defaultText"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="StartArea2d"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StartArea2d/StaticBody2D"]
+polygon = PackedVector2Array(-141, -31, -125, 410, -262, 410, -265, -153, 368, -143, 350, 514, -248, 514, -268, 413, 136, 410, 145, -30)
+
+[node name="OverloadUI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_sc620")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OverloadUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_oksur")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverloadUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -132.125
+offset_right = 139.5
+offset_bottom = -62.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_font_size = 51
+bbcode_enabled = true
+text = "[b]OVERLOAD"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="OverloadUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -226.43
+offset_right = 115.0
+offset_bottom = -156.43
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.933326, 4.81308e-06, 9.62615e-07, 1)
+theme_override_font_sizes/bold_font_size = 51
+bbcode_enabled = true
+text = "[b]!"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="OverloadUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -226.43
+offset_right = 168.0
+offset_bottom = -156.43
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.933333, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 51
+bbcode_enabled = true
+text = "[b]!"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
 
 [node name="StartingPickups" type="Node2D" parent="."]
 
@@ -1889,6 +2237,7 @@ type = ExtResource("6_3ies3")
 player_reference = NodePath("../../player")
 
 [node name="Sprite2D10" type="Sprite2D" parent="."]
+visible = false
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_cr74b")
 position = Vector2(436, 579)
@@ -1905,6 +2254,7 @@ scale = Vector2(0.794128, 0.338671)
 texture = ExtResource("43_iafhg")
 
 [node name="MiniGrass" parent="." instance=ExtResource("45_lqb7q")]
+visible = false
 material = SubResource("ShaderMaterial_ok3ci")
 position = Vector2(249, 586)
 scale = Vector2(0.392, 0.392)
@@ -1919,6 +2269,7 @@ scale = Vector2(0.757663, 0.32312)
 texture = ExtResource("43_iafhg")
 
 [node name="MiniGrass2" parent="." instance=ExtResource("45_lqb7q")]
+visible = false
 material = SubResource("ShaderMaterial_hv3ux")
 position = Vector2(663, 667)
 scale = Vector2(0.392, 0.392)
@@ -1933,6 +2284,7 @@ scale = Vector2(0.757663, 0.32312)
 texture = ExtResource("43_iafhg")
 
 [node name="MiniGrass3" parent="." instance=ExtResource("45_lqb7q")]
+visible = false
 material = SubResource("ShaderMaterial_j4eoh")
 position = Vector2(837, 586)
 scale = Vector2(0.392, 0.392)
@@ -1947,10 +2299,13 @@ scale = Vector2(0.757663, 0.32312)
 texture = ExtResource("43_iafhg")
 
 [node name="radialEchoFollow2" type="Node2D" parent="."]
+visible = false
 
 [node name="RadialEcho" type="CanvasLayer" parent="radialEchoFollow2"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="radialEchoFollow2/RadialEcho"]
+visible = false
 material = SubResource("ShaderMaterial_lqb7q")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1960,4 +2315,5 @@ grow_vertical = 2
 mouse_filter = 2
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
+[connection signal="overload" from="Spawner" to="OverloadUI" method="_on_spawner_overload"]
 [connection signal="body_entered" from="StartArea2d" to="StartArea2d" method="_on_body_entered"]

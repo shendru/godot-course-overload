@@ -91,6 +91,10 @@ autostart = true
 wait_time = 10.0
 one_shot = true
 
+[node name="UniqueTimer1" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Pattern" to="." method="_on_pattern_timeout"]
 [connection signal="timeout" from="Elite" to="." method="_on_elite_timeout"]
@@ -98,3 +102,4 @@ one_shot = true
 [connection signal="timeout" from="Hazard2" to="." method="_on_hazard_2_timeout"]
 [connection signal="timeout" from="HazardLongLine" to="." method="_on_hazard_long_line_timeout"]
 [connection signal="timeout" from="HazardLongLineEnd" to="." method="_on_hazard_long_line_end_timeout"]
+[connection signal="timeout" from="UniqueTimer1" to="." method="_on_unique_timer_1_timeout"]
