@@ -4,8 +4,8 @@
 [ext_resource type="Shader" uid="uid://brlw48jqf4gxr" path="res://shaders/godrays.gdshader" id="2_oprun"]
 [ext_resource type="Shader" uid="uid://dc0c4l4sbvg13" path="res://shaders/outline.gdshader" id="3_4ni07"]
 [ext_resource type="Texture2D" uid="uid://dsmqsx1a7vmpt" path="res://assets/items/msuiit.png" id="3_qfm1y"]
+[ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="4_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
-[ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="4_jej6c"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="5_qfm1y"]
@@ -386,10 +386,9 @@ texture = ExtResource("3_qfm1y")
 texture_filter = 1
 material = SubResource("ShaderMaterial_oprun")
 scale = Vector2(0.0570975, 0.0570976)
-sprite_frames = ExtResource("4_jej6c")
-animation = &"idle"
+sprite_frames = ExtResource("4_a8ls1")
+animation = &"movement"
 autoplay = "idle"
-frame_progress = 0.201305
 offset = Vector2(0, -590.185)
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
