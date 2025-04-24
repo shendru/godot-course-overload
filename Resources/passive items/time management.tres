@@ -16,7 +16,7 @@ attack_aoe = 0.0
 magnet = 0.0
 growth = 0.0
 luck = 0.0
-haste = 0.5
+haste = 0.1
 weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
@@ -32,7 +32,7 @@ attack_aoe = 0.0
 magnet = 0.0
 growth = 0.0
 luck = 0.0
-haste = 0.5
+haste = 0.2
 weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkrnpq843ahwe" path="res://assets/enemies/calculator nme/calcv1/ball.png" id="4_wuei6"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_j3ysp"]
 [ext_resource type="Script" uid="uid://bnfsvwao5vjr0" path="res://SplashUpgrade.gd" id="6_pgefy"]
-[ext_resource type="PackedScene" uid="uid://dqj0xi1ie1pwi" path="res://vfx/sparklingParticles.tscn" id="7_pgefy"]
+[ext_resource type="PackedScene" uid="uid://cgk6ln1n0eh1" path="res://vfx/burningParticles.tscn" id="7_pgefy"]
 
 [sub_resource type="Resource" id="Resource_36yb5"]
 script = ExtResource("6_pgefy")
@@ -61,6 +61,9 @@ chainable = false
 chain_limit = 5
 chain_radius = 200.0
 allow_rotation = true
+wave_motion = false
+wave_amplitude = 1024.0
+wave_frequency = 8.0
 damage = 10.0
 cooldown = 1.2
 speed = 700.0
@@ -72,6 +75,6 @@ title = "Modified Rocket"
 icon = ExtResource("1_pgefy")
 texture = ExtResource("4_wuei6")
 rescale = 0.01
-flair = "[hint=\"Simple and well balanced wand\"][i]\"Simple and well balanced wand\"[/i]"
+flair = "[hint=\"Sinusoidal Wand. It represents your spaghetti code.\"][i]\"Sinusoidal Wand. It represents your spaghetti code.\"[/i]"
 level = 2
 metadata/_custom_type_script = "uid://dltx2s48k2y6d"

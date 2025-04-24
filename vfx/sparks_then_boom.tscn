@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://d32ubwtklxff8"]
 
-[ext_resource type="Texture2D" uid="uid://bxn8qua808qta" path="res://assets/items/LED.png" id="1_36tes"]
 [ext_resource type="Script" uid="uid://b58p80mf0hhgv" path="res://vfx/check_source_projectile.gd" id="1_lf1xj"]
 [ext_resource type="Shader" uid="uid://bitvbkd7ovofv" path="res://shaders/blink_shader.gdshader" id="2_tuxoo"]
+[ext_resource type="Texture2D" uid="uid://0gvngj84qxq7" path="res://assets/items-actual/led.png" id="3_0qu05"]
 [ext_resource type="Shader" uid="uid://bpyhcoy16em87" path="res://vfx/simple_shader.tres" id="4_0qu05"]
 [ext_resource type="Texture2D" uid="uid://b8auuowtijjd8" path="res://assets/kenney_particlePack/PNG/smoke_04.png" id="5_7qyun"]
 
@@ -142,8 +142,8 @@ script = ExtResource("1_lf1xj")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_604ft")
-scale = Vector2(0.0253333, 0.0253333)
-texture = ExtResource("1_36tes")
+scale = Vector2(0.028, 0.028)
+texture = ExtResource("3_0qu05")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false

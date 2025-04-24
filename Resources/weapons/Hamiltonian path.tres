@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SingleShot" load_steps=12 format=3 uid="uid://d11xaqbudrdj3"]
 
-[ext_resource type="Texture2D" uid="uid://b1mnw6ojk43re" path="res://assets/items/Hamiltonian_path.svg.png" id="1_u7ka3"]
+[ext_resource type="Texture2D" uid="uid://dvlfyqn0uwf2k" path="res://assets/items-actual/hamiltonian.png" id="1_u7ka3"]
 [ext_resource type="PackedScene" uid="uid://dexs7htlnmpio" path="res://scenes/projectile_q_free_on_hit.tscn" id="2_gmifs"]
 [ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="3_lis5t"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="4_3yoyr"]

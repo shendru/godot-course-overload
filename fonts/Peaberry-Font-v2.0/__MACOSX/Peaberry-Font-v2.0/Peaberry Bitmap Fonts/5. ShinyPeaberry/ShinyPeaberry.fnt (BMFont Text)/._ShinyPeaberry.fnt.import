@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://5onscqd4j446"
+path="res://.godot/imported/._ShinyPeaberry.fnt-96b9050f087b80803e2e0e0ea1877cab.fontdata"
+
+[deps]
+
+source_file="res://fonts/Peaberry-Font-v2.0/__MACOSX/Peaberry-Font-v2.0/Peaberry Bitmap Fonts/5. ShinyPeaberry/ShinyPeaberry.fnt (BMFont Text)/._ShinyPeaberry.fnt"
+dest_files=["res://.godot/imported/._ShinyPeaberry.fnt-96b9050f087b80803e2e0e0ea1877cab.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

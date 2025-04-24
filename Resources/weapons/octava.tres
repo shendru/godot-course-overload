@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RadialWave" load_steps=12 format=3 uid="uid://bs60xk2jmniwj"]
 
-[ext_resource type="Texture2D" uid="uid://bibwb23aqv4cl" path="res://assets/items/msuiit-Octava-Logo.jpg" id="1_xyd87"]
+[ext_resource type="Texture2D" uid="uid://bmopteb151ofy" path="res://assets/items-actual/octava.png" id="1_yrqd1"]
 [ext_resource type="PackedScene" uid="uid://sjmbs6vty7p2" path="res://scenes/projectile_self_free.tscn" id="2_usn3m"]
 [ext_resource type="Script" uid="uid://cp1kc3ygha566" path="res://scripts/weapon scripts/RadialWave.gd" id="3_8h4pl"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="4_2u3ya"]
@@ -68,7 +68,7 @@ upgrades = Array[ExtResource("4_2u3ya")]([SubResource("Resource_6mfr4"), SubReso
 vfx = ExtResource("5_us2vl")
 afterFx = Array[PackedScene]([])
 title = "Octava"
-icon = ExtResource("1_xyd87")
+icon = ExtResource("1_yrqd1")
 rescale = 0.0
 flair = "[hint=\"Let your voice echo through the Course Overload\"][i]\"Let your voice echo through the Course Overload\"[/i]"
 level = 1

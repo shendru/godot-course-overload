@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="SingleShot" load_steps=12 format=3 uid="uid://x7ee2e37ogaf"]
+
+[ext_resource type="Texture2D" uid="uid://d21ph8sgws5dg" path="res://assets/items/syntax.png" id="1_nt7ql"]
+[ext_resource type="PackedScene" uid="uid://ceteuksabt443" path="res://scenes/projectile_disabled_vose.tscn" id="2_nt7ql"]
+[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="3_gkmwx"]
+[ext_resource type="Texture2D" uid="uid://dkrnpq843ahwe" path="res://assets/enemies/calculator nme/calcv1/ball.png" id="4_mkcds"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_hagf3"]
+[ext_resource type="Script" uid="uid://ds84ne4qcqhk1" path="res://SingleShotModifersUpgrade.gd" id="6_nt7ql"]
+[ext_resource type="PackedScene" uid="uid://dqj0xi1ie1pwi" path="res://vfx/sparklingParticles.tscn" id="8_lnr4n"]
+
+[sub_resource type="Resource" id="Resource_kdvc5"]
+script = ExtResource("6_nt7ql")
+speed = 100.0
+splash_count = 0
+splash_cone_angle = 0.0
+wave_motion = false
+wave_amplitude = 0.0
+wave_frequency = 1.0
+damage = 10.0
+cooldown = 0.0
+description = "The wand will have more wave, but deal higher damage.
++1 Wave Frequency.
++10 damage.
++100 speed."
+metadata/_custom_type_script = "uid://ds84ne4qcqhk1"
+
+[sub_resource type="Resource" id="Resource_7qo6t"]
+script = ExtResource("6_nt7ql")
+speed = 0.0
+splash_count = 0
+splash_cone_angle = 0.0
+wave_motion = false
+wave_amplitude = 8.0
+wave_frequency = 0.0
+damage = 0.0
+cooldown = -0.1
+description = "Increase wave amplitude by 8.
+Attacks come faster."
+metadata/_custom_type_script = "uid://ds84ne4qcqhk1"
+
+[sub_resource type="Resource" id="Resource_gkmwx"]
+script = ExtResource("6_nt7ql")
+speed = 150.0
+splash_count = 0
+splash_cone_angle = 0.0
+wave_motion = false
+wave_amplitude = 0.0
+wave_frequency = 0.0
+damage = 0.0
+cooldown = -0.2
+description = "Attacks come even faster."
+metadata/_custom_type_script = "uid://ds84ne4qcqhk1"
+
+[sub_resource type="Resource" id="Resource_nt7ql"]
+script = ExtResource("6_nt7ql")
+speed = 100.0
+splash_count = 9
+splash_cone_angle = 0.0
+wave_motion = false
+wave_amplitude = 0.0
+wave_frequency = 0.0
+damage = 0.0
+cooldown = 0.0
+description = "9 more projectiles will be split every hit from the wand.
++100 speed"
+metadata/_custom_type_script = "uid://ds84ne4qcqhk1"
+
+[resource]
+script = ExtResource("3_gkmwx")
+splashable = true
+splash_count = 0
+splash_cone_angle = 360.0
+chainable = false
+chain_limit = 5
+chain_radius = 200.0
+allow_rotation = false
+wave_motion = true
+wave_amplitude = 16.0
+wave_frequency = 2.0
+damage = 5.0
+cooldown = 1.1
+speed = 300.0
+projectile_node = ExtResource("2_nt7ql")
+upgrades = Array[ExtResource("5_hagf3")]([SubResource("Resource_kdvc5"), SubResource("Resource_kdvc5"), SubResource("Resource_7qo6t"), SubResource("Resource_gkmwx"), SubResource("Resource_nt7ql")])
+vfx = ExtResource("8_lnr4n")
+afterFx = Array[PackedScene]([])
+title = "Syntax Wand"
+icon = ExtResource("1_nt7ql")
+texture = ExtResource("4_mkcds")
+rescale = 0.01
+flair = "[hint=\"Simple and well balanced wand\"][i]\"Simple and well balanced wand\"[/i]"
+level = 2
+metadata/_custom_type_script = "uid://dltx2s48k2y6d"

@@ -44,7 +44,7 @@ enable_both_sides = false
 amount = 0.0
 damage = 0.0
 cooldown = -0.1
-description = "Reduces cooldown by 0.1.
+description = "Attacks come faster. Reduces cooldown by 0.1.
 Increase size by 10%."
 metadata/_custom_type_script = "uid://c2lamgonb1a62"
 

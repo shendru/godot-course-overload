@@ -1,0 +1,129 @@
+[gd_scene load_steps=16 format=3 uid="uid://bylwmoaa0n0gq"]
+
+[ext_resource type="Texture2D" uid="uid://bltxgmn2r7whm" path="res://assets/charas/cs/laptop/frame0000.png" id="1_bhrfg"]
+[ext_resource type="Texture2D" uid="uid://c1esnq4phwsxa" path="res://assets/charas/cs/laptop/frame0001.png" id="2_ic83o"]
+[ext_resource type="Texture2D" uid="uid://dishbm0c7t1rj" path="res://assets/charas/cs/laptop/frame0002.png" id="3_w52ry"]
+[ext_resource type="Texture2D" uid="uid://qsbx0ui4o7ss" path="res://assets/charas/cs/laptop/frame0003.png" id="4_p6xrt"]
+[ext_resource type="Shader" uid="uid://ctrwuf8le1hhv" path="res://vfx/simple_shader2.tres" id="5_hxvh3"]
+[ext_resource type="Texture2D" uid="uid://dn6isn1caegba" path="res://assets/kenney_particlePack/PNG/window_04.png" id="6_mp1jb"]
+
+[sub_resource type="Shader" id="Shader_a38lo"]
+code = "shader_type canvas_item;
+
+uniform float line_thickness : hint_range(0, 20) = 1.0; // Increased hint range
+uniform float sin_frequency : hint_range(0.1, 2.0) = 0.5;
+uniform float sin_offset : hint_range(0.0, 360.0) = 0.0;
+uniform float light_offset : hint_range(0.0, 1.0) = 0.5;
+
+const vec2 OFFSETS[24] = { // Increased offset array
+    vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1),
+    vec2(1, -1), vec2(1, 0), vec2(1, 1),
+    vec2(-2, -2), vec2(-2, -1), vec2(-2, 0), vec2(-2, 1), vec2(-2, 2),
+    vec2(-1, -2), vec2(0, -2), vec2(1, -2), vec2(2, -2),
+    vec2(2, -1), vec2(2, 0), vec2(2, 1), vec2(2, 2),
+    vec2(-1, 2), vec2(0, 2), vec2(1, 2)
+};
+
+void fragment() {
+    vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+    float outline = 1.0;
+
+    for (int i = 0; i < OFFSETS.length(); i++) {
+        outline *= texture(TEXTURE, UV + size * OFFSETS[i]).a;
+    }
+    outline = 1.0 - outline;
+
+    vec4 animated_line_color = vec4(
+        light_offset + sin(2.0 * 3.14 * sin_frequency * TIME + radians(sin_offset)),
+        light_offset + sin(2.0 * 3.14 * sin_frequency * TIME + radians(120.0 + sin_offset)),
+        light_offset + sin(2.0 * 3.14 * sin_frequency * TIME + radians(240.0 + sin_offset)),
+        1.0
+    );
+
+    vec4 color = texture(TEXTURE, UV);
+    COLOR = mix(color, animated_line_color, outline * color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l71n6"]
+shader = SubResource("Shader_a38lo")
+shader_parameter/line_thickness = 11.0
+shader_parameter/sin_frequency = 0.1
+shader_parameter/sin_offset = 243.229
+shader_parameter/light_offset = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fulsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bhrfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ic83o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w52ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p6xrt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ke2ow"]
+shader = ExtResource("5_hxvh3")
+shader_parameter/Texture_Scale = Vector2(1, 1)
+shader_parameter/Alpha_treshold = 0.0
+shader_parameter/hit_texture = ExtResource("6_mp1jb")
+
+[sub_resource type="Gradient" id="Gradient_a38lo"]
+offsets = PackedFloat32Array(0, 0.424242)
+colors = PackedColorArray(1, 1, 1, 1, 0.845422, 0.872708, 0.465173, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ni07"]
+gradient = SubResource("Gradient_a38lo")
+
+[sub_resource type="Curve" id="Curve_ujl30"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_31cv2"]
+curve = SubResource("Curve_ujl30")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pf23h"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 381.55
+emission_ring_inner_radius = 436.36
+emission_ring_cone_angle = 90.0
+angle_min = -360.0
+angle_max = 360.0
+angular_velocity_min = 94.32
+angular_velocity_max = 94.32
+gravity = Vector3(0, -500, 0)
+tangential_accel_min = 76.86
+tangential_accel_max = 76.86
+scale_min = 10.0
+scale_max = 13.0
+scale_curve = SubResource("CurveTexture_31cv2")
+color_ramp = SubResource("GradientTexture1D_4ni07")
+
+[node name="laptop" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_l71n6")
+position = Vector2(700.556, -840.666)
+scale = Vector2(0.527778, 0.527778)
+sprite_frames = SubResource("SpriteFrames_fulsm")
+autoplay = "default"
+frame = 1
+frame_progress = 0.115141
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_ke2ow")
+amount = 36
+process_material = SubResource("ParticleProcessMaterial_pf23h")

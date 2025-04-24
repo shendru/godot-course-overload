@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SpawnOnEnemy" load_steps=11 format=3 uid="uid://j0t3ii87dn3c"]
 
-[ext_resource type="Texture2D" uid="uid://bc33p0p7mruxw" path="res://assets/items/noli-me-tangere-and-el-filibusterismo.jpg" id="1_nmoty"]
+[ext_resource type="Texture2D" uid="uid://7m151bx075w0" path="res://assets/items-actual/rizal.png" id="1_l5l5m"]
 [ext_resource type="PackedScene" uid="uid://0m4ddy732aof" path="res://scenes/projectile_damaging_area.tscn" id="2_75y4f"]
 [ext_resource type="Script" uid="uid://cwbgilwycypmi" path="res://scripts/weapon scripts/SpawnOnEnemy.gd" id="3_e5va6"]
 [ext_resource type="Texture2D" uid="uid://dkjjhm1dlyvs1" path="res://assets/items/openbook.png" id="4_0cvt4"]
@@ -79,7 +79,7 @@ projectile_node = ExtResource("2_75y4f")
 upgrades = Array[ExtResource("5_3m44n")]([SubResource("Resource_1gogx"), SubResource("Resource_045jq"), SubResource("Resource_bouls"), SubResource("Resource_utcyp")])
 afterFx = Array[PackedScene]([])
 title = "Rizal Law"
-icon = ExtResource("1_nmoty")
+icon = ExtResource("1_l5l5m")
 texture = ExtResource("4_0cvt4")
 rescale = 0.08
 flair = "[hint=\"Nationalism will bring us victory!\"][i]\"Nationalism will bring us victory!\"[/i]"

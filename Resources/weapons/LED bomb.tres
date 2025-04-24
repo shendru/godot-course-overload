@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://qltbihy5ev8n" path="res://vfx/boom.tscn" id="2_fbukj"]
 [ext_resource type="PackedScene" uid="uid://c2kajnct0oeca" path="res://scenes/projectile_self_free_explode.tscn" id="2_i3hyp"]
-[ext_resource type="Texture2D" uid="uid://demdydpj4rpy1" path="res://assets/items/led2.png" id="2_i8hlm"]
+[ext_resource type="Texture2D" uid="uid://0gvngj84qxq7" path="res://assets/items-actual/led.png" id="2_i8hlm"]
 [ext_resource type="Script" uid="uid://i8m1v8gej003" path="res://scripts/weapon scripts/Spawn.gd" id="3_fbukj"]
 [ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_o8rmf"]
 [ext_resource type="PackedScene" uid="uid://d32ubwtklxff8" path="res://vfx/sparks_then_boom.tscn" id="5_yx8d8"]

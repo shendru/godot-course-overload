@@ -29,6 +29,7 @@ func upgrade_item():
 	player_reference.growth += upgrade.growth
 	player_reference.luck += upgrade.luck 
 	player_reference.weapon_knockback += upgrade.weapon_knockback
-
+	player_reference.haste += upgrade.haste
+	
 	level += 1
  

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqj0xi1ie1pwi"]
 
 [ext_resource type="Shader" uid="uid://ctrwuf8le1hhv" path="res://vfx/simple_shader2.tres" id="1_0chy5"]
-[ext_resource type="Texture2D" uid="uid://ca2hm7ia8eqsd" path="res://assets/kenney_particlePack/PNG/fire_02.png" id="2_0chy5"]
+[ext_resource type="Texture2D" uid="uid://dn6isn1caegba" path="res://assets/kenney_particlePack/PNG/window_04.png" id="2_0chy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l06r0"]
 shader = ExtResource("1_0chy5")
@@ -10,7 +10,7 @@ shader_parameter/Alpha_treshold = 0.0
 shader_parameter/hit_texture = ExtResource("2_0chy5")
 
 [sub_resource type="Gradient" id="Gradient_4bpy0"]
-colors = PackedColorArray(1, 0.583333, 0, 1, 0.679021, 0, 0, 1)
+colors = PackedColorArray(0.436541, 0.800691, 0.40334, 1, 0.679021, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cb1un"]
 gradient = SubResource("Gradient_4bpy0")
@@ -29,13 +29,15 @@ angle_max = 360.0
 direction = Vector3(0, 1, 0)
 initial_velocity_min = -10.0
 initial_velocity_max = 31.51
+angular_velocity_min = 125.76
+angular_velocity_max = 125.76
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -100.0
 radial_accel_max = 100.0
 tangential_accel_min = 41.3
 tangential_accel_max = 100.0
-scale_min = 30.7
-scale_max = 50.25
+scale_min = 17.6
+scale_max = 37.15
 scale_curve = SubResource("CurveTexture_yr7fq")
 color_ramp = SubResource("GradientTexture1D_cb1un")
 turbulence_influence_max = 0.196

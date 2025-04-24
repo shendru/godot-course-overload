@@ -7,10 +7,10 @@ extends Control
 ]
 
 @export var max_values := {
-	"Health": 160,
-	"Armor": 5,
+	"Health": 150,
+	"Armor": 4,
 	"Might": 2,
-	"Crit": 30,
+	"Crit": 25,
 	"Speed": 260
 }
 

@@ -12,5 +12,5 @@ icon_offset = Vector2(-155.556, -6.10352e-05)
 banner = ExtResource("1_ypufx")
 banner_offset = Vector2(-39, -10)
 course_label = "INFORMATION TECHNOLOGY"
-course_description = "Focuses on managing and supporting computer systems, networks, and cybersecurity in practical settings."
+course_description = "Focuses on managing and supporting computer systems, networks, and cybersecurity in practical settings. [b]Main Weapon: Ethernet cable whip.[/b]"
 metadata/_custom_type_script = "uid://cb41w64q6vqby"

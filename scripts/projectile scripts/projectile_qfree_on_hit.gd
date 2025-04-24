@@ -20,6 +20,8 @@ func _on_body_entered(body):
 		spawnSplash(body, splash_count)
 	queue_free()
 
+#func remove sprite and colission set timer for q free
+
 func spawnChain(_body):
 	var new_projectile = projectile_nodeC.instantiate()
 	#new_projectile.find_child("Sprite2D").texture = $Sprite2D.texture

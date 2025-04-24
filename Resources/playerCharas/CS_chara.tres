@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlayerChara" load_steps=5 format=3 uid="uid://5liohfg1x76w"]
+
+[ext_resource type="SpriteFrames" uid="uid://c4bbeuaqbkg7m" path="res://animations/CS_wolfFrames.tres" id="1_k6tka"]
+[ext_resource type="PackedScene" uid="uid://bylwmoaa0n0gq" path="res://scenes/player_attachment_laptop.tscn" id="2_euuq6"]
+[ext_resource type="Texture2D" uid="uid://iajcptd76xwi" path="res://assets/preview/isolated chars/CS-male.png" id="2_ipm02"]
+[ext_resource type="Script" uid="uid://cb41w64q6vqby" path="res://scripts/PlayerChara.gd" id="3_euuq6"]
+
+[resource]
+script = ExtResource("3_euuq6")
+animated_sprite = ExtResource("1_k6tka")
+icon = ExtResource("2_ipm02")
+icon_offset = Vector2(-155.556, 0)
+banner = ExtResource("2_ipm02")
+banner_offset = Vector2(-39, -10)
+attachment = ExtResource("2_euuq6")
+course_label = "COMPUTER SCIENCE"
+course_description = "Explores the theory and development of software, algorithms, and computational systems. 
+[b]Main Weapon: Syntax Wand[/b]"
+metadata/_custom_type_script = "uid://cb41w64q6vqby"

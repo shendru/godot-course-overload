@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c1w4yproeaycc"]
+[gd_scene load_steps=32 format=3 uid="uid://c1w4yproeaycc"]
 
 [ext_resource type="Script" uid="uid://7bpjs5ybwhll" path="res://scenes/character_selection.gd" id="1_o5bvq"]
 [ext_resource type="Resource" uid="uid://bltmakieu5gg1" path="res://Resources/playerCharas/It_chara.tres" id="2_c830i"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://0em7roysl15d" path="res://assets/preview/IT_PREVIEW.png" id="5_iixut"]
 [ext_resource type="Resource" uid="uid://dex6ejr4eitlr" path="res://Resources/playerCharas/CA_chara.tres" id="5_jyiyh"]
 [ext_resource type="Texture2D" uid="uid://b8aqv8xx3eop8" path="res://assets/preview/CS_PREVIEW.png" id="6_dv8bk"]
+[ext_resource type="Resource" uid="uid://5liohfg1x76w" path="res://Resources/playerCharas/CS_chara.tres" id="6_jyiyh"]
 [ext_resource type="Texture2D" uid="uid://boidh27tu52er" path="res://assets/preview/border.png" id="9_v724p"]
 [ext_resource type="Texture2D" uid="uid://dj0s0d033c5p7" path="res://assets/preview/temp/PreviewMap.png" id="10_7rsvw"]
 [ext_resource type="PackedScene" uid="uid://cfdpoi4mc647n" path="res://components/radar_chart.tscn" id="15_c830i"]
@@ -38,22 +39,12 @@ course_label = "INFORMATION SYSTEMS"
 course_description = "Combines technology and business to design and manage systems that support organizational decision-making."
 metadata/_custom_type_script = "uid://cb41w64q6vqby"
 
-[sub_resource type="Resource" id="Resource_4rbbu"]
-script = ExtResource("4_4rbbu")
-animated_sprite = SubResource("SpriteFrames_jyiyh")
-icon = ExtResource("3_4rbbu")
-icon_offset = Vector2(0, 0)
-banner_offset = Vector2(0, 0)
-course_label = "COMPUTER SCIENCE"
-course_description = "Explores the theory and development of software, algorithms, and computational systems."
-metadata/_custom_type_script = "uid://cb41w64q6vqby"
-
 [sub_resource type="Resource" id="Resource_gckxq"]
 script = ExtResource("2_l56u2")
 description = ""
 max_health = 100.0
 recovery = 0.0
-armor = 0.1
+armor = 0.5
 movement_speed = 200.0
 might = 1.0
 attack_aoe = 0.0
@@ -96,6 +87,22 @@ haste = 0.0
 weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
+[sub_resource type="Resource" id="Resource_3k5as"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 80.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 210.0
+might = 1.3
+attack_aoe = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 22.0
+haste = 0.0
+weapon_knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q54je"]
 bg_color = Color(0.555376, 0.604877, 0.675666, 1)
 
@@ -105,7 +112,7 @@ bg_color = Color(0.555376, 0.604877, 0.675666, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5bvq"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4rbbu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwes5"]
 
 [sub_resource type="GDScript" id="GDScript_4rbbu"]
 script/source = "extends AnimatedSprite2D
@@ -133,11 +140,11 @@ script = ExtResource("1_o5bvq")
 IT_CHARA = ExtResource("2_c830i")
 IS_CHARA = SubResource("Resource_qwes5")
 CA_CHARA = ExtResource("5_jyiyh")
-CS_CHARA = SubResource("Resource_4rbbu")
+CS_CHARA = ExtResource("6_jyiyh")
 IT_STATS = SubResource("Resource_gckxq")
 IS_STATS = SubResource("Resource_jyiyh")
 CA_STATS = SubResource("Resource_kwlnt")
-CS_STATS = SubResource("Resource_jyiyh")
+CS_STATS = SubResource("Resource_3k5as")
 
 [node name="CharacterSelection" type="CanvasLayer" parent="."]
 
@@ -331,10 +338,11 @@ offset_bottom = 83.0
 text = "BACK"
 
 [node name="CharacterPreview" type="AnimatedSprite2D" parent="CharacterSelection"]
-position = Vector2(692, 372)
+position = Vector2(692, 437)
 scale = Vector2(0.110825, 0.110825)
-sprite_frames = SubResource("SpriteFrames_4rbbu")
+sprite_frames = SubResource("SpriteFrames_qwes5")
 autoplay = "default"
+offset = Vector2(0, -590.185)
 script = SubResource("GDScript_4rbbu")
 
 [node name="Border" type="TextureRect" parent="CharacterSelection"]

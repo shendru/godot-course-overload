@@ -12,5 +12,5 @@ icon_offset = Vector2(-205.556, -150)
 banner = ExtResource("1_d3220")
 banner_offset = Vector2(-39, -10)
 course_label = "COMPUTER APPLICATIONS"
-course_description = "Covers practical computing with an emphasis on hardware, embedded systems, and IoT integration."
+course_description = "Covers practical computing with an emphasis on hardware, embedded systems, and IoT integration. [b]Main Weapon: Modified Rocket[/b]"
 metadata/_custom_type_script = "uid://cb41w64q6vqby"

@@ -9,6 +9,7 @@ class_name PlayerChara
 @export var icon_offset : Vector2
 @export var banner : Texture2D
 @export var banner_offset : Vector2
+@export var attachment : PackedScene
 
 @export var course_label : String
 @export_multiline var course_description: String

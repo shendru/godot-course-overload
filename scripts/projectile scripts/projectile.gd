@@ -15,19 +15,35 @@ var knockback_on_source: bool = false
 
 var allow_rotation = false
  
+# 🚀 New sinusoidal movement properties
+var wave_motion: bool = false
+var wave_amplitude: float = 1024
+var wave_frequency: float = 8
+
+var spawn_origin: Vector2
+var wave_timer: float = 0.0
+
 func _ready() -> void:
+	spawn_origin = global_position
 	if "attack_aoe" in source:
-		scale += Vector2(source.attack_aoe,source.attack_aoe)
-	if vfx!=null:
+		scale += Vector2(source.attack_aoe, source.attack_aoe)
+	if vfx != null:
 		var new_vfx = vfx.instantiate()
 		add_child(new_vfx)
 
 func _physics_process(delta):
-	position += direction * speed * delta
-	if not allow_rotation:
-		pass
+	wave_timer += delta
+
+	if wave_motion:
+		var forward = direction.normalized()
+		var right = Vector2(-forward.y, forward.x) # Perpendicular to direction
+		var wave_offset = sin(wave_timer * wave_frequency * TAU) * wave_amplitude
+		global_position = spawn_origin + forward * speed * wave_timer + right * wave_offset
 	else:
-		rotation += 2.0 * PI * delta
+		position += direction * speed * delta
+
+	if allow_rotation:
+		rotation += TAU * delta
 	
 	
  

@@ -11,6 +11,9 @@ class_name SingleShot
 @export var chain_radius:float = 200
 @export var allow_rotation: bool = false
 
+@export var wave_motion: bool = false
+@export var wave_amplitude: float = 1024
+@export var wave_frequency: float = 8
 
 func shoot(source, target, scene_tree):
 	if target == null:
@@ -23,15 +26,21 @@ func shoot(source, target, scene_tree):
 	projectile.speed = speed
 	projectile.source = source
 	projectile.direction = target
+	if wave_motion:
+		projectile.wave_motion = true
+		projectile.wave_amplitude = wave_amplitude
+		projectile.wave_frequency = wave_frequency
 	if chainable and "chainable" in projectile:
 		#print("chainable tru")
 		projectile.chainable = true
 		projectile.chain_limit = chain_limit
 		projectile.chain_radius = chain_radius
-	if splashable and "chainable" in projectile:
+	if splashable and "splashable" in projectile:
 		#print("splashable true")
 		projectile.splashable = true
 		projectile.splash_count = splash_count
+		#print(projectile.splash_count)
+		#print("splash_count:"+str(splash_count))
 		projectile.splash_cone_angle = splash_cone_angle
 	if allow_rotation:
 		projectile.allow_rotation = true
@@ -65,5 +74,9 @@ func upgrade_item():
 	if splashable:
 		splash_count += upgrade.splash_count
 		splash_cone_angle += upgrade.splash_cone_angle
+	if wave_motion:
+		wave_amplitude += upgrade.wave_amplitude
+		wave_frequency += upgrade.wave_frequency
+	
 	
 	level += 1

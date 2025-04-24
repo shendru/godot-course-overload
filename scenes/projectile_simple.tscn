@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0hyvfy7gso0p"]
+[gd_scene load_steps=8 format=3 uid="uid://b0hyvfy7gso0p"]
 
 [ext_resource type="PackedScene" uid="uid://cg5ocn013f364" path="res://scenes/projectile.tscn" id="1_cb1un"]
-[ext_resource type="Texture2D" uid="uid://b1awr575ybu5s" path="res://misc/placeholder_texture_2d.tres" id="2_yr7fq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpril"]
 resource_local_to_scene = true
@@ -36,9 +35,6 @@ turbulence_enabled = true
 turbulence_influence_max = 0.196
 
 [node name="ProjectileSimple" instance=ExtResource("1_cb1un")]
-
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_yr7fq")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_fpril")

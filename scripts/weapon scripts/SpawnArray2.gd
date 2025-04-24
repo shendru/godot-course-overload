@@ -77,7 +77,7 @@ func spawn(source, _target, scene_tree):
 
 func update(delta):
 	counter += delta
-	print(counter)
+	#print(counter)
 	if counter <= 3:  # Equivalent to timeout
 		angle -= angular_speed * delta
 		for i in range(projectile_reference.size()):
@@ -96,20 +96,25 @@ func update(delta):
 		for i in range(projectile_reference.size()):
 			# Pick a random enemy
 			var enemy = enemies.pick_random()
-			var enemy_position = enemy.global_position
+			if enemy:
+				var enemy_position = enemy.global_position
+				
 
-			# Compute direction to face the enemy
-			var target_direction = (enemy_position - projectile_reference[i].position).normalized()
+				# Compute direction to face the enemy
+				var target_direction = (enemy_position - projectile_reference[i].position).normalized()
 
-			# Rotate the projectile towards the enemy using Tween
-			var tween = scene_tree_reference.create_tween()
-			var target_angle = projectile_reference[i].position.angle_to_point(enemy_position)
-			
-			tween.tween_property(projectile_reference[i], "rotation", target_angle, 1)
-			
-			# After tween completes, launch the projectile
-			tween.finished.connect(_on_tween_completed.bind(projectile_reference[i], target_direction))
-			await scene_tree_reference.create_timer(0.1).timeout
+				# Rotate the projectile towards the enemy using Tween
+				var tween = scene_tree_reference.create_tween()
+				var target_angle = projectile_reference[i].position.angle_to_point(enemy_position)
+				
+				tween.tween_property(projectile_reference[i], "rotation", target_angle, 1)
+				
+				# After tween completes, launch the projectile
+				tween.finished.connect(_on_tween_completed.bind(projectile_reference[i], target_direction))
+				await scene_tree_reference.create_timer(0.1).timeout
+			else:
+				projectile_reference[i].queue_free()
+				
 		projectile_reference.clear()
 		print("Size:"+str(projectile_reference.size()))
 

@@ -36,7 +36,7 @@ var current_stats: Stats
 var current_player_chara: PlayerChara
 
 var availability: bool = false
-
+var chara_attachment
 
 func _ready():
 	var buttons = [
@@ -124,7 +124,7 @@ func _on_IS_CHARACTER_pressed():
 	main_weapon = load("res://Resources/weapons temp/whip.tres")
 	charcter_animation = load("res://animations/ITWolfFrames.tres")
 	apply_character_stats(IS_STATS, IS_CHARA)
-	update_character_preview(IS_CHARA.animated_sprite)  
+	update_character_preview(IS_CHARA)  
 	grey_out_others("IS")
 
 func _on_IT_CHARACTER_pressed():
@@ -132,19 +132,19 @@ func _on_IT_CHARACTER_pressed():
 	availability = true
 	print("IT_CHARACTER clicked!")
 	main_weapon = load("res://Resources/weapons temp/whip.tres")
-	charcter_animation = load("res://animations/ITWolfFrames.tres")
+	charcter_animation = IT_CHARA.animated_sprite
 	apply_character_stats(IT_STATS, IT_CHARA)
-	update_character_preview(IT_CHARA.animated_sprite) 
+	update_character_preview(IT_CHARA) 
 	grey_out_others("IT")
 
 func _on_CS_CHARACTER_pressed():
 	#GameState.selected_stats = CS_STATS
-	availability = false
+	availability = true
 	print("CS_CHARACTER clicked!")
-	main_weapon = load("res://Resources/weapons temp/whip.tres")
-	charcter_animation = load("res://animations/SlimeFrames.tres")
+	main_weapon = load("res://Resources/weapons-experimental/Syntax Wand.tres")
+	charcter_animation = CS_CHARA.animated_sprite
 	apply_character_stats(CS_STATS, CS_CHARA)
-	update_character_preview(CS_CHARA.animated_sprite)  
+	update_character_preview(CS_CHARA)  
 	grey_out_others("CS")
 
 func _on_CA_CHARACTER_pressed():
@@ -152,24 +152,27 @@ func _on_CA_CHARACTER_pressed():
 	availability = true
 	print("CA_CHARACTER clicked!")
 	main_weapon = load("res://Resources/weapons-experimental/Simple Wand.tres")
-	charcter_animation = load("res://animations/CAWolfFrames.tres")
+	charcter_animation = CA_CHARA.animated_sprite
 	
 	apply_character_stats(CA_STATS, CA_CHARA)
-	update_character_preview(CA_CHARA.animated_sprite) 
+	update_character_preview(CA_CHARA) 
 	grey_out_others("CA")
 
 func _on_Start_pressed():
 	print("Start clicked!")
 	if current_stats and main_weapon and availability:
-		# Store selections in GameState
 		GameState.selected_chara = current_player_chara
 		GameState.selected_stats = current_stats
 		GameState.selected_weapon = main_weapon
 		GameState.selected_player_animation = charcter_animation
-		# Load level scene
-		get_tree().change_scene_to_file("res://scenes/level.tscn")
+
+		Transition.fade_out()
+		Transition.transition_completed.connect(_on_fade_out_done, CONNECT_ONE_SHOT)
 	else:
 		print("Please select a character first!")
+	
+func _on_fade_out_done():
+	get_tree().change_scene_to_file("res://scenes/level.tscn")
 
 # Function to apply stats to the selected character
 func apply_character_stats(stats: Stats, player_chara : PlayerChara):
@@ -182,10 +185,19 @@ func apply_character_stats(stats: Stats, player_chara : PlayerChara):
 	course_description.text = player_chara.course_description
 
 # Function to update the character preview texture
-func update_character_preview(sprite_frames: SpriteFrames):
-	var sprite = sprite_frames 
+func update_character_preview(chara: PlayerChara):
+	var sprite = chara.animated_sprite 
 	character_preview.sprite_frames = sprite
 	character_preview.update_anim()
+
+	if chara_attachment and is_instance_valid(chara_attachment):
+		chara_attachment.queue_free()
+		chara_attachment = null
+
+	if chara.attachment != null:
+		print("chara attachment")
+		chara_attachment = chara.attachment.instantiate()
+		character_preview.add_child(chara_attachment)
 	
 #func update_character_preview(texture_path: String):
 	#var texture = load(texture_path)  # Load the texture from the given path

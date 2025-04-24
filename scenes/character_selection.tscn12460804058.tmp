@@ -1,0 +1,441 @@
+[gd_scene load_steps=32 format=3 uid="uid://c1w4yproeaycc"]
+
+[ext_resource type="Script" uid="uid://7bpjs5ybwhll" path="res://scenes/character_selection.gd" id="1_o5bvq"]
+[ext_resource type="Resource" uid="uid://bltmakieu5gg1" path="res://Resources/playerCharas/It_chara.tres" id="2_c830i"]
+[ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="2_l56u2"]
+[ext_resource type="Texture2D" uid="uid://2one4lpdyv2i" path="res://assets/misc/X-symbol.png" id="3_4rbbu"]
+[ext_resource type="Texture2D" uid="uid://b53e1d0o6sj8v" path="res://assets/preview/temp/PreviewBackground.png" id="3_iixut"]
+[ext_resource type="Texture2D" uid="uid://xu1quruhcji" path="res://assets/preview/CA_PREVIEW.png" id="3_wh1ae"]
+[ext_resource type="Script" uid="uid://cb41w64q6vqby" path="res://scripts/PlayerChara.gd" id="4_4rbbu"]
+[ext_resource type="Texture2D" uid="uid://d03mii3v64uqw" path="res://assets/preview/IS_PREVIEW.png" id="4_cqj7k"]
+[ext_resource type="Texture2D" uid="uid://de1kqvx01auen" path="res://assets/preview/arr_prev.png" id="4_y8tcv"]
+[ext_resource type="Texture2D" uid="uid://d305uqn3ptoe8" path="res://assets/preview/arr_next.png" id="5_gckxq"]
+[ext_resource type="Texture2D" uid="uid://0em7roysl15d" path="res://assets/preview/IT_PREVIEW.png" id="5_iixut"]
+[ext_resource type="Resource" uid="uid://dex6ejr4eitlr" path="res://Resources/playerCharas/CA_chara.tres" id="5_jyiyh"]
+[ext_resource type="Texture2D" uid="uid://b8aqv8xx3eop8" path="res://assets/preview/CS_PREVIEW.png" id="6_dv8bk"]
+[ext_resource type="Resource" uid="uid://5liohfg1x76w" path="res://Resources/playerCharas/CS_chara.tres" id="6_jyiyh"]
+[ext_resource type="Texture2D" uid="uid://boidh27tu52er" path="res://assets/preview/border.png" id="9_v724p"]
+[ext_resource type="Texture2D" uid="uid://dj0s0d033c5p7" path="res://assets/preview/temp/PreviewMap.png" id="10_7rsvw"]
+[ext_resource type="PackedScene" uid="uid://cfdpoi4mc647n" path="res://components/radar_chart.tscn" id="15_c830i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyiyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4rbbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_qwes5"]
+script = ExtResource("4_4rbbu")
+animated_sprite = SubResource("SpriteFrames_jyiyh")
+icon = ExtResource("3_4rbbu")
+icon_offset = Vector2(0, 0)
+banner_offset = Vector2(0, 0)
+course_label = "INFORMATION SYSTEMS"
+course_description = "Combines technology and business to design and manage systems that support organizational decision-making."
+metadata/_custom_type_script = "uid://cb41w64q6vqby"
+
+[sub_resource type="Resource" id="Resource_gckxq"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 100.0
+recovery = 0.0
+armor = 0.1
+movement_speed = 200.0
+might = 1.0
+attack_aoe = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 20.0
+haste = 0.0
+weapon_knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_jyiyh"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 0.0
+recovery = 0.0
+armor = 0.0
+movement_speed = 0.0
+might = 0.0
+attack_aoe = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 0.0
+haste = 0.0
+weapon_knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_kwlnt"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 120.0
+recovery = 0.0
+armor = 1.0
+movement_speed = 190.0
+might = 1.0
+attack_aoe = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 15.0
+haste = 0.0
+weapon_knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_3k5as"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 90.0
+recovery = 0.0
+armor = 0.1
+movement_speed = 210.0
+might = 1.1
+attack_aoe = 0.0
+magnet = 0.0
+growth = 0.0
+luck = 22.0
+haste = 0.0
+weapon_knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q54je"]
+bg_color = Color(0.555376, 0.604877, 0.675666, 1)
+
+[sub_resource type="Theme" id="Theme_li4x4"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_v724p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5bvq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rbbu"]
+
+[sub_resource type="GDScript" id="GDScript_4rbbu"]
+script/source = "extends AnimatedSprite2D
+
+
+
+func update_anim():
+	print(\"anim updated\")
+	play(\"default\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li4x4"]
+bg_color = Color(1, 0.260363, 0.624119, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c830i"]
+bg_color = Color(0.794742, 0.71426, 0.293244, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.004
+anchor_bottom = 1.007
+offset_right = 0.535889
+offset_bottom = -0.376099
+script = ExtResource("1_o5bvq")
+IT_CHARA = ExtResource("2_c830i")
+IS_CHARA = SubResource("Resource_qwes5")
+CA_CHARA = ExtResource("5_jyiyh")
+CS_CHARA = ExtResource("6_jyiyh")
+IT_STATS = SubResource("Resource_gckxq")
+IS_STATS = SubResource("Resource_jyiyh")
+CA_STATS = SubResource("Resource_kwlnt")
+CS_STATS = SubResource("Resource_3k5as")
+
+[node name="CharacterSelection" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CharacterSelection"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -5.0
+offset_right = 14.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q54je")
+
+[node name="MapSystem" type="Node" parent="CharacterSelection"]
+
+[node name="MapPreview" type="TextureRect" parent="CharacterSelection/MapSystem"]
+offset_left = -8.0
+offset_top = -11.0
+offset_right = 1377.0
+offset_bottom = 782.0
+texture = ExtResource("3_iixut")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CharacterSelection/MapSystem"]
+offset_left = 87.0
+offset_top = 406.0
+offset_right = 384.0
+offset_bottom = 429.0
+text = "HINAPLANON FIELD"
+horizontal_alignment = 1
+
+[node name="Prev" type="Button" parent="CharacterSelection/MapSystem"]
+custom_minimum_size = Vector2(10, 10)
+offset_left = 51.0
+offset_top = 397.0
+offset_right = 87.0
+offset_bottom = 438.0
+theme = SubResource("Theme_li4x4")
+theme_type_variation = &"FlatButton"
+icon = ExtResource("4_y8tcv")
+
+[node name="Next" type="Button" parent="CharacterSelection/MapSystem"]
+custom_minimum_size = Vector2(10, 10)
+offset_left = 385.0
+offset_top = 397.0
+offset_right = 421.0
+offset_bottom = 438.0
+theme = SubResource("Theme_li4x4")
+theme_type_variation = &"FlatButton"
+icon = ExtResource("5_gckxq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CharacterSelection/MapSystem"]
+offset_left = 51.0
+offset_top = 450.0
+offset_right = 421.0
+offset_bottom = 507.0
+text = "This is the place where IDS students learn and where ROTC student train."
+
+[node name="Label2" type="Label" parent="CharacterSelection/MapSystem"]
+offset_left = 51.0
+offset_top = 508.0
+offset_right = 144.0
+offset_bottom = 531.0
+text = "DIFFICULTY:"
+
+[node name="Label" type="Label" parent="CharacterSelection/MapSystem/Label2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.43
+anchor_bottom = 1.0
+offset_left = 99.0
+offset_right = 99.01
+text = "EASY"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterSelection"]
+modulate = Color(0.968627, 0.85098, 0.32549, 1)
+position = Vector2(691, 739.762)
+scale = Vector2(-1423.56, 142.725)
+mesh = SubResource("QuadMesh_v724p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelection"]
+anchors_preset = -1
+anchor_left = 0.271
+anchor_top = 0.716
+anchor_right = 0.719
+anchor_bottom = 1.0
+offset_left = -370.186
+offset_top = 2.112
+offset_right = 383.846
+alignment = 1
+
+[node name="IS_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/IS_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 218.0
+texture = ExtResource("4_cqj7k")
+expand_mode = 1
+
+[node name="IT_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/IT_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 218.0
+texture = ExtResource("5_iixut")
+expand_mode = 1
+
+[node name="CA_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/CA_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 218.0
+texture = ExtResource("3_wh1ae")
+expand_mode = 1
+
+[node name="CS_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/CS_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 218.0
+texture = ExtResource("6_dv8bk")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="CharacterSelection"]
+offset_left = 51.0
+offset_top = 52.0
+offset_right = 169.0
+offset_bottom = 83.0
+text = "BACK"
+
+[node name="CharacterPreview" type="AnimatedSprite2D" parent="CharacterSelection"]
+position = Vector2(692, 372)
+scale = Vector2(0.110825, 0.110825)
+sprite_frames = SubResource("SpriteFrames_4rbbu")
+autoplay = "default"
+script = SubResource("GDScript_4rbbu")
+
+[node name="Border" type="TextureRect" parent="CharacterSelection"]
+offset_left = 600.0
+offset_top = 250.0
+offset_right = 780.0
+offset_bottom = 490.0
+texture = ExtResource("9_v724p")
+expand_mode = 1
+
+[node name="BackgroundMapPreview" type="TextureRect" parent="CharacterSelection"]
+offset_left = 51.0
+offset_top = 111.0
+offset_right = 421.0
+offset_bottom = 389.0
+texture = ExtResource("10_7rsvw")
+expand_mode = 1
+
+[node name="CourseLabel" type="RichTextLabel" parent="CharacterSelection"]
+offset_left = 502.0
+offset_top = 38.0
+offset_right = 898.0
+offset_bottom = 156.0
+theme_override_constants/line_separation = -20
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "CHOOSE YOUR CHARACTER"
+scroll_active = false
+tab_size = 7
+horizontal_alignment = 1
+
+[node name="CourseDiscription" type="RichTextLabel" parent="CharacterSelection"]
+offset_left = 502.0
+offset_top = 150.0
+offset_right = 899.0
+offset_bottom = 224.0
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="StatsPanel" type="Node" parent="CharacterSelection"]
+
+[node name="HEALTH" type="ProgressBar" parent="CharacterSelection/StatsPanel"]
+visible = false
+offset_left = 923.0
+offset_top = 294.0
+offset_right = 1316.0
+offset_bottom = 321.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_li4x4")
+min_value = 13.16
+max_value = 250.0
+value = 13.16
+show_percentage = false
+
+[node name="Label" type="Label" parent="CharacterSelection/StatsPanel/HEALTH"]
+visible = false
+layout_mode = 0
+offset_top = -31.0
+offset_right = 62.0
+offset_bottom = -8.0
+text = "HEALTH"
+
+[node name="SPEED" type="ProgressBar" parent="CharacterSelection/StatsPanel"]
+visible = false
+offset_left = 924.0
+offset_top = 359.0
+offset_right = 1316.0
+offset_bottom = 386.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_c830i")
+max_value = 500.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CharacterSelection/StatsPanel/SPEED"]
+visible = false
+layout_mode = 0
+offset_top = -26.0
+offset_right = 49.0
+offset_bottom = -3.0
+text = "SPEED"
+
+[node name="RadarChart" parent="CharacterSelection/StatsPanel" instance=ExtResource("15_c830i")]
+offset_left = 925.0
+offset_top = 167.0
+offset_right = 1315.0
+offset_bottom = 513.0
+
+[node name="Start" type="Button" parent="CharacterSelection"]
+offset_left = 925.0
+offset_top = 500.0
+offset_right = 1316.0
+offset_bottom = 545.0
+text = "START"
+
+[connection signal="pressed" from="CharacterSelection/BackButton" to="." method="_on_back_button_pressed"]
