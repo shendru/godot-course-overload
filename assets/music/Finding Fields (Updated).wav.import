@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3ebm2gpp32xh"
+path="res://.godot/imported/Finding Fields (Updated).wav-3bbb3e5ef82677ef0b8b1c112e009b52.sample"
+
+[deps]
+
+source_file="res://assets/music/Finding Fields (Updated).wav"
+dest_files=["res://.godot/imported/Finding Fields (Updated).wav-3bbb3e5ef82677ef0b8b1c112e009b52.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

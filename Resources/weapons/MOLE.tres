@@ -33,7 +33,7 @@ metadata/_custom_type_script = "uid://7e8fei3vk6i0"
 
 [sub_resource type="Resource" id="Resource_wgv3m"]
 script = ExtResource("6_xvpwd")
-amount = 1
+amount = 2
 damage = 0.0
 cooldown = 0.0
 description = "More and more popups"
@@ -51,7 +51,7 @@ metadata/_custom_type_script = "uid://7e8fei3vk6i0"
 script = ExtResource("3_f8yj8")
 amount = 2
 paralysis = true
-damage = 15.0
+damage = 20.0
 cooldown = 1.0
 speed = 0.0
 projectile_node = ExtResource("2_wgv3m")

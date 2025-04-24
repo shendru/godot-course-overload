@@ -7,9 +7,9 @@
 [sub_resource type="Resource" id="Resource_2idho"]
 script = ExtResource("3_2j7g3")
 description = "Gain health regen from your medkit.
-+1 health regen/s"
++2 health regen/s"
 max_health = 0.0
-recovery = 1.0
+recovery = 2.0
 armor = 0.0
 movement_speed = 0.0
 might = 0.0

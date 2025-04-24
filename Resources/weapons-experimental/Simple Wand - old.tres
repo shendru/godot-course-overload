@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="SingleShot" load_steps=13 format=3 uid="uid://x7ee2e37ogaf"]
+
+[ext_resource type="Texture2D" uid="uid://mb1m2ot0rwjg" path="res://assets/items/rocket.png" id="1_y0vj5"]
+[ext_resource type="PackedScene" uid="uid://dexs7htlnmpio" path="res://scenes/projectile_q_free_on_hit.tscn" id="2_hc07b"]
+[ext_resource type="Script" uid="uid://dltx2s48k2y6d" path="res://scripts/weapon scripts/SingleShot.gd" id="3_1vgys"]
+[ext_resource type="Texture2D" uid="uid://dkrnpq843ahwe" path="res://assets/enemies/calculator nme/calcv1/ball.png" id="4_annii"]
+[ext_resource type="Script" uid="uid://cj18w5dn53k4l" path="res://scripts/weapon scripts/upgrade.gd" id="5_ay8u8"]
+[ext_resource type="Script" uid="uid://boxo1ndwtcu52" path="res://scripts/weapon scripts/SingleShotUpgrade.gd" id="6_rwqqc"]
+[ext_resource type="PackedScene" uid="uid://dqj0xi1ie1pwi" path="res://vfx/sparklingParticles.tscn" id="7_576i6"]
+
+[sub_resource type="Resource" id="Resource_2rxhf"]
+script = ExtResource("6_rwqqc")
+speed = 0.0
+damage = 0.0
+cooldown = 0.0
+description = ""
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_he7v2"]
+script = ExtResource("6_rwqqc")
+speed = 200.0
+damage = 5.0
+cooldown = 0.0
+description = "+200 more speed.
++5 damage."
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_vw433"]
+script = ExtResource("6_rwqqc")
+speed = 0.0
+damage = 0.0
+cooldown = -0.2
+description = "reduces cooldown by 20%"
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_f1p2h"]
+script = ExtResource("6_rwqqc")
+speed = 0.0
+damage = 5.0
+cooldown = -0.2
+description = "Reduces cooldown by another 20%.
++5 damage."
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[sub_resource type="Resource" id="Resource_j2nct"]
+script = ExtResource("6_rwqqc")
+speed = 200.0
+damage = 1.0
+cooldown = -0.3
+description = "Greatly Reduces Cooldown
++200 more speed.
++5 damage."
+metadata/_custom_type_script = "uid://boxo1ndwtcu52"
+
+[resource]
+script = ExtResource("3_1vgys")
+splashable = true
+chainable = false
+chain_limit = 5
+chain_radius = 200.0
+allow_rotation = true
+damage = 5.0
+cooldown = 1.2
+speed = 700.0
+projectile_node = ExtResource("2_hc07b")
+upgrades = Array[ExtResource("5_ay8u8")]([SubResource("Resource_2rxhf"), SubResource("Resource_he7v2"), SubResource("Resource_vw433"), SubResource("Resource_f1p2h"), SubResource("Resource_j2nct")])
+vfx = ExtResource("7_576i6")
+afterFx = Array[PackedScene]([])
+title = "Modified Rocket"
+icon = ExtResource("1_y0vj5")
+texture = ExtResource("4_annii")
+rescale = 0.01
+flair = "[hint=\"Simple and well balanced wand\"][i]\"Simple and well balanced wand\"[/i]"
+level = 2
+metadata/_custom_type_script = "uid://dltx2s48k2y6d"

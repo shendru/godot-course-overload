@@ -3,10 +3,13 @@ class_name SingleShot
 
 
 @export var splashable: bool = false
+@export var splash_count: int = 3
+@export var splash_cone_angle: float = 75
 
 @export var chainable: bool = false
 @export var chain_limit:int = 5
 @export var chain_radius:float = 200
+@export var allow_rotation: bool = false
 
 
 func shoot(source, target, scene_tree):
@@ -21,10 +24,17 @@ func shoot(source, target, scene_tree):
 	projectile.source = source
 	projectile.direction = target
 	if chainable and "chainable" in projectile:
-		print("chainable tru")
+		#print("chainable tru")
 		projectile.chainable = true
 		projectile.chain_limit = chain_limit
 		projectile.chain_radius = chain_radius
+	if splashable and "chainable" in projectile:
+		#print("splashable true")
+		projectile.splashable = true
+		projectile.splash_count = splash_count
+		projectile.splash_cone_angle = splash_cone_angle
+	if allow_rotation:
+		projectile.allow_rotation = true
 	
 	if vfx != null:
 		projectile.vfx = vfx
@@ -52,5 +62,8 @@ func upgrade_item():
 	if chainable:
 		chain_limit += upgrade.chain_limit
 		chain_radius += upgrade.chain_radius
+	if splashable:
+		splash_count += upgrade.splash_count
+		splash_cone_angle += upgrade.splash_cone_angle
 	
 	level += 1

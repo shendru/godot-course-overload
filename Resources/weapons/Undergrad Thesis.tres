@@ -72,9 +72,9 @@ metadata/_custom_type_script = "uid://cs5eybt0dao03"
 
 [resource]
 script = ExtResource("3_f1ec7")
-angular_speed = 200
-radius = 75
-amount = 1
+angular_speed = 225
+radius = 125
+amount = 4
 knockback = 20
 damage = 2.0
 cooldown = 2.0

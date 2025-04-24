@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerChara" load_steps=4 format=3 uid="uid://dex6ejr4eitlr"]
+
+[ext_resource type="Texture2D" uid="uid://cuwwctouyclq" path="res://assets/preview/isolated chars/CA-female.png" id="1_d3220"]
+[ext_resource type="SpriteFrames" uid="uid://ca073wyof7cqf" path="res://animations/CAWolfFrames.tres" id="1_r57gh"]
+[ext_resource type="Script" uid="uid://cb41w64q6vqby" path="res://scripts/PlayerChara.gd" id="2_r57gh"]
+
+[resource]
+script = ExtResource("2_r57gh")
+animated_sprite = ExtResource("1_r57gh")
+icon = ExtResource("1_d3220")
+icon_offset = Vector2(-205.556, -150)
+banner = ExtResource("1_d3220")
+banner_offset = Vector2(-39, -10)
+course_label = "COMPUTER APPLICATIONS"
+course_description = "Covers practical computing with an emphasis on hardware, embedded systems, and IoT integration."
+metadata/_custom_type_script = "uid://cb41w64q6vqby"

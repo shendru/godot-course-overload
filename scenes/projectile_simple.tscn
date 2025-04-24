@@ -8,7 +8,7 @@ resource_local_to_scene = true
 radius = 22.0227
 
 [sub_resource type="Gradient" id="Gradient_4bpy0"]
-colors = PackedColorArray(0, 0.4, 0.992157, 1, 0.456204, 0.000208069, 0.479034, 1)
+colors = PackedColorArray(0.622827, 0.763132, 1, 1, 0.411767, 0.290887, 0.222402, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cb1un"]
 gradient = SubResource("Gradient_4bpy0")
@@ -44,5 +44,6 @@ texture = ExtResource("2_yr7fq")
 shape = SubResource("CircleShape2D_fpril")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="3"]
+visible = false
 amount = 160
 process_material = SubResource("ParticleProcessMaterial_73dmd")

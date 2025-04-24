@@ -4,54 +4,58 @@
 [ext_resource type="Script" uid="uid://c0b48kjhv1fwv" path="res://scripts/passiveItem.gd" id="2_xg6bs"]
 [ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="3_v8ysp"]
 
-[sub_resource type="Resource" id="Resource_0jh2f"]
+[sub_resource type="Resource" id="Resource_11h2m"]
 script = ExtResource("3_v8ysp")
-description = "+10% growth"
+description = "Increases exp gain.
++10% growth"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
 movement_speed = 0.0
 might = 0.0
-area = 0.0
+attack_aoe = 0.0
 magnet = 0.0
 growth = 0.1
 luck = 0.0
 haste = 0.0
+weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
-[sub_resource type="Resource" id="Resource_y2ate"]
+[sub_resource type="Resource" id="Resource_xghmh"]
 script = ExtResource("3_v8ysp")
-description = "+10% growth"
+description = "+20% growth"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
 movement_speed = 0.0
 might = 0.0
-area = 0.0
+attack_aoe = 0.0
 magnet = 0.0
-growth = 0.1
+growth = 0.2
 luck = 0.0
 haste = 0.0
+weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
-[sub_resource type="Resource" id="Resource_wjlb6"]
+[sub_resource type="Resource" id="Resource_hudqn"]
 script = ExtResource("3_v8ysp")
-description = "+10% growth"
+description = "+30% growth"
 max_health = 0.0
 recovery = 0.0
 armor = 0.0
 movement_speed = 0.0
 might = 0.0
-area = 0.0
+attack_aoe = 0.0
 magnet = 0.0
-growth = 0.1
+growth = 0.3
 luck = 0.0
 haste = 0.0
+weapon_knockback = 0.0
 metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
 
 [resource]
 script = ExtResource("2_xg6bs")
-upgrades = Array[ExtResource("3_v8ysp")]([SubResource("Resource_0jh2f"), SubResource("Resource_y2ate"), SubResource("Resource_wjlb6")])
+upgrades = Array[ExtResource("3_v8ysp")]([SubResource("Resource_11h2m"), SubResource("Resource_xghmh"), SubResource("Resource_hudqn")])
 title = "Study glasses"
 icon = ExtResource("1_fm2su")
 rescale = 0.0

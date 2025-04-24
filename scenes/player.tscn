@@ -1,17 +1,17 @@
-[gd_scene load_steps=48 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=49 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Shader" uid="uid://brlw48jqf4gxr" path="res://shaders/godrays.gdshader" id="2_oprun"]
 [ext_resource type="Shader" uid="uid://dc0c4l4sbvg13" path="res://shaders/outline.gdshader" id="3_4ni07"]
 [ext_resource type="Texture2D" uid="uid://dsmqsx1a7vmpt" path="res://assets/items/msuiit.png" id="3_qfm1y"]
 [ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="4_a8ls1"]
-[ext_resource type="Texture2D" uid="uid://w2tfuhr5hxen" path="res://assets/IT Wolf concept.png" id="4_fps5v"]
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="5_qfm1y"]
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://cdlwj7upfksvp" path="res://assets/preview/isolated chars/IT-male.png" id="11_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://dmo0rkd13p8i5" path="res://icon.svg" id="13_f1ej7"]
 [ext_resource type="Script" uid="uid://mmlfns0awy14" path="res://scripts/chest.gd" id="13_oprun"]
 [ext_resource type="Script" uid="uid://bj74q520hggc2" path="res://scripts/game_over.gd" id="14_f1ej7"]
@@ -38,6 +38,13 @@ void fragment() {
 shader = SubResource("Shader_f1ej7")
 shader_parameter/flash_amount = 0.0
 shader_parameter/flash_color = Color(0.692599, 0.070869, 0.0702628, 1)
+
+[sub_resource type="GDScript" id="GDScript_fulsm"]
+script/source = "extends AnimatedSprite2D
+
+func _ready() -> void:
+	play(\"default\")
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5sbg"]
 radius = 15.0
@@ -387,9 +394,9 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_oprun")
 scale = Vector2(0.0570975, 0.0570976)
 sprite_frames = ExtResource("4_a8ls1")
-animation = &"movement"
-autoplay = "idle"
+autoplay = "default"
 offset = Vector2(0, -590.185)
+script = SubResource("GDScript_fulsm")
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
 self_modulate = Color(0.0509804, 0.0509804, 0.0509804, 0.866667)
@@ -537,7 +544,6 @@ grow_vertical = 2
 texture = ExtResource("5_d2wvv")
 
 [node name="CharaPanel" type="Panel" parent="CanvasLayer"]
-visible = false
 clip_contents = true
 offset_left = 105.0
 offset_top = 161.0
@@ -551,13 +557,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1136.0
-offset_top = -488.0
-offset_right = 650.0
-offset_bottom = 752.0
+offset_left = -136.0
+offset_top = -182.0
+offset_right = 183.0
+offset_bottom = 343.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_fps5v")
+texture = ExtResource("11_qfm1y")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/CharaPanel"]
 layout_mode = 1
@@ -620,13 +628,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1990.12
-offset_top = -1047.81
-offset_right = 2855.88
-offset_bottom = 2316.19
+offset_left = -411.056
+offset_top = -255.5
+offset_right = 1343.94
+offset_bottom = 1502.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_fps5v")
+texture = ExtResource("11_qfm1y")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Health" type="TextureProgressBar" parent="CanvasLayer/PanelContainer"]
 unique_name_in_owner = true

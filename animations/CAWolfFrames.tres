@@ -47,7 +47,7 @@ animations = [{
 "texture": ExtResource("8_cy8gc")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 7.0
 }, {
 "frames": [{

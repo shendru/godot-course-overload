@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerChara" load_steps=4 format=3 uid="uid://bltmakieu5gg1"]
+
+[ext_resource type="SpriteFrames" uid="uid://07uht6aebarw" path="res://animations/ITWolfFrames.tres" id="1_4px1r"]
+[ext_resource type="Texture2D" uid="uid://cdlwj7upfksvp" path="res://assets/preview/isolated chars/IT-male.png" id="1_ypufx"]
+[ext_resource type="Script" uid="uid://cb41w64q6vqby" path="res://scripts/PlayerChara.gd" id="2_4px1r"]
+
+[resource]
+script = ExtResource("2_4px1r")
+animated_sprite = ExtResource("1_4px1r")
+icon = ExtResource("1_ypufx")
+icon_offset = Vector2(-155.556, -6.10352e-05)
+banner = ExtResource("1_ypufx")
+banner_offset = Vector2(-39, -10)
+course_label = "INFORMATION TECHNOLOGY"
+course_description = "Focuses on managing and supporting computer systems, networks, and cybersecurity in practical settings."
+metadata/_custom_type_script = "uid://cb41w64q6vqby"

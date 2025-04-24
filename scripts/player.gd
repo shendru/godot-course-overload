@@ -3,6 +3,10 @@ extends CharacterBody2D
 
 signal health_depleted
 
+@export var player_chara : PlayerChara
+@export var stats: Stats
+
+var player_animation = null
 var main_weapon = load("res://Resources/weapons temp/whip.tres")
 @export var weapon_slot_1 = PanelContainer
 
@@ -85,10 +89,31 @@ var scale_reference: Vector2
 
 	
 func _ready() -> void:
+	if GameState.selected_weapon: 
+		main_weapon = GameState.selected_weapon
+	else:
+		main_weapon = load("res://Resources/weapons temp/whip.tres")
+	
 	var main_weapon_duplicate = main_weapon.duplicate()
 	weapon_slot_1.item = main_weapon_duplicate
+	
+	if GameState.selected_player_animation: 
+		player_animation = GameState.selected_player_animation
+	else:
+		player_animation = load("res://animations/SlimeFrames.tres")
+	
+	stats = GameState.selected_stats
+	player_chara = GameState.selected_chara
+	set_base_stats(stats)
+	update_chara(player_chara)
+	
+	sprite.sprite_frames = player_animation
+	
 	scale_reference = $AnimatedSprite2D.scale
 	sprite.material.set_shader_parameter("flash_amount", 0)
+	
+	sprite.play('default')
+	
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -136,8 +161,8 @@ func update_animation():
 		if sprite.animation != "movement":
 			sprite.play("movement")
 	else:
-		if sprite.animation != "idle":
-			sprite.play("idle")
+		if sprite.animation != "default":
+			sprite.play("default")
 			
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -169,6 +194,7 @@ func take_damage(amount):
 	print(amount)
 	health -= max(amount - armor, 0)
 	take_damage_shader()
+	print("current health:" + str(health))
 	damage_popup(int(amount))
 
 
@@ -179,9 +205,9 @@ func damage_popup(amount, isHeal: bool = false):
 	if isHeal:
 		popup.text = "+"+str(amount)
 		popup.scale = Vector2(0.5,0.5)
-		popup.set("theme_override_colors/font_color", Color.GREEN)
+		popup.set("theme_override_colors/default_color", Color.GREEN)
 	else:
-		popup.set("theme_override_colors/font_color", Color.RED)
+		popup.set("theme_override_colors/default_color", Color.RED)
 	get_tree().current_scene.add_child(popup)
 	
 func take_damage_shader():
@@ -246,3 +272,25 @@ func add_health(amount):
 	health+= amount
 	take_healing_shader()
 	damage_popup(int(amount), true)
+
+func set_base_stats(base_stats: Stats) -> void:
+	max_health = base_stats.max_health
+	health = max_health
+	#recovery = base_stats.recovery
+	armor = base_stats.armor
+	movement_speed = base_stats.movement_speed
+	might = base_stats.might
+	#attack_aoe = base_stats.attack_aoe
+	#magnet = base_stats.magnet
+	#growth = base_stats.growth
+	luck = base_stats.luck
+	#haste = base_stats.haste
+	#weapon_knockback = base_stats.weapon_knockback
+	
+func update_chara(player_chara: PlayerChara) -> void:
+	var icon = $CanvasLayer/PanelContainer/TextureRect
+	icon.texture = player_chara.icon
+	icon.position = player_chara.icon_offset
+	var banner = $CanvasLayer/CharaPanel/TextureRect
+	banner.texture = player_chara.banner
+	banner.position = player_chara.banner_offset

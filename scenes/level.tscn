@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=4 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=128 format=4 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Texture2D" uid="uid://dadpbif0h3pk6" path="res://assets/grass/lianGrass2.png" id="2_64w2a"]
@@ -15,7 +15,6 @@
 [ext_resource type="SpriteFrames" uid="uid://dvsm78yeokyux" path="res://animations/SlimeFrames.tres" id="7_xy2fk"]
 [ext_resource type="Script" uid="uid://duoq4yha0d45m" path="res://scripts/GrassType.gd" id="8_fpun6"]
 [ext_resource type="Script" uid="uid://b87lc6egckm6e" path="res://scripts/PickupResource.gd" id="9_wc255"]
-[ext_resource type="AudioStream" uid="uid://bs5dm3i4ult17" path="res://assets/music/CO [field] (composition ver.).mp3" id="11_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://djfn3jk7c0s6y" path="res://assets/grass/lianGrass3.png" id="11_wc255"]
 [ext_resource type="Texture2D" uid="uid://hprga5vvxx81" path="res://assets/enemies/router crab/frame0001.png" id="17_5k0ak"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="18_sc620"]
@@ -25,31 +24,41 @@
 [ext_resource type="Script" uid="uid://ce48g8idjyswm" path="res://scripts/gem.gd" id="19_421lv"]
 [ext_resource type="Resource" uid="uid://dcavnsv8ojt5d" path="res://Resources/enemies/exploding_calc_event_type.tres" id="19_c1pbi"]
 [ext_resource type="Texture2D" uid="uid://c6pnjkf0n5d43" path="res://assets/enemies/calculator nme/calcv1/frame0000.png" id="20_lqb7q"]
-[ext_resource type="Texture2D" uid="uid://cr0bauvotmf3i" path="res://assets/charas/ver4/frame0000.png" id="20_oksur"]
+[ext_resource type="Texture2D" uid="uid://dt1bj21avkt6r" path="res://assets/charas/ca/cav1/frame0000.png" id="20_u0n8q"]
 [ext_resource type="Texture2D" uid="uid://cv8a6w2ub7wj5" path="res://assets/enemies/router crab/frame0004.png" id="20_xy2fk"]
 [ext_resource type="Texture2D" uid="uid://b0hfg4piw34yf" path="res://assets/enemies/router crab/frame0005.png" id="21_cmcjb"]
-[ext_resource type="Texture2D" uid="uid://iiof6xpwxkwv" path="res://assets/charas/ver4/frame0001.png" id="21_jide8"]
+[ext_resource type="Texture2D" uid="uid://da2gq1etf8qjn" path="res://assets/charas/ca/cav1/frame0001.png" id="21_d5irf"]
 [ext_resource type="Texture2D" uid="uid://cufkj3dyn8num" path="res://assets/enemies/calculator nme/calcv1/frame0001.png" id="21_ok3ci"]
-[ext_resource type="Script" uid="uid://c0p0mfhbi5ohv" path="res://hazardSquareType.gd" id="22_2jdvr"]
-[ext_resource type="Texture2D" uid="uid://byou84rie6dfw" path="res://assets/charas/ver4/frame0002.png" id="22_4h8xp"]
+[ext_resource type="Script" uid="uid://c0p0mfhbi5ohv" path="res://scripts/hazardSquareType.gd" id="22_2jdvr"]
 [ext_resource type="Texture2D" uid="uid://b1xjbhn42xmh1" path="res://assets/enemies/router crab/frame0006.png" id="22_556r4"]
 [ext_resource type="Texture2D" uid="uid://bvmqn2c7ncwl" path="res://assets/enemies/calculator nme/calcv1/frame0002.png" id="22_hv3ux"]
+[ext_resource type="Texture2D" uid="uid://wc3lwkpibk2n" path="res://assets/charas/ca/cav1/frame0002.png" id="22_ltwek"]
 [ext_resource type="Texture2D" uid="uid://bvkthp14xicpq" path="res://assets/enemies/router crab/frame0007.png" id="23_7agi7"]
 [ext_resource type="Texture2D" uid="uid://dqu50s5tlkg8i" path="res://assets/enemies/calculator nme/calcv1/frame0003.png" id="23_j4eoh"]
-[ext_resource type="Texture2D" uid="uid://dsbio8c4eqwbs" path="res://assets/charas/ver4/frame0003.png" id="23_ql8jr"]
-[ext_resource type="Texture2D" uid="uid://cico7fekcpjbx" path="res://assets/charas/ver4/frame0004.png" id="24_5ga6x"]
+[ext_resource type="Texture2D" uid="uid://m0j07kj1c8o8" path="res://assets/charas/ca/cav1/frame0003.png" id="23_vry8j"]
 [ext_resource type="Texture2D" uid="uid://bt56786uui1y7" path="res://assets/enemies/calculator nme/calcv1/frame0004.png" id="24_bhb1k"]
+[ext_resource type="Texture2D" uid="uid://c27h46f87svgd" path="res://assets/charas/ca/cav1/frame0004.png" id="24_idnaj"]
 [ext_resource type="Texture2D" uid="uid://bnjw0vv1eghy" path="res://assets/items/onigiri.png" id="25_3ies3"]
-[ext_resource type="Texture2D" uid="uid://cpg7rq317j406" path="res://assets/charas/ver4/frame0005.png" id="25_nj2gj"]
 [ext_resource type="Texture2D" uid="uid://b7x7iusuvdmby" path="res://assets/enemies/calculator nme/calcv1/frame0005.png" id="25_tcyu4"]
-[ext_resource type="Texture2D" uid="uid://c00k8dnk3881t" path="res://assets/charas/ver4/frame0006.png" id="26_msn66"]
+[ext_resource type="Texture2D" uid="uid://qy7wx3p0i7g8" path="res://assets/charas/ca/cav1/frame0005.png" id="25_vwqyp"]
+[ext_resource type="Texture2D" uid="uid://d4ek5eh7u26gp" path="res://assets/charas/ca/cav1/frame0006.png" id="26_smfc2"]
 [ext_resource type="Texture2D" uid="uid://deeayguv6bpwj" path="res://assets/enemies/calculator nme/calcv1/frame0006.png" id="26_vmndo"]
 [ext_resource type="PackedScene" uid="uid://dpdjnvxy2nivc" path="res://scenes/pickups.tscn" id="27_7agi7"]
 [ext_resource type="Texture2D" uid="uid://bmko4pjedvysa" path="res://assets/enemies/calculator nme/calcv1/frame0007.png" id="27_bo6tc"]
-[ext_resource type="Texture2D" uid="uid://dcn3xi78cg6yj" path="res://assets/charas/ver4/frame0007.png" id="27_xmwm8"]
-[ext_resource type="Texture2D" uid="uid://bi8psje6em0sh" path="res://assets/charas/ver4/frame0008.png" id="28_jydfl"]
-[ext_resource type="Texture2D" uid="uid://cas5g5wt7wl0c" path="res://assets/charas/ver4/frame0009.png" id="29_u0n8q"]
+[ext_resource type="Texture2D" uid="uid://cydvunm8yfbvq" path="res://assets/charas/ca/cav1/frame0007.png" id="27_s1acf"]
+[ext_resource type="Texture2D" uid="uid://cy4yp3o2jdfeo" path="res://assets/charas/ca/cav1/frame0008.png" id="28_u5upv"]
+[ext_resource type="Texture2D" uid="uid://5tvrcoqy5b7m" path="res://assets/charas/ca/cav1/frame0009.png" id="29_om2me"]
+[ext_resource type="Texture2D" uid="uid://bdtjg0u7tocbj" path="res://assets/charas/it/frame0000.png" id="30_iij8i"]
 [ext_resource type="Script" uid="uid://efn5sfwcgwhy" path="res://scripts/start_area_2d.gd" id="30_kih21"]
+[ext_resource type="Texture2D" uid="uid://d1umviahjvw8" path="res://assets/charas/it/frame0001.png" id="31_4qdnu"]
+[ext_resource type="Texture2D" uid="uid://cb8o7otg5h1mh" path="res://assets/charas/it/frame0002.png" id="32_7kuto"]
+[ext_resource type="Texture2D" uid="uid://c12044eascuop" path="res://assets/charas/it/frame0003.png" id="33_k1glb"]
+[ext_resource type="Texture2D" uid="uid://dnxai5pow6krr" path="res://assets/charas/it/frame0004.png" id="34_clbla"]
+[ext_resource type="Texture2D" uid="uid://dbdf5htkbmf1o" path="res://assets/charas/it/frame0005.png" id="35_ebg7i"]
+[ext_resource type="Texture2D" uid="uid://f766i3e35isl" path="res://assets/charas/it/frame0006.png" id="36_iobf8"]
+[ext_resource type="Texture2D" uid="uid://jofcvpd1ykk6" path="res://assets/charas/it/frame0007.png" id="37_kbk4x"]
+[ext_resource type="Texture2D" uid="uid://b2ved0cpq51cd" path="res://assets/charas/it/frame0008.png" id="38_p1qlp"]
+[ext_resource type="Texture2D" uid="uid://dn6q7raqyqolx" path="res://assets/charas/it/frame0009.png" id="39_1sbqr"]
 [ext_resource type="Texture2D" uid="uid://clpdvaf8vpq1c" path="res://assets/grass/lianTree.png" id="42_0fmhk"]
 [ext_resource type="Texture2D" uid="uid://byx3ew7nugi0d" path="res://assets/kenney_particlePack/PNG/star_08.png" id="43_cr74b"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="43_iafhg"]
@@ -57,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://n2nirkrrprcg" path="res://assets/grass/lianTreeTh.png" id="44_cr74b"]
 [ext_resource type="PackedScene" uid="uid://bp7xg7s28ja71" path="res://scenes/mini_grass.tscn" id="45_lqb7q"]
 [ext_resource type="Texture2D" uid="uid://cs4gj0scocel3" path="res://assets/grass/ATree.png" id="45_uhfbm"]
+[ext_resource type="AudioStream" uid="uid://3ebm2gpp32xh" path="res://assets/music/Finding Fields (Updated).wav" id="47_421lv"]
 [ext_resource type="Texture2D" uid="uid://bofngs817crao" path="res://assets/simple shapes/square-not full.png" id="50_421lv"]
 [ext_resource type="Script" uid="uid://cwxfbrl3wfujt" path="res://scripts/Vacuum.gd" id="51_oksur"]
 
@@ -175,47 +185,154 @@ metadata/_custom_type_script = "uid://ce48g8idjyswm"
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_oksur")
+"texture": ExtResource("20_u0n8q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_jide8")
+"texture": ExtResource("21_d5irf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_4h8xp")
+"texture": ExtResource("22_ltwek")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_ql8jr")
+"texture": ExtResource("23_vry8j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_5ga6x")
+"texture": ExtResource("24_idnaj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_nj2gj")
+"texture": ExtResource("25_vwqyp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_msn66")
+"texture": ExtResource("26_smfc2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_xmwm8")
+"texture": ExtResource("27_s1acf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_jydfl")
+"texture": ExtResource("28_u5upv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_u0n8q")
+"texture": ExtResource("29_om2me")
 }],
 "loop": true,
 "name": &"default",
 "speed": 11.0
 }]
 
-[sub_resource type="Resource" id="Resource_d5irf"]
+[sub_resource type="Resource" id="Resource_bdomq"]
 script = ExtResource("5_olg7q")
 title = "IT wolf alter"
 sprite = SubResource("SpriteFrames_qbwv7")
-health = 200.0
+health = 120.0
 damage = 10.0
-movement_speed = 240.0
+movement_speed = 200.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -591.41)
+collision_radius = 9.0
+collision_position = Vector2(0, -25)
+shadow_position = Vector2(-67.7966, 25.4237)
+shadow_size = Vector2(1.65519, 0.297934)
+shooter = false
+lifetime_usage = false
+lifetime = 6.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.768
+saturation_boost = 0.326
+drops = Array[ExtResource("9_wc255")]([SubResource("Resource_wc2bn")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvrmj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_iij8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_4qdnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7kuto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_k1glb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_clbla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ebg7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_iobf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_kbk4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_p1qlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_1sbqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="Resource" id="Resource_421lv"]
+script = ExtResource("5_olg7q")
+title = "IT wolf alter"
+sprite = SubResource("SpriteFrames_tvrmj")
+health = 150.0
+damage = 12.0
+movement_speed = 220.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -591.41)
+collision_radius = 9.0
+collision_position = Vector2(0, -25)
+shadow_position = Vector2(-67.7966, 25.4237)
+shadow_size = Vector2(1.65519, 0.297934)
+shooter = false
+lifetime_usage = false
+lifetime = 6.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.768
+saturation_boost = 0.521
+drops = Array[ExtResource("9_wc255")]([SubResource("Resource_wc2bn")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_u0n8q"]
+script = ExtResource("5_olg7q")
+title = "IT wolf alter"
+sprite = SubResource("SpriteFrames_qbwv7")
+health = 300.0
+damage = 20.0
+movement_speed = 300.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -591.41)
+collision_radius = 9.0
+collision_position = Vector2(0, -25)
+shadow_position = Vector2(-67.7966, 25.4237)
+shadow_size = Vector2(1.65519, 0.297934)
+shooter = false
+lifetime_usage = false
+lifetime = 6.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 1.0
+saturation_boost = 0.456
+drops = Array[ExtResource("9_wc255")]([SubResource("Resource_wc2bn")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_oksur"]
+script = ExtResource("5_olg7q")
+title = "IT wolf alter"
+sprite = SubResource("SpriteFrames_qbwv7")
+health = 300.0
+damage = 20.0
+movement_speed = 400.0
 resize = Vector2(0.059, 0.059)
 sprite_offset = Vector2(0, -591.41)
 collision_radius = 9.0
@@ -402,6 +519,29 @@ saturation_boost = 1.254
 drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
 metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 
+[sub_resource type="Resource" id="Resource_4h8xp"]
+script = ExtResource("5_olg7q")
+title = "Slime"
+sprite = ExtResource("7_xy2fk")
+health = 20.0
+damage = 8.0
+movement_speed = 30.0
+resize = Vector2(0.09, 0.09)
+sprite_offset = Vector2(0, -349.095)
+collision_radius = 9.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(-152.542, 25.4237)
+shadow_size = Vector2(2.05244, 0.297934)
+shooter = false
+lifetime_usage = true
+lifetime = 10.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.0
+saturation_boost = 0.391
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
 [sub_resource type="Resource" id="Resource_q4oe8"]
 script = ExtResource("5_olg7q")
 title = "Slime"
@@ -475,6 +615,12 @@ metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 script = ExtResource("22_2jdvr")
 count = 16
 square_radius = 600.0
+metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
+
+[sub_resource type="Resource" id="Resource_ql8jr"]
+script = ExtResource("22_2jdvr")
+count = 32
+square_radius = 700.0
 metadata/_custom_type_script = "uid://c0p0mfhbi5ohv"
 
 [sub_resource type="Resource" id="Resource_535f6"]
@@ -1752,21 +1898,21 @@ y_sort_enabled = true
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
 process_mode = 4
 player = NodePath("../player")
-enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("6_t1rx8"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk"), ExtResource("5_xy2fk"), SubResource("Resource_d5irf")])
+enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("7_8iemx"), ExtResource("6_t1rx8"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk"), ExtResource("5_xy2fk"), SubResource("Resource_bdomq"), SubResource("Resource_bdomq"), SubResource("Resource_421lv"), SubResource("Resource_u0n8q"), SubResource("Resource_oksur"), SubResource("Resource_oksur")])
 enemy_event = ExtResource("18_svjb4")
 enemy_event_types = Array[ExtResource("5_olg7q")]([ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), SubResource("Resource_7iqcu")])
 grass = ExtResource("5_ppgk2")
 grass_limit = 50
 grass_types = Array[ExtResource("8_fpun6")]([SubResource("Resource_arp2o"), SubResource("Resource_ux5qa"), SubResource("Resource_82cfe"), SubResource("Resource_gunhw"), SubResource("Resource_8gofh")])
 hazard_types = Array[ExtResource("5_olg7q")]([SubResource("Resource_3ies3")])
-hazard_types_slow = Array[ExtResource("5_olg7q")]([SubResource("Resource_asl66"), SubResource("Resource_q4oe8"), SubResource("Resource_svjb4")])
+hazard_types_slow = Array[ExtResource("5_olg7q")]([SubResource("Resource_asl66"), SubResource("Resource_4h8xp"), SubResource("Resource_q4oe8"), SubResource("Resource_svjb4")])
 hazard_types_fast = Array[ExtResource("5_olg7q")]([SubResource("Resource_7agi7")])
-square_type = Array[ExtResource("22_2jdvr")]([SubResource("Resource_c1pbi"), SubResource("Resource_535f6"), SubResource("Resource_50fbu"), SubResource("Resource_0fmhk"), SubResource("Resource_iafhg")])
+square_type = Array[ExtResource("22_2jdvr")]([SubResource("Resource_c1pbi"), SubResource("Resource_ql8jr"), SubResource("Resource_535f6"), SubResource("Resource_50fbu"), SubResource("Resource_0fmhk"), SubResource("Resource_iafhg")])
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
 y_sort_enabled = true
-position = Vector2(465, 436)
+position = Vector2(517, 456)
 scale = Vector2(0.031, 0.031)
 texture = ExtResource("6_klq6b")
 offset = Vector2(0, -190.81)
@@ -1990,7 +2136,7 @@ scale = Vector2(77, 44.85)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("11_t1rx8")
+stream = ExtResource("47_421lv")
 autoplay = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
@@ -2315,6 +2461,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
 [connection signal="overload" from="Spawner" to="OverloadUI" method="_on_spawner_overload"]
 [connection signal="body_entered" from="StartArea2d" to="StartArea2d" method="_on_body_entered"]

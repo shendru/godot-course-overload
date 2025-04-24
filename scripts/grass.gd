@@ -4,7 +4,7 @@ signal on_grass_free
 
 var player_reference: CharacterBody2D
 
-@export var despawn_distance: float = 850
+@export var despawn_distance: float = 820
 var health: float:
 	set(value):
 		health = value
@@ -31,9 +31,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if player_reference:
+		#print("has player reference")
 		var distance = global_position.distance_to(player_reference.global_position)
+		#print("distancce:" + str(distance))
 		if distance > despawn_distance:
 			queue_free()
+			print("grass was freed")
 			emit_signal("on_grass_free")
 
 func apply_sway(effect_source: Node2D) -> void:

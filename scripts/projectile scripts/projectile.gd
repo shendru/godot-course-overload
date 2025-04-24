@@ -13,6 +13,7 @@ var afterFxMAX : PackedScene
 var source
 var knockback_on_source: bool = false
 
+var allow_rotation = false
  
 func _ready() -> void:
 	if "attack_aoe" in source:
@@ -23,6 +24,10 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	position += direction * speed * delta
+	if not allow_rotation:
+		pass
+	else:
+		rotation += 2.0 * PI * delta
 	
 	
  

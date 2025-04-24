@@ -1,0 +1,261 @@
+[gd_scene load_steps=18 format=3 uid="uid://c1w4yproeaycc"]
+
+[ext_resource type="Script" uid="uid://7bpjs5ybwhll" path="res://scenes/character_selection.gd" id="1_o5bvq"]
+[ext_resource type="Script" uid="uid://dydnx4g3pv2rw" path="res://scripts/stats.gd" id="2_l56u2"]
+[ext_resource type="Texture2D" uid="uid://b53e1d0o6sj8v" path="res://assets/preview/temp/PreviewBackground.png" id="3_iixut"]
+[ext_resource type="Texture2D" uid="uid://xu1quruhcji" path="res://assets/preview/CA_PREVIEW.png" id="3_wh1ae"]
+[ext_resource type="Texture2D" uid="uid://d03mii3v64uqw" path="res://assets/preview/IS_PREVIEW.png" id="4_cqj7k"]
+[ext_resource type="Texture2D" uid="uid://cr0bauvotmf3i" path="res://assets/charas/ver4/frame0000.png" id="4_dv8bk"]
+[ext_resource type="Texture2D" uid="uid://0em7roysl15d" path="res://assets/preview/IT_PREVIEW.png" id="5_iixut"]
+[ext_resource type="Texture2D" uid="uid://b8aqv8xx3eop8" path="res://assets/preview/CS_PREVIEW.png" id="6_dv8bk"]
+[ext_resource type="Texture2D" uid="uid://boidh27tu52er" path="res://assets/preview/border.png" id="9_v724p"]
+[ext_resource type="Texture2D" uid="uid://dj0s0d033c5p7" path="res://assets/preview/temp/PreviewMap.png" id="10_7rsvw"]
+
+[sub_resource type="Resource" id="Resource_7xed0"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 100.0
+recovery = 0.0
+armor = 100.0
+movement_speed = 200.0
+might = 1.0
+area = 0.0
+magnet = 0.0
+growth = 1.0
+luck = 1.0
+haste = 0.0
+knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_wh1ae"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 100.0
+recovery = 0.0
+armor = 100.0
+movement_speed = 400.0
+might = 1.0
+area = 0.0
+magnet = 0.0
+growth = 1.0
+luck = 1.0
+haste = 0.0
+knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_cqj7k"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 100.0
+recovery = 0.0
+armor = 100.0
+movement_speed = 200.0
+might = 1.0
+area = 0.0
+magnet = 0.0
+growth = 1.0
+luck = 1.0
+haste = 0.0
+knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="Resource" id="Resource_iixut"]
+script = ExtResource("2_l56u2")
+description = ""
+max_health = 100.0
+recovery = 0.0
+armor = 100.0
+movement_speed = 200.0
+might = 10.0
+area = 0.0
+magnet = 0.0
+growth = 1.0
+luck = 1.0
+haste = 0.0
+knockback = 0.0
+metadata/_custom_type_script = "uid://dydnx4g3pv2rw"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q54je"]
+bg_color = Color(0.555376, 0.604877, 0.675666, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_v724p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5bvq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.004
+anchor_bottom = 1.007
+offset_right = 0.535889
+offset_bottom = -0.376099
+script = ExtResource("1_o5bvq")
+IT_STATS = SubResource("Resource_7xed0")
+IS_STATS = SubResource("Resource_wh1ae")
+CA_STATS = SubResource("Resource_cqj7k")
+CS_STATS = SubResource("Resource_iixut")
+
+[node name="CharacterSelection" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CharacterSelection"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -5.0
+offset_right = 14.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q54je")
+
+[node name="MapPreview" type="TextureRect" parent="CharacterSelection"]
+offset_left = -8.0
+offset_top = -11.0
+offset_right = 1377.0
+offset_bottom = 782.0
+texture = ExtResource("3_iixut")
+expand_mode = 1
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterSelection"]
+modulate = Color(0.968627, 0.85098, 0.32549, 1)
+position = Vector2(691, 739.762)
+scale = Vector2(-1423.56, 142.725)
+mesh = SubResource("QuadMesh_v724p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelection"]
+anchors_preset = -1
+anchor_left = 0.271
+anchor_top = 0.716
+anchor_right = 0.719
+anchor_bottom = 1.0
+offset_left = -370.186
+offset_top = 2.112
+offset_right = 383.846
+alignment = 1
+
+[node name="IS_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/IS_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 218.0
+texture = ExtResource("4_cqj7k")
+expand_mode = 1
+
+[node name="IT_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/IT_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 218.0
+texture = ExtResource("5_iixut")
+expand_mode = 1
+
+[node name="CA_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/CA_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 218.0
+texture = ExtResource("3_wh1ae")
+expand_mode = 1
+
+[node name="CS_CHARACTER" type="Button" parent="CharacterSelection/HBoxContainer"]
+custom_minimum_size = Vector2(123.96, 141.32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o5bvq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5bvq")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/HBoxContainer/CS_CHARACTER"]
+custom_minimum_size = Vector2(77, 141.32)
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 218.0
+texture = ExtResource("6_dv8bk")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="CharacterSelection"]
+offset_left = 51.0
+offset_top = 52.0
+offset_right = 169.0
+offset_bottom = 83.0
+text = "BACK"
+
+[node name="Start" type="Button" parent="CharacterSelection"]
+offset_left = 973.0
+offset_top = 460.0
+offset_right = 1317.0
+offset_bottom = 505.0
+text = "START"
+
+[node name="CharacterPreview" type="Sprite2D" parent="CharacterSelection"]
+position = Vector2(692, 372)
+scale = Vector2(0.110825, 0.110825)
+texture = ExtResource("4_dv8bk")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection"]
+offset_left = 600.0
+offset_top = 250.0
+offset_right = 780.0
+offset_bottom = 490.0
+texture = ExtResource("9_v724p")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CharacterSelection"]
+offset_left = 51.0
+offset_top = 152.0
+offset_right = 421.0
+offset_bottom = 430.0
+texture = ExtResource("10_7rsvw")
+expand_mode = 1

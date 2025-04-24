@@ -142,7 +142,7 @@ script = ExtResource("1_lf1xj")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_604ft")
-scale = Vector2(0.027, 0.027)
+scale = Vector2(0.0253333, 0.0253333)
 texture = ExtResource("1_36tes")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

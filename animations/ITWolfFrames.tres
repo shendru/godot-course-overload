@@ -55,7 +55,7 @@ animations = [{
 "texture": ExtResource("10_k58pk")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 10.0
 }, {
 "frames": [{

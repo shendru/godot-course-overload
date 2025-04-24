@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_retry_pressed() -> void:
 
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/level.tscn")
+	get_tree().change_scene_to_file("res://scenes/character_selection.tscn")
 
 
 func _on_quit_pressed() -> void:

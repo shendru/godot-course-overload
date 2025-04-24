@@ -56,9 +56,12 @@ metadata/_custom_type_script = "uid://d3g6ijjc4djpk"
 [resource]
 script = ExtResource("3_lis5t")
 splashable = false
+splash_count = 3
+splash_cone_angle = 75.0
 chainable = true
 chain_limit = 3
 chain_radius = 200.0
+allow_rotation = false
 damage = 5.0
 cooldown = 1.4
 speed = 600.0

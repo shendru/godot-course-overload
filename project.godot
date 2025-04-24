@@ -11,15 +11,18 @@ config_version=5
 [application]
 
 config/name="Project Course Overload"
-run/main_scene="res://scenes/level.tscn"
+run/main_scene="uid://c1w4yproeaycc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://cslqycsqum0bj"
+
+[autoload]
+
+GameState="*res://scripts/GameState.gd"
 
 [display]
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
@@ -70,5 +73,4 @@ left_click={
 
 [rendering]
 
-viewport/hdr_2d=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false

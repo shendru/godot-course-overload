@@ -24,7 +24,7 @@ var square_type_index: int = 0
 var grass_counter:int = 0:
 	set(value):
 		grass_counter = value
-		%GrassCounter.text = "Grass count: " + str(value)
+		%GrassCounter.text = "Grass count: " + str(grass_counter)
 
 var distance : float = 800
 var initial_grass_radius: float = 400
@@ -61,7 +61,7 @@ var second : int:
 
 
 func _ready():
-	$Hazard.wait_time = randf() * 10 + 70
+	$Hazard.wait_time = randf() * 10 + 75
 	$Hazard.start()
 	
 	$Hazard2.wait_time = randf() * 10 + 30
@@ -239,7 +239,7 @@ func _on_hazard_2_timeout() -> void:
 	var square_radius = square_type[min(square_type_index, square_type.size()-1)].square_radius
 	square_type_index += 1
 	spawn_in_square(count,square_radius)
-	$Hazard2.wait_time = randf() * 10 + 30
+	$Hazard2.wait_time = randf() * 10 + 35
 	$Hazard2.start()
 
 

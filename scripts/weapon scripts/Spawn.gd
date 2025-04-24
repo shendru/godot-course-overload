@@ -16,7 +16,7 @@ class_name Spawn
 
 var projectile_reference = null
 
-func spawn(source, _target, scene_tree):
+func spawn(source, target, scene_tree):
 	if is_instance_valid(projectile_reference) and spawn_once:
 		return
 	var projectile = projectile_node.instantiate()
@@ -30,6 +30,7 @@ func spawn(source, _target, scene_tree):
 	projectile.source = source
 	projectile.scale = Vector2(area,area)
 	projectile.knockback = knockback
+	projectile.direction = target
 	if mult_collision_shape > 0:
 		projectile.mult_collision_shape = mult_collision_shape
 	if texture != null:

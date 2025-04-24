@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1w4yproeaycc"]
+
+[ext_resource type="Texture2D" uid="uid://2ntxpmwudfmp" path="res://assets/preview/CA_PREVIEW_FULL.png" id="1_dd54q"]
+[ext_resource type="Script" uid="uid://7bpjs5ybwhll" path="res://scenes/character_selection.gd" id="1_o5bvq"]
+[ext_resource type="Texture2D" uid="uid://xu1quruhcji" path="res://assets/preview/CA_PREVIEW.png" id="3_wh1ae"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q54je"]
+bg_color = Color(0.555376, 0.604877, 0.675666, 1)
+
+[sub_resource type="Theme" id="Theme_12k7y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q54je"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o5bvq")
+
+[node name="CharacterSelection" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CharacterSelection"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -5.0
+offset_right = 14.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q54je")
+
+[node name="CharacterPreview" type="TextureRect" parent="CharacterSelection"]
+offset_left = 452.0
+offset_top = 47.0
+offset_right = 924.0
+offset_bottom = 819.0
+texture = ExtResource("1_dd54q")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="IS_CHARACTER" type="TextureButton" parent="CharacterSelection"]
+offset_left = 363.0
+offset_top = 545.0
+offset_right = 497.0
+offset_bottom = 778.0
+theme = SubResource("Theme_12k7y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterSelection/IS_CHARACTER"]
+position = Vector2(67, 173.875)
+scale = Vector2(134, 225.75)
+mesh = SubResource("BoxMesh_q54je")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/IS_CHARACTER"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wh1ae")
+expand_mode = 1
+
+[node name="IT_CHARACTER" type="TextureButton" parent="CharacterSelection"]
+offset_left = 529.0
+offset_top = 545.0
+offset_right = 663.0
+offset_bottom = 778.0
+theme = SubResource("Theme_12k7y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterSelection/IT_CHARACTER"]
+position = Vector2(67, 173.875)
+scale = Vector2(134, 225.75)
+mesh = SubResource("BoxMesh_q54je")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/IT_CHARACTER"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wh1ae")
+expand_mode = 1
+
+[node name="CS_CHARACTER" type="TextureButton" parent="CharacterSelection"]
+offset_left = 695.0
+offset_top = 545.0
+offset_right = 829.0
+offset_bottom = 778.0
+theme = SubResource("Theme_12k7y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterSelection/CS_CHARACTER"]
+position = Vector2(67, 173.875)
+scale = Vector2(134, 225.75)
+mesh = SubResource("BoxMesh_q54je")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/CS_CHARACTER"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wh1ae")
+expand_mode = 1
+
+[node name="CA_CHARACTER" type="TextureButton" parent="CharacterSelection"]
+offset_left = 860.0
+offset_top = 545.0
+offset_right = 994.0
+offset_bottom = 778.0
+theme = SubResource("Theme_12k7y")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterSelection/CA_CHARACTER"]
+position = Vector2(67, 173.875)
+scale = Vector2(134, 225.75)
+mesh = SubResource("BoxMesh_q54je")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelection/CA_CHARACTER"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wh1ae")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="CharacterSelection"]
+offset_left = 1005.0
+offset_top = 357.0
+offset_right = 1189.0
+offset_bottom = 402.0
+text = "START"

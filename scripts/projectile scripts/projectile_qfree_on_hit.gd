@@ -22,6 +22,7 @@ func _on_body_entered(body):
 
 func spawnChain(_body):
 	var new_projectile = projectile_nodeC.instantiate()
+	#new_projectile.find_child("Sprite2D").texture = $Sprite2D.texture
 	new_projectile.chain_limit = chain_limit
 	new_projectile.chain_radius = chain_radius
 	new_projectile.damage = damage
@@ -35,6 +36,9 @@ func spawnChain(_body):
 func spawnSplash(_body, num_splash_projectiles):
 	for i in range(num_splash_projectiles):
 		var splash_projectile_instance = projectile_nodeS.instantiate()
+		splash_projectile_instance.find_child("Sprite2D").texture = $Sprite2D.texture
+		splash_projectile_instance.find_child("Sprite2D").scale = Vector2(0.01,0.01)
+		splash_projectile_instance.vfx = vfx
 		splash_projectile_instance.position = global_position # Spawn at the source's global position
 		splash_projectile_instance.damage = damage # Inherit damage
 		splash_projectile_instance.source = source # Inherit source

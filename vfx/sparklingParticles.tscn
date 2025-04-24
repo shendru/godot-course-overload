@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqj0xi1ie1pwi"]
+
+[ext_resource type="Shader" uid="uid://ctrwuf8le1hhv" path="res://vfx/simple_shader2.tres" id="1_0chy5"]
+[ext_resource type="Texture2D" uid="uid://ca2hm7ia8eqsd" path="res://assets/kenney_particlePack/PNG/fire_02.png" id="2_0chy5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l06r0"]
+shader = ExtResource("1_0chy5")
+shader_parameter/Texture_Scale = Vector2(1, 1)
+shader_parameter/Alpha_treshold = 0.0
+shader_parameter/hit_texture = ExtResource("2_0chy5")
+
+[sub_resource type="Gradient" id="Gradient_4bpy0"]
+colors = PackedColorArray(1, 0.583333, 0, 1, 0.679021, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cb1un"]
+gradient = SubResource("Gradient_4bpy0")
+
+[sub_resource type="Curve" id="Curve_hfm1b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0947867, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yr7fq"]
+curve = SubResource("Curve_hfm1b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wl3xv"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 31.51
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+tangential_accel_min = 41.3
+tangential_accel_max = 100.0
+scale_min = 30.7
+scale_max = 50.25
+scale_curve = SubResource("CurveTexture_yr7fq")
+color_ramp = SubResource("GradientTexture1D_cb1un")
+turbulence_influence_max = 0.196
+
+[node name="GPUParticles2D2" type="GPUParticles2D"]
+material = SubResource("ShaderMaterial_l06r0")
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_wl3xv")
