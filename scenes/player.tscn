@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b2mpoyrqvhadb"]
+[gd_scene load_steps=49 format=3 uid="uid://b2mpoyrqvhadb"]
 
 [ext_resource type="Script" uid="uid://c2vgr87y1m0fg" path="res://scripts/player.gd" id="1_g2l03"]
 [ext_resource type="Shader" uid="uid://brlw48jqf4gxr" path="res://shaders/godrays.gdshader" id="2_oprun"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://ctp0hmo4d3p4b" path="res://assets/simple shapes/borderBox.png" id="4_ln11m"]
 [ext_resource type="Texture2D" uid="uid://dm3i2utaua1cr" path="res://assets/simple shapes/square.png" id="5_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://d2ldo8tsw3i5x" path="res://assets/simple shapes/circle.png" id="5_qfm1y"]
-[ext_resource type="PackedScene" uid="uid://bylwmoaa0n0gq" path="res://scenes/player_attachment_laptop.tscn" id="6_qfm1y"]
 [ext_resource type="PackedScene" uid="uid://c0vgq8fqoh7pe" path="res://scenes/slot.tscn" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://ciypv0f8x5mw2" path="res://scripts/options.gd" id="9_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://nx2nrbj0a063" path="res://scenes/passive_slot.tscn" id="10_3v2ag"]
@@ -405,8 +404,6 @@ z_index = -2
 position = Vector2(-35.0278, -17.5139)
 scale = Vector2(1.43669, 0.807861)
 texture = ExtResource("5_qfm1y")
-
-[node name="laptop" parent="AnimatedSprite2D" instance=ExtResource("6_qfm1y")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0

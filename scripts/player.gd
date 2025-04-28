@@ -174,8 +174,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		mouse_mode = false
 		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if event.is_action_pressed("ui_accept"):
-		gain_XP(100)
+	#if event.is_action_pressed("ui_accept"):
+		#gain_XP(100)
 
 
 func update_aim_rotation() -> void:

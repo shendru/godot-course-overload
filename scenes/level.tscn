@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://dkvosfvk83xh5"]
+[gd_scene load_steps=123 format=3 uid="uid://dkvosfvk83xh5"]
 
 [ext_resource type="PackedScene" uid="uid://b2mpoyrqvhadb" path="res://scenes/player.tscn" id="1_ajxwd"]
 [ext_resource type="Script" path="res://misc/prep_level.gd" id="1_xmwm8"]
@@ -305,7 +305,7 @@ metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 script = ExtResource("5_olg7q")
 title = "IT wolf alter"
 sprite = SubResource("SpriteFrames_qbwv7")
-health = 300.0
+health = 500.0
 damage = 20.0
 movement_speed = 300.0
 resize = Vector2(0.059, 0.059)
@@ -328,9 +328,32 @@ metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
 script = ExtResource("5_olg7q")
 title = "IT wolf alter"
 sprite = SubResource("SpriteFrames_qbwv7")
-health = 300.0
+health = 400.0
 damage = 20.0
-movement_speed = 400.0
+movement_speed = 450.0
+resize = Vector2(0.059, 0.059)
+sprite_offset = Vector2(0, -591.41)
+collision_radius = 9.0
+collision_position = Vector2(0, -25)
+shadow_position = Vector2(-67.7966, 25.4237)
+shadow_size = Vector2(1.65519, 0.297934)
+shooter = false
+lifetime_usage = false
+lifetime = 6.0
+self_destruct = false
+self_destruct_timer = 0.0
+hue_shift = 0.768
+saturation_boost = 1.456
+drops = Array[ExtResource("9_wc255")]([SubResource("Resource_wc2bn")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_xmwm8"]
+script = ExtResource("5_olg7q")
+title = "IT wolf alter"
+sprite = SubResource("SpriteFrames_qbwv7")
+health = 1000.0
+damage = 20.0
+movement_speed = 700.0
 resize = Vector2(0.059, 0.059)
 sprite_offset = Vector2(0, -591.41)
 collision_radius = 9.0
@@ -398,6 +421,29 @@ script = ExtResource("5_olg7q")
 title = "Calculator"
 sprite = SubResource("SpriteFrames_v4d4p")
 health = 100.0
+damage = 5.0
+movement_speed = 200.0
+resize = Vector2(0.09, 0.09)
+sprite_offset = Vector2(0, -622.46)
+collision_radius = 30.0
+collision_position = Vector2(0, -9)
+shadow_position = Vector2(0, 0)
+shadow_size = Vector2(1.25794, 0.297934)
+shooter = false
+lifetime_usage = true
+lifetime = 15.0
+self_destruct = true
+self_destruct_timer = 1.0
+hue_shift = 0.505
+saturation_boost = 1.2
+drops = Array[ExtResource("9_wc255")]([ExtResource("6_3ies3")])
+metadata/_custom_type_script = "uid://bm4nryj3mjmqd"
+
+[sub_resource type="Resource" id="Resource_jydfl"]
+script = ExtResource("5_olg7q")
+title = "Calculator"
+sprite = SubResource("SpriteFrames_v4d4p")
+health = 600.0
 damage = 5.0
 movement_speed = 200.0
 resize = Vector2(0.09, 0.09)
@@ -1212,9 +1258,9 @@ y_sort_enabled = true
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppgk2")]
 process_mode = 4
 player = NodePath("../player")
-enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("7_8iemx"), ExtResource("6_t1rx8"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk"), ExtResource("5_xy2fk"), SubResource("Resource_bdomq"), SubResource("Resource_bdomq"), SubResource("Resource_421lv"), SubResource("Resource_u0n8q"), SubResource("Resource_oksur"), SubResource("Resource_oksur")])
+enemy_types = Array[ExtResource("5_olg7q")]([ExtResource("7_8iemx"), ExtResource("6_t1rx8"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_cmcjb"), ExtResource("7_8iemx"), SubResource("Resource_xy2fk"), SubResource("Resource_xy2fk"), SubResource("Resource_556r4"), SubResource("Resource_xy2fk"), ExtResource("7_8iemx"), SubResource("Resource_556r4"), ExtResource("7_8iemx"), ExtResource("5_xy2fk"), ExtResource("5_xy2fk"), SubResource("Resource_bdomq"), SubResource("Resource_bdomq"), SubResource("Resource_421lv"), SubResource("Resource_u0n8q"), SubResource("Resource_oksur"), SubResource("Resource_oksur"), SubResource("Resource_xmwm8")])
 enemy_event = ExtResource("18_svjb4")
-enemy_event_types = Array[ExtResource("5_olg7q")]([ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), SubResource("Resource_7iqcu")])
+enemy_event_types = Array[ExtResource("5_olg7q")]([ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), ExtResource("19_c1pbi"), SubResource("Resource_7iqcu"), SubResource("Resource_jydfl")])
 grass = ExtResource("5_ppgk2")
 grass_limit = 50
 grass_types = Array[ExtResource("8_fpun6")]([SubResource("Resource_arp2o"), SubResource("Resource_ux5qa"), SubResource("Resource_82cfe"), SubResource("Resource_gunhw"), SubResource("Resource_8gofh")])
@@ -1226,6 +1272,7 @@ square_type = Array[ExtResource("22_2jdvr")]([SubResource("Resource_c1pbi"), Sub
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("47_421lv")
+autoplay = true
 
 [node name="Pickups" parent="." node_paths=PackedStringArray("player_reference") instance=ExtResource("27_7agi7")]
 position = Vector2(581, 139)

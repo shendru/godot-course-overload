@@ -29,7 +29,7 @@ var facing: float
 var shader_material: ShaderMaterial
 
 var knockback: Vector2
-var knockback_reduction: float = 0.7
+var knockback_reduction: float = 0.9
 @export var movement_speed: float = 100.0
 var damage: float
 var is_dead = false

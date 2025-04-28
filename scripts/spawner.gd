@@ -21,6 +21,7 @@ var square_type_index: int = 0
 
 @export var hazard_area : PackedScene = preload("res://scenes/hazard_area_2d.tscn")
 @export var hazard_area2 : PackedScene = preload("res://scenes/hazard_long_line.tscn")
+@export var hazard_hit_area : PackedScene = preload("res://scenes/hit_area_2d.tscn")
 var grass_counter:int = 0:
 	set(value):
 		grass_counter = value
@@ -63,9 +64,13 @@ var second : int:
 func _ready():
 	$Hazard.wait_time = randf() * 10 + 75
 	$Hazard.start()
-	
+	$UniqueTimer2.wait_time = randf() * 10 + 180
 	$Hazard2.wait_time = randf() * 10 + 30
 	$Hazard2.start()
+	$UniqueTimer2.start()
+	
+	$Hazard3.wait_time = randf() * 10 + 170 + 60
+	$Hazard3.start()
 	init_some_grass()
 	pass
 
@@ -121,6 +126,8 @@ func spawnHazardsV2(pos : Vector2, index: int):
 	hazard_instance.position = pos
 	hazard_instance.player_reference = player
 	get_tree().current_scene.add_child.call_deferred(hazard_instance)
+	
+#func spawnHazardHitArea(pos : Vector2):
 
 func spawnHazards2(pos : Vector2):
 	var hazard_instance = hazard_area2.instantiate()
@@ -144,6 +151,9 @@ func init_some_grass():
  
 func get_random_position() -> Vector2:
 	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+
+func get_curr_position() -> Vector2:
+	return player.global_position
 
 func get_random_position_radius(radius: float) -> Vector2:
 	var random_angle = randf_range(0, 2 * PI)
@@ -263,3 +273,15 @@ func popp():
 
 	tween.chain().tween_property(%Minute, "scale", Vector2(1, 1), 0.2)
 	tween.chain().tween_property(%Second, "scale", Vector2(1, 1), 0.2)
+
+
+func _on_unique_timer_2_timeout() -> void:
+	spawn_event(get_random_position())
+	$UniqueTimer2.wait_time = randf() * 6
+	$UniqueTimer2.start()
+
+
+func _on_hazard_3_timeout() -> void:
+	spawnHazards(get_curr_position())
+	$Hazard3.wait_time = randf() * 8
+	$Hazard3.start()
